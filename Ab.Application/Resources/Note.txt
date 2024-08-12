@@ -1,0 +1,13 @@
+ће  «Џб«г г—ћжЏн е«н 38 ж 39 »е ”н” г Ё—ж‘ 
+	abVw_Marjooei
+ће  «Џб«г «’б«Ќне —жн г—ћжЏн е«н 38 ж 39 »е ”н” г Ё—ж‘
+	abVw_EslahiMarjooeiForoosh
+	
+
+New DB Objects : 1384/03/09 
+1- _abSPC_Change_SanadStatus6				MIS_SGServer
+2- abVw_EslahiMarjooeiForoosh				MIS_SGServer
+3- _abSpGSanadInfo									MIS_SGServer
+4- _abSanad_InsertX									MIS_SGServer
+5- _abSP_InsSanadHaFromMarjaSanadSN	MIS_SGServer
+6- 

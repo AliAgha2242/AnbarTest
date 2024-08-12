@@ -1,0 +1,24 @@
+»—«Ì «‰»«—ê—œ«‰Ì
+
+		mnuRptAnbarGardani ê“«—‘ Â«Ì «‰»«—ê—œ«‰Ì
+		mnuRptSooratjalaseAnbarGardani ’Ê— Ã·”Â «‰»«—ê—œ«‰Ì
+		mnuRptMoghayratAnbarGardani „€«Ì—  «‰»«—ê—œ«‰Ì
+		mnuRptMoghayratBienShomaresh „€«Ì—  „«»Ì‰ ‘„«—‘ Â«
+		btnDarjSanad œ—Ã «”‰«œ «‰»«—ê—œ«‰Ì
+		btnDelSelectedShomareshHa Õ–› «‰ Œ«»Ì ‘„«—‘ Â« 
+		btnDarjKalaPhiziki œ—Ã ò«·«›Ì“ÌòÌ œ— ‘„«—‘ «‰»«—ê—œ«‰Ì
+		btnStatus1_4_ShomareshHa ﬁÿ⁄Ì ò—œ‰ ‘„«—‘ Â«
+		
+œ— œÌ « œÌò‘‰—Ì «÷«›Â ê—œœ		
+	abQueryRptSooratjalaseAnbarGardani	ê“«—‘ ’Ê— Ã·”Â «‰»«—ê—œ«‰Ì
+	abQueryRptMoghayratBienShomaresh	ê“«—‘ „€«Ì—  „«»Ì‰ ‘„«—‘ Â«
+	abQueryRptMoghayratAnbarGardani	ê“«—‘ „€«Ì—  «‰»«—ê—œ«‰Ì
+	
+	1384/09/19
+	btnDarjSanadAvalDoreh À»  „ÊÃÊœÌ «Ê· œÊ—Â
+	
+	1384/09/19
+	mnurptAlertNerkhStandardAsnad	ê“«—‘ ò«·«Â«Ì »œÊ‰ ‰—Œ
+
+	1384/10/24
+	mnuRptRezervRiali	ê“«—‘  —Ì«·Ì —“—Ê

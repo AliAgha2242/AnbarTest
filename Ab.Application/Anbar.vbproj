@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CD3B7B97-53F8-43C5-AC29-B387D0897974}</ProjectGuid>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>Resources\Anbar.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Anbar</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionStrict>Off</OptionStrict>
+    <RootNamespace>Minoo.Applications.Anbar</RootNamespace>
+    <StartupObject>Minoo.Applications.Anbar.CAppAnbar</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>http://localhost/Anbar/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>
+    </NoWarn>
+    <DebugType>full</DebugType>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>Win32 = True</DefineConstants>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>false</DefineTrace>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>
+    </NoWarn>
+    <DebugType>none</DebugType>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <BaseAddress>285212672</BaseAddress>
+    <DocumentationFile>
+    </DocumentationFile>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>
+    </NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DefineTrace>false</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>Win32 = True</DefineConstants>
+    <BaseAddress>285212672</BaseAddress>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>true</Optimize>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>
+    </NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <BaseAddress>285212672</BaseAddress>
+    <WarningLevel>1</WarningLevel>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\x86\Debug\Anbar.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <NoWarn>
+    </NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>Win32 = True</DefineConstants>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <BaseAddress>285212672</BaseAddress>
+    <Optimize>true</Optimize>
+    <WarningLevel>1</WarningLevel>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\x86\Release\Anbar.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <NoWarn>
+    </NoWarn>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Anbar.BRL\Anbar.BRL.vbproj">
+      <Project>{9448d542-cb5f-468f-8bd1-2e47510b2ff6}</Project>
+      <Name>Anbar.BRL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Anbar.DAL\Anbar.DAL.vbproj">
+      <Project>{d98f230c-9bc5-4032-b087-8876bce09b1d}</Project>
+      <Name>Anbar.DAL</Name>
+    </ProjectReference>
+    <Reference Include="ActiveReports.Viewer3">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\ActiveReports.Viewer3.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1FlexGrid.4">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\C1.Win.C1FlexGrid.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1FlexGrid.Classic.4">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\C1.Win.C1FlexGrid.Classic.4.dll</HintPath>
+    </Reference>
+    <Reference Include="FarsiLibrary.Resources">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\FarsiLibrary.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.ButtonBar.v3">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Janus.Windows.ButtonBar.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.Common.v3">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Janus.Windows.Common.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.UI.v3">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Janus.Windows.UI.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="JanusSimpleReport, Version=10.0.0.5, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="Minoo.App.WebServiceManager">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.App.WebServiceManager.exe</HintPath>
+    </Reference>
+    <Reference Include="Minoo.Application.DaryaftPardakht.UI">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Application.DaryaftPardakht.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.Applications.Common">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Applications.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.Applications.Paye.GoroohBandi">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Applications.Paye.GoroohBandi.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.Applications.ProductionPlanning.MavadBari">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Applications.ProductionPlanning.MavadBari.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.Applications.Tozie.BarnameRiziPakhsh, Version=10.10.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Applications.Tozie.BarnameRiziPakhsh.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.Common">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.Configuration">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.Email, Version=10.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Email.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.ExceptionManager, Version=10.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.ExceptionManager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.FTARViewer">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTARViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.FTBaseApplication">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTBaseApplication.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.FTBaseForms">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTBaseForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.FTCommonFunctions">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTCommonFunctions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.FTDataDictionary">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTDataDictionary.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.FTInitializer">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTInitializer.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.FTLogEvents">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTLogEvents.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.FTMenuItem">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTMenuItem.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.FTNetSqlTools">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTNetSqlTools.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.FTSecurityManager">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTSecurityManager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.FTStatusBar">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTStatusBar.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.FTToolbar">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTToolbar.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.Services.Common">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Services.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.Services.Middleware">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Services.Middleware.dll</HintPath>
+    </Reference>
+    <Reference Include="NerkhGozari.Report, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\NerkhGozari.Report.dll</HintPath>
+    </Reference>
+    <Reference Include="NetSql.Common">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\NetSql.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetSql.Components">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\NetSql.Components.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetSql.DB">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\NetSql.DB.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetSql.View">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\NetSql.View.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StrTools">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\StrTools.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+      <Private>True</Private>
+    </Reference>
+    <ProjectReference Include="..\Ab.AnbarGardani\Ab.AnbarGardani.vbproj">
+      <Name>Ab.AnbarGardani</Name>
+      <Project>{1F386D23-DD12-45AA-98AE-A7AFD56ECCC8}</Project>
+      <Package>{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Ab.Chideman\Ab.Chideman.vbproj">
+      <Name>Ab.Chideman</Name>
+      <Project>{DA083018-682F-4F46-8D7E-7FD86AD00D3F}</Project>
+      <Package>{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Ab.Common\Ab.Common.vbproj">
+      <Name>Ab.Common</Name>
+      <Project>{7E3D55BA-638E-4D05-9436-C35D69D6199F}</Project>
+      <Package>{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Ab.Hesabdari\Ab.Hesabdari.vbproj">
+      <Name>Ab.Hesabdari</Name>
+      <Project>{28F8B2B9-2F3E-4968-8C4E-395894F69797}</Project>
+      <Package>{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Ab.Peykarbandi\Ab.Peykarbandi.vbproj">
+      <Name>Ab.Peykarbandi</Name>
+      <Project>{464E348B-6AC6-4227-84BD-90B91975FAC4}</Project>
+      <Package>{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Ab.QC\Ab.QC.vbproj">
+      <Name>Ab.QC</Name>
+      <Project>{297F219A-9F02-44DD-A7FE-CEB4A35E9EEE}</Project>
+      <Package>{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Ab.Report\Ab.Report.vbproj">
+      <Name>Ab.Report</Name>
+      <Project>{A03AD770-42BB-4544-8A9B-EB66F43422F8}</Project>
+      <Package>{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Ab.RezervKala\Ab.RezervKala.vbproj">
+      <Name>Ab.RezervKala</Name>
+      <Project>{597D94D1-C220-4977-B218-C112B40C38EB}</Project>
+      <Package>{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\Ab.Sanad\Ab.Sanad.vbproj">
+      <Name>Ab.Sanad</Name>
+      <Project>{6B369F7E-DE1A-433F-89B4-DE47DCAC700F}</Project>
+      <Package>{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</Package>
+    </ProjectReference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TadarekatDakheli.BusinessRule, Version=10.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\TadarekatDakheli.BusinessRule.dll</HintPath>
+    </Reference>
+    <Reference Include="TadarekatDakheli.Common">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\TadarekatDakheli.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="TadarekatDakheli.Forms">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\TadarekatDakheli.Forms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Minoo" />
+    <Import Include="Minoo.Applications.Anbar.Common.CSharedItem" />
+    <Import Include="Minoo.Applications.Common.SharedItems" />
+    <Import Include="NetSql.Common" />
+    <Import Include="NetSql.Common.CShamsiDate" />
+    <Import Include="NetSql.DB.CConnection" />
+    <Import Include="NetSql.View" />
+    <Import Include="NetSql.View.CEnum" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="Tozie.BarnameRiziPakhsh.CBarnameRiziPakhsh" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\CAppAnbar.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\Amaliat\frmDarkhastFile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Amaliat\FrmGetSanadAnbar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Amaliat\FrmUpdateSanadDate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\mdiMainAnbar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="Forms\Amaliat\frmDarkhastFile.resx">
+      <DependentUpon>frmDarkhastFile.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Amaliat\FrmGetSanadAnbar.resx">
+      <DependentUpon>FrmGetSanadAnbar.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Amaliat\FrmUpdateSanadDate.resx">
+      <DependentUpon>FrmUpdateSanadDate.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\mdiMainAnbar.resx">
+      <DependentUpon>mdiMainAnbar.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ProjectResources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Resources\Anbar.ico" />
+    <Content Include="Resources\Anbar_Fnt.txt" />
+    <Content Include="Resources\Anbar_SP.txt" />
+    <Content Include="Resources\NewAccessKey.txt" />
+    <Content Include="Resources\Note.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <Fakes Include="Fakes\StrTools.fakes" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

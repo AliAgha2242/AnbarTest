@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsAnbargardani" targetNamespace="http://tempuri.org/DsAnbargardani.xsd" xmlns:mstns="http://tempuri.org/DsAnbargardani.xsd" xmlns="http://tempuri.org/DsAnbargardani.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="Yazd_AnbarGardani90ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Yazd_AnbarGardani90ConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Minoo.Applications.Anbar.AnbarGardani.My.MySettings.GlobalReference.Default.Yazd_AnbarGardani90ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsAnbargardani" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsAnbargardani" msprop:Generator_UserDSName="DsAnbargardani">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblKasriezafeh" msprop:Generator_TableClassName="tblKasriezafehDataTable" msprop:Generator_TableVarName="tabletblKasriezafeh" msprop:Generator_RowChangedName="tblKasriezafehRowChanged" msprop:Generator_TablePropName="tblKasriezafeh" msprop:Generator_RowDeletingName="tblKasriezafehRowDeleting" msprop:Generator_RowChangingName="tblKasriezafehRowChanging" msprop:Generator_RowEvHandlerName="tblKasriezafehRowChangeEventHandler" msprop:Generator_RowDeletedName="tblKasriezafehRowDeleted" msprop:Generator_RowClassName="tblKasriezafehRow" msprop:Generator_UserTableName="tblKasriezafeh" msprop:Generator_RowEvArgName="tblKasriezafehRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="kalasn" msprop:Generator_ColumnVarNameInTable="columnkalasn" msprop:Generator_ColumnPropNameInRow="kalasn" msprop:Generator_ColumnPropNameInTable="kalasnColumn" msprop:Generator_UserColumnName="kalasn" type="xs:decimal" />
+              <xs:element name="Shomarehrahgiri" msprop:Generator_ColumnVarNameInTable="columnShomarehrahgiri" msprop:Generator_ColumnPropNameInRow="Shomarehrahgiri" msprop:Generator_ColumnPropNameInTable="ShomarehrahgiriColumn" msprop:Generator_UserColumnName="Shomarehrahgiri">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="kalaphizikiSN" msprop:Generator_ColumnVarNameInTable="columnkalaphizikiSN" msprop:Generator_ColumnPropNameInRow="kalaphizikiSN" msprop:Generator_ColumnPropNameInTable="kalaphizikiSNColumn" msprop:Generator_UserColumnName="kalaphizikiSN" type="xs:decimal" />
+              <xs:element name="Kasri" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnKasri" msprop:Generator_ColumnPropNameInRow="Kasri" msprop:Generator_ColumnPropNameInTable="KasriColumn" msprop:Generator_UserColumnName="Kasri" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Ezafeh" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnEzafeh" msprop:Generator_ColumnPropNameInRow="Ezafeh" msprop:Generator_ColumnPropNameInTable="EzafehColumn" msprop:Generator_UserColumnName="Ezafeh" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tblreport" msprop:Generator_TableClassName="tblreportDataTable" msprop:Generator_TableVarName="tabletblreport" msprop:Generator_RowChangedName="tblreportRowChanged" msprop:Generator_TablePropName="tblreport" msprop:Generator_RowDeletingName="tblreportRowDeleting" msprop:Generator_RowChangingName="tblreportRowChanging" msprop:Generator_RowEvHandlerName="tblreportRowChangeEventHandler" msprop:Generator_RowDeletedName="tblreportRowDeleted" msprop:Generator_RowClassName="tblreportRow" msprop:Generator_UserTableName="tblreport" msprop:Generator_RowEvArgName="tblreportRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="KalaNO" msprop:Generator_ColumnVarNameInTable="columnKalaNO" msprop:Generator_ColumnPropNameInRow="KalaNO" msprop:Generator_ColumnPropNameInTable="KalaNOColumn" msprop:Generator_UserColumnName="KalaNO" type="xs:string" minOccurs="0" />
+              <xs:element name="KalaDS" msprop:Generator_ColumnVarNameInTable="columnKalaDS" msprop:Generator_ColumnPropNameInRow="KalaDS" msprop:Generator_ColumnPropNameInTable="KalaDSColumn" msprop:Generator_UserColumnName="KalaDS" type="xs:string" minOccurs="0" />
+              <xs:element name="Shomarehrahgiri" msprop:Generator_ColumnVarNameInTable="columnShomarehrahgiri" msprop:Generator_ColumnPropNameInRow="Shomarehrahgiri" msprop:Generator_ColumnPropNameInTable="ShomarehrahgiriColumn" msprop:Generator_UserColumnName="Shomarehrahgiri" type="xs:string" minOccurs="0" />
+              <xs:element name="Mojoodi" msprop:Generator_ColumnVarNameInTable="columnMojoodi" msprop:Generator_ColumnPropNameInRow="Mojoodi" msprop:Generator_ColumnPropNameInTable="MojoodiColumn" msprop:Generator_UserColumnName="Mojoodi" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Meghdar1" msprop:Generator_ColumnVarNameInTable="columnMeghdar1" msprop:Generator_ColumnPropNameInRow="Meghdar1" msprop:Generator_ColumnPropNameInTable="Meghdar1Column" msprop:Generator_UserColumnName="Meghdar1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Meghdar2" msprop:Generator_ColumnVarNameInTable="columnMeghdar2" msprop:Generator_ColumnPropNameInRow="Meghdar2" msprop:Generator_ColumnPropNameInTable="Meghdar2Column" msprop:Generator_UserColumnName="Meghdar2" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Meghdar3" msprop:Generator_ColumnVarNameInTable="columnMeghdar3" msprop:Generator_ColumnPropNameInRow="Meghdar3" msprop:Generator_ColumnPropNameInTable="Meghdar3Column" msprop:Generator_UserColumnName="Meghdar3" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Moghayerat" msprop:Generator_ColumnVarNameInTable="columnMoghayerat" msprop:Generator_ColumnPropNameInRow="Moghayerat" msprop:Generator_ColumnPropNameInTable="MoghayeratColumn" msprop:Generator_UserColumnName="Moghayerat" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Kasri" msprop:Generator_ColumnVarNameInTable="columnKasri" msprop:Generator_ColumnPropNameInRow="Kasri" msprop:Generator_ColumnPropNameInTable="KasriColumn" msprop:Generator_UserColumnName="Kasri" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Ezafeh" msprop:Generator_ColumnVarNameInTable="columnEzafeh" msprop:Generator_ColumnPropNameInRow="Ezafeh" msprop:Generator_ColumnPropNameInTable="EzafehColumn" msprop:Generator_UserColumnName="Ezafeh" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LastMojoodi" msprop:Generator_ColumnVarNameInTable="columnLastMojoodi" msprop:Generator_ColumnPropNameInRow="LastMojoodi" msprop:Generator_ColumnPropNameInTable="LastMojoodiColumn" msprop:Generator_UserColumnName="LastMojoodi" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

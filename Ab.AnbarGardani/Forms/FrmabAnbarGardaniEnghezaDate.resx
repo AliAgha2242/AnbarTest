@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GridReport_DesignTimeLayout.LayoutString" xml:space="preserve">
+    <value>&lt;GridEXLayoutData&gt;&lt;RootTable&gt;&lt;Columns Collection="true" ElementName="Column"&gt;&lt;Column0 ID="KalaNo"&gt;&lt;Caption&gt;کد محصول&lt;/Caption&gt;&lt;DataMember&gt;KalaNo&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Key&gt;KalaNo&lt;/Key&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;TextAlignment&gt;Center&lt;/TextAlignment&gt;&lt;/Column0&gt;&lt;Column1 ID="KalaDS"&gt;&lt;Caption&gt;محصول&lt;/Caption&gt;&lt;DataMember&gt;KalaDS&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Key&gt;KalaDS&lt;/Key&gt;&lt;Position&gt;1&lt;/Position&gt;&lt;TextAlignment&gt;Center&lt;/TextAlignment&gt;&lt;/Column1&gt;&lt;Column2 ID="Nerkh"&gt;&lt;Caption&gt;(شماره رهگیری(نرخ مصرف کننده&lt;/Caption&gt;&lt;DataMember&gt;Nerkh&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Key&gt;Nerkh&lt;/Key&gt;&lt;Position&gt;2&lt;/Position&gt;&lt;TextAlignment&gt;Center&lt;/TextAlignment&gt;&lt;/Column2&gt;&lt;Column3 ID="EnghezaDate"&gt;&lt;Caption&gt;تاریخ انقضاء&lt;/Caption&gt;&lt;DataMember&gt;EnghezaDate&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Key&gt;EnghezaDate&lt;/Key&gt;&lt;Position&gt;3&lt;/Position&gt;&lt;TextAlignment&gt;Center&lt;/TextAlignment&gt;&lt;/Column3&gt;&lt;Column4 ID="TolidDate"&gt;&lt;Caption&gt;تاریخ تولید&lt;/Caption&gt;&lt;DataMember&gt;TolidDate&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Key&gt;TolidDate&lt;/Key&gt;&lt;Position&gt;4&lt;/Position&gt;&lt;TextAlignment&gt;Center&lt;/TextAlignment&gt;&lt;/Column4&gt;&lt;Column5 ID="MojoudiReal"&gt;&lt;AggregateFunction&gt;Sum&lt;/AggregateFunction&gt;&lt;Caption&gt;شمارش شده&lt;/Caption&gt;&lt;DataMember&gt;MojoudiReal&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FormatString&gt;#,###&lt;/FormatString&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Key&gt;MojoudiReal&lt;/Key&gt;&lt;Position&gt;5&lt;/Position&gt;&lt;TextAlignment&gt;Center&lt;/TextAlignment&gt;&lt;TotalFormatString&gt;#,###&lt;/TotalFormatString&gt;&lt;/Column5&gt;&lt;Column6 ID="MojoudiKalaRahgiri"&gt;&lt;AggregateFunction&gt;Sum&lt;/AggregateFunction&gt;&lt;Caption&gt;سیستمی&lt;/Caption&gt;&lt;DataMember&gt;MojoudiKalaRahgiri&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FormatString&gt;#,###&lt;/FormatString&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Key&gt;MojoudiKalaRahgiri&lt;/Key&gt;&lt;Position&gt;6&lt;/Position&gt;&lt;TextAlignment&gt;Center&lt;/TextAlignment&gt;&lt;TotalFormatString&gt;#,###&lt;/TotalFormatString&gt;&lt;/Column6&gt;&lt;Column7 ID="EzafiKasri"&gt;&lt;AggregateFunction&gt;Sum&lt;/AggregateFunction&gt;&lt;Caption&gt;کسری اضافی&lt;/Caption&gt;&lt;DataMember&gt;EzafiKasriKalaRahgiri&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FormatString&gt;#,###&lt;/FormatString&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Key&gt;EzafiKasri&lt;/Key&gt;&lt;Position&gt;7&lt;/Position&gt;&lt;TextAlignment&gt;Center&lt;/TextAlignment&gt;&lt;TotalFormatString&gt;#,###&lt;/TotalFormatString&gt;&lt;/Column7&gt;&lt;Column8 ID="MojoudiRealKala"&gt;&lt;AggregateFunction&gt;Sum&lt;/AggregateFunction&gt;&lt;Caption&gt;شمارش شده&lt;/Caption&gt;&lt;DataMember&gt;MojoudiRealKala&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FormatString&gt;#,###&lt;/FormatString&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Key&gt;MojoudiRealKala&lt;/Key&gt;&lt;Position&gt;8&lt;/Position&gt;&lt;TextAlignment&gt;Center&lt;/TextAlignment&gt;&lt;TotalFormatString&gt;#,###&lt;/TotalFormatString&gt;&lt;/Column8&gt;&lt;Column9 ID="MojoudiKala"&gt;&lt;AggregateFunction&gt;Sum&lt;/AggregateFunction&gt;&lt;Caption&gt;سیستمی&lt;/Caption&gt;&lt;DataMember&gt;MojoudiKala&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FormatString&gt;#,###&lt;/FormatString&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Key&gt;MojoudiKala&lt;/Key&gt;&lt;Position&gt;9&lt;/Position&gt;&lt;TextAlignment&gt;Center&lt;/TextAlignment&gt;&lt;TotalFormatString&gt;#,###&lt;/TotalFormatString&gt;&lt;/Column9&gt;&lt;Column10 ID="EzafiKasriKala"&gt;&lt;AggregateFunction&gt;Sum&lt;/AggregateFunction&gt;&lt;Caption&gt;کسری اضافی&lt;/Caption&gt;&lt;DataMember&gt;EzafiKasriKala&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FormatString&gt;#,###&lt;/FormatString&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Key&gt;EzafiKasriKala&lt;/Key&gt;&lt;Position&gt;10&lt;/Position&gt;&lt;TextAlignment&gt;Center&lt;/TextAlignment&gt;&lt;TotalFormatString&gt;#,###&lt;/TotalFormatString&gt;&lt;/Column10&gt;&lt;Column11 ID="RialEzafiKasriKalaRahgiriLastNerkh"&gt;&lt;AggregateFunction&gt;Sum&lt;/AggregateFunction&gt;&lt;Caption&gt;ریال کسری اضافی(آخرین نرخ فروش)&lt;/Caption&gt;&lt;DataMember&gt;RialEzafiKasriKalaRahgiriLastNerkh&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FormatString&gt;#,###&lt;/FormatString&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Key&gt;RialEzafiKasriKalaRahgiriLastNerkh&lt;/Key&gt;&lt;Position&gt;11&lt;/Position&gt;&lt;TotalFormatString&gt;#,###&lt;/TotalFormatString&gt;&lt;/Column11&gt;&lt;Column12 ID="RialEzafiKasriKalaLastNerkh"&gt;&lt;AggregateFunction&gt;Sum&lt;/AggregateFunction&gt;&lt;Caption&gt;ریال کسری اضافی(آخرین نرخ فروش)&lt;/Caption&gt;&lt;DataMember&gt;RialEzafiKasriKalaLastNerkh&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FormatString&gt;#,###&lt;/FormatString&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Key&gt;RialEzafiKasriKalaLastNerkh&lt;/Key&gt;&lt;Position&gt;12&lt;/Position&gt;&lt;TotalFormatString&gt;#,###&lt;/TotalFormatString&gt;&lt;/Column12&gt;&lt;Column13 ID="RialEzafiKasriKalaRealNerkh"&gt;&lt;AggregateFunction&gt;Sum&lt;/AggregateFunction&gt;&lt;Caption&gt;ریال کسری اضافی(نرخ واقعی)&lt;/Caption&gt;&lt;DataMember&gt;RialEzafiKasriKalaRealNerkh&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FormatString&gt;#,##&lt;/FormatString&gt;&lt;Key&gt;RialEzafiKasriKalaRealNerkh&lt;/Key&gt;&lt;Position&gt;13&lt;/Position&gt;&lt;TotalFormatString&gt;#,##&lt;/TotalFormatString&gt;&lt;/Column13&gt;&lt;Column14 ID="RialEzafiKasriKalaRahgiriRealNerkh"&gt;&lt;AggregateFunction&gt;Sum&lt;/AggregateFunction&gt;&lt;Caption&gt;ریال کسری اضافی(نرخ واقعی)&lt;/Caption&gt;&lt;DataMember&gt;RialEzafiKasriKalaRahgiriRealNerkh&lt;/DataMember&gt;&lt;EditType&gt;NoEdit&lt;/EditType&gt;&lt;FormatString&gt;#,##&lt;/FormatString&gt;&lt;Key&gt;RialEzafiKasriKalaRahgiriRealNerkh&lt;/Key&gt;&lt;Position&gt;14&lt;/Position&gt;&lt;TotalFormatString&gt;#,##&lt;/TotalFormatString&gt;&lt;/Column14&gt;&lt;/Columns&gt;&lt;AllowEdit&gt;False&lt;/AllowEdit&gt;&lt;CellLayoutMode&gt;UseColumnSets&lt;/CellLayoutMode&gt;&lt;ColumnSets Collection="true" ElementName="ColumnSet"&gt;&lt;ColumnSet0 ID="ColumnSetKalaInformation"&gt;&lt;Key&gt;ColumnSetKalaInformation&lt;/Key&gt;&lt;Caption&gt;معرفی محصول&lt;/Caption&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Position&gt;0&lt;/Position&gt;&lt;ColumnWidth0&gt;100&lt;/ColumnWidth0&gt;&lt;ColumnWidth1&gt;100&lt;/ColumnWidth1&gt;&lt;EntriesCount&gt;2&lt;/EntriesCount&gt;&lt;ColIndex0&gt;0&lt;/ColIndex0&gt;&lt;Row0&gt;0&lt;/Row0&gt;&lt;Col0&gt;0&lt;/Col0&gt;&lt;RowSpan0&gt;1&lt;/RowSpan0&gt;&lt;ColSpan0&gt;1&lt;/ColSpan0&gt;&lt;ColIndex1&gt;1&lt;/ColIndex1&gt;&lt;Row1&gt;0&lt;/Row1&gt;&lt;Col1&gt;1&lt;/Col1&gt;&lt;RowSpan1&gt;1&lt;/RowSpan1&gt;&lt;ColSpan1&gt;1&lt;/ColSpan1&gt;&lt;/ColumnSet0&gt;&lt;ColumnSet1 ID="ColumnSetDateInformation"&gt;&lt;Key&gt;ColumnSetDateInformation&lt;/Key&gt;&lt;Caption&gt;اطلاعات خاص محصول&lt;/Caption&gt;&lt;ColumnCount&gt;3&lt;/ColumnCount&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Position&gt;1&lt;/Position&gt;&lt;ColumnWidth0&gt;100&lt;/ColumnWidth0&gt;&lt;ColumnWidth1&gt;100&lt;/ColumnWidth1&gt;&lt;ColumnWidth2&gt;100&lt;/ColumnWidth2&gt;&lt;EntriesCount&gt;3&lt;/EntriesCount&gt;&lt;ColIndex0&gt;2&lt;/ColIndex0&gt;&lt;Row0&gt;0&lt;/Row0&gt;&lt;Col0&gt;2&lt;/Col0&gt;&lt;RowSpan0&gt;1&lt;/RowSpan0&gt;&lt;ColSpan0&gt;1&lt;/ColSpan0&gt;&lt;ColIndex1&gt;3&lt;/ColIndex1&gt;&lt;Row1&gt;0&lt;/Row1&gt;&lt;Col1&gt;1&lt;/Col1&gt;&lt;RowSpan1&gt;1&lt;/RowSpan1&gt;&lt;ColSpan1&gt;1&lt;/ColSpan1&gt;&lt;ColIndex2&gt;4&lt;/ColIndex2&gt;&lt;Row2&gt;0&lt;/Row2&gt;&lt;Col2&gt;0&lt;/Col2&gt;&lt;RowSpan2&gt;1&lt;/RowSpan2&gt;&lt;ColSpan2&gt;1&lt;/ColSpan2&gt;&lt;/ColumnSet1&gt;&lt;ColumnSet2 ID="ColumnSetKalaRahgiri"&gt;&lt;Key&gt;ColumnSetKalaRahgiri&lt;/Key&gt;&lt;Caption&gt;موجودی کالا رهگیری&lt;/Caption&gt;&lt;ColumnCount&gt;5&lt;/ColumnCount&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Position&gt;2&lt;/Position&gt;&lt;ColumnWidth0&gt;100&lt;/ColumnWidth0&gt;&lt;ColumnWidth1&gt;100&lt;/ColumnWidth1&gt;&lt;ColumnWidth2&gt;100&lt;/ColumnWidth2&gt;&lt;ColumnWidth3&gt;100&lt;/ColumnWidth3&gt;&lt;ColumnWidth4&gt;100&lt;/ColumnWidth4&gt;&lt;EntriesCount&gt;5&lt;/EntriesCount&gt;&lt;ColIndex0&gt;5&lt;/ColIndex0&gt;&lt;Row0&gt;0&lt;/Row0&gt;&lt;Col0&gt;0&lt;/Col0&gt;&lt;RowSpan0&gt;1&lt;/RowSpan0&gt;&lt;ColSpan0&gt;1&lt;/ColSpan0&gt;&lt;ColIndex1&gt;6&lt;/ColIndex1&gt;&lt;Row1&gt;0&lt;/Row1&gt;&lt;Col1&gt;1&lt;/Col1&gt;&lt;RowSpan1&gt;1&lt;/RowSpan1&gt;&lt;ColSpan1&gt;1&lt;/ColSpan1&gt;&lt;ColIndex2&gt;7&lt;/ColIndex2&gt;&lt;Row2&gt;0&lt;/Row2&gt;&lt;Col2&gt;2&lt;/Col2&gt;&lt;RowSpan2&gt;1&lt;/RowSpan2&gt;&lt;ColSpan2&gt;1&lt;/ColSpan2&gt;&lt;ColIndex3&gt;11&lt;/ColIndex3&gt;&lt;Row3&gt;0&lt;/Row3&gt;&lt;Col3&gt;3&lt;/Col3&gt;&lt;RowSpan3&gt;1&lt;/RowSpan3&gt;&lt;ColSpan3&gt;1&lt;/ColSpan3&gt;&lt;ColIndex4&gt;14&lt;/ColIndex4&gt;&lt;Row4&gt;0&lt;/Row4&gt;&lt;Col4&gt;4&lt;/Col4&gt;&lt;RowSpan4&gt;1&lt;/RowSpan4&gt;&lt;ColSpan4&gt;1&lt;/ColSpan4&gt;&lt;/ColumnSet2&gt;&lt;ColumnSet3 ID="ColumnSetKala"&gt;&lt;Key&gt;ColumnSetKala&lt;/Key&gt;&lt;Caption&gt;موجودی کالا&lt;/Caption&gt;&lt;ColumnCount&gt;5&lt;/ColumnCount&gt;&lt;HeaderAlignment&gt;Center&lt;/HeaderAlignment&gt;&lt;Position&gt;3&lt;/Position&gt;&lt;ColumnWidth0&gt;100&lt;/ColumnWidth0&gt;&lt;ColumnWidth1&gt;100&lt;/ColumnWidth1&gt;&lt;ColumnWidth2&gt;100&lt;/ColumnWidth2&gt;&lt;ColumnWidth3&gt;100&lt;/ColumnWidth3&gt;&lt;ColumnWidth4&gt;100&lt;/ColumnWidth4&gt;&lt;EntriesCount&gt;5&lt;/EntriesCount&gt;&lt;ColIndex0&gt;8&lt;/ColIndex0&gt;&lt;Row0&gt;0&lt;/Row0&gt;&lt;Col0&gt;0&lt;/Col0&gt;&lt;RowSpan0&gt;1&lt;/RowSpan0&gt;&lt;ColSpan0&gt;1&lt;/ColSpan0&gt;&lt;ColIndex1&gt;9&lt;/ColIndex1&gt;&lt;Row1&gt;0&lt;/Row1&gt;&lt;Col1&gt;1&lt;/Col1&gt;&lt;RowSpan1&gt;1&lt;/RowSpan1&gt;&lt;ColSpan1&gt;1&lt;/ColSpan1&gt;&lt;ColIndex2&gt;10&lt;/ColIndex2&gt;&lt;Row2&gt;0&lt;/Row2&gt;&lt;Col2&gt;2&lt;/Col2&gt;&lt;RowSpan2&gt;1&lt;/RowSpan2&gt;&lt;ColSpan2&gt;1&lt;/ColSpan2&gt;&lt;ColIndex3&gt;12&lt;/ColIndex3&gt;&lt;Row3&gt;0&lt;/Row3&gt;&lt;Col3&gt;3&lt;/Col3&gt;&lt;RowSpan3&gt;1&lt;/RowSpan3&gt;&lt;ColSpan3&gt;1&lt;/ColSpan3&gt;&lt;ColIndex4&gt;13&lt;/ColIndex4&gt;&lt;Row4&gt;0&lt;/Row4&gt;&lt;Col4&gt;4&lt;/Col4&gt;&lt;RowSpan4&gt;1&lt;/RowSpan4&gt;&lt;ColSpan4&gt;1&lt;/ColSpan4&gt;&lt;/ColumnSet3&gt;&lt;/ColumnSets&gt;&lt;ColumnSetHeaderLines&gt;2&lt;/ColumnSetHeaderLines&gt;&lt;ColumnSetRowCount&gt;1&lt;/ColumnSetRowCount&gt;&lt;FormatConditions Collection="true" ElementName="Condition"&gt;&lt;Condition0 ID="FormatCondition1"&gt;&lt;ColIndex&gt;7&lt;/ColIndex&gt;&lt;ConditionOperator&gt;LessThan&lt;/ConditionOperator&gt;&lt;FormatStyle&gt;&lt;BackColor&gt;OrangeRed&lt;/BackColor&gt;&lt;/FormatStyle&gt;&lt;TargetColIndex&gt;7&lt;/TargetColIndex&gt;&lt;Value1&gt;0&lt;/Value1&gt;&lt;Key&gt;FormatCondition1&lt;/Key&gt;&lt;/Condition0&gt;&lt;Condition1 ID="FormatCondition2"&gt;&lt;ColIndex&gt;7&lt;/ColIndex&gt;&lt;ConditionOperator&gt;GreaterThan&lt;/ConditionOperator&gt;&lt;FormatStyle&gt;&lt;BackColor&gt;192, 255, 192&lt;/BackColor&gt;&lt;/FormatStyle&gt;&lt;TargetColIndex&gt;7&lt;/TargetColIndex&gt;&lt;Value1&gt;0&lt;/Value1&gt;&lt;Key&gt;FormatCondition2&lt;/Key&gt;&lt;/Condition1&gt;&lt;Condition2 ID="FormatCondition3"&gt;&lt;ColIndex&gt;10&lt;/ColIndex&gt;&lt;ConditionOperator&gt;LessThan&lt;/ConditionOperator&gt;&lt;FormatStyle&gt;&lt;BackColor&gt;OrangeRed&lt;/BackColor&gt;&lt;/FormatStyle&gt;&lt;TargetColIndex&gt;10&lt;/TargetColIndex&gt;&lt;Value1&gt;0&lt;/Value1&gt;&lt;Key&gt;FormatCondition3&lt;/Key&gt;&lt;/Condition2&gt;&lt;Condition3 ID="FormatCondition4"&gt;&lt;ColIndex&gt;10&lt;/ColIndex&gt;&lt;ConditionOperator&gt;GreaterThan&lt;/ConditionOperator&gt;&lt;FormatStyle&gt;&lt;BackColor&gt;192, 255, 192&lt;/BackColor&gt;&lt;/FormatStyle&gt;&lt;TargetColIndex&gt;10&lt;/TargetColIndex&gt;&lt;Value1&gt;0&lt;/Value1&gt;&lt;Key&gt;FormatCondition4&lt;/Key&gt;&lt;/Condition3&gt;&lt;/FormatConditions&gt;&lt;GroupCondition /&gt;&lt;HeaderLines&gt;2&lt;/HeaderLines&gt;&lt;/RootTable&gt;&lt;/GridEXLayoutData&gt;</value>
+  </data>
+  <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+</root>

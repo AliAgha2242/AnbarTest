@@ -1,0 +1,990 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A03AD770-42BB-4544-8A9B-EB66F43422F8}</ProjectGuid>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Minoo.Applications.Anbar.Report</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionStrict>Off</OptionStrict>
+    <RootNamespace>Minoo.Applications.Anbar.Report</RootNamespace>
+    <StartupObject>Minoo.Applications.Anbar.Report.%28None%29</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <MyType>Windows</MyType>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>http://localhost/Minoo.Applications.Anbar.Report/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>
+    </NoWarn>
+    <DebugType>full</DebugType>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>
+    </NoWarn>
+    <DebugType>none</DebugType>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <BaseAddress>285212672</BaseAddress>
+    <DocumentationFile>
+    </DocumentationFile>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>
+    </NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DefineTrace>false</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <BaseAddress>285212672</BaseAddress>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>true</Optimize>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>
+    </NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <BaseAddress>285212672</BaseAddress>
+    <WarningLevel>1</WarningLevel>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\x86\Debug\Minoo.Applications.Anbar.Report.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <BaseAddress>285212672</BaseAddress>
+    <Optimize>true</Optimize>
+    <WarningLevel>1</WarningLevel>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\x86\Release\Minoo.Applications.Anbar.Report.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Anbar.BRL\Anbar.BRL.vbproj">
+      <Project>{9448d542-cb5f-468f-8bd1-2e47510b2ff6}</Project>
+      <Name>Anbar.BRL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Anbar.DAL\Anbar.DAL.vbproj">
+      <Project>{D98F230C-9BC5-4032-B087-8876BCE09B1D}</Project>
+      <Name>Anbar.DAL</Name>
+    </ProjectReference>
+    <Reference Include="ActiveReports.Interop, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\ActiveReports.Interop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ActiveReports.RtfExport, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\ActiveReports.RtfExport.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ActiveReports.Viewer3, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\ActiveReports.Viewer3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ActiveReports3, Version=5.3.1436.2, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\ActiveReports3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="C1.Win.C1FlexGrid.4, Version=4.6.20103.577, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\C1.Win.C1FlexGrid.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Win.C1FlexGrid.Classic.4, Version=4.6.20103.577, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\C1.Win.C1FlexGrid.Classic.4.dll</HintPath>
+    </Reference>
+    <Reference Include="FarsiLibrary.Win, Version=10.0.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\FarsiLibrary.Win.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Janus.Data.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Janus.Data.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.Common.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Janus.Windows.Common.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.FilterEditor.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Janus.Windows.FilterEditor.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Janus.Windows.GridEX.v3">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Janus.Windows.GridEX.v3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Janus.Windows.UI.v3">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Janus.Windows.UI.v3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JanusSimpleReport">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\JanusSimpleReport.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.Compatibility">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.Applications.Common">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Applications.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.Applications.ProductionPlanning.Calender, Version=10.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Applications.ProductionPlanning.Calender.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.Configuration, Version=10.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.ExportExcel, Version=10.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.ExportExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="Minoo.FTARViewer">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTARViewer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.FTBaseForms">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTBaseForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.FTCommonFunctions">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTCommonFunctions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.FTLogEvents">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTLogEvents.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.FTSecurityManager">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTSecurityManager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Minoo.FTShowHideCols">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.FTShowHideCols.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetSql.Common">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\NetSql.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetSql.Components">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\NetSql.Components.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetSql.DB">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\NetSql.DB.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetSql.View">
+      <HintPath>..\..\..\98. Shared Libraries\NetSql2010\NetSql.View.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+      <Private>True</Private>
+    </Reference>
+    <ProjectReference Include="..\Ab.Common\Ab.Common.vbproj">
+      <Name>Ab.Common</Name>
+      <Project>{7E3D55BA-638E-4D05-9436-C35D69D6199F}</Project>
+      <Package>{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</Package>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.VisualBasic.Compatibilit" />
+    <Import Include="Microsoft.VisualBasic.Compatibility" />
+    <Import Include="Minoo.Applications.Anbar.Common.CSharedItem" />
+    <Import Include="Minoo.Applications.Common.SharedItems" />
+    <Import Include="NetSql.Common.CShamsiDate" />
+    <Import Include="NetSql.DB.CConnection" />
+    <Import Include="NetSql.View" />
+    <Import Include="NetSql.View.CEnum" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Class\CReport.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ControliReport\FrmRptQCIntervals.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControliReport\FrmControlKardex.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControliReport\FrmKardexA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControliReport\FrmKardexB.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControliReport\frmNoeKharid.Designer.vb">
+      <DependentUpon>frmNoeKharid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControliReport\frmNoeKharid.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControliReport\FrmRptControlTahvilBeSherkathayeGorooh.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControliReport\FrmRptMojoodWithEnghezadate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControliReport\FrmRptMTS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControliReport\FrmRptSefareshParam.Designer.vb">
+      <DependentUpon>FrmRptSefareshParam.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControliReport\FrmRptSefareshParam.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmAnbargardaniMoghayeratBeyneShomaresh.Designer.vb">
+      <DependentUpon>FrmAnbargardaniMoghayeratBeyneShomaresh.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmAnbargardaniMoghayeratBeyneShomaresh.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmListMahsulateBarcodKhan.Designer.vb">
+      <DependentUpon>FrmListMahsulateBarcodKhan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmListMahsulateBarcodKhan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmMoghayerateKatalogeMahsoolatBaSystemMaprReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmReportAdamRayatOlaviatBandiTarikhEnghezaDarSodoorHavale.Designer.vb">
+      <DependentUpon>FrmReportAdamRayatOlaviatBandiTarikhEnghezaDarSodoorHavale.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmReportAdamRayatOlaviatBandiTarikhEnghezaDarSodoorHavale.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmReportAnbargardaniEnghezaDate.Designer.vb">
+      <DependentUpon>FrmReportAnbargardaniEnghezaDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmReportAnbargardaniEnghezaDate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmReportAsnadBarcodeKhanAghlamNazdik.Designer.vb">
+      <DependentUpon>FrmReportAsnadBarcodeKhanAghlamNazdik.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmReportAsnadBarcodeKhanAghlamNazdik.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmReportDarkhastRepair.Designer.vb">
+      <DependentUpon>FrmReportDarkhastRepair.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmReportDarkhastRepair.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmReportDarkhastService.Designer.vb">
+      <DependentUpon>FrmReportDarkhastService.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmReportDarkhastService.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmReportMojudiWithIRC_GTIN.Designer.vb">
+      <DependentUpon>FrmReportMojudiWithIRC_GTIN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmReportMojudiWithIRC_GTIN.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRptFaseleDarkhastTaHavaleh.Designer.vb">
+      <DependentUpon>FrmRptFaseleDarkhastTaHavaleh.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmRptFaseleDarkhastTaHavaleh.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRptShomarehBachhayeSabtNashodehAnbarMostaghim.Designer.vb">
+      <DependentUpon>FrmRptShomarehBachhayeSabtNashodehAnbarMostaghim.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmRptShomarehBachhayeSabtNashodehAnbarMostaghim.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmUIDtrackingReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmVardehSamaneJameAnbar.Designer.vb">
+      <DependentUpon>FrmVardehSamaneJameAnbar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmVardehSamaneJameAnbar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmVaredehMojaz.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmCheckBarcode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmMojoodiKalaSahmiye.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRptAlarmMojoodi.Designer.vb">
+      <DependentUpon>FrmRptAlarmMojoodi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmRptAlarmMojoodi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmMasrafeMavad.Designer.vb">
+      <DependentUpon>frmMasrafeMavad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmMasrafeMavad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmMoroorTafsiliNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmMoroorTafsiliTaadil.Designer.vb">
+      <DependentUpon>FrmMoroorTafsiliTaadil.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmMoroorTafsiliTaadil.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRptChideman.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRptDarkhastKharid.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRptHavalehMovaghat.Designer.vb">
+      <DependentUpon>FrmRptHavalehMovaghat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmRptHavalehMovaghat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRptMoghayeratShoab.Designer.vb">
+      <DependentUpon>FrmRptMoghayeratShoab.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmRptMoghayeratShoab.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRptRialiAsnadKAsriEzafeh.Designer.vb">
+      <DependentUpon>FrmRptRialiAsnadKAsriEzafeh.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmRptRialiAsnadKAsriEzafeh.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmVaznRialiHavaleha.Designer.vb">
+      <DependentUpon>FrmVaznRialiHavaleha.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmVaznRialiHavaleha.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmMoroorTafsili2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmAmalkard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmChapeSanad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmKardex.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmMojoodi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmMojoodiBeTafkikNoeMarjoee.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmMoroorTafsili.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmNegasht.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRaked.Designer.vb">
+      <DependentUpon>FrmRaked.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmRaked.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRezerv.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRptDarkhast.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRptTagAnbargardani.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRTarakoneshGorooh.Designer.vb">
+      <DependentUpon>FrmRTarakoneshGorooh.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmRTarakoneshGorooh.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSefareshParam.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmZayeatKartablReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\RptMoghayratAnbarGardani.Designer.vb">
+      <DependentUpon>RptMoghayratAnbarGardani.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\RptMoghayratAnbarGardani.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HesabdariReport\FrmResideMamoorPakhsh.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HesabdariReport\FrmRptMoghayeratSanadMaliStandard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HesabdariReport\FrmRptTshim.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HesabdariReport\FrmTadil.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\RptAbListTafkik_Joz.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptAbListTafkik_Kol.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptabLAstSanadForAnbargardani.Designer.vb">
+      <DependentUpon>RptabLAstSanadForAnbargardani.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RptabLAstSanadForAnbargardani.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptabAnbargardani.Designer.vb">
+      <DependentUpon>RptabAnbargardani.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RptabAnbargardani.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptabDarkhast.Designer.vb">
+      <DependentUpon>RptabDarkhast.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RptabDarkhast.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptabDarkhast_KhasDaroo.Designer.vb">
+      <DependentUpon>RptabDarkhast_KhasDaroo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RptabDarkhast_KhasDaroo.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptHavalehForooshMinooCaspian.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptBargeKhorooj.designer.vb">
+      <DependentUpon>rptBargeKhorooj.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptBargeKhorooj.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptHavalehDarkhastTolid.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptHavalehForooshDaroee.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptabSanad.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptKardexA.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptResideMamoorPakhsh.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptTagAnbarGardanGhasem1.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptTagAnbarGardani.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptTagAnbarGardaniKhoram.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptTagAnbarGardaniPars1.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptTagAnbarGardaniPars2.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptTagElsaghAnbarGardani.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="ControliReport\FrmRptQCIntervals.resx">
+      <DependentUpon>FrmRptQCIntervals.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControliReport\FrmControlKardex.resx">
+      <DependentUpon>FrmControlKardex.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControliReport\FrmKardexA.resX">
+      <DependentUpon>FrmKardexA.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControliReport\FrmKardexB.resX">
+      <DependentUpon>FrmKardexB.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControliReport\frmNoeKharid.resx">
+      <DependentUpon>frmNoeKharid.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControliReport\FrmRptControlTahvilBeSherkathayeGorooh.resx">
+      <DependentUpon>FrmRptControlTahvilBeSherkathayeGorooh.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControliReport\FrmRptMojoodWithEnghezadate.resx">
+      <DependentUpon>FrmRptMojoodWithEnghezadate.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControliReport\FrmRptMTS.resx">
+      <DependentUpon>FrmRptMTS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControliReport\FrmRptSefareshParam.resx">
+      <DependentUpon>FrmRptSefareshParam.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmAnbargardaniMoghayeratBeyneShomaresh.resx">
+      <DependentUpon>FrmAnbargardaniMoghayeratBeyneShomaresh.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmListMahsulateBarcodKhan.resx">
+      <DependentUpon>FrmListMahsulateBarcodKhan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmMoghayerateKatalogeMahsoolatBaSystemMaprReport.resx">
+      <DependentUpon>FrmMoghayerateKatalogeMahsoolatBaSystemMaprReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmReportAdamRayatOlaviatBandiTarikhEnghezaDarSodoorHavale.resx">
+      <DependentUpon>FrmReportAdamRayatOlaviatBandiTarikhEnghezaDarSodoorHavale.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmReportAnbargardaniEnghezaDate.resx">
+      <DependentUpon>FrmReportAnbargardaniEnghezaDate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmReportAsnadBarcodeKhanAghlamNazdik.resx">
+      <DependentUpon>FrmReportAsnadBarcodeKhanAghlamNazdik.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmReportDarkhastRepair.resx">
+      <DependentUpon>FrmReportDarkhastRepair.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmReportDarkhastService.resx">
+      <DependentUpon>FrmReportDarkhastService.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmReportMojudiWithIRC_GTIN.resx">
+      <DependentUpon>FrmReportMojudiWithIRC_GTIN.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRptFaseleDarkhastTaHavaleh.resx">
+      <DependentUpon>FrmRptFaseleDarkhastTaHavaleh.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRptShomarehBachhayeSabtNashodehAnbarMostaghim.resx">
+      <DependentUpon>FrmRptShomarehBachhayeSabtNashodehAnbarMostaghim.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmUIDtrackingReport.resx">
+      <DependentUpon>FrmUIDtrackingReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmVardehSamaneJameAnbar.resx">
+      <DependentUpon>FrmVardehSamaneJameAnbar.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmVaredehMojaz.resx">
+      <DependentUpon>FrmVaredehMojaz.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmCheckBarcode.resx">
+      <DependentUpon>FrmCheckBarcode.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmMojoodiKalaSahmiye.resx">
+      <DependentUpon>FrmMojoodiKalaSahmiye.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRptAlarmMojoodi.resx">
+      <DependentUpon>FrmRptAlarmMojoodi.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmMasrafeMavad.resx">
+      <DependentUpon>frmMasrafeMavad.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmMoroorTafsiliNew.resx">
+      <DependentUpon>FrmMoroorTafsiliNew.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmMoroorTafsiliTaadil.resx">
+      <DependentUpon>FrmMoroorTafsiliTaadil.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRptChideman.resx">
+      <DependentUpon>FrmRptChideman.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRptDarkhastKharid.resx">
+      <DependentUpon>FrmRptDarkhastKharid.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRptHavalehMovaghat.resx">
+      <DependentUpon>FrmRptHavalehMovaghat.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRptMoghayeratShoab.resx">
+      <DependentUpon>FrmRptMoghayeratShoab.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRptRialiAsnadKAsriEzafeh.resx">
+      <DependentUpon>FrmRptRialiAsnadKAsriEzafeh.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmVaznRialiHavaleha.resx">
+      <DependentUpon>FrmVaznRialiHavaleha.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmMoroorTafsili2.resx">
+      <DependentUpon>FrmMoroorTafsili2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmAmalkard.resx">
+      <DependentUpon>FrmAmalkard.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmChapeSanad.resx">
+      <DependentUpon>FrmChapeSanad.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmKardex.resx">
+      <DependentUpon>FrmKardex.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmMojoodi.resx">
+      <DependentUpon>FrmMojoodi.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmMojoodiBeTafkikNoeMarjoee.resx">
+      <DependentUpon>FrmMojoodiBeTafkikNoeMarjoee.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmMoroorTafsili.resx">
+      <DependentUpon>FrmMoroorTafsili.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmNegasht.resx">
+      <DependentUpon>FrmNegasht.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRaked.resx">
+      <DependentUpon>FrmRaked.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRezerv.resx">
+      <DependentUpon>FrmRezerv.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRptDarkhast.resx">
+      <DependentUpon>FrmRptDarkhast.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRptTagAnbargardani.resx">
+      <DependentUpon>FrmRptTagAnbargardani.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRTarakoneshGorooh.resx">
+      <DependentUpon>FrmRTarakoneshGorooh.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSefareshParam.resx">
+      <DependentUpon>FrmSefareshParam.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmZayeatKartablReport.resx">
+      <DependentUpon>FrmZayeatKartablReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\RptMoghayratAnbarGardani.resx">
+      <DependentUpon>RptMoghayratAnbarGardani.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HesabdariReport\FrmResideMamoorPakhsh.resx">
+      <DependentUpon>FrmResideMamoorPakhsh.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HesabdariReport\FrmRptMoghayeratSanadMaliStandard.resx">
+      <DependentUpon>FrmRptMoghayeratSanadMaliStandard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HesabdariReport\FrmRptTshim.resx">
+      <DependentUpon>FrmRptTshim.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HesabdariReport\FrmTadil.resx">
+      <DependentUpon>FrmTadil.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="Reports\RptAbListTafkik_Joz.resx">
+      <DependentUpon>RptAbListTafkik_Joz.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptAbListTafkik_Kol.resx">
+      <DependentUpon>RptAbListTafkik_Kol.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptabLAstSanadForAnbargardani.af.resx">
+      <DependentUpon>RptabLAstSanadForAnbargardani.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptabLAstSanadForAnbargardani.resx">
+      <DependentUpon>RptabLAstSanadForAnbargardani.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptabAnbargardani.af.resx">
+      <DependentUpon>RptabAnbargardani.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptabAnbargardani.resx">
+      <DependentUpon>RptabAnbargardani.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptabDarkhast.resx">
+      <DependentUpon>RptabDarkhast.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptabDarkhast_KhasDaroo.resx">
+      <DependentUpon>RptabDarkhast_KhasDaroo.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptHavalehForooshMinooCaspian.resx">
+      <DependentUpon>RptHavalehForooshMinooCaspian.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptBargeKhorooj.resx">
+      <DependentUpon>rptBargeKhorooj.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptHavalehDarkhastTolid.resx">
+      <DependentUpon>RptHavalehDarkhastTolid.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptHavalehForooshDaroee.resx">
+      <DependentUpon>RptHavalehForooshDaroee.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptabSanad.resx">
+      <DependentUpon>RptabSanad.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptKardexA.resx">
+      <DependentUpon>RptKardexA.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptResideMamoorPakhsh.resx">
+      <DependentUpon>RptResideMamoorPakhsh.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptTagAnbarGardanGhasem1.resx">
+      <DependentUpon>RptTagAnbarGardanGhasem1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptTagAnbarGardani.resx">
+      <DependentUpon>RptTagAnbarGardani.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptTagAnbarGardaniKhoram.resx">
+      <DependentUpon>RptTagAnbarGardaniKhoram.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptTagAnbarGardaniPars1.resx">
+      <DependentUpon>RptTagAnbarGardaniPars1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptTagAnbarGardaniPars2.resx">
+      <DependentUpon>RptTagAnbarGardaniPars2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptTagElsaghAnbarGardani.resx">
+      <DependentUpon>RptTagElsaghAnbarGardani.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
