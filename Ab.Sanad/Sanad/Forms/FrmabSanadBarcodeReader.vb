@@ -1354,6 +1354,8 @@ Public Class FrmabSanadBarcodeReader
             ChkGetLastData.Checked = False
         End Try
 
+        'test 14030523
+
     End Sub
 
     Private Sub GridBarcodeMaster_DoubleClick(sender As Object, e As EventArgs) Handles GridBarcodeMaster.DoubleClick
