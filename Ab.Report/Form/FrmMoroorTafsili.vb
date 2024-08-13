@@ -651,6 +651,14 @@ Public Class FrmMoroorTafsili
             End With
         End If
         'kouhdar14021101
+
+        If Not GridEX1.RootTable.Columns("SanadMaliStandardStatus") Is Nothing Then
+            GridEX1.RootTable.Columns("SanadMaliStandardStatus").ColumnType = Janus.Windows.GridEX.ColumnType.CheckBox
+        End If
+        If Not GridEX1.RootTable.Columns("SanadMaliVagheeStatus") Is Nothing Then
+            GridEX1.RootTable.Columns("SanadMaliVagheeStatus").ColumnType = Janus.Windows.GridEX.ColumnType.CheckBox
+        End If
+
     End Sub
 
     Private Sub btnFilter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
