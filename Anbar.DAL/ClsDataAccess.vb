@@ -2567,7 +2567,7 @@ Implements IClsDataAccess.GetGozareshKardexKalaphiziki
         Dim _Cstr As String = ""
         _Cstr = Cn.ConnectionString + "; password=" & Cn.SQLPassword
         _cn.ConnectionString = _Cstr
-
+        'Test For Change 
         Cmnd.CommandText = "abSpR_ProductCatalogue_ListOfProductsCloseToExpire"
         Cmnd.CommandType = CommandType.StoredProcedure
         Cmnd.Connection = Cn.Connection
