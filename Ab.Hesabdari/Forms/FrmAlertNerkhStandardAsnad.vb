@@ -80,7 +80,7 @@ Friend Class FrmAlertNerkhStandardAsnad
         Me.Label2.Location = New System.Drawing.Point(200, 7)
         Me.Label2.Name = "Label2"
         Me.Label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.Label2.Size = New System.Drawing.Size(347, 26)
+        Me.Label2.Size = New System.Drawing.Size(633, 26)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "هشدار كالاهاي بدون نرخ استاندارد"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -92,7 +92,7 @@ Friend Class FrmAlertNerkhStandardAsnad
         Me.pnlC.Cursor = System.Windows.Forms.Cursors.Default
         Me.pnlC.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.pnlC.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.pnlC.Location = New System.Drawing.Point(327, 330)
+        Me.pnlC.Location = New System.Drawing.Point(613, 446)
         Me.pnlC.Name = "pnlC"
         Me.pnlC.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.pnlC.Size = New System.Drawing.Size(454, 37)
@@ -107,7 +107,7 @@ Friend Class FrmAlertNerkhStandardAsnad
         Me.fraExit.Cursor = System.Windows.Forms.Cursors.Default
         Me.fraExit.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.fraExit.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.fraExit.Location = New System.Drawing.Point(218, 330)
+        Me.fraExit.Location = New System.Drawing.Point(504, 446)
         Me.fraExit.Name = "fraExit"
         Me.fraExit.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.fraExit.Size = New System.Drawing.Size(107, 37)
@@ -155,10 +155,10 @@ Friend Class FrmAlertNerkhStandardAsnad
         Me.pnlN.Cursor = System.Windows.Forms.Cursors.Default
         Me.pnlN.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.pnlN.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.pnlN.Location = New System.Drawing.Point(1, 330)
+        Me.pnlN.Location = New System.Drawing.Point(1, 446)
         Me.pnlN.Name = "pnlN"
         Me.pnlN.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.pnlN.Size = New System.Drawing.Size(214, 37)
+        Me.pnlN.Size = New System.Drawing.Size(500, 37)
         Me.pnlN.TabIndex = 32
         '
         'picDVGrid
@@ -174,7 +174,7 @@ Friend Class FrmAlertNerkhStandardAsnad
         Me.picDVGrid.Location = New System.Drawing.Point(3, 49)
         Me.picDVGrid.Name = "picDVGrid"
         Me.picDVGrid.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.picDVGrid.Size = New System.Drawing.Size(778, 277)
+        Me.picDVGrid.Size = New System.Drawing.Size(1064, 393)
         Me.picDVGrid.TabIndex = 29
         '
         'Panel1
@@ -187,22 +187,23 @@ Friend Class FrmAlertNerkhStandardAsnad
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(784, 370)
+        Me.Panel1.Size = New System.Drawing.Size(1070, 486)
         Me.Panel1.TabIndex = 33
         '
         'FrmAlertNerkhStandardAsnad
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(6, 16)
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(784, 370)
+        Me.ClientSize = New System.Drawing.Size(1070, 486)
         Me.Controls.Add(Me.Panel1)
         Me.Cursor = System.Windows.Forms.Cursors.Default
         Me.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.KeyPreview = True
         Me.Location = New System.Drawing.Point(3, 24)
         Me.Name = "FrmAlertNerkhStandardAsnad"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "هشدار كالاهاي بدون نرخ استاندارد"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.fraExit.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -308,6 +309,5 @@ Friend Class FrmAlertNerkhStandardAsnad
         Minoo.Grid.LoadColsSetting(DVrpt, Me.Name + "/" + CStr(gNoeAnbarSN), tp, gSM.UserID, VB6.GetEXEName)
 
     End Sub
-
 
 End Class
