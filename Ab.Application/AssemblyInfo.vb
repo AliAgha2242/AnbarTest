@@ -32,7 +32,7 @@ Imports System.Runtime.InteropServices
 ' 2.8.0 تغییر در فرم انتخاب درخواست در ثبت رسید 
 
 
-<Assembly: AssemblyVersion("10.10.125")>
+<Assembly: AssemblyVersion("10.10.126")>
 
 
 '10.9.3 14010724 Dehghani-   تغییرات کارتابل ضایعات
