@@ -2103,7 +2103,7 @@ Friend Class FrmSanad
     Public vVisibleNameRanandeh As Boolean
     Public vVisibleVazneBaskool As Boolean
     Public vVisibleShomarehSefaresh As Boolean
-    Public dvTarakonesh, dvTarakoneshGorooh88, dvTarakoneshGorooh89, dvKalaUseUID As New DataView
+    Public dvTarakonesh, dvTarakoneshGorooh, dvTarakoneshGorooh88, dvTarakoneshGorooh93, dvKalaUseUID As New DataView
 
     Private gPrintHavaleh As Integer = 0
     Private gTaminkonandehOzvegoroohForHamleMostaghim As String ' By Yekta 910431 - Add ---------- change by yekta 920603
@@ -6310,7 +6310,7 @@ Friend Class FrmSanad
                 .AccessRight = EnumAccessRight.arAll
                 .EditInGrid = False
                 With .Fields
-                    .Add("SanadhaSN", , EnumFieldOptions.foDefault)
+                    .Add("SanadhaSN", , If(gSM.IsProgrammer, EnumFieldOptions.foDefault, EnumFieldOptions.foHidden))
                     .Add("RegisterNumber", , EnumFieldOptions.foDefault).Caption = "شماره ثبت بارکدخوان"
                     .Add("KalaDS", , EnumFieldOptions.foDefault).Caption = "محصول"
                     .Add("ShomarehRahgiri", , EnumFieldOptions.foDefault).Caption = "بچ"
@@ -6337,17 +6337,22 @@ Friend Class FrmSanad
                 .EditInGrid = False
                 .SQLOrderBy = "Tartib"
                 With .Fields
-                    .Add("SanadhaSN", , EnumFieldOptions.foDefault)
-                    .Add("FactorHaSN", , EnumFieldOptions.foDefault)
-                    .Add("Tartib", , EnumFieldOptions.foDefault).Caption = " "
+                    .Add("SanadhaSN", , If(gSM.IsProgrammer, EnumFieldOptions.foDefault, EnumFieldOptions.foHidden))
+                    .Add("FactorHaSN", , If(gSM.IsProgrammer, EnumFieldOptions.foDefault, EnumFieldOptions.foHidden))
+                    .Add("ErrorMessage", , EnumFieldOptions.foDefault).Caption = "خطا"
+                    .Add("Tartib", , EnumFieldOptions.foDefault).Caption = "ترتیب"
                     .Add("KalaDS", , EnumFieldOptions.foDefault).Caption = "محصول"
                     .Add("ShomarehRahgiri", , EnumFieldOptions.foDefault).Caption = "رهگیری"
+                    .Add("TedadAjza", , EnumFieldOptions.foDefault).Caption = "تعداد در کارتن"
                     '.Add("SanadType", , EnumFieldOptions.foDefault)
                     .Add("SanadTypeDS", , EnumFieldOptions.foDefault).Caption = "نوع سند"
                     .Add("MoshtariFullName", , EnumFieldOptions.foDefault).Caption = "مشتری"
                     .Add("FactorNo", , EnumFieldOptions.foDefault).Caption = "شماره فاکتور"
                     .Add("SodoorDate", , EnumFieldOptions.foDefault).Caption = "تاریخ فاکتور"
-                    .Add("Tedad", , EnumFieldOptions.foDefault).Caption = "تعداد در فاکتور"
+                    .Add("TedadKol", , EnumFieldOptions.foDefault).Caption = "تعداد کل"
+                    .Add("Karton", , EnumFieldOptions.foDefault).Caption = "کارتن"
+                    .Add("Adad", , EnumFieldOptions.foDefault).Caption = "عدد"
+
                 End With
 
             End With
@@ -7129,23 +7134,16 @@ Friend Class FrmSanad
         ShowTabProductCatalogue = IIf(CApp.GetAppConfig("gVahedeTejariUseBarcodeReaderForSabtResid") Is System.DBNull.Value, False, CApp.GetAppConfig("gVahedeTejariUseBarcodeReaderForSabtResid"))
         ShowTabSanadHaFactor = IIf(NoeTarakoneshSN = EnumNoeTarakoneshSN.ntHAVALEHHA, True, False) And Not IsTolidi
 
-
-
         Call InitDataView()
         Call InitForm()
         DVabSanad.Refresh()
-        ''ghasemi
-        'InputBox(1, 1, DVabSanad.SQL)
+
         If gNoeAnbarSN = 0 Then
             dbcNoeAnbarSN.Visible = True : lblNoeAnbarSN.Visible = True
         Else
             dbcNoeAnbarSN.Visible = False : lblNoeAnbarSN.Visible = False
         End If
 
-
-        ' کنترل نمايش کليد موقت و پیش نویس به نهايي
-        ' old     btnStatus4_8.Visible = gSM.ActionVisible("Status4_8")
-        ' OLD     btnStatus1_4.Visible = gSM.ActionVisible("Status1_4")
 
         Select Case NoeTarakoneshSN
             Case EnumNoeTarakoneshSN.ntMOJOODIE_AVALE_DOREH
@@ -7240,7 +7238,8 @@ Friend Class FrmSanad
         btnSabtSanaddarSamaneh.Visible = (gSM.ActionVisible(btnSabtSanaddarSamaneh.Name) = True And gNamyeshSabtDarSamaneh = True)
         ''ghasemi
 
-        dvTarakoneshGorooh88 = cn.ExecuteQuery("Select TarakoneshSN from abTarakoneshGoroohHa Where TarakoneshGoroohSN=88")
+        dvTarakoneshGorooh88 = cn.ExecuteQuery("Select TarakoneshSN,TarakoneshGoroohSN from abTarakoneshGoroohHa Where TarakoneshGoroohSN IN (88)")
+
 
 
     End Sub
@@ -8018,7 +8017,7 @@ Friend Class FrmSanad
             If DVabSanadHaFactor.DataRows > 0 Then
                 With DVabSanadHaFactor
                     With .FlexGrid
-                        .Tree.Column = .ColIndex("FactorNo")
+                        .Tree.Column = .ColIndex("TedadKol") - 1
                         .SubtotalPosition = C1.Win.C1FlexGrid.SubtotalPositionEnum.BelowData
                         With .Styles(C1.Win.C1FlexGrid.CellStyleEnum.Subtotal0)
                             .DataType = GetType(Integer)
@@ -8027,7 +8026,9 @@ Friend Class FrmSanad
                             .ForeColor = Color.Black
                             .Font = New Font(DVabSanadHaFactor.FlexGrid.Font, FontStyle.Bold)
                         End With
-                        .Subtotal(C1.Win.C1FlexGrid.AggregateEnum.Sum, -1, .ColIndex("Tedad"), "N0", (System.Drawing.Color.LightYellow), , True, "جمع", 0, True)
+                        .Subtotal(C1.Win.C1FlexGrid.AggregateEnum.Sum, -1, .ColIndex("TedadKol"), "N0", (System.Drawing.Color.LightYellow), , True, "جمع", 0, True)
+                        .Subtotal(C1.Win.C1FlexGrid.AggregateEnum.Sum, -1, .ColIndex("Karton"), "N0", (System.Drawing.Color.LightYellow), , True, "جمع", 0, True)
+                        .Subtotal(C1.Win.C1FlexGrid.AggregateEnum.Sum, -1, .ColIndex("Adad"), "N0", (System.Drawing.Color.LightYellow), , True, "جمع", 0, True)
                     End With
                 End With
             End If
