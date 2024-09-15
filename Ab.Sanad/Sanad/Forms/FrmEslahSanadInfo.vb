@@ -400,7 +400,8 @@ Public Class FrmEslahSanadInfo
             txtTozih.Text = vTozih
             Exit Sub
         End If
-        cn.ExecuteQuery(
+        Try
+            cn.ExecuteQuery(
                          "Update abSanad Set ShomarehMashin =" &
                          IIf(txtShomarehMashin.Text.Trim = "", "NULL", "'" & txtShomarehMashin.Text & "'") &
                          ",NameRanandeh =" &
@@ -412,9 +413,14 @@ Public Class FrmEslahSanadInfo
                          IIf(txtShomarehSefaresh.Text.Trim = "", "NULL", "'" & txtShomarehSefaresh.Text & "'") &
                          ",Tozih =" & IIf(txtTozih.Text.Trim = "", "NULL", "'" & txtTozih.Text & "'") &
                          " Where SanadSN = " & vSanadSN.ToString)
+            NetSql.Common.CSystem.MsgBox("عمليات با موفقيت انجام شد", MsgBoxStyle.Information)
+
+        Catch ex As Exception
+            NetSql.Common.CSystem.MsgBox(ex.Message, MsgBoxStyle.Critical)
+        End Try
 
         System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
-        NetSql.Common.CSystem.MsgBox("عمليات با موفقيت انجام شد", MsgBoxStyle.Information)
+
         Me.Close()
 
     End Sub

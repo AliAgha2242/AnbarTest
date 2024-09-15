@@ -1863,7 +1863,7 @@ Public Class FrmabDarkhast
                     If cn.Connection.State = ConnectionState.Open Then
                         cn.Connection.Close()
                     End If
-                    cn.RollbackTrans()
+                    'cn.RollbackTrans()
                 Catch ex As Exception
                     cn.RollbackTrans()
                     NetSql.Common.CSystem.MsgBox(ex.Message, MsgBoxStyle.Critical, Me.Text)
