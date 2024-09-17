@@ -25,6 +25,7 @@ Partial Class FrmTaghirNerkhAvaldore
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnHazfEntekhabi = New System.Windows.Forms.Button()
         Me.rdbShomarehRahgiri = New System.Windows.Forms.RadioButton()
         Me.rdbkalaNo = New System.Windows.Forms.RadioButton()
         Me.btnImportExcel = New System.Windows.Forms.Button()
@@ -36,7 +37,6 @@ Partial Class FrmTaghirNerkhAvaldore
         Me.btnFormatExcel = New System.Windows.Forms.Button()
         Me.btnGetkala = New System.Windows.Forms.Button()
         Me.btnExcel = New System.Windows.Forms.Button()
-        Me.btnHazfEntekhabi = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -70,6 +70,16 @@ Partial Class FrmTaghirNerkhAvaldore
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1291, 623)
         Me.Panel1.TabIndex = 21
+        '
+        'btnHazfEntekhabi
+        '
+        Me.btnHazfEntekhabi.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnHazfEntekhabi.Location = New System.Drawing.Point(924, 583)
+        Me.btnHazfEntekhabi.Name = "btnHazfEntekhabi"
+        Me.btnHazfEntekhabi.Size = New System.Drawing.Size(126, 33)
+        Me.btnHazfEntekhabi.TabIndex = 209
+        Me.btnHazfEntekhabi.Text = "حذف موارد انتخابی"
+        Me.btnHazfEntekhabi.UseVisualStyleBackColor = True
         '
         'rdbShomarehRahgiri
         '
@@ -183,16 +193,6 @@ Partial Class FrmTaghirNerkhAvaldore
         Me.btnExcel.TabIndex = 200
         Me.btnExcel.Text = "ارسال به اکسل"
         Me.btnExcel.UseVisualStyleBackColor = True
-        '
-        'btnHazfEntekhabi
-        '
-        Me.btnHazfEntekhabi.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnHazfEntekhabi.Location = New System.Drawing.Point(924, 583)
-        Me.btnHazfEntekhabi.Name = "btnHazfEntekhabi"
-        Me.btnHazfEntekhabi.Size = New System.Drawing.Size(126, 33)
-        Me.btnHazfEntekhabi.TabIndex = 209
-        Me.btnHazfEntekhabi.Text = "حذف موارد انتخابی"
-        Me.btnHazfEntekhabi.UseVisualStyleBackColor = True
         '
         'FrmTaghirNerkhAvaldore
         '

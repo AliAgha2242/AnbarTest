@@ -391,6 +391,16 @@ Public Class FrmTaghirNerkhAvaldore
             Exit Sub
         End Try
 
+        For Each col As DataColumn In DS.Tables("Table1").Columns
+            If col.ColumnName = "ShomarehRahgiri" And reportType = 1 Then
+
+                MsgBox("لطفا کلید شماره رهگیری را انتخاب نمائید ", MsgBoxStyle.Critical)
+                Exit Sub
+            End If
+        Next
+
+
+
         Dim dstable As DataTable
         dstable = DS.Tables("Table1").Copy()
 
@@ -406,7 +416,9 @@ Public Class FrmTaghirNerkhAvaldore
         For i As Integer = 0 To dstable.Rows.Count - 1
             If dstable.Rows(i).IsNull(0) Then
                 dstable.Rows(i).Delete()
+
             Else
+
                 Dim r As DataRow = DS.Tables("Table1").NewRow
 
                 r("Kalano") = dstable.Rows(i)("Kalano")
@@ -518,10 +530,17 @@ Public Class FrmTaghirNerkhAvaldore
             Dim DateFormat As String = EnumDateFormat.dfFullYear
 
             _row("SabtDate") = NetSql.Common.CShamsiDate.MiladiToShamsi(Today, DateFormat)
+            If IsDBNull(_row("ShomarehRahgiri")) Then
+                tp.MsgBox("خطا :  درج مقدار غیر عددی در ستون شماره رهگیری مجاز نمی باشد  ", MsgBoxStyle.Exclamation, "")
+                Exit Sub
+            End If
+            If IsNumeric(_row("Nerkh")) Then
+                If CDec(_row("Nerkh")) <= 0 Then
+                    tp.MsgBox("خطا :  درج مقدار غیر عددی و منفی یا صفر برای نرخ مجاز نمی باشد ", MsgBoxStyle.Exclamation, "")
+                End If
 
-            If IsNumeric(_row("Nerkh")) And _row("Nerkh") <= "0" Then
-
-                tp.MsgBox("خطا :  درج مقدار غیر عددی و منفی یا صفر برای نرخ مجاز نمی باشد ", MsgBoxStyle.Exclamation, "")
+            Else
+                    tp.MsgBox("خطا :  درج مقدار غیر عددی و منفی یا صفر برای نرخ مجاز نمی باشد ", MsgBoxStyle.Exclamation, "")
                 Exit Sub
             End If
 
@@ -533,7 +552,7 @@ Public Class FrmTaghirNerkhAvaldore
 
 
             If reportType = 2 AndAlso dsKA.Count > 0 Then
-                dsKA.RowFilter = CType("KalaNo = '" + _row("KalaNo") + "' " + " and ShomarehRahgiri= '" + _row("ShomarehRahgiri") + "' ", String)
+                dsKA.RowFilter = "KalaNo = '" + CStr(_row("KalaNo")) + "' " + " and ShomarehRahgiri= '" + CStr(_row("ShomarehRahgiri")) + "' "
                 _row("KalaPhizikiSN") = dsKA(0)("KalaPhizikiSN")
             ElseIf reportType = 1 Then
                 _row("KalaPhizikiSN") = 0
@@ -640,4 +659,6 @@ Public Class FrmTaghirNerkhAvaldore
         End With
 
     End Sub
+
+
 End Class
