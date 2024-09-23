@@ -280,6 +280,9 @@ Public Class FrmMojoodi
         Handles MyBase.Load
 
 
+
+
+
         btnChart.Visible = True
         Dim vSql As String
         'Dim i, vli_counter As Short
