@@ -153,15 +153,15 @@ Public Class FrmTaghirNerkhAvaldore
                     .DefaultValue = NetSql.Common.CShamsiDate.MiladiToShamsi(Today, .DateFormat)
                 End With
 
-                With .Add("SanadStatus-> btStatus.{btStatus.StatusDS} as SanadStatus", "DataCombo", EnumFieldOptions.foDefault)
+                With .Add("SanadStatus-> {btStatus.StatusDS} as SanadStatus", "DataCombo", EnumFieldOptions.foDefault)
                     .Caption = "وضعیت"
                     .Component.Enabled = False
                     .ReadOnly = True
+                    .DefaultValue = 1
                 End With
                 .Add("RezSN1", , EnumFieldOptions.foHidden)
                 .Add("RezSN2", , EnumFieldOptions.foHidden)
                 .Add("RezSN3", , EnumFieldOptions.foHidden)
-                .Add("SanadStatus AS S", , EnumFieldOptions.foHidden)
 
             End With
             .Refresh()
