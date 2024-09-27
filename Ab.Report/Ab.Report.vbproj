@@ -404,9 +404,6 @@
     <Compile Include="Form\FrmMoghayerateKatalogeMahsoolatBaSystemMaprReport.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\FrmMoghayesehSanadRialiMaliVaAnbarReport.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Form\FrmReportAdamRayatOlaviatBandiTarikhEnghezaDarSodoorHavale.Designer.vb">
       <DependentUpon>FrmReportAdamRayatOlaviatBandiTarikhEnghezaDarSodoorHavale.vb</DependentUpon>
     </Compile>
@@ -709,9 +706,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmMoghayerateKatalogeMahsoolatBaSystemMaprReport.resx">
       <DependentUpon>FrmMoghayerateKatalogeMahsoolatBaSystemMaprReport.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form\FrmMoghayesehSanadRialiMaliVaAnbarReport.resx">
-      <DependentUpon>FrmMoghayesehSanadRialiMaliVaAnbarReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmReportAdamRayatOlaviatBandiTarikhEnghezaDarSodoorHavale.resx">
       <DependentUpon>FrmReportAdamRayatOlaviatBandiTarikhEnghezaDarSodoorHavale.vb</DependentUpon>

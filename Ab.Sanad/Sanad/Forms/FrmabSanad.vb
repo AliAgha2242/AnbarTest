@@ -4718,8 +4718,7 @@ Friend Class FrmSanad
         'kouhdar 14030513
         With DVabSanad
             If aCommand = EnumCommands.cmEdit And Val(DVabSanad.Fields("TarakoneshSN").Value) = 46 Then
-                VKalaDSComboWhereCondition = "  paKala.KalaSN  = " & CStr(DVabSanadHa.Fields("KalaSN").Value) & " OR  paKala.KalaSN IN (Select KalaSN From abVw_pakalaCode Where SubKalaSN =" &
-                   CStr(DVabSanadHa.Fields("KalaSN").Value) & ")"
+                VKalaDSComboWhereCondition = "paKala.KalaSN IN (Select KalaSN From abVw_pakalaCode Where SubKalaSN =" & CStr(DVabSanadHa.Fields("KalaSN").Value) & " Union Select " & CStr(DVabSanadHa.Fields("KalaSN").Value) & ")"
 
                 With DVabSanadHa
                     .Fields("KalaDS").ReadOnly = False
