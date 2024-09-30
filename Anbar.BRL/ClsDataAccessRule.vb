@@ -480,4 +480,16 @@ Public Class ClsDataAccessRule
 
     End Function
 
+
+    ''Add Form By Bagheri (HB) 14030618 _Begin
+    Public Function MoghayesehSanadRialiMaliVaAnbar_GetReport(ByVal FromDate As String, ByVal ToDate As String, ByVal AnbarSN As String, ByVal TarakoneshSN As String, ByVal SanadNo As String, ByVal Cn As NetSql.DB.CConnection) As DataView
+        Try
+            MoghayesehSanadRialiMaliVaAnbar_GetReport = _ClsDataAccess.MoghayesehSanadRialiMaliVaAnbar_GetReport(FromDate, ToDate, AnbarSN, TarakoneshSN, SanadNo, Cn)
+        Catch ex As Exception
+            Throw New System.Exception(ex.Message)
+        End Try
+    End Function
+    ''Add Form By Bagheri (HB) 14030618 _End
+
+
 End Class
