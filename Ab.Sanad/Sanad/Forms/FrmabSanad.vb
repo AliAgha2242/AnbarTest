@@ -168,6 +168,7 @@ Friend Class FrmSanad
     Public WithEvents PnlGProductCatalogue As Panel
     Friend WithEvents TabSanadHaFactor As TabPage
     Public WithEvents PnlGSanadHaFactor As Panel
+    Friend WithEvents dcbMarjaSanadSN2 As NetSql.Components.DataCombo
     Public WithEvents btnEslahSanad As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -283,25 +284,26 @@ Friend Class FrmSanad
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnSabtSanaddarSamaneh = New System.Windows.Forms.Button()
         Me.BtnPrintHavalehTolid = New System.Windows.Forms.Button()
-        Me.Frame1.SuspendLayout
-        Me.sstParent.SuspendLayout
-        Me._sstParent_TabPage1.SuspendLayout
-        Me._sstParent_TabPage0.SuspendLayout
-        Me.pnlD.SuspendLayout
-        Me.sstChild.SuspendLayout
-        Me._sstChild_TabPage1.SuspendLayout
-        Me.GrpPrintLabel.SuspendLayout
-        CType(Me.PrintLabelUD, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabBarnameh.SuspendLayout
-        Me.TabDarkhast.SuspendLayout
-        Me.TabChideman.SuspendLayout
-        Me.TabDaftar.SuspendLayout
-        Me.TabProductCatalogue.SuspendLayout
-        Me.TabSanadHaFactor.SuspendLayout
-        Me.pnlNoeMarjooei.SuspendLayout
-        Me.Panel1.SuspendLayout
-        Me.Panel2.SuspendLayout
-        Me.SuspendLayout
+        Me.dcbMarjaSanadSN2 = New NetSql.Components.DataCombo(Me.components)
+        Me.Frame1.SuspendLayout()
+        Me.sstParent.SuspendLayout()
+        Me._sstParent_TabPage1.SuspendLayout()
+        Me._sstParent_TabPage0.SuspendLayout()
+        Me.pnlD.SuspendLayout()
+        Me.sstChild.SuspendLayout()
+        Me._sstChild_TabPage1.SuspendLayout()
+        Me.GrpPrintLabel.SuspendLayout()
+        CType(Me.PrintLabelUD, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabBarnameh.SuspendLayout()
+        Me.TabDarkhast.SuspendLayout()
+        Me.TabChideman.SuspendLayout()
+        Me.TabDaftar.SuspendLayout()
+        Me.TabProductCatalogue.SuspendLayout()
+        Me.TabSanadHaFactor.SuspendLayout()
+        Me.pnlNoeMarjooei.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        Me.SuspendLayout()
         '
         'BtnEnteghalMojoodi
         '
@@ -547,6 +549,7 @@ Friend Class FrmSanad
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlD.BackColor = System.Drawing.SystemColors.Control
         Me.pnlD.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.pnlD.Controls.Add(Me.dcbMarjaSanadSN2)
         Me.pnlD.Controls.Add(Me.DcbForooshDarkhast)
         Me.pnlD.Controls.Add(Me.LblForooshDarkhast)
         Me.pnlD.Controls.Add(Me.ChkIsFakorEbtal)
@@ -808,11 +811,11 @@ Friend Class FrmSanad
         Me.txtShomarehSefaresh.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtShomarehSefaresh.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.txtShomarehSefaresh.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtShomarehSefaresh.Location = New System.Drawing.Point(1255, 107)
+        Me.txtShomarehSefaresh.Location = New System.Drawing.Point(1141, 106)
         Me.txtShomarehSefaresh.MaxLength = 0
         Me.txtShomarehSefaresh.Name = "txtShomarehSefaresh"
         Me.txtShomarehSefaresh.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtShomarehSefaresh.Size = New System.Drawing.Size(153, 21)
+        Me.txtShomarehSefaresh.Size = New System.Drawing.Size(267, 21)
         Me.txtShomarehSefaresh.TabIndex = 15
         Me.txtShomarehSefaresh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtShomarehSefaresh.Visible = False
@@ -1208,7 +1211,7 @@ Friend Class FrmSanad
         Me.dcbMarjaSanadSN.BypassChangeEvent = False
         Me.dcbMarjaSanadSN.DisplayText = ""
         Me.dcbMarjaSanadSN.LateBindingTop = "500"
-        Me.dcbMarjaSanadSN.Location = New System.Drawing.Point(1075, 108)
+        Me.dcbMarjaSanadSN.Location = New System.Drawing.Point(1075, 107)
         Me.dcbMarjaSanadSN.MemFilter = ""
         Me.dcbMarjaSanadSN.Name = "dcbMarjaSanadSN"
         Me.dcbMarjaSanadSN.SeparatedData = Nothing
@@ -1961,6 +1964,25 @@ Friend Class FrmSanad
         Me.BtnPrintHavalehTolid.Text = "چاپ حواله درخواست تولید"
         Me.BtnPrintHavalehTolid.UseVisualStyleBackColor = False
         '
+        'dcbMarjaSanadSN2
+        '
+        Me.dcbMarjaSanadSN2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dcbMarjaSanadSN2.AutoSelectFirst = False
+        Me.dcbMarjaSanadSN2.BackColor = System.Drawing.SystemColors.Info
+        Me.dcbMarjaSanadSN2.BoundText = Nothing
+        Me.dcbMarjaSanadSN2.BypassChangeEvent = False
+        Me.dcbMarjaSanadSN2.DisplayText = ""
+        Me.dcbMarjaSanadSN2.LateBindingTop = "500"
+        Me.dcbMarjaSanadSN2.Location = New System.Drawing.Point(1186, 106)
+        Me.dcbMarjaSanadSN2.MemFilter = ""
+        Me.dcbMarjaSanadSN2.Name = "dcbMarjaSanadSN2"
+        Me.dcbMarjaSanadSN2.SeparatedData = Nothing
+        Me.dcbMarjaSanadSN2.Size = New System.Drawing.Size(221, 21)
+        Me.dcbMarjaSanadSN2.Source = Nothing
+        Me.dcbMarjaSanadSN2.Style = System.Windows.Forms.ComboBoxStyle.DropDown
+        Me.dcbMarjaSanadSN2.TabIndex = 88
+        Me.dcbMarjaSanadSN2.Visible = False
+        '
         'FrmSanad
         '
         Me.BackColor = System.Drawing.SystemColors.Control
@@ -1976,17 +1998,17 @@ Friend Class FrmSanad
         Me.Text = "سند"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Frame1.ResumeLayout(False)
-        Me.Frame1.PerformLayout
+        Me.Frame1.PerformLayout()
         Me.sstParent.ResumeLayout(False)
         Me._sstParent_TabPage1.ResumeLayout(False)
         Me._sstParent_TabPage0.ResumeLayout(False)
         Me.pnlD.ResumeLayout(False)
-        Me.pnlD.PerformLayout
+        Me.pnlD.PerformLayout()
         Me.sstChild.ResumeLayout(False)
         Me._sstChild_TabPage1.ResumeLayout(False)
         Me.GrpPrintLabel.ResumeLayout(False)
-        Me.GrpPrintLabel.PerformLayout
-        CType(Me.PrintLabelUD, System.ComponentModel.ISupportInitialize).EndInit
+        Me.GrpPrintLabel.PerformLayout()
+        CType(Me.PrintLabelUD, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabBarnameh.ResumeLayout(False)
         Me.TabDarkhast.ResumeLayout(False)
         Me.TabChideman.ResumeLayout(False)
@@ -1994,7 +2016,7 @@ Friend Class FrmSanad
         Me.TabProductCatalogue.ResumeLayout(False)
         Me.TabSanadHaFactor.ResumeLayout(False)
         Me.pnlNoeMarjooei.ResumeLayout(False)
-        Me.pnlNoeMarjooei.PerformLayout
+        Me.pnlNoeMarjooei.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -3601,6 +3623,39 @@ Friend Class FrmSanad
 
     End Sub
 
+    Private Sub dcbMarjaSanadSN2_Enter(sender As Object, e As System.EventArgs) _
+        Handles dcbMarjaSanadSN2.Enter
+
+        lblShomarehSefaresh.Text = "شماره ارجاع"
+
+        With DVabSanad.Fields("MarjaSanadSN")
+            Select Case mTarakoneshSN
+                Case EnumTarakoneshSN.RESIDE_BARGASHT_KALAE_AMANI
+                    .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (51)"
+            End Select
+            .RefreshCombo()
+        End With
+
+
+    End Sub
+
+    Private Sub dcbMarjaSanadSN2_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles dcbMarjaSanadSN2.Validated
+
+        Dim vResult As DataView
+
+        If (TarakoneshSN = EnumTarakoneshSN.RESIDE_BARGASHT_KALAE_AMANI) Then
+
+            Try
+                vResult = cn.ExecuteQuery("	Select TafsiliSn from abSanad Where SanadSN=" & dcbMarjaSanadSN2.SelectedValue.ToString)
+                DVabSanad.Fields("TafsiliSN").Value = vResult.Item(0)("TafsiliSN")
+            Catch ex As Exception
+                MsgBox("اطلاعات سند مرجع قابل تشخیص نمي باشد")
+            End Try
+
+        End If
+
+    End Sub
+
     Private Sub dcbMarjaSanadSN_Enter(sender As Object, e As System.EventArgs) _
         Handles dcbMarjaSanadSN.Enter
 
@@ -3617,6 +3672,8 @@ Friend Class FrmSanad
                     .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (91)"
                 Case EnumTarakoneshSN.HAVALEH_111_KahandehKharid
                     .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (SELECT TarakoneshSN FROM dbo.abFnt_GetTarakoneshSN(20))"
+                Case EnumTarakoneshSN.RESIDE_BARGASHT_KALAE_AMANI
+                    .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (51)"
             End Select
             .RefreshCombo()
         End With
@@ -5407,7 +5464,7 @@ Friend Class FrmSanad
                         ''.Add("MarjaSanadSN->{Convert(Varchar(14), ISNULL(abSanad2.SanadNO,0)) + ' _ ' +  abSanad2.SanadDate } As MarjaSanadSN", , EnumFieldOptions.foHidden)
                         ''''''''''''ghasemi 14010117
 
-                        With .Add("MarjaSanadSN->{Convert(Varchar(14), ISNULL(abSanad2.SanadNO,0)) + ' _ ' +  abSanad2.SanadDate } As MarjaSanadSN", , EnumFieldOptions.foHidden)
+                        With .Add("MarjaSanadSN->{Convert(Varchar(14), ISNULL(abSanad2.SanadNO,0)) + ' _ ' +  abSanad2.SanadDate } As MarjaSanadSN", dcbMarjaSanadSN2, EnumFieldOptions.foHidden)
                             Dim _wss As String = " abSanad2.SanadStatus = 8 " &
                                                           " AND abSanad2.AnbarSN =  " & CStr(gAnbarSN) &
                                                           " AND abSanad2.NoeAnbarSN =  " & CStr(gNoeAnbarSN) &
