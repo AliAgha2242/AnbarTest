@@ -3663,7 +3663,7 @@ Friend Class FrmSanad
 
         Dim vResult As DataView
 
-        If (TarakoneshSN = EnumTarakoneshSN.RESIDE_BARGASHT_KALAE_AMANI) Then
+        If (TarakoneshSN = EnumTarakoneshSN.RESIDE_BARGASHT_KALAE_AMANI) AndAlso IsNumeric(dcbMarjaSanadSN2.SelectedValue) Then
 
             Try
                 vResult = cn.ExecuteQuery("	Select TafsiliSn from abSanad Where SanadSN=" & dcbMarjaSanadSN2.SelectedValue.ToString)
