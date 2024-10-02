@@ -120,6 +120,10 @@ Public Interface IClsDataAccess
                                                       ByVal taminKonande As String,
                                                       ByVal kalaSns As String, ByVal roozTaEngheza As Integer, ByVal parameterClos As Decimal, ByVal Cn As NetSql.DB.CConnection) As DataTable
 
+    ''Add Form By Bagheri (HB) 14030618 
+    Function MoghayesehSanadRialiMaliVaAnbar_GetReport(ByVal FromDate As String, ByVal ToDate As String, ByVal AnbarSN As String, ByVal TarakoneshSN As String, ByVal SanadNo As String, ByVal Cn As NetSql.DB.CConnection) As DataView
+
+
 End Interface
 
 Public Class ClsDataAccess : Implements IClsDataAccess
@@ -1287,6 +1291,7 @@ Implements IClsDataAccess.GetGozareshKardexKalaphiziki
 
 
         _Cstr = Cn.ConnectionString + "; Server=" & ServerName & ";DataBase=" & DbName & ";User ID=ServiceAnbar;password=1"
+
         Try
             mcn.ConnectionString = _Cstr
 
@@ -2595,5 +2600,56 @@ Implements IClsDataAccess.GetGozareshKardexKalaphiziki
         End Try
         Return dataSet.Tables(0)
     End Function
+
+
+
+    ''Add Form By Bagheri (HB) 14030618 _Begin
+    Public Function MoghayesehSanadRialiMaliVaAnbar_GetReport(ByVal FromDate As String, ByVal ToDate As String, ByVal AnbarSN As String, ByVal TarakoneshSN As String, ByVal SanadNo As String,
+                                                              ByVal Cn As NetSql.DB.CConnection) As DataView Implements IClsDataAccess.MoghayesehSanadRialiMaliVaAnbar_GetReport
+        Dim _Cstr As String = ""
+        Dim _ErrMsg As String = ""
+
+        Dim sda As New SqlDataAdapter
+        Dim Cmnd As New SqlCommand
+        Dim dsdr As New DataSet
+        Dim mcn As New SqlClient.SqlConnection
+
+
+        _Cstr = Cn.ConnectionString + "; password=" & Cn.SQLPassword
+
+        Try
+            mcn.ConnectionString = _Cstr
+
+            If mcn.State = ConnectionState.Closed Then
+                mcn.Open()
+            End If
+
+            Cmnd.CommandText = "abSpr_MoghayeseMaliVaAnbar"
+            Cmnd.Parameters.AddWithValue("@FromDate", FromDate)
+            Cmnd.Parameters.AddWithValue("@ToDate", ToDate)
+            Cmnd.Parameters.AddWithValue("@AnbarSN", AnbarSN)
+            Cmnd.Parameters.AddWithValue("@TarakoneshSN", TarakoneshSN)
+            Cmnd.Parameters.AddWithValue("@SanadNo", SanadNo)
+            Cmnd.Connection = mcn
+            Cmnd.CommandType = CommandType.StoredProcedure
+            Cmnd.CommandTimeout = mcn.ConnectionTimeout
+            sda.SelectCommand = Cmnd
+            sda.Fill(dsdr)
+
+            'If dsdr.Tables.Count > 0 AndAlso dsdr.Tables(0).Rows.Count > 0 Then
+            Return dsdr.Tables(0).DefaultView
+            'End If
+
+        Catch ex As System.Exception
+            Throw New System.Exception("خطا در دریافت اطلاعات " + vbCrLf + ex.ToString)
+        Finally
+            mcn.Close()
+        End Try
+
+    End Function
+
+    ''Add Form By Bagheri (HB) 14030618 _End
+
+
 End Class
 

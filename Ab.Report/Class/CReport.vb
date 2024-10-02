@@ -173,6 +173,7 @@
         End With
     End Sub
 
+
     Public Shared Sub ShowRptFaseleDarkhastTaHavaleh(ByVal aMDIParent As Form)
         'نمایش گزارش فاصله زمانی درخواست تا حواله
         With FrmRptFaseleDarkhastTaHavaleh.DefInstance
@@ -559,6 +560,18 @@
         With FrmAnbargardaniMoghayeratBeyneShomaresh.DefInstance
             .MdiParent = aMDIParent
             .WindowState = FormWindowState.Maximized
+            .Show()
+            .Activate()
+            DBLog.WriteLOG("Form", 0, , .Name, .Text)
+        End With
+    End Sub
+
+
+    ' Bagheri (HB) 14030618
+    Public Shared Sub ShowMoghayesehSanadRialiMaliVaAnbarReport(ByVal aMDIParent As Form)
+        ' نمايش فرم گزارش کاردکس کالا
+        With FrmMoghayesehSanadRialiMaliVaAnbarReport.DefInstance
+            .MdiParent = aMDIParent
             .Show()
             .Activate()
             DBLog.WriteLOG("Form", 0, , .Name, .Text)
