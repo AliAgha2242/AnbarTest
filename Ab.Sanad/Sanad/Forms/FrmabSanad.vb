@@ -169,6 +169,7 @@ Friend Class FrmSanad
     Friend WithEvents TabSanadHaFactor As TabPage
     Public WithEvents PnlGSanadHaFactor As Panel
     Friend WithEvents dcbMarjaSanadSN2 As NetSql.Components.DataCombo
+    Public WithEvents lblMarjaSanadSN As Label
     Public WithEvents btnEslahSanad As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -191,6 +192,7 @@ Friend Class FrmSanad
         Me.pnlG = New System.Windows.Forms.Panel()
         Me._sstParent_TabPage0 = New System.Windows.Forms.TabPage()
         Me.pnlD = New System.Windows.Forms.Panel()
+        Me.dcbMarjaSanadSN2 = New NetSql.Components.DataCombo(Me.components)
         Me.DcbForooshDarkhast = New NetSql.Components.DataCombo(Me.components)
         Me.LblForooshDarkhast = New System.Windows.Forms.Label()
         Me.ChkIsFakorEbtal = New System.Windows.Forms.CheckBox()
@@ -284,7 +286,7 @@ Friend Class FrmSanad
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnSabtSanaddarSamaneh = New System.Windows.Forms.Button()
         Me.BtnPrintHavalehTolid = New System.Windows.Forms.Button()
-        Me.dcbMarjaSanadSN2 = New NetSql.Components.DataCombo(Me.components)
+        Me.lblMarjaSanadSN = New System.Windows.Forms.Label()
         Me.Frame1.SuspendLayout()
         Me.sstParent.SuspendLayout()
         Me._sstParent_TabPage1.SuspendLayout()
@@ -549,6 +551,7 @@ Friend Class FrmSanad
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlD.BackColor = System.Drawing.SystemColors.Control
         Me.pnlD.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.pnlD.Controls.Add(Me.lblMarjaSanadSN)
         Me.pnlD.Controls.Add(Me.dcbMarjaSanadSN2)
         Me.pnlD.Controls.Add(Me.DcbForooshDarkhast)
         Me.pnlD.Controls.Add(Me.LblForooshDarkhast)
@@ -601,6 +604,25 @@ Friend Class FrmSanad
         Me.pnlD.Size = New System.Drawing.Size(1453, 207)
         Me.pnlD.TabIndex = 0
         Me.pnlD.TabStop = True
+        '
+        'dcbMarjaSanadSN2
+        '
+        Me.dcbMarjaSanadSN2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dcbMarjaSanadSN2.AutoSelectFirst = False
+        Me.dcbMarjaSanadSN2.BackColor = System.Drawing.SystemColors.Info
+        Me.dcbMarjaSanadSN2.BoundText = Nothing
+        Me.dcbMarjaSanadSN2.BypassChangeEvent = False
+        Me.dcbMarjaSanadSN2.DisplayText = ""
+        Me.dcbMarjaSanadSN2.LateBindingTop = "500"
+        Me.dcbMarjaSanadSN2.Location = New System.Drawing.Point(194, 106)
+        Me.dcbMarjaSanadSN2.MemFilter = ""
+        Me.dcbMarjaSanadSN2.Name = "dcbMarjaSanadSN2"
+        Me.dcbMarjaSanadSN2.SeparatedData = Nothing
+        Me.dcbMarjaSanadSN2.Size = New System.Drawing.Size(281, 21)
+        Me.dcbMarjaSanadSN2.Source = Nothing
+        Me.dcbMarjaSanadSN2.Style = System.Windows.Forms.ComboBoxStyle.DropDown
+        Me.dcbMarjaSanadSN2.TabIndex = 88
+        Me.dcbMarjaSanadSN2.Visible = False
         '
         'DcbForooshDarkhast
         '
@@ -811,11 +833,11 @@ Friend Class FrmSanad
         Me.txtShomarehSefaresh.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtShomarehSefaresh.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.txtShomarehSefaresh.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtShomarehSefaresh.Location = New System.Drawing.Point(1141, 106)
+        Me.txtShomarehSefaresh.Location = New System.Drawing.Point(1188, 106)
         Me.txtShomarehSefaresh.MaxLength = 0
         Me.txtShomarehSefaresh.Name = "txtShomarehSefaresh"
         Me.txtShomarehSefaresh.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtShomarehSefaresh.Size = New System.Drawing.Size(267, 21)
+        Me.txtShomarehSefaresh.Size = New System.Drawing.Size(220, 21)
         Me.txtShomarehSefaresh.TabIndex = 15
         Me.txtShomarehSefaresh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtShomarehSefaresh.Visible = False
@@ -1964,24 +1986,22 @@ Friend Class FrmSanad
         Me.BtnPrintHavalehTolid.Text = "چاپ حواله درخواست تولید"
         Me.BtnPrintHavalehTolid.UseVisualStyleBackColor = False
         '
-        'dcbMarjaSanadSN2
+        'lblMarjaSanadSN
         '
-        Me.dcbMarjaSanadSN2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dcbMarjaSanadSN2.AutoSelectFirst = False
-        Me.dcbMarjaSanadSN2.BackColor = System.Drawing.SystemColors.Info
-        Me.dcbMarjaSanadSN2.BoundText = Nothing
-        Me.dcbMarjaSanadSN2.BypassChangeEvent = False
-        Me.dcbMarjaSanadSN2.DisplayText = ""
-        Me.dcbMarjaSanadSN2.LateBindingTop = "500"
-        Me.dcbMarjaSanadSN2.Location = New System.Drawing.Point(1186, 106)
-        Me.dcbMarjaSanadSN2.MemFilter = ""
-        Me.dcbMarjaSanadSN2.Name = "dcbMarjaSanadSN2"
-        Me.dcbMarjaSanadSN2.SeparatedData = Nothing
-        Me.dcbMarjaSanadSN2.Size = New System.Drawing.Size(221, 21)
-        Me.dcbMarjaSanadSN2.Source = Nothing
-        Me.dcbMarjaSanadSN2.Style = System.Windows.Forms.ComboBoxStyle.DropDown
-        Me.dcbMarjaSanadSN2.TabIndex = 88
-        Me.dcbMarjaSanadSN2.Visible = False
+        Me.lblMarjaSanadSN.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblMarjaSanadSN.AutoSize = True
+        Me.lblMarjaSanadSN.BackColor = System.Drawing.Color.Transparent
+        Me.lblMarjaSanadSN.Cursor = System.Windows.Forms.Cursors.Default
+        Me.lblMarjaSanadSN.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMarjaSanadSN.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.lblMarjaSanadSN.Location = New System.Drawing.Point(421, 90)
+        Me.lblMarjaSanadSN.Name = "lblMarjaSanadSN"
+        Me.lblMarjaSanadSN.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.lblMarjaSanadSN.Size = New System.Drawing.Size(55, 13)
+        Me.lblMarjaSanadSN.TabIndex = 89
+        Me.lblMarjaSanadSN.Text = "سند مرجع"
+        Me.lblMarjaSanadSN.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.lblMarjaSanadSN.Visible = False
         '
         'FrmSanad
         '
