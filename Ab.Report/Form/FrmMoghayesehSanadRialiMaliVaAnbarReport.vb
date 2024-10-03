@@ -368,8 +368,8 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
                 col.TotalFormatString = "#,###"
                 col.AggregateFunction = Janus.Windows.GridEX.AggregateFunction.Sum
             ElseIf col.Key.Contains("..") Then
-                col.FormatString = "#,###.##"
-                col.TotalFormatString = "#,###.##"
+                col.FormatString = "###.###"
+                col.TotalFormatString = "###.###"
                 col.AggregateFunction = Janus.Windows.GridEX.AggregateFunction.Sum
             End If
         Next
