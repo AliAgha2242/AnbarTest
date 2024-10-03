@@ -635,7 +635,7 @@ Public Class FrmTaghirNerkhAvaldore
             VCount_SelectedRows = .SelectedRows
             ReDim V_ar_KalaPhizikiNerkhSN(VCount_SelectedRows)
             For i = 0 To VCount_SelectedRows - 1
-                If CStr(Val(.TextMatrix(.SelectedRow(i), .ColIndex("S")))) = "1" Then 'فقط ردیف های موقت
+                If CStr(Val(.TextMatrix(.SelectedRow(i), .ColIndex("SanadStatus")))) = "1" Then 'فقط ردیف های موقت
                     KalaPhizikiNerkhSNString = KalaPhizikiNerkhSNString + CStr(Val(.TextMatrix(.SelectedRow(i), .ColIndex("KalaPhizikiNerkhSN")))) + ","
                 End If
             Next
