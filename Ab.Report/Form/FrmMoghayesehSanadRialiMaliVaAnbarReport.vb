@@ -331,17 +331,11 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         _SanadNo = ""
         _TarakoneshSN = ""
 
-        If Not (dbcSanadNo.getStringValues Is Nothing OrElse dbcSanadNo.getStringValues = "") Then
-            _SanadNo += dbcSanadNo.getStringValues
+        If Not (dbcSanadNo.getStringValues Is Nothing OrElse dbcSanadNo.getStringValues = "0" OrElse dbcSanadNo.getStringValues = "0.000") Then
+            _SanadNo = dbcSanadNo.getStringValues
         End If
 
-        If TarakoneshCombo.getStringValues Is Nothing OrElse TarakoneshCombo.getStringValues = "0" Then
-            Dim Dt As DataTable = TarakoneshCombo.DropDownDataSource
-            For i As Integer = 1 To Dt.Rows.Count - 1
-                _TarakoneshSN += Dt.DefaultView(i)("TarakoneshSN").ToString + ","
-            Next
-            _TarakoneshSN = _TarakoneshSN.Substring(0, _TarakoneshSN.Length - 1)
-        Else
+        If Not (TarakoneshCombo.getStringValues Is Nothing OrElse TarakoneshCombo.getStringValues = "0" OrElse TarakoneshCombo.getStringValues = "0.000") Then
             _TarakoneshSN = TarakoneshCombo.getStringValues
         End If
 

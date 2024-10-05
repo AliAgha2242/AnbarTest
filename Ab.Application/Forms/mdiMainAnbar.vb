@@ -1453,7 +1453,7 @@ Public Class mdiMainAnbar
         Me.MnuMoghayesehSanadRialiMaliVaAnbarReport.AppName = "MnuMoghayesehSanadRialiMaliVaAnbarReport"
         Me.MnuMoghayesehSanadRialiMaliVaAnbarReport.Name = "MnuMoghayesehSanadRialiMaliVaAnbarReport"
         Me.MnuMoghayesehSanadRialiMaliVaAnbarReport.Size = New System.Drawing.Size(259, 22)
-        Me.MnuMoghayesehSanadRialiMaliVaAnbarReport.Text = "گزارش مقایسه اسناد ریالی مالی و انبار"
+        Me.MnuMoghayesehSanadRialiMaliVaAnbarReport.Text = "گزارش مقایسه جامع اسناد ریالی مالی و انبار"
         '
         'mnuBarnameh
         '
