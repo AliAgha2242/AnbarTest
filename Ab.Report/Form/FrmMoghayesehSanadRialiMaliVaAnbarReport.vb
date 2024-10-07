@@ -1,5 +1,7 @@
 ﻿' Add Form By Bagheri (HB) 14030618
 Imports Anbar.BRL
+Imports Minoo.Applications.Anbar.Common.dsSanad
+
 Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
     Inherits JanusSimpleReport.frmRptJanusBase
 
@@ -94,7 +96,7 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         Me.pnlF.Controls.Add(Me.Label1)
         Me.pnlF.Controls.Add(Me.TxtToDate)
         Me.pnlF.Controls.Add(Me.TxtFromDate)
-        Me.pnlF.Size = New System.Drawing.Size(1134, 62)
+        Me.pnlF.Size = New System.Drawing.Size(1252, 62)
         Me.pnlF.Controls.SetChildIndex(Me.btnViewReport, 0)
         Me.pnlF.Controls.SetChildIndex(Me.btnChart, 0)
         Me.pnlF.Controls.SetChildIndex(Me.TxtFromDate, 0)
@@ -115,7 +117,7 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         'pnlGrid
         '
         Me.pnlGrid.Location = New System.Drawing.Point(0, 62)
-        Me.pnlGrid.Size = New System.Drawing.Size(1134, 377)
+        Me.pnlGrid.Size = New System.Drawing.Size(1252, 377)
         '
         'GridEX1
         '
@@ -132,7 +134,7 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         Me.GridEX1.GroupTotalRowFormatStyle.ForeColor = System.Drawing.Color.Navy
         Me.GridEX1.HeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
         Me.GridEX1.SelectedFormatStyle.BackColor = System.Drawing.Color.Moccasin
-        Me.GridEX1.Size = New System.Drawing.Size(1134, 377)
+        Me.GridEX1.Size = New System.Drawing.Size(1252, 377)
         Me.GridEX1.TotalRowFormatStyle.BackColor = System.Drawing.Color.LightSteelBlue
         Me.GridEX1.TotalRowFormatStyle.BackColorGradient = System.Drawing.Color.White
         Me.GridEX1.TotalRowFormatStyle.Key = "سرجمع"
@@ -147,22 +149,18 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         Me.btnExcelList.StateStyles.FormatStyle.ForeColorAlphaMode = Janus.Windows.UI.AlphaMode.Opaque
         '
         'btnChart
-        '   
-
-
-
-
+        '
         Me.btnChart.Location = New System.Drawing.Point(100, 16)
         '
         'pnlDownJanus
         '
-        Me.pnlDownJanus.Size = New System.Drawing.Size(1134, 36)
+        Me.pnlDownJanus.Size = New System.Drawing.Size(1252, 36)
         '
         'Label2
         '
         Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(1079, 32)
+        Me.Label2.Location = New System.Drawing.Point(1197, 32)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(44, 13)
         Me.Label2.TabIndex = 179
@@ -173,7 +171,7 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         '
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(1078, 6)
+        Me.Label1.Location = New System.Drawing.Point(1196, 6)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(45, 13)
         Me.Label1.TabIndex = 178
@@ -183,7 +181,7 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         'TxtToDate
         '
         Me.TxtToDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtToDate.Location = New System.Drawing.Point(975, 29)
+        Me.TxtToDate.Location = New System.Drawing.Point(1093, 29)
         Me.TxtToDate.Mask = "9900/90/90"
         Me.TxtToDate.Name = "TxtToDate"
         Me.TxtToDate.SelectedDateTimeShamsi = "    /  /"
@@ -194,7 +192,7 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         'TxtFromDate
         '
         Me.TxtFromDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtFromDate.Location = New System.Drawing.Point(975, 3)
+        Me.TxtFromDate.Location = New System.Drawing.Point(1093, 3)
         Me.TxtFromDate.Mask = "9900/90/90"
         Me.TxtFromDate.Name = "TxtFromDate"
         Me.TxtFromDate.SelectedDateTimeShamsi = "    /  /"
@@ -219,7 +217,7 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         '
         Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(821, 30)
+        Me.Label4.Location = New System.Drawing.Point(1001, 30)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(61, 13)
         Me.Label4.TabIndex = 184
@@ -237,7 +235,7 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         '
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(821, 6)
+        Me.Label7.Location = New System.Drawing.Point(1001, 6)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(71, 13)
         Me.Label7.TabIndex = 190
@@ -255,7 +253,7 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         Me.TarakoneshCombo.Name = "TarakoneshCombo"
         Me.TarakoneshCombo.SaveSettings = False
         Me.TarakoneshCombo.ShowSelectAll = True
-        Me.TarakoneshCombo.Size = New System.Drawing.Size(590, 21)
+        Me.TarakoneshCombo.Size = New System.Drawing.Size(770, 21)
         Me.TarakoneshCombo.TabIndex = 193
         Me.TarakoneshCombo.ValuesDataMember = Nothing
         '
@@ -270,13 +268,13 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         Me.dbcSanadNo.Name = "dbcSanadNo"
         Me.dbcSanadNo.SaveSettings = False
         Me.dbcSanadNo.ShowSelectAll = True
-        Me.dbcSanadNo.Size = New System.Drawing.Size(590, 21)
+        Me.dbcSanadNo.Size = New System.Drawing.Size(770, 21)
         Me.dbcSanadNo.TabIndex = 194
         Me.dbcSanadNo.ValuesDataMember = Nothing
         '
         'FrmMoghayesehSanadRialiMaliVaAnbarReport
         '
-        Me.ClientSize = New System.Drawing.Size(1134, 475)
+        Me.ClientSize = New System.Drawing.Size(1252, 475)
         Me.Name = "FrmMoghayesehSanadRialiMaliVaAnbarReport"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "گزارش مقایسه اسناد ریالی مالی و انبار"
@@ -303,11 +301,13 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         dbcSanadNo.LateBinding = True
         dbcSanadNo.ShowSelectAll = True
 
-        dbcSanadNo.Bind(cn, " Select SanadSN,cast(SanadNO as varchar(15)) + '-' +  TafsiliDS As SanadDS" &
-                            " From abSanad " &
-                            " Left join matafsili on absanad.tafsilisn=matafsili.tafsilisn " &
-                            " Where SanadDate between '" & Fdate & "' and '" & Tdate & "'" &
-                            "   And abSanad.SanadStatus = 8 And absanad.TafsiliSN Is NOt NULL ", "SanadSN", "SanadDS")
+        dbcSanadNo.Bind(cn,
+                         "Select SanadSN   , cast(SanadNO As varchar(15)) + '.' +  TarakoneshDS + '('+ SanadDate + ')'+'('+AnbarDs+')' As SanadDS " &
+                         "From abSanad  Join abTarakonesh On abTarakonesh.TarakoneshSN = abSanad.TarakoneshSN " &
+                         "Join abAnbar On abAnbar.AnbarSN=abSanad.AnbarSN " &
+                         "Where SanadDate between '" & Fdate & "' and '" & Tdate & "'   And abSanad.SanadStatus = 8 And abSanad.TarakoneshSN<>44 and " &
+                         "abAnbar.IsNerkhGozari = 1 And (abAnbar.AnbarSN=" & gAnbarSN.ToString & " Or exists(select 1 from abAnbar T where T.IsTajmie=1 And T.AnbarSN=" & gAnbarSN.ToString & ")) ",
+                         "SanadSN", "SanadDS")
 
         TarakoneshCombo.Bind(cn, " Select Distinct abTarakonesh.TarakoneshSN,TarakoneshDs " &
                                  " From absanad " &

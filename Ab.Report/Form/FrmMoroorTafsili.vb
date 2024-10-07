@@ -255,7 +255,7 @@ Public Class FrmMoroorTafsili
             Dim vToDate As Object
 
             Dim vErrMsg As String
-            Dim strAnbars As Object ', strNoeAnbars
+            Dim strAnbars As String ', strNoeAnbars
             Dim strTarakoneshs As String
             Dim vStrKalaSN, vStrFilterSelectedGoroohSN As String
             Dim vSanadStatus As String
@@ -306,7 +306,14 @@ Public Class FrmMoroorTafsili
             If vErrMsg = "" Then
 
                 If Trim(gAnbarSelected) <> "" Then
-                    strAnbars = gAnbarSelected
+                    Dim DvAnbarSelected As DataView = cn.ExecuteQuery("Select AnbarSN FROM dbo.abFnt_Req_Get_AnbarSN_Childs_Str ('" & gAnbarSelected.Replace(" ", "") & "')")
+                    strAnbars = ""
+                    For Each item As DataRowView In DvAnbarSelected
+                        strAnbars += item(0).ToString + ","
+                    Next
+                    If strAnbars.EndsWith(",") Then
+                        strAnbars = strAnbars.Substring(0, strAnbars.Length - 1)
+                    End If
                 End If
 
                 If Trim(VFilterAsnadAnbar.WhereConditionSanadStatus) <> "" Then
@@ -431,7 +438,15 @@ Public Class FrmMoroorTafsili
                 ''ghasemi 14001106
 
 
-
+                'GridEX1.DataSource = cn.ExecuteQuery("_abSpr_MoroorTafsili  ''," & gVahedeTejariSN.ToString & ",'" & strAnbars & "'" &
+                '                                 ",'" & vFromDate & "','" & vToDate & "', '" & vStrKalaSN & "','" & vSanadStatus & "'" &
+                '                                 ", '" & vNoeTarakoneshKalaNO & "','" & strTarakoneshs & "', '" & vStrFilterSelectedGoroohSN & "','" & vGoroohBandiTarakonesh & "'" &
+                '                                 ",'" & vFromShomarehSefaresh & "','" & vToShomarehSefaresh & "', '" & vtozih & "','" & vFromSanadNo & "'" &
+                '                                 ",'" & vToSanadNo & "','" & vTafsiliSN & "', '" & vFromShomarehMashin & "','" & vToShomarehMashin & "'" &
+                '                                 ",'" & vFromShomarehBarnameh & "','" & vToShomarehBarnameh & "'" &
+                '                                 ",'" & vFromShomarehRahgiri & "','" & vToShomarehRahgiri & "', '" & vStrFilterSelectedChidemanSN & "'" &
+                '                                 ",'" & vIsMahaleChideman & "', '" & vStrFilterSelectedNoeZayeatSN & "'" &
+                '                                 ",'" & vStrFilterSelectedNoeMarjooeiSN & "', '" & vFromSabtDate & "','" & vToSabtDate & "', '" & vStrFilterSelectedTaminKonandehSN & "'")
 
                 GridEX1.DataSource = cn.SPQuery("_abSpr_MoroorTafsili", gVahedeTejariSN, strAnbars _
                                                  , vFromDate, vToDate, vStrKalaSN, vSanadStatus _
