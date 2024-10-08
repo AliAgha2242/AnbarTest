@@ -4836,8 +4836,8 @@ Friend Class FrmSanad
                     vKalaPhizikiSN = Val(DVabSanadHa.Fields("ShomarehRahgiriText").Value)
                     If vKalaPhizikiSN = 0 Then vKalaPhizikiSN = gSM.Identifier
                     vShomarehRahgiri = DVabSanadHa.Fields("ShomarehRahgiriText").Component.Text
-                    If IsNumeric(DVabSanadHa.FieldText("Meghdar")) AndAlso Trim(vShomarehRahgiri) = "" Then
-                        vShomarehRahgiri = DVabSanadHa.FieldText("Meghdar")
+                    If IsNumeric(DVabSanadHa.FieldText("KalaPhizikiStatusSN")) AndAlso IsNumeric(DVabSanadHa.FieldText("Meghdar")) AndAlso Trim(vShomarehRahgiri) = "" Then
+                        vShomarehRahgiri = IIf(DVabSanadHa.FieldText("KalaPhizikiStatusSN") = 1, DVabSanadHa.FieldText("Meghdar"), vShomarehRahgiri)
                     End If
                     vShomarehRahgiri = IIf(Trim(vShomarehRahgiri) = "", 0, vShomarehRahgiri)
                     vNoeAsnadSN = Val(DVabSanad.Fields("NoeAnbarSN").Value)
