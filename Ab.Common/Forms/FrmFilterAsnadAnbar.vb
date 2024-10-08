@@ -4244,6 +4244,15 @@ Public Class FrmFilterAsnadAnbar
             Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgTree, "AnbarSN", "Selected")
         If mSelected <> "" Then
             gAnbarSelected = Selected
+            Dim DvAnbarSelected As DataView = cn.ExecuteQuery("Select AnbarSN FROM dbo.abFnt_Req_Get_AnbarSN_Childs_Str ('" & gAnbarSelected.Replace(" ", "") & "')")
+            Dim strAnbars As String = ""
+            For Each item As DataRowView In DvAnbarSelected
+                strAnbars += item(0).ToString + ","
+            Next
+            If strAnbars.EndsWith(",") Then
+                strAnbars = strAnbars.Substring(0, strAnbars.Length - 1)
+            End If
+            gAnbarSelected = strAnbars
         End If
 
     End Sub

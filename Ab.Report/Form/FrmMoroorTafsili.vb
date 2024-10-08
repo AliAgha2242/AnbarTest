@@ -304,16 +304,8 @@ Public Class FrmMoroorTafsili
 
             ' اگر خطايي در فيلتر گزارش نيست مي توان گزارش را اجرا کرد
             If vErrMsg = "" Then
-
                 If Trim(gAnbarSelected) <> "" Then
-                    Dim DvAnbarSelected As DataView = cn.ExecuteQuery("Select AnbarSN FROM dbo.abFnt_Req_Get_AnbarSN_Childs_Str ('" & gAnbarSelected.Replace(" ", "") & "')")
-                    strAnbars = ""
-                    For Each item As DataRowView In DvAnbarSelected
-                        strAnbars += item(0).ToString + ","
-                    Next
-                    If strAnbars.EndsWith(",") Then
-                        strAnbars = strAnbars.Substring(0, strAnbars.Length - 1)
-                    End If
+                    strAnbars = gAnbarSelected
                 End If
 
                 If Trim(VFilterAsnadAnbar.WhereConditionSanadStatus) <> "" Then
