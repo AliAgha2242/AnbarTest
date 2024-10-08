@@ -298,22 +298,25 @@ Public Class FrmMoghayesehSanadRialiMaliVaAnbarReport
         Fdate = TxtFromDate.Text.Replace("/", "")
         Tdate = TxtToDate.Text.Replace("/", "")
 
-        dbcSanadNo.LateBinding = True
         dbcSanadNo.ShowSelectAll = True
+        dbcSanadNo.Enabled = gIsTajmie <> 1
 
         dbcSanadNo.Bind(cn,
-                         "Select SanadSN   , cast(SanadNO As varchar(15)) + '.' +  TarakoneshDS + '('+ SanadDate + ')'+'('+AnbarDs+')' As SanadDS " &
+                         "Select distinct SanadSN   , cast(SanadNO As varchar(15)) + ' . ' +  TarakoneshDS + '('+ SanadDate + ')'+'('+AnbarDs+')' As SanadDS " &
                          "From abSanad  Join abTarakonesh On abTarakonesh.TarakoneshSN = abSanad.TarakoneshSN " &
                          "Join abAnbar On abAnbar.AnbarSN=abSanad.AnbarSN " &
                          "Where SanadDate between '" & Fdate & "' and '" & Tdate & "'   And abSanad.SanadStatus = 8 And abSanad.TarakoneshSN<>44 and " &
-                         "abAnbar.IsNerkhGozari = 1 And (abAnbar.AnbarSN=" & gAnbarSN.ToString & " Or exists(select 1 from abAnbar T where T.IsTajmie=1 And T.AnbarSN=" & gAnbarSN.ToString & ")) ",
+                         "abAnbar.IsNerkhGozari = 1 And (abAnbar.AnbarSN=" & gAnbarSN.ToString & " Or " & gIsTajmie & "=1) ",
                          "SanadSN", "SanadDS")
 
-        TarakoneshCombo.Bind(cn, " Select Distinct abTarakonesh.TarakoneshSN,TarakoneshDs " &
-                                 " From absanad " &
-                                 " join absanadha on absanad.sanadsn = absanadha.sanadsn " &
-                                 " join abTarakonesh On abSanad.TarakoneshSN = abTarakonesh.TarakoneshSN " &
-                                 " Where abSanad.AnbarSN = " + (gAnbarSN).ToString() + " And SanadDate Between '" & Fdate & "' And '" & Tdate & "'", "TarakoneshSN", "TarakoneshDS")
+
+        TarakoneshCombo.Bind(cn, " Select abTarakonesh.TarakoneshSN,cast(tarakoneshSN as varchar)+' . '+TarakoneshDs As TarakoneshDs From abTarakonesh", "TarakoneshSN", "TarakoneshDS")
+
+        'TarakoneshCombo.Bind(cn, " Select Distinct abTarakonesh.TarakoneshSN,TarakoneshDs " &
+        '                         " From absanad " &
+        '                         " join absanadha on absanad.sanadsn = absanadha.sanadsn " &
+        '                         " join abTarakonesh On abSanad.TarakoneshSN = abTarakonesh.TarakoneshSN " &
+        '                         " Where (absanad.AnbarSN=" & gAnbarSN.ToString & " Or exists(select 1 from abAnbar T where T.IsTajmie=1 And T.AnbarSN=" & gAnbarSN.ToString & ")) And SanadDate Between '" & Fdate & "' And '" & Tdate & "'", "TarakoneshSN", "TarakoneshDS")
 
 
     End Sub

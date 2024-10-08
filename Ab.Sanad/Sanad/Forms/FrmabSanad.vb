@@ -4836,12 +4836,15 @@ Friend Class FrmSanad
                     vKalaPhizikiSN = Val(DVabSanadHa.Fields("ShomarehRahgiriText").Value)
                     If vKalaPhizikiSN = 0 Then vKalaPhizikiSN = gSM.Identifier
                     vShomarehRahgiri = DVabSanadHa.Fields("ShomarehRahgiriText").Component.Text
+                    If IsNumeric(DVabSanadHa.FieldText("Meghdar")) AndAlso Trim(vShomarehRahgiri) = "" Then
+                        vShomarehRahgiri = DVabSanadHa.FieldText("Meghdar")
+                    End If
                     vShomarehRahgiri = IIf(Trim(vShomarehRahgiri) = "", 0, vShomarehRahgiri)
                     vNoeAsnadSN = Val(DVabSanad.Fields("NoeAnbarSN").Value)
                     DVabSanadHa.InsertSPUserParam = vKalaPhizikiSN & ";" & vShomarehRahgiri & ";" &
-                       CStr(IIf(Val(DVabSanadHa.Fields("KalaPhizikiStatusSN").Value) = 0,
-                       1, Val(DVabSanadHa.Fields("KalaPhizikiStatusSN").Value))) &
-                     ";" & CStr(gVahedeTejariSN) & ";" & CStr(gAnbarSN) & ";" & CStr(vNoeAsnadSN) & ";" & vBatchNO & ";" & vTozih
+                           CStr(IIf(Val(DVabSanadHa.Fields("KalaPhizikiStatusSN").Value) = 0,
+                           1, Val(DVabSanadHa.Fields("KalaPhizikiStatusSN").Value))) &
+                         ";" & CStr(gVahedeTejariSN) & ";" & CStr(gAnbarSN) & ";" & CStr(vNoeAsnadSN) & ";" & vBatchNO & ";" & vTozih
                 End If
                 ' ‌در مورد نوع ورود اطلاعات تعداد در کارتن پردازش زير براي پر کردن مقادير وارده و صادره بايد انجام گردد
                 If VNoeVoroodeAsnad = EnumNoeVoroodeAsnad.nvaTedadDarKarton Then
