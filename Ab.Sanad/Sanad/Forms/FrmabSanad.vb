@@ -3694,44 +3694,22 @@ Friend Class FrmSanad
                     .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (SELECT TarakoneshSN FROM dbo.abFnt_GetTarakoneshSN(20))"
                 Case EnumTarakoneshSN.RESIDE_BARGASHT_KALAE_AMANI
                     .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (51)"
+                Case EnumTarakoneshSN.HAVALEH_BARGASHTE_KALAE_AMANI
+                    .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (14)"
             End Select
             .RefreshCombo()
         End With
-
-        'With DVabSanad.Fields("TafsiliSN2")
-        '    Select Case mTarakoneshSN
-        '        Case EnumTarakoneshSN.RESIDE_38_MARJOOEI_AZ_FOROOSH
-        '            If VahedeTejariMohlatMarjooeiForoosh > 0 Then
-        '                Dim btCalendarFunction As New Minoo.Applications.ProductionPlanning.Calender.CCalender
-        '                MohlatMarjooeiDate = btCalendarFunction.AddTedadRoozToDate(DVabSanad.Fields("SabtDate").DefaultValue, -VahedeTejariMohlatMarjooeiForoosh, ProductionPlanning.Calender.CCalender.CalendarType.Shamsi)
-        '                If MohlatMarjooeiDate.Length = 10 Then
-        '                    MohlatMarjooeiDate = MohlatMarjooeiDate.Replace("/", "")
-        '                End If
-        '            End If
-        '            .ComboWhereCondition = If(MohlatMarjooeiDate.Length = 8 AndAlso MohlatMarjooeiDate.Substring(0, 2) = "14", "foFactor.SodoorDate>='" & MohlatMarjooeiDate & "' And ", "") & " foFactor.FactorNO IS NOT NULL AND foFactor.Status = 2  AND foFactor.Res2 IN (1.101 , 2.101 ) And FactorSN in (Select Distinct FactorSn from foFactorHa where DarkhastTypeSN =2.101)"
-        '        Case EnumTarakoneshSN.RESIDE_39_MARJOOEI_AZ_TOZIE
-        '            If VahedeTejariMohlatMarjooeiTozie > 0 Then
-        '                Dim btCalendarFunction As New Minoo.Applications.ProductionPlanning.Calender.CCalender
-        '                MohlatMarjooeiDate = btCalendarFunction.AddTedadRoozToDate(DVabSanad.Fields("SabtDate").DefaultValue, -VahedeTejariMohlatMarjooeiTozie, ProductionPlanning.Calender.CCalender.CalendarType.Shamsi)
-        '                If MohlatMarjooeiDate.Length = 10 Then
-        '                    MohlatMarjooeiDate = MohlatMarjooeiDate.Replace("/", "")
-        '                End If
-        '            End If
-        '            .ComboWhereCondition = If(MohlatMarjooeiDate.Length = 8 AndAlso MohlatMarjooeiDate.Substring(0, 2) = "14" AndAlso Not IsTolidi, " And foFactor.SodoorDate>='" & MohlatMarjooeiDate & "' And ", "") & " foFactor.FactorNO IS NOT NULL AND foFactor.Status = 2  AND foFactor.Res2 IN (1.101 , 2.101,6.101, 7.101 , 8.101 , 9.101 , 10.101 , 11.101,12.101 ,13.101) "
-        '    End Select
-        '    .RefreshCombo()
-        'End With
 
     End Sub
 
     Private Sub dcbMarjaSanadSN_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles dcbMarjaSanadSN.Validated
 
-        Dim vTafsiliSN2 As Decimal
-        Dim vShomarehSefaresh As String
         Dim vResult As DataView
 
-        If (TarakoneshSN = EnumTarakoneshSN.RESIDE_38_MARJOOEI_AZ_FOROOSH Or TarakoneshSN = EnumTarakoneshSN.RESIDE_39_MARJOOEI_AZ_TOZIE) And
+        If (TarakoneshSN = EnumTarakoneshSN.RESIDE_38_MARJOOEI_AZ_FOROOSH OrElse TarakoneshSN = EnumTarakoneshSN.RESIDE_39_MARJOOEI_AZ_TOZIE) AndAlso
           Val(DVabSanad.Fields("TafsiliSN2").Value) <> 0 Then
+            Dim vTafsiliSN2 As Decimal
+
             vTafsiliSN2 = Val(DVabSanad.Fields("TafsiliSN2").Value)
 
             Try
@@ -3741,6 +3719,20 @@ Friend Class FrmSanad
                   " join foMoshtari ON foMoshtariInfo.MoshtariSN = foMoshtari.MoshtariSN " &
                   " join maTafsili ON maTafsili.TafsiliSN = foMoshtari.TafsiliSN " &
                   " WHERE FactorSN = " & vTafsiliSN2)
+
+                DVabSanad.Fields("TafsiliSN").Value = vResult.Item(0)("TafsiliSN")
+
+            Catch ex As Exception
+                MsgBox("اطلاعات مشتري قابل دسترسي نمي باشد")
+            End Try
+
+        ElseIf TarakoneshSN = EnumTarakoneshSN.HAVALEH_BARGASHTE_KALAE_AMANI AndAlso Val(DVabSanad.Fields("MarjaSanadSN").Value) <> 0 Then
+            Dim vMarjaSanadSN As Decimal
+
+            vMarjaSanadSN = Val(DVabSanad.Fields("MarjaSanadSN").Value)
+
+            Try
+                vResult = cn.ExecuteQuery("	Select TafsiliSN from abSanad where SanadSN= " & vMarjaSanadSN)
 
                 DVabSanad.Fields("TafsiliSN").Value = vResult.Item(0)("TafsiliSN")
 
@@ -5484,9 +5476,6 @@ Friend Class FrmSanad
                             .ComboOrderBy = " Convert(Bigint,foFactor.SodoorDate) DESC "
                         End With
 
-                        ''.Add("MarjaSanadSN->{Convert(Varchar(14), ISNULL(abSanad2.SanadNO,0)) + ' _ ' +  abSanad2.SanadDate } As MarjaSanadSN", , EnumFieldOptions.foHidden)
-                        ''''''''''''ghasemi 14010117
-
                         With .Add("MarjaSanadSN->{Convert(Varchar(14), ISNULL(abSanad2.SanadNO,0)) + ' _ ' +  abSanad2.SanadDate } As MarjaSanadSN", dcbMarjaSanadSN2, EnumFieldOptions.foHidden)
                             Dim _wss As String = " abSanad2.SanadStatus = 8 " &
                                                           " AND abSanad2.AnbarSN =  " & CStr(gAnbarSN) &
@@ -5494,7 +5483,6 @@ Friend Class FrmSanad
                                                           " AND abSanad2.SanadDate Between " & gHesabdariSalFDate & " AND " & gHesabdariSalTDate
                             .ComboWhereCondition = _wss
                         End With
-                        ''''''''''''ghasemi 14010117
 
                     Case EnumNoeTarakoneshSN.ntRESIDEMARJOOEIAZTOZIE
 
