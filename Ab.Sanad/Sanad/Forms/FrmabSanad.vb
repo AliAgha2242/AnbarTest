@@ -117,7 +117,6 @@ Friend Class FrmSanad
     Public WithEvents btnExcel As System.Windows.Forms.Button
     Public WithEvents btnDelSelected As System.Windows.Forms.Button
     Friend WithEvents dcbMarjaSanadSN As NetSql.Components.DataCombo
-    Friend WithEvents dcbTafsiliSN2 As NetSql.Components.DataCombo
     Public WithEvents btnEslahie As System.Windows.Forms.Button
     Public WithEvents txtSabtDate As System.Windows.Forms.TextBox
     Public WithEvents btnSpecifications As System.Windows.Forms.Button
@@ -287,14 +286,14 @@ Friend Class FrmSanad
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnSabtSanaddarSamaneh = New System.Windows.Forms.Button()
         Me.BtnPrintHavalehTolid = New System.Windows.Forms.Button()
-        Me.Frame1.SuspendLayout()
-        Me.sstParent.SuspendLayout()
-        Me._sstParent_TabPage1.SuspendLayout()
-        Me._sstParent_TabPage0.SuspendLayout()
-        Me.pnlD.SuspendLayout()
-        Me.sstChild.SuspendLayout()
-        Me._sstChild_TabPage1.SuspendLayout()
-        Me.GrpPrintLabel.SuspendLayout()
+        Me.Frame1.SuspendLayout
+        Me.sstParent.SuspendLayout
+        Me._sstParent_TabPage1.SuspendLayout
+        Me._sstParent_TabPage0.SuspendLayout
+        Me.pnlD.SuspendLayout
+        Me.sstChild.SuspendLayout
+        Me._sstChild_TabPage1.SuspendLayout
+        Me.GrpPrintLabel.SuspendLayout
         CType(Me.PrintLabelUD, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabBarnameh.SuspendLayout()
         Me.TabDarkhast.SuspendLayout()
@@ -334,7 +333,7 @@ Friend Class FrmSanad
         Me.btnStatus1_4.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnStatus1_4.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.btnStatus1_4.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnStatus1_4.Location = New System.Drawing.Point(1013, 5)
+        Me.btnStatus1_4.Location = New System.Drawing.Point(927, 5)
         Me.btnStatus1_4.Name = "btnStatus1_4"
         Me.btnStatus1_4.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.btnStatus1_4.Size = New System.Drawing.Size(40, 32)
@@ -447,7 +446,7 @@ Friend Class FrmSanad
         Me.btnStatus4_8.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnStatus4_8.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.btnStatus4_8.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnStatus4_8.Location = New System.Drawing.Point(971, 5)
+        Me.btnStatus4_8.Location = New System.Drawing.Point(885, 5)
         Me.btnStatus4_8.Name = "btnStatus4_8"
         Me.btnStatus4_8.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.btnStatus4_8.Size = New System.Drawing.Size(40, 32)
@@ -467,7 +466,7 @@ Friend Class FrmSanad
         Me.pnlN1.Location = New System.Drawing.Point(4, 283)
         Me.pnlN1.Name = "pnlN1"
         Me.pnlN1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.pnlN1.Size = New System.Drawing.Size(406, 37)
+        Me.pnlN1.Size = New System.Drawing.Size(320, 37)
         Me.pnlN1.TabIndex = 4
         '
         'pnlN
@@ -489,7 +488,7 @@ Friend Class FrmSanad
         Me.pnlC.Cursor = System.Windows.Forms.Cursors.Default
         Me.pnlC.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.pnlC.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.pnlC.Location = New System.Drawing.Point(1055, 2)
+        Me.pnlC.Location = New System.Drawing.Point(969, 2)
         Me.pnlC.Name = "pnlC"
         Me.pnlC.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.pnlC.Size = New System.Drawing.Size(405, 37)
@@ -507,7 +506,7 @@ Friend Class FrmSanad
         Me.sstParent.Mirrored = True
         Me.sstParent.Name = "sstParent"
         Me.sstParent.SelectedIndex = 0
-        Me.sstParent.Size = New System.Drawing.Size(1467, 241)
+        Me.sstParent.Size = New System.Drawing.Size(1381, 241)
         Me.sstParent.TabIndex = 7
         '
         '_sstParent_TabPage1
@@ -515,7 +514,7 @@ Friend Class FrmSanad
         Me._sstParent_TabPage1.Controls.Add(Me.pnlG)
         Me._sstParent_TabPage1.Location = New System.Drawing.Point(4, 27)
         Me._sstParent_TabPage1.Name = "_sstParent_TabPage1"
-        Me._sstParent_TabPage1.Size = New System.Drawing.Size(1459, 210)
+        Me._sstParent_TabPage1.Size = New System.Drawing.Size(1176, 210)
         Me._sstParent_TabPage1.TabIndex = 1
         Me._sstParent_TabPage1.Text = "مشاهده كليه اسناد"
         '
@@ -532,7 +531,7 @@ Friend Class FrmSanad
         Me.pnlG.Location = New System.Drawing.Point(3, 6)
         Me.pnlG.Name = "pnlG"
         Me.pnlG.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.pnlG.Size = New System.Drawing.Size(1455, 207)
+        Me.pnlG.Size = New System.Drawing.Size(1172, 207)
         Me.pnlG.TabIndex = 8
         '
         '_sstParent_TabPage0
@@ -540,7 +539,7 @@ Friend Class FrmSanad
         Me._sstParent_TabPage0.Controls.Add(Me.pnlD)
         Me._sstParent_TabPage0.Location = New System.Drawing.Point(4, 27)
         Me._sstParent_TabPage0.Name = "_sstParent_TabPage0"
-        Me._sstParent_TabPage0.Size = New System.Drawing.Size(1459, 210)
+        Me._sstParent_TabPage0.Size = New System.Drawing.Size(1373, 210)
         Me._sstParent_TabPage0.TabIndex = 0
         Me._sstParent_TabPage0.Text = "مشاهده سند خاص"
         '
@@ -598,10 +597,10 @@ Friend Class FrmSanad
         Me.pnlD.Cursor = System.Windows.Forms.Cursors.Default
         Me.pnlD.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.pnlD.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.pnlD.Location = New System.Drawing.Point(3, 3)
+        Me.pnlD.Location = New System.Drawing.Point(2, 2)
         Me.pnlD.Name = "pnlD"
         Me.pnlD.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.pnlD.Size = New System.Drawing.Size(1453, 207)
+        Me.pnlD.Size = New System.Drawing.Size(1368, 208)
         Me.pnlD.TabIndex = 0
         Me.pnlD.TabStop = True
         '
@@ -613,7 +612,7 @@ Friend Class FrmSanad
         Me.lblMarjaSanadSN.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblMarjaSanadSN.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMarjaSanadSN.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblMarjaSanadSN.Location = New System.Drawing.Point(421, 90)
+        Me.lblMarjaSanadSN.Location = New System.Drawing.Point(1270, 90)
         Me.lblMarjaSanadSN.Name = "lblMarjaSanadSN"
         Me.lblMarjaSanadSN.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblMarjaSanadSN.Size = New System.Drawing.Size(55, 13)
@@ -626,16 +625,16 @@ Friend Class FrmSanad
         '
         Me.dcbMarjaSanadSN2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dcbMarjaSanadSN2.AutoSelectFirst = False
-        Me.dcbMarjaSanadSN2.BackColor = System.Drawing.SystemColors.Info
+        Me.dcbMarjaSanadSN2.BackColor = System.Drawing.Color.White
         Me.dcbMarjaSanadSN2.BoundText = Nothing
         Me.dcbMarjaSanadSN2.BypassChangeEvent = False
         Me.dcbMarjaSanadSN2.DisplayText = ""
         Me.dcbMarjaSanadSN2.LateBindingTop = "500"
-        Me.dcbMarjaSanadSN2.Location = New System.Drawing.Point(194, 108)
+        Me.dcbMarjaSanadSN2.Location = New System.Drawing.Point(990, 108)
         Me.dcbMarjaSanadSN2.MemFilter = ""
         Me.dcbMarjaSanadSN2.Name = "dcbMarjaSanadSN2"
         Me.dcbMarjaSanadSN2.SeparatedData = Nothing
-        Me.dcbMarjaSanadSN2.Size = New System.Drawing.Size(281, 21)
+        Me.dcbMarjaSanadSN2.Size = New System.Drawing.Size(333, 21)
         Me.dcbMarjaSanadSN2.Source = Nothing
         Me.dcbMarjaSanadSN2.Style = System.Windows.Forms.ComboBoxStyle.DropDown
         Me.dcbMarjaSanadSN2.TabIndex = 88
@@ -650,7 +649,7 @@ Friend Class FrmSanad
         Me.DcbForooshDarkhast.BypassChangeEvent = False
         Me.DcbForooshDarkhast.DisplayText = ""
         Me.DcbForooshDarkhast.LateBindingTop = "100"
-        Me.DcbForooshDarkhast.Location = New System.Drawing.Point(472, 26)
+        Me.DcbForooshDarkhast.Location = New System.Drawing.Point(387, 26)
         Me.DcbForooshDarkhast.MemFilter = ""
         Me.DcbForooshDarkhast.Name = "DcbForooshDarkhast"
         Me.DcbForooshDarkhast.SeparatedData = Nothing
@@ -662,7 +661,7 @@ Friend Class FrmSanad
         'LblForooshDarkhast
         '
         Me.LblForooshDarkhast.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LblForooshDarkhast.Location = New System.Drawing.Point(984, 6)
+        Me.LblForooshDarkhast.Location = New System.Drawing.Point(899, 6)
         Me.LblForooshDarkhast.Name = "LblForooshDarkhast"
         Me.LblForooshDarkhast.Size = New System.Drawing.Size(130, 17)
         Me.LblForooshDarkhast.TabIndex = 86
@@ -673,7 +672,7 @@ Friend Class FrmSanad
         Me.ChkIsFakorEbtal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ChkIsFakorEbtal.AutoSize = True
         Me.ChkIsFakorEbtal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
-        Me.ChkIsFakorEbtal.Location = New System.Drawing.Point(459, 173)
+        Me.ChkIsFakorEbtal.Location = New System.Drawing.Point(377, 175)
         Me.ChkIsFakorEbtal.Name = "ChkIsFakorEbtal"
         Me.ChkIsFakorEbtal.Size = New System.Drawing.Size(135, 18)
         Me.ChkIsFakorEbtal.TabIndex = 85
@@ -687,12 +686,12 @@ Friend Class FrmSanad
         Me.Label1.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label1.Location = New System.Drawing.Point(39, 12)
+        Me.Label1.Location = New System.Drawing.Point(288, 29)
         Me.Label1.Name = "Label1"
         Me.Label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.Label1.Size = New System.Drawing.Size(93, 13)
+        Me.Label1.Size = New System.Drawing.Size(60, 13)
         Me.Label1.TabIndex = 84
-        Me.Label1.Text = "شماره سریال سند"
+        Me.Label1.Text = "سریال سند"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'ChkAutoTransferToKartablZayeat
@@ -700,7 +699,7 @@ Friend Class FrmSanad
         Me.ChkAutoTransferToKartablZayeat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ChkAutoTransferToKartablZayeat.AutoSize = True
         Me.ChkAutoTransferToKartablZayeat.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
-        Me.ChkAutoTransferToKartablZayeat.Location = New System.Drawing.Point(620, 173)
+        Me.ChkAutoTransferToKartablZayeat.Location = New System.Drawing.Point(556, 175)
         Me.ChkAutoTransferToKartablZayeat.Name = "ChkAutoTransferToKartablZayeat"
         Me.ChkAutoTransferToKartablZayeat.Size = New System.Drawing.Size(172, 18)
         Me.ChkAutoTransferToKartablZayeat.TabIndex = 83
@@ -716,7 +715,7 @@ Friend Class FrmSanad
         Me.dbcRezSN2.BypassChangeEvent = False
         Me.dbcRezSN2.DisplayText = ""
         Me.dbcRezSN2.LateBindingTop = "100"
-        Me.dbcRezSN2.Location = New System.Drawing.Point(498, 108)
+        Me.dbcRezSN2.Location = New System.Drawing.Point(387, 108)
         Me.dbcRezSN2.MemFilter = ""
         Me.dbcRezSN2.Name = "dbcRezSN2"
         Me.dbcRezSN2.SeparatedData = Nothing
@@ -734,7 +733,7 @@ Friend Class FrmSanad
         Me.lblRezSN2.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblRezSN2.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRezSN2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblRezSN2.Location = New System.Drawing.Point(691, 90)
+        Me.lblRezSN2.Location = New System.Drawing.Point(580, 90)
         Me.lblRezSN2.Name = "lblRezSN2"
         Me.lblRezSN2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblRezSN2.Size = New System.Drawing.Size(57, 13)
@@ -745,9 +744,9 @@ Friend Class FrmSanad
         '
         'lblTarafHesab
         '
-        Me.lblTarafHesab.Location = New System.Drawing.Point(84, 87)
+        Me.lblTarafHesab.Location = New System.Drawing.Point(545, 132)
         Me.lblTarafHesab.Name = "lblTarafHesab"
-        Me.lblTarafHesab.Size = New System.Drawing.Size(87, 18)
+        Me.lblTarafHesab.Size = New System.Drawing.Size(87, 15)
         Me.lblTarafHesab.TabIndex = 19
         Me.lblTarafHesab.Text = "طرف حساب"
         Me.lblTarafHesab.Visible = False
@@ -756,7 +755,7 @@ Friend Class FrmSanad
         '
         Me.txtTarafHesab.AcceptsReturn = True
         Me.txtTarafHesab.BackColor = System.Drawing.SystemColors.Window
-        Me.txtTarafHesab.Location = New System.Drawing.Point(36, 107)
+        Me.txtTarafHesab.Location = New System.Drawing.Point(497, 149)
         Me.txtTarafHesab.Name = "txtTarafHesab"
         Me.txtTarafHesab.Size = New System.Drawing.Size(138, 21)
         Me.txtTarafHesab.TabIndex = 20
@@ -769,11 +768,11 @@ Friend Class FrmSanad
         Me.txtVazneBaskool.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtVazneBaskool.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.txtVazneBaskool.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtVazneBaskool.Location = New System.Drawing.Point(39, 148)
+        Me.txtVazneBaskool.Location = New System.Drawing.Point(185, 149)
         Me.txtVazneBaskool.MaxLength = 0
         Me.txtVazneBaskool.Name = "txtVazneBaskool"
         Me.txtVazneBaskool.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtVazneBaskool.Size = New System.Drawing.Size(137, 21)
+        Me.txtVazneBaskool.Size = New System.Drawing.Size(151, 21)
         Me.txtVazneBaskool.TabIndex = 28
         Me.txtVazneBaskool.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtVazneBaskool.Visible = False
@@ -785,27 +784,26 @@ Friend Class FrmSanad
         Me.txtNameRanandeh.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtNameRanandeh.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.txtNameRanandeh.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtNameRanandeh.Location = New System.Drawing.Point(180, 148)
+        Me.txtNameRanandeh.Location = New System.Drawing.Point(27, 148)
         Me.txtNameRanandeh.MaxLength = 0
         Me.txtNameRanandeh.Name = "txtNameRanandeh"
         Me.txtNameRanandeh.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtNameRanandeh.Size = New System.Drawing.Size(156, 21)
+        Me.txtNameRanandeh.Size = New System.Drawing.Size(149, 21)
         Me.txtNameRanandeh.TabIndex = 26
         Me.txtNameRanandeh.Visible = False
         '
         'txtShomarehMashin
         '
         Me.txtShomarehMashin.AcceptsReturn = True
-        Me.txtShomarehMashin.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtShomarehMashin.BackColor = System.Drawing.SystemColors.Window
         Me.txtShomarehMashin.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtShomarehMashin.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.txtShomarehMashin.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtShomarehMashin.Location = New System.Drawing.Point(1129, 148)
+        Me.txtShomarehMashin.Location = New System.Drawing.Point(27, 106)
         Me.txtShomarehMashin.MaxLength = 0
         Me.txtShomarehMashin.Name = "txtShomarehMashin"
         Me.txtShomarehMashin.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtShomarehMashin.Size = New System.Drawing.Size(137, 21)
+        Me.txtShomarehMashin.Size = New System.Drawing.Size(149, 21)
         Me.txtShomarehMashin.TabIndex = 24
         Me.txtShomarehMashin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtShomarehMashin.Visible = False
@@ -813,16 +811,15 @@ Friend Class FrmSanad
         'txtShomarehBarnameh
         '
         Me.txtShomarehBarnameh.AcceptsReturn = True
-        Me.txtShomarehBarnameh.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtShomarehBarnameh.BackColor = System.Drawing.SystemColors.Window
         Me.txtShomarehBarnameh.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtShomarehBarnameh.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.txtShomarehBarnameh.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtShomarehBarnameh.Location = New System.Drawing.Point(1270, 148)
+        Me.txtShomarehBarnameh.Location = New System.Drawing.Point(185, 106)
         Me.txtShomarehBarnameh.MaxLength = 0
         Me.txtShomarehBarnameh.Name = "txtShomarehBarnameh"
         Me.txtShomarehBarnameh.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtShomarehBarnameh.Size = New System.Drawing.Size(137, 21)
+        Me.txtShomarehBarnameh.Size = New System.Drawing.Size(151, 21)
         Me.txtShomarehBarnameh.TabIndex = 22
         Me.txtShomarehBarnameh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.txtShomarehBarnameh.Visible = False
@@ -835,7 +832,7 @@ Friend Class FrmSanad
         Me.txtTozih.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtTozih.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTozih.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtTozih.Location = New System.Drawing.Point(830, 172)
+        Me.txtTozih.Location = New System.Drawing.Point(745, 176)
         Me.txtTozih.MaxLength = 0
         Me.txtTozih.Name = "txtTozih"
         Me.txtTozih.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -850,7 +847,7 @@ Friend Class FrmSanad
         Me.txtShomarehSefaresh.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtShomarehSefaresh.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.txtShomarehSefaresh.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtShomarehSefaresh.Location = New System.Drawing.Point(1188, 107)
+        Me.txtShomarehSefaresh.Location = New System.Drawing.Point(1102, 150)
         Me.txtShomarehSefaresh.MaxLength = 0
         Me.txtShomarehSefaresh.Name = "txtShomarehSefaresh"
         Me.txtShomarehSefaresh.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -883,12 +880,12 @@ Friend Class FrmSanad
         Me.txtSanadSN.Enabled = False
         Me.txtSanadSN.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.txtSanadSN.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtSanadSN.Location = New System.Drawing.Point(36, 30)
+        Me.txtSanadSN.Location = New System.Drawing.Point(153, 26)
         Me.txtSanadSN.MaxLength = 0
         Me.txtSanadSN.Name = "txtSanadSN"
         Me.txtSanadSN.ReadOnly = True
         Me.txtSanadSN.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.txtSanadSN.Size = New System.Drawing.Size(101, 21)
+        Me.txtSanadSN.Size = New System.Drawing.Size(131, 21)
         Me.txtSanadSN.TabIndex = 8
         '
         'dbcAnbarSN
@@ -899,8 +896,9 @@ Friend Class FrmSanad
         Me.dbcAnbarSN.BoundText = Nothing
         Me.dbcAnbarSN.BypassChangeEvent = False
         Me.dbcAnbarSN.DisplayText = ""
+        Me.dbcAnbarSN.Enabled = False
         Me.dbcAnbarSN.LateBindingTop = "100"
-        Me.dbcAnbarSN.Location = New System.Drawing.Point(1123, 26)
+        Me.dbcAnbarSN.Location = New System.Drawing.Point(1038, 26)
         Me.dbcAnbarSN.MemFilter = ""
         Me.dbcAnbarSN.Name = "dbcAnbarSN"
         Me.dbcAnbarSN.SeparatedData = Nothing
@@ -918,7 +916,7 @@ Friend Class FrmSanad
         Me.dbcTarakoneshSN.BypassChangeEvent = False
         Me.dbcTarakoneshSN.DisplayText = ""
         Me.dbcTarakoneshSN.LateBindingTop = "100"
-        Me.dbcTarakoneshSN.Location = New System.Drawing.Point(1123, 2)
+        Me.dbcTarakoneshSN.Location = New System.Drawing.Point(1038, 2)
         Me.dbcTarakoneshSN.MemFilter = ""
         Me.dbcTarakoneshSN.Name = "dbcTarakoneshSN"
         Me.dbcTarakoneshSN.SeparatedData = Nothing
@@ -935,11 +933,11 @@ Friend Class FrmSanad
         Me.dbcNoeAnbarSN.BypassChangeEvent = False
         Me.dbcNoeAnbarSN.DisplayText = ""
         Me.dbcNoeAnbarSN.LateBindingTop = "100"
-        Me.dbcNoeAnbarSN.Location = New System.Drawing.Point(165, 26)
+        Me.dbcNoeAnbarSN.Location = New System.Drawing.Point(27, 26)
         Me.dbcNoeAnbarSN.MemFilter = ""
         Me.dbcNoeAnbarSN.Name = "dbcNoeAnbarSN"
         Me.dbcNoeAnbarSN.SeparatedData = Nothing
-        Me.dbcNoeAnbarSN.Size = New System.Drawing.Size(121, 21)
+        Me.dbcNoeAnbarSN.Size = New System.Drawing.Size(120, 21)
         Me.dbcNoeAnbarSN.Source = Nothing
         Me.dbcNoeAnbarSN.Style = System.Windows.Forms.ComboBoxStyle.DropDown
         Me.dbcNoeAnbarSN.TabIndex = 7
@@ -954,11 +952,11 @@ Friend Class FrmSanad
         Me.dbcTarafHesabSN.BypassChangeEvent = False
         Me.dbcTarafHesabSN.DisplayText = ""
         Me.dbcTarafHesabSN.LateBindingTop = "100"
-        Me.dbcTarafHesabSN.Location = New System.Drawing.Point(27, 66)
+        Me.dbcTarafHesabSN.Location = New System.Drawing.Point(387, 66)
         Me.dbcTarafHesabSN.MemFilter = ""
         Me.dbcTarafHesabSN.Name = "dbcTarafHesabSN"
         Me.dbcTarafHesabSN.SeparatedData = Nothing
-        Me.dbcTarafHesabSN.Size = New System.Drawing.Size(1279, 21)
+        Me.dbcTarafHesabSN.Size = New System.Drawing.Size(834, 21)
         Me.dbcTarafHesabSN.Source = Nothing
         Me.dbcTarafHesabSN.Style = System.Windows.Forms.ComboBoxStyle.DropDown
         Me.dbcTarafHesabSN.TabIndex = 13
@@ -972,7 +970,7 @@ Friend Class FrmSanad
         Me.dbcSanadStatus.BypassChangeEvent = False
         Me.dbcSanadStatus.DisplayText = ""
         Me.dbcSanadStatus.LateBindingTop = "100"
-        Me.dbcSanadStatus.Location = New System.Drawing.Point(9, 174)
+        Me.dbcSanadStatus.Location = New System.Drawing.Point(39, 174)
         Me.dbcSanadStatus.MemFilter = ""
         Me.dbcSanadStatus.Name = "dbcSanadStatus"
         Me.dbcSanadStatus.SeparatedData = Nothing
@@ -991,11 +989,11 @@ Friend Class FrmSanad
         Me.dbcTafsiliSN1.BypassChangeEvent = False
         Me.dbcTafsiliSN1.DisplayText = ""
         Me.dbcTafsiliSN1.LateBindingTop = "100"
-        Me.dbcTafsiliSN1.Location = New System.Drawing.Point(765, 108)
+        Me.dbcTafsiliSN1.Location = New System.Drawing.Point(646, 108)
         Me.dbcTafsiliSN1.MemFilter = ""
         Me.dbcTafsiliSN1.Name = "dbcTafsiliSN1"
         Me.dbcTafsiliSN1.SeparatedData = Nothing
-        Me.dbcTafsiliSN1.Size = New System.Drawing.Size(304, 21)
+        Me.dbcTafsiliSN1.Size = New System.Drawing.Size(338, 21)
         Me.dbcTafsiliSN1.Source = Nothing
         Me.dbcTafsiliSN1.Style = System.Windows.Forms.ComboBoxStyle.DropDown
         Me.dbcTafsiliSN1.TabIndex = 18
@@ -1009,7 +1007,7 @@ Friend Class FrmSanad
         Me.lblTafsiliSN1.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblTafsiliSN1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTafsiliSN1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblTafsiliSN1.Location = New System.Drawing.Point(997, 90)
+        Me.lblTafsiliSN1.Location = New System.Drawing.Point(912, 90)
         Me.lblTafsiliSN1.Name = "lblTafsiliSN1"
         Me.lblTafsiliSN1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblTafsiliSN1.Size = New System.Drawing.Size(73, 13)
@@ -1025,7 +1023,7 @@ Friend Class FrmSanad
         Me.lblVazneBaskool.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblVazneBaskool.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblVazneBaskool.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblVazneBaskool.Location = New System.Drawing.Point(75, 130)
+        Me.lblVazneBaskool.Location = New System.Drawing.Point(232, 132)
         Me.lblVazneBaskool.Name = "lblVazneBaskool"
         Me.lblVazneBaskool.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblVazneBaskool.Size = New System.Drawing.Size(104, 13)
@@ -1041,7 +1039,7 @@ Friend Class FrmSanad
         Me.lblNameRanandeh.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblNameRanandeh.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNameRanandeh.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblNameRanandeh.Location = New System.Drawing.Point(293, 130)
+        Me.lblNameRanandeh.Location = New System.Drawing.Point(131, 130)
         Me.lblNameRanandeh.Name = "lblNameRanandeh"
         Me.lblNameRanandeh.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblNameRanandeh.Size = New System.Drawing.Size(48, 13)
@@ -1052,13 +1050,12 @@ Friend Class FrmSanad
         '
         'lblShomarehMashin
         '
-        Me.lblShomarehMashin.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblShomarehMashin.AutoSize = True
         Me.lblShomarehMashin.BackColor = System.Drawing.Color.Transparent
         Me.lblShomarehMashin.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblShomarehMashin.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblShomarehMashin.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblShomarehMashin.Location = New System.Drawing.Point(1195, 130)
+        Me.lblShomarehMashin.Location = New System.Drawing.Point(107, 90)
         Me.lblShomarehMashin.Name = "lblShomarehMashin"
         Me.lblShomarehMashin.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblShomarehMashin.Size = New System.Drawing.Size(72, 13)
@@ -1069,13 +1066,12 @@ Friend Class FrmSanad
         '
         'lblShomarehBarnameh
         '
-        Me.lblShomarehBarnameh.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblShomarehBarnameh.AutoSize = True
         Me.lblShomarehBarnameh.BackColor = System.Drawing.Color.Transparent
         Me.lblShomarehBarnameh.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblShomarehBarnameh.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblShomarehBarnameh.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblShomarehBarnameh.Location = New System.Drawing.Point(1339, 130)
+        Me.lblShomarehBarnameh.Location = New System.Drawing.Point(268, 90)
         Me.lblShomarehBarnameh.Name = "lblShomarehBarnameh"
         Me.lblShomarehBarnameh.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblShomarehBarnameh.Size = New System.Drawing.Size(68, 13)
@@ -1091,7 +1087,7 @@ Friend Class FrmSanad
         Me.lblSanadStatus.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblSanadStatus.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSanadStatus.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblSanadStatus.Location = New System.Drawing.Point(117, 174)
+        Me.lblSanadStatus.Location = New System.Drawing.Point(144, 177)
         Me.lblSanadStatus.Name = "lblSanadStatus"
         Me.lblSanadStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblSanadStatus.Size = New System.Drawing.Size(41, 13)
@@ -1108,7 +1104,7 @@ Friend Class FrmSanad
         Me.lblTarafHesabSN.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblTarafHesabSN.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTarafHesabSN.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblTarafHesabSN.Location = New System.Drawing.Point(1252, 51)
+        Me.lblTarafHesabSN.Location = New System.Drawing.Point(1167, 50)
         Me.lblTarafHesabSN.Name = "lblTarafHesabSN"
         Me.lblTarafHesabSN.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblTarafHesabSN.Size = New System.Drawing.Size(63, 13)
@@ -1124,7 +1120,7 @@ Friend Class FrmSanad
         Me.lblNoeAnbarSN.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblNoeAnbarSN.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNoeAnbarSN.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblNoeAnbarSN.Location = New System.Drawing.Point(288, 30)
+        Me.lblNoeAnbarSN.Location = New System.Drawing.Point(99, 5)
         Me.lblNoeAnbarSN.Name = "lblNoeAnbarSN"
         Me.lblNoeAnbarSN.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblNoeAnbarSN.Size = New System.Drawing.Size(42, 13)
@@ -1140,7 +1136,7 @@ Friend Class FrmSanad
         Me.lblAnbarSN.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblAnbarSN.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAnbarSN.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblAnbarSN.Location = New System.Drawing.Point(1411, 30)
+        Me.lblAnbarSN.Location = New System.Drawing.Point(1326, 30)
         Me.lblAnbarSN.Name = "lblAnbarSN"
         Me.lblAnbarSN.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblAnbarSN.Size = New System.Drawing.Size(24, 13)
@@ -1156,7 +1152,7 @@ Friend Class FrmSanad
         Me.lblTozih.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblTozih.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTozih.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblTozih.Location = New System.Drawing.Point(1409, 176)
+        Me.lblTozih.Location = New System.Drawing.Point(1324, 180)
         Me.lblTozih.Name = "lblTozih"
         Me.lblTozih.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblTozih.Size = New System.Drawing.Size(36, 13)
@@ -1171,10 +1167,10 @@ Friend Class FrmSanad
         Me.lblShomarehSefaresh.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblShomarehSefaresh.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblShomarehSefaresh.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblShomarehSefaresh.Location = New System.Drawing.Point(1076, 87)
+        Me.lblShomarehSefaresh.Location = New System.Drawing.Point(990, 131)
         Me.lblShomarehSefaresh.Name = "lblShomarehSefaresh"
         Me.lblShomarehSefaresh.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.lblShomarehSefaresh.Size = New System.Drawing.Size(332, 16)
+        Me.lblShomarehSefaresh.Size = New System.Drawing.Size(335, 16)
         Me.lblShomarehSefaresh.TabIndex = 14
         Me.lblShomarehSefaresh.Text = "شماره ارجاع"
         Me.lblShomarehSefaresh.Visible = False
@@ -1189,9 +1185,9 @@ Friend Class FrmSanad
         Me.lblSanadNO.Location = New System.Drawing.Point(288, 6)
         Me.lblSanadNO.Name = "lblSanadNO"
         Me.lblSanadNO.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.lblSanadNO.Size = New System.Drawing.Size(37, 13)
+        Me.lblSanadNO.Size = New System.Drawing.Size(61, 13)
         Me.lblSanadNO.TabIndex = 2
-        Me.lblSanadNO.Text = "شماره"
+        Me.lblSanadNO.Text = "شماره سند"
         Me.lblSanadNO.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'lblSanadDate
@@ -1201,7 +1197,7 @@ Friend Class FrmSanad
         Me.lblSanadDate.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblSanadDate.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSanadDate.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblSanadDate.Location = New System.Drawing.Point(1378, 52)
+        Me.lblSanadDate.Location = New System.Drawing.Point(1293, 51)
         Me.lblSanadDate.Name = "lblSanadDate"
         Me.lblSanadDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblSanadDate.Size = New System.Drawing.Size(29, 13)
@@ -1217,7 +1213,7 @@ Friend Class FrmSanad
         Me.lblTarakoneshSN.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblTarakoneshSN.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTarakoneshSN.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblTarakoneshSN.Location = New System.Drawing.Point(1408, 8)
+        Me.lblTarakoneshSN.Location = New System.Drawing.Point(1323, 8)
         Me.lblTarakoneshSN.Name = "lblTarakoneshSN"
         Me.lblTarakoneshSN.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblTarakoneshSN.Size = New System.Drawing.Size(41, 13)
@@ -1232,7 +1228,7 @@ Friend Class FrmSanad
         Me.lblMoaserDate.Cursor = System.Windows.Forms.Cursors.Default
         Me.lblMoaserDate.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMoaserDate.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblMoaserDate.Location = New System.Drawing.Point(1378, 52)
+        Me.lblMoaserDate.Location = New System.Drawing.Point(1293, 51)
         Me.lblMoaserDate.Name = "lblMoaserDate"
         Me.lblMoaserDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lblMoaserDate.Size = New System.Drawing.Size(29, 13)
@@ -1250,7 +1246,7 @@ Friend Class FrmSanad
         Me.dcbMarjaSanadSN.BypassChangeEvent = False
         Me.dcbMarjaSanadSN.DisplayText = ""
         Me.dcbMarjaSanadSN.LateBindingTop = "500"
-        Me.dcbMarjaSanadSN.Location = New System.Drawing.Point(1075, 108)
+        Me.dcbMarjaSanadSN.Location = New System.Drawing.Point(989, 151)
         Me.dcbMarjaSanadSN.MemFilter = ""
         Me.dcbMarjaSanadSN.Name = "dcbMarjaSanadSN"
         Me.dcbMarjaSanadSN.SeparatedData = Nothing
@@ -1267,7 +1263,7 @@ Friend Class FrmSanad
         Me.txtSanadDate.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtSanadDate.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.txtSanadDate.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtSanadDate.Location = New System.Drawing.Point(1318, 66)
+        Me.txtSanadDate.Location = New System.Drawing.Point(1233, 66)
         Me.txtSanadDate.MaxLength = 0
         Me.txtSanadDate.Name = "txtSanadDate"
         Me.txtSanadDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -1283,7 +1279,7 @@ Friend Class FrmSanad
         Me.txtSabtDate.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtSabtDate.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.txtSabtDate.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtSabtDate.Location = New System.Drawing.Point(1318, 66)
+        Me.txtSabtDate.Location = New System.Drawing.Point(1233, 66)
         Me.txtSabtDate.MaxLength = 0
         Me.txtSabtDate.Name = "txtSabtDate"
         Me.txtSabtDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -1300,7 +1296,7 @@ Friend Class FrmSanad
         Me.txtMoaserDate.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtMoaserDate.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.txtMoaserDate.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.txtMoaserDate.Location = New System.Drawing.Point(1318, 66)
+        Me.txtMoaserDate.Location = New System.Drawing.Point(1233, 66)
         Me.txtMoaserDate.MaxLength = 0
         Me.txtMoaserDate.Name = "txtMoaserDate"
         Me.txtMoaserDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -1327,7 +1323,7 @@ Friend Class FrmSanad
         Me.sstChild.Mirrored = True
         Me.sstChild.Name = "sstChild"
         Me.sstChild.SelectedIndex = 0
-        Me.sstChild.Size = New System.Drawing.Size(1465, 355)
+        Me.sstChild.Size = New System.Drawing.Size(1379, 355)
         Me.sstChild.TabIndex = 5
         Me.sstChild.TabStop = False
         '
@@ -1343,7 +1339,7 @@ Friend Class FrmSanad
         Me._sstChild_TabPage1.Controls.Add(Me.pnlN1)
         Me._sstChild_TabPage1.Location = New System.Drawing.Point(4, 24)
         Me._sstChild_TabPage1.Name = "_sstChild_TabPage1"
-        Me._sstChild_TabPage1.Size = New System.Drawing.Size(1457, 327)
+        Me._sstChild_TabPage1.Size = New System.Drawing.Size(1371, 327)
         Me._sstChild_TabPage1.TabIndex = 1
         Me._sstChild_TabPage1.Text = "مشاهده"
         '
@@ -1353,7 +1349,7 @@ Friend Class FrmSanad
         Me.GrpPrintLabel.Controls.Add(Me.BtnPrintLabel)
         Me.GrpPrintLabel.Controls.Add(Me.PrintLabelUD)
         Me.GrpPrintLabel.Controls.Add(Me.lblPrintLabel)
-        Me.GrpPrintLabel.Location = New System.Drawing.Point(614, 284)
+        Me.GrpPrintLabel.Location = New System.Drawing.Point(528, 284)
         Me.GrpPrintLabel.Name = "GrpPrintLabel"
         Me.GrpPrintLabel.Size = New System.Drawing.Size(226, 37)
         Me.GrpPrintLabel.TabIndex = 16
@@ -1415,13 +1411,13 @@ Friend Class FrmSanad
         Me.pnlG1.Location = New System.Drawing.Point(4, 3)
         Me.pnlG1.Name = "pnlG1"
         Me.pnlG1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.pnlG1.Size = New System.Drawing.Size(1444, 274)
+        Me.pnlG1.Size = New System.Drawing.Size(1358, 274)
         Me.pnlG1.TabIndex = 0
         '
         'btnDarkhstView
         '
         Me.btnDarkhstView.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnDarkhstView.Location = New System.Drawing.Point(846, 284)
+        Me.btnDarkhstView.Location = New System.Drawing.Point(760, 284)
         Me.btnDarkhstView.Name = "btnDarkhstView"
         Me.btnDarkhstView.Size = New System.Drawing.Size(64, 35)
         Me.btnDarkhstView.TabIndex = 6
@@ -1435,7 +1431,7 @@ Friend Class FrmSanad
         Me.pnlC1.Cursor = System.Windows.Forms.Cursors.Default
         Me.pnlC1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.pnlC1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.pnlC1.Location = New System.Drawing.Point(1074, 283)
+        Me.pnlC1.Location = New System.Drawing.Point(988, 283)
         Me.pnlC1.Name = "pnlC1"
         Me.pnlC1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.pnlC1.Size = New System.Drawing.Size(374, 37)
@@ -1450,7 +1446,7 @@ Friend Class FrmSanad
         Me.btnDelSelected.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnDelSelected.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.btnDelSelected.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnDelSelected.Location = New System.Drawing.Point(1021, 285)
+        Me.btnDelSelected.Location = New System.Drawing.Point(935, 285)
         Me.btnDelSelected.Name = "btnDelSelected"
         Me.btnDelSelected.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.btnDelSelected.Size = New System.Drawing.Size(51, 35)
@@ -1466,7 +1462,7 @@ Friend Class FrmSanad
         Me.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnExcel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.btnExcel.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnExcel.Location = New System.Drawing.Point(969, 285)
+        Me.btnExcel.Location = New System.Drawing.Point(883, 285)
         Me.btnExcel.Name = "btnExcel"
         Me.btnExcel.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.btnExcel.Size = New System.Drawing.Size(51, 35)
@@ -1477,7 +1473,7 @@ Friend Class FrmSanad
         'btnRahgiri
         '
         Me.btnRahgiri.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnRahgiri.Location = New System.Drawing.Point(910, 285)
+        Me.btnRahgiri.Location = New System.Drawing.Point(824, 285)
         Me.btnRahgiri.Name = "btnRahgiri"
         Me.btnRahgiri.Size = New System.Drawing.Size(59, 35)
         Me.btnRahgiri.TabIndex = 5
@@ -1914,7 +1910,7 @@ Friend Class FrmSanad
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1472, 654)
+        Me.Panel1.Size = New System.Drawing.Size(1386, 654)
         Me.Panel1.TabIndex = 14
         '
         'BtnSabtUID
@@ -1967,7 +1963,7 @@ Friend Class FrmSanad
         Me.Panel2.Location = New System.Drawing.Point(6, 243)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.Panel2.Size = New System.Drawing.Size(1461, 43)
+        Me.Panel2.Size = New System.Drawing.Size(1375, 43)
         Me.Panel2.TabIndex = 14
         '
         'btnSabtSanaddarSamaneh
@@ -1978,7 +1974,7 @@ Friend Class FrmSanad
         Me.btnSabtSanaddarSamaneh.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnSabtSanaddarSamaneh.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.btnSabtSanaddarSamaneh.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnSabtSanaddarSamaneh.Location = New System.Drawing.Point(699, 5)
+        Me.btnSabtSanaddarSamaneh.Location = New System.Drawing.Point(613, 5)
         Me.btnSabtSanaddarSamaneh.Name = "btnSabtSanaddarSamaneh"
         Me.btnSabtSanaddarSamaneh.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.btnSabtSanaddarSamaneh.Size = New System.Drawing.Size(130, 32)
@@ -1995,7 +1991,7 @@ Friend Class FrmSanad
         Me.BtnPrintHavalehTolid.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.BtnPrintHavalehTolid.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.BtnPrintHavalehTolid.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.BtnPrintHavalehTolid.Location = New System.Drawing.Point(835, 5)
+        Me.BtnPrintHavalehTolid.Location = New System.Drawing.Point(749, 5)
         Me.BtnPrintHavalehTolid.Name = "BtnPrintHavalehTolid"
         Me.BtnPrintHavalehTolid.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.BtnPrintHavalehTolid.Size = New System.Drawing.Size(130, 32)
@@ -2006,7 +2002,7 @@ Friend Class FrmSanad
         'FrmSanad
         '
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1472, 654)
+        Me.ClientSize = New System.Drawing.Size(1386, 654)
         Me.Controls.Add(Me.Panel1)
         Me.Cursor = System.Windows.Forms.Cursors.Default
         Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
@@ -3650,12 +3646,19 @@ Friend Class FrmSanad
 
         With DVabSanad.Fields("MarjaSanadSN")
             Select Case mTarakoneshSN
+                Case EnumTarakoneshSN.HAVALEH_117_KasriDryaft
+                    .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (41)"
+                Case EnumTarakoneshSN.HAVALEH_116_EzafehErsal
+                    .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (91)"
+                Case EnumTarakoneshSN.HAVALEH_111_KahandehKharid
+                    .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (SELECT TarakoneshSN FROM dbo.abFnt_GetTarakoneshSN(20))"
                 Case EnumTarakoneshSN.RESIDE_BARGASHT_KALAE_AMANI
                     .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (51)"
+                Case EnumTarakoneshSN.HAVALEH_BARGASHTE_KALAE_AMANI
+                    .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (14)"
             End Select
             .RefreshCombo()
         End With
-
 
     End Sub
 
@@ -3663,7 +3666,7 @@ Friend Class FrmSanad
 
         Dim vResult As DataView
 
-        If (TarakoneshSN = EnumTarakoneshSN.RESIDE_BARGASHT_KALAE_AMANI) AndAlso IsNumeric(dcbMarjaSanadSN2.SelectedValue) Then
+        If (TarakoneshSN = EnumTarakoneshSN.RESIDE_BARGASHT_KALAE_AMANI OrElse TarakoneshSN = EnumTarakoneshSN.HAVALEH_BARGASHTE_KALAE_AMANI) AndAlso IsNumeric(dcbMarjaSanadSN2.SelectedValue) Then
 
             Try
                 vResult = cn.ExecuteQuery("	Select TafsiliSn from abSanad Where SanadSN=" & dcbMarjaSanadSN2.SelectedValue.ToString)
@@ -5501,10 +5504,9 @@ Friend Class FrmSanad
                             .ComboWhereCondition = If(MohlatMarjooeiDate.Length = 8 AndAlso MohlatMarjooeiDate.Substring(0, 2) = "14" AndAlso Not IsTolidi, "foFactor.SodoorDate>='" & MohlatMarjooeiDate & "' And ", "") & " foFactor.FactorNO IS NOT NULL AND foFactor.Status = 2  AND foFactor.Res2 NOT IN (3.101 , 4.101,5.101,20.101) "
                             .ComboOrderBy = " Convert(Bigint,foFactor.SodoorDate) DESC "
                         End With
-                        ''.Add("MarjaSanadSN->{Convert(Varchar(14), ISNULL(abSanad2.SanadNO,0)) + ' _ ' +  abSanad2.SanadDate } As MarjaSanadSN", , EnumFieldOptions.foHidden)
 
                         ''''''''''''ghasemi 14010117
-                        With .Add("MarjaSanadSN->{Convert(Varchar(14), ISNULL(abSanad2.SanadNO,0)) + ' _ ' +  abSanad2.SanadDate } As MarjaSanadSN", , EnumFieldOptions.foHidden)
+                        With .Add("MarjaSanadSN->{Convert(Varchar(14), ISNULL(abSanad2.SanadNO,0)) + ' _ ' +  abSanad2.SanadDate } As MarjaSanadSN", dcbMarjaSanadSN2, EnumFieldOptions.foHidden)
                             Dim _wss As String = " abSanad2.SanadStatus = 8 " &
                                " AND abSanad2.AnbarSN =  " & CStr(gAnbarSN) &
                                " AND abSanad2.NoeAnbarSN =  " & CStr(gNoeAnbarSN) &
@@ -5514,22 +5516,14 @@ Friend Class FrmSanad
                         ''''''''''''ghasemi 14010117
                     Case Else  ' Other Case Same as EnumNoeTarakoneshSN.ntRESIDEBARGASHTI, EnumNoeTarakoneshSN.ntHAVALEHBARGASHTI
                         With .Add("MarjaSanadSN->{Convert(Varchar(14), ISNULL(abSanad2.SanadNO,0)) + ' _ ' +  abSanad2.SanadDate } As MarjaSanadSN" _
-                            , dcbMarjaSanadSN, EnumFieldOptions.foDefault)
+                            , dcbMarjaSanadSN2, EnumFieldOptions.foDefault)
                             .Caption = cn.FieldCaption("abSanad.MarjaSanadSN")
-                            dcbMarjaSanadSN.LateBinding = True
-                            ' Ashari 841117 عدم امکان صدور اصلاحي براي سند اول دوره
-                            ' Ashari 850622 امکان صدور اصلاحي براي سند اصلاحي - فقط مربوط به اصلاح طرف حساب
-                            ' Ghafari 901211  در تنظیمات سیستم تراکنش هایی که ثبت اصلاحی روی آنها مجاز نمی باشد مشخص می گردد 
+                            dcbMarjaSanadSN2.LateBinding = True
                             Dim _wss As String = " abSanad2.SanadStatus = 8 " &
                                " AND abSanad2.AnbarSN =  " & CStr(gAnbarSN) &
                                " AND abSanad2.NoeAnbarSN =  " & CStr(gNoeAnbarSN) &
                                " AND abSanad2.SanadDate Between " & gHesabdariSalFDate & " AND " & gHesabdariSalTDate
 
-                            '''" AND (abSanad.TarakoneshSN Not in (Select TarakoneshSN from dbo.abFnt_GetTarakoneshSN('6')) OR abSanad2.TarakoneshSN NOT IN (Select TarakoneshSN from dbo.abFnt_GetTarakoneshSN('16'))) " & _
-                            '''" AND (abSanad.TarakoneshSN Not in (116) OR abSanad2.TarakoneshSN IN (91)) " & _
-                            '''" AND (abSanad.TarakoneshSN Not in (117) OR abSanad2.TarakoneshSN IN (41)) " & _
-
-                            '910309
                             .ComboWhereCondition = _wss
                             If NoeTarakoneshSN = EnumNoeTarakoneshSN.ntRESIDEBARGASHTI _
                             Or NoeTarakoneshSN = EnumNoeTarakoneshSN.ntHAVALEHBARGASHTI _
@@ -5549,14 +5543,7 @@ Friend Class FrmSanad
                     .ComboWhereCondition = "  1 = 2 "
                 End With
                 With .Add("TafsiliSN->{ maTafsili.TafsiliNO + ' _ ' + maTafsili.TafsiliDS} AS TafsiliSN ", dbcTarafHesabSN)
-                    ''ghasemi 14011207
-                    'With .Add("KalaSN->paVw_VahedeSanjesh.VahedeSanjeshDs AS VahedeSanjeshDs", "TextBox <Disabled>", EnumFieldOptions.foDefault)
-                    '    .Caption = cn.FieldCaption("paVahedeSanjesh.VahedeSanjeshDs")
-                    'End With
-                    'With .Add("TafsiliSN->{olapVw_TafsiliTree.TafsiliNO + ' _ ' + olapVw_TafsiliTree.TafsiliDS} AS TafsiliSN ", dbcTarafHesabSN)
-                    ''ghasemi 14011207
                     .Caption = lblTarafHesabSN.Text
-                    ' .Caption = cn.FieldCaption("olapVw_TafsiliTree.TafsiliSN")
                     dbcTarafHesabSN.LateBinding = True
                     .ComboWhereCondition = "  1 = 2 "
                 End With
@@ -5566,10 +5553,7 @@ Friend Class FrmSanad
                     dbcTafsiliSN1.LateBinding = True
                     .ComboWhereCondition = "  1 = 2 "
                 End With
-                'With .Add("TafsiliSN2->{ maTafsili3.TafsiliNO + ' _ ' + maTafsili3.TafsiliDS} AS TafsiliSN2 ", , EnumFieldOptions.foHidden)
-                '    .Caption = lblTarafHesabSN.Text
-                '    .ComboWhereCondition = "  1 = 2 "
-                'End With
+
                 With .Add("EDAnbarSN->abAnbar2.AnbarDs", , EnumFieldOptions.foHidden)
                     .ComboWhereCondition = "  1 = 2 "
                 End With
@@ -5652,7 +5636,7 @@ Friend Class FrmSanad
                 If VahedeTejariMohlatMarjooeiForoosh > 0 And (NoeTarakoneshSN = EnumNoeTarakoneshSN.ntRESIDHA) Then
                     Dim dv As DataView = cn.ExecuteQuery("select  1 from abAnbarTarakonesh where AnbarTarakoneshStatus=1 and TarakoneshSN=38 and left(MaxDateDoreh,4)>=" & gHesabdariSal.ToString & " And AnbarSN=" & gAnbarSN.ToString)
                     If dv.Count > 0 Then
-                        With .Add("{dbo.abFn_GetFactorNoForSanadSN(abSanad.HavalehForooshSN)} As FactorNo", "textbox", EnumFieldOptions.foDefault)
+                        With .Add("{dbo.abFn_GetFactorNoForSanadSN(abSanad.HavalehForooshSN)} As FactorNo", "", EnumFieldOptions.foDefault)
                             .Caption = "شماره فاکتور اصلی"
                             .ReadOnly = True
                         End With
