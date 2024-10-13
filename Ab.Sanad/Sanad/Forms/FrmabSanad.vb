@@ -5576,27 +5576,22 @@ Friend Class FrmSanad
                 With .Add("HavalehForooshSN", , EnumFieldOptions.foHidden)
                 End With
 
-                Select Case NoeTarakoneshSN
-                    Case EnumNoeTarakoneshSN.ntHAVALEHKASRIDARYAFT, EnumNoeTarakoneshSN.ntHAVALEHEZAFEHERSAL
-                        With .Add("MarjaSanadSN->{Convert(Varchar(14), ISNULL(abSanad2.SanadNO,0))} As MarjaSanadNO", , EnumFieldOptions.foDefault)
-                            .Caption = "شماره ارجاع"
-                            '''''''ghasemi 14000117
-                            Dim _wss As String = " abSanad2.SanadStatus = 8 " &
-                               " AND abSanad2.AnbarSN =  " & CStr(gAnbarSN) &
-                               " AND abSanad2.NoeAnbarSN =  " & CStr(gNoeAnbarSN) &
-                               " AND abSanad2.SanadDate Between " & gHesabdariSalFDate & " AND " & gHesabdariSalTDate
-                            .ComboWhereCondition = _wss
-                            '''''''ghasemi 14000117
-                        End With
-                        With .Add("ShomarehSefaresh", txtShomarehSefaresh, EnumFieldOptions.foHidden)
-                            .DataType = "BIGINT"
-                        End With
-                    Case Else
-                        With .Add("ShomarehSefaresh", txtShomarehSefaresh, EnumFieldOptions.foDefault)
-                            .DataType = "BIGINT"
-                        End With
-                End Select
+                'Select Case NoeTarakoneshSN
+                '    Case EnumNoeTarakoneshSN.ntHAVALEHKASRIDARYAFT, EnumNoeTarakoneshSN.ntHAVALEHEZAFEHERSAL
+                '        With .Add("MarjaSanadSN->{Convert(Varchar(14), ISNULL(abSanad2.SanadNO,0))} As MarjaSanadNO", , EnumFieldOptions.foDefault)
+                '            .Caption = "شماره ارجاع"
+                '            Dim _wss As String = " abSanad2.SanadStatus = 8 " &
+                '               " AND abSanad2.AnbarSN =  " & CStr(gAnbarSN) &
+                '               " AND abSanad2.NoeAnbarSN =  " & CStr(gNoeAnbarSN) &
+                '               " AND abSanad2.SanadDate Between " & gHesabdariSalFDate & " AND " & gHesabdariSalTDate
+                '            .ComboWhereCondition = _wss
+                '        End With
+                'End Select
 
+                With .Add("ShomarehSefaresh", txtShomarehSefaresh, EnumFieldOptions.foDefault)
+                    .DataType = "BIGINT"
+                    .ComboLateBinding = True
+                End With
                 .Add("TarafHesab", , EnumFieldOptions.foHidden)
                 With .Add("ShomarehBarnameh", txtShomarehBarnameh, EnumFieldOptions.foHidden)
                     .DataType = "INT"
@@ -6907,8 +6902,6 @@ Friend Class FrmSanad
 
                 Next
 
-
-
                 Try
                     dvTarakonesh.RowFilter = "ObjectDS in ('txtNameRanandeh','lblNameRanandeh')"
                     vVisibleNameRanandeh = CBool(dvTarakonesh(0)("Visible")) Or CBool(dvTarakonesh(1)("Visible"))
@@ -7001,11 +6994,6 @@ Friend Class FrmSanad
             SelectedTarakonesh = tarakoneshSN
             ''Add By Dehghani - 930423
         End If
-
-        'btnStatus1_4.Visible = BtnMovaghatVisible
-        'btnStatus1_4.Enabled = BtnMovaghatEnable
-        'btnStatus4_8.Visible = BtnGHateeVisible
-        'btnStatus4_8.Enabled = BtnGhateeEnable
 
     End Sub
 
