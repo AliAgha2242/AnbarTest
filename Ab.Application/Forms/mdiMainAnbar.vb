@@ -1606,7 +1606,7 @@ Public Class mdiMainAnbar
         Me.MnuSanadObjectChideman.AppName = "MnuSanadObjectChideman"
         Me.MnuSanadObjectChideman.Name = "MnuSanadObjectChideman"
         Me.MnuSanadObjectChideman.Size = New System.Drawing.Size(259, 22)
-        Me.MnuSanadObjectChideman.Text = "چیدمان آبجکت های اسناد انبار"
+        Me.MnuSanadObjectChideman.Text = "تنظیمات آبجکت های فرم اسناد انبار"
         '
         'MnuSep100
         '
