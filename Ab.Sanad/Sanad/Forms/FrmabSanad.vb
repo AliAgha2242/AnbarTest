@@ -3653,12 +3653,14 @@ Friend Class FrmSanad
                 Case EnumTarakoneshSN.HAVALEH_111_KahandehKharid
                     .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (SELECT TarakoneshSN FROM dbo.abFnt_GetTarakoneshSN(20))"
                 Case EnumTarakoneshSN.RESIDE_BARGASHT_KALAE_AMANI
-                    .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (51)"
+                    .ComboWhereCondition = .ComboWhereCondition.Replace(gHesabdariSalFDate.ToString, "13900101") + " And abSanad2.TarakoneshSN IN (51)"
                 Case EnumTarakoneshSN.HAVALEH_BARGASHTE_KALAE_AMANI
-                    .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (14)"
+                    .ComboWhereCondition = .ComboWhereCondition.Replace(gHesabdariSalFDate.ToString, "13900101") + " And abSanad2.TarakoneshSN IN (14)"
             End Select
             .RefreshCombo()
+
         End With
+
 
     End Sub
 
@@ -3696,9 +3698,9 @@ Friend Class FrmSanad
                 Case EnumTarakoneshSN.HAVALEH_111_KahandehKharid
                     .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (SELECT TarakoneshSN FROM dbo.abFnt_GetTarakoneshSN(20))"
                 Case EnumTarakoneshSN.RESIDE_BARGASHT_KALAE_AMANI
-                    .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (51)"
+                    .ComboWhereCondition = .ComboWhereCondition.Replace(gHesabdariSalFDate.ToString, "13900101") + " And abSanad2.TarakoneshSN IN (51)"
                 Case EnumTarakoneshSN.HAVALEH_BARGASHTE_KALAE_AMANI
-                    .ComboWhereCondition = .ComboWhereCondition + " And abSanad2.TarakoneshSN IN (14)"
+                    .ComboWhereCondition = .ComboWhereCondition.Replace(gHesabdariSalFDate.ToString, "13900101") + " And abSanad2.TarakoneshSN IN (14)"
             End Select
             .RefreshCombo()
         End With
@@ -5536,6 +5538,7 @@ Friend Class FrmSanad
                                 .AllowNulls = False
                                 .FieldOptions = EnumFieldOptions.foDefault
                             End If
+
                         End With
 
                         .Add("TafsiliSN2->{Convert(Varchar(7), ISNULL(foFactor.FactorNO,0)) + ' _ ' +  foFactor.SodoorDate } As TafsiliSN2", , EnumFieldOptions.foHidden)
