@@ -286,14 +286,14 @@ Friend Class FrmSanad
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnSabtSanaddarSamaneh = New System.Windows.Forms.Button()
         Me.BtnPrintHavalehTolid = New System.Windows.Forms.Button()
-        Me.Frame1.SuspendLayout
-        Me.sstParent.SuspendLayout
-        Me._sstParent_TabPage1.SuspendLayout
-        Me._sstParent_TabPage0.SuspendLayout
-        Me.pnlD.SuspendLayout
-        Me.sstChild.SuspendLayout
-        Me._sstChild_TabPage1.SuspendLayout
-        Me.GrpPrintLabel.SuspendLayout
+        Me.Frame1.SuspendLayout()
+        Me.sstParent.SuspendLayout()
+        Me._sstParent_TabPage1.SuspendLayout()
+        Me._sstParent_TabPage0.SuspendLayout()
+        Me.pnlD.SuspendLayout()
+        Me.sstChild.SuspendLayout()
+        Me._sstChild_TabPage1.SuspendLayout()
+        Me.GrpPrintLabel.SuspendLayout()
         CType(Me.PrintLabelUD, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabBarnameh.SuspendLayout()
         Me.TabDarkhast.SuspendLayout()
@@ -4011,6 +4011,8 @@ Friend Class FrmSanad
                 End If
                 With vRptabSanad
                     Dim vbNoeAnbarSN As Decimal
+                    Dim TarakoneshSN As Double
+                    TarakoneshSN = Val(DVabSanad.Fields("TarakoneshSN").Value)
                     vbNoeAnbarSN = Val(DVabSanad.Fields("NoeAnbarSN").Value)
 
                     If vbNoeAnbarSN = 0 Then
@@ -4018,6 +4020,7 @@ Friend Class FrmSanad
                     Else
                         .gRptabSanadNoeAnbar = vbNoeAnbarSN
                     End If
+                    .vbNoeTarakonesh = TarakoneshSN
                     .DefField()
                     .PageSettings.PaperKind = Printing.PaperKind.A4
                     .PageSettings.Margins.Left = 0

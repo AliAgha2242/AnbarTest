@@ -5,6 +5,7 @@ Public Class RptabSanad
     Inherits ActiveReport3
 
     Public gRptabSanadNoeAnbar As Decimal
+    Public vbNoeTarakonesh As Double
 
     Public Sub New()
         MyBase.New()
@@ -66,6 +67,11 @@ Public Class RptabSanad
     Private txtUser As DataDynamics.ActiveReports.TextBox = Nothing
     Private lbl3 As DataDynamics.ActiveReports.Label = Nothing
     Private txtPageTotal As DataDynamics.ActiveReports.TextBox = Nothing
+    '--------------------added by Ali Asghar Tavakoli
+    Private LblHerasat As DataDynamics.ActiveReports.Label = Nothing
+    Private LblForoosh As DataDynamics.ActiveReports.Label = Nothing
+    '--------------------added by Ali Asghar Tavakoli
+
     Private WithEvents lblSadereh As DataDynamics.ActiveReports.Label
     Private WithEvents lblVaredeh As DataDynamics.ActiveReports.Label
     Private WithEvents lblTedadAjza As DataDynamics.ActiveReports.Label
@@ -125,6 +131,11 @@ Public Class RptabSanad
         Me.lblNoeAnbarNO = New DataDynamics.ActiveReports.Label()
         Me.txtNoeAnbarNO = New DataDynamics.ActiveReports.TextBox()
         Me.lblTafsiliDs = New DataDynamics.ActiveReports.Label()
+        '--------------------added by Ali Asghar Tavakoli
+        Me.LblHerasat = New DataDynamics.ActiveReports.Label()
+        Me.LblForoosh = New DataDynamics.ActiveReports.Label()
+        '--------------------added by Ali Asghar Tavakoli
+
         Me.txtTafsiliDs = New DataDynamics.ActiveReports.TextBox()
         Me.lblShomarehSefaresh = New DataDynamics.ActiveReports.Label()
         Me.txtShomarehSefaresh = New DataDynamics.ActiveReports.TextBox()
@@ -166,6 +177,12 @@ Public Class RptabSanad
         CType(Me.lbl6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblDate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lbl7, System.ComponentModel.ISupportInitialize).BeginInit()
+
+        '--------------------added by Ali Asghar Tavakoli
+        CType(Me.LblHerasat, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LblForoosh, System.ComponentModel.ISupportInitialize).BeginInit()
+        '--------------------added by Ali Asghar Tavakoli
+
         CType(Me.lblTime, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblCompany, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Logo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -452,6 +469,48 @@ Public Class RptabSanad
         Me.lbl6.Text = " : تاريـخ گزارش"
         Me.lbl6.Top = 0.2149989!
         Me.lbl6.Width = 1.082639!
+
+
+
+        '--------------------added by Ali Asghar Tavakoli
+        Me.LblHerasat.Border.BottomColor = System.Drawing.Color.Black
+        Me.LblHerasat.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.LblHerasat.Border.LeftColor = System.Drawing.Color.Black
+        Me.LblHerasat.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.LblHerasat.Border.RightColor = System.Drawing.Color.Black
+        Me.LblHerasat.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.LblHerasat.Border.TopColor = System.Drawing.Color.Black
+        Me.LblHerasat.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.LblHerasat.Height = 0.2358924!
+        Me.LblHerasat.HyperLink = Nothing
+        Me.LblHerasat.Left = 5.1!
+        Me.LblHerasat.Name = "LblHerasat"
+        Me.LblHerasat.Style = "ddo-char-set: 1; text-align: center; font-weight: bold; font-size: 7pt; font-fami" &
+    "ly: Tahoma; vertical-align: middle; "
+        Me.LblHerasat.Text = Nothing
+        Me.LblHerasat.Top = 0.515625!
+        Me.LblHerasat.Width = 0.9022306!
+
+        Me.LblForoosh.Border.BottomColor = System.Drawing.Color.Black
+        Me.LblForoosh.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.LblForoosh.Border.LeftColor = System.Drawing.Color.Black
+        Me.LblForoosh.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.LblForoosh.Border.RightColor = System.Drawing.Color.Black
+        Me.LblForoosh.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.LblForoosh.Border.TopColor = System.Drawing.Color.Black
+        Me.LblForoosh.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.None
+        Me.LblForoosh.Height = 0.2358924!
+        Me.LblForoosh.HyperLink = Nothing
+        Me.LblForoosh.Left = 1.95!
+        Me.LblForoosh.Name = "LblForoosh"
+        Me.LblForoosh.Style = "ddo-char-set: 1; text-align: center; font-weight: bold; font-size: 7pt; font-fami" &
+    "ly: Tahoma; vertical-align: middle; "
+        Me.LblForoosh.Text = Nothing
+        Me.LblForoosh.Top = 0.515625!
+        Me.LblForoosh.Width = 0.9022306!
+
+        '--------------------added by Ali Asghar Tavakoli
+
         '
         'lblDate
         '
@@ -1399,7 +1458,7 @@ Public Class RptabSanad
         '
         'GrpFtSanadSN
         '
-        Me.GrpFtSanadSN.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.txtSumSadereh, Me.txtSumVaredeh, Me.Label36, Me.Label, Me.Label1, Me.Label2})
+        Me.GrpFtSanadSN.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.txtSumSadereh, Me.txtSumVaredeh, Me.Label36, Me.Label, Me.Label1, Me.LblForoosh, Me.LblHerasat, Me.Label2})
         Me.GrpFtSanadSN.Height = 0.8125!
         Me.GrpFtSanadSN.Name = "GrpFtSanadSN"
         '
@@ -1625,6 +1684,14 @@ Public Class RptabSanad
         CType(Me.Label, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label2, System.ComponentModel.ISupportInitialize).EndInit()
+
+
+        '------------------Added by AliAsghar Tavakolli
+        CType(Me.LblHerasat, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LblForoosh, System.ComponentModel.ISupportInitialize).EndInit()
+        '------------------Added by  AliAghar Tavakoli
+
+
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -1645,7 +1712,6 @@ Public Class RptabSanad
         txtShomarehSefaresh.DataField = "ShomarehSefaresh"
         txtShomarehRahgiri.DataField = "ShomarehRahgiri"
         txtTozih.DataField = "Tozih"
-
         txtKalaNo.DataField = "KalaNo"
         txtKalaDS.DataField = "KalaDS"
 
@@ -1663,6 +1729,10 @@ Public Class RptabSanad
             Logo.Visible = False
         End If
 
+        If vbNoeTarakonesh = 51 And gVahedeTejariSN = 230027.935 Then
+            LblHerasat.Text = "حراست"
+            LblForoosh.Text = "فروش"
+        End If
 
 
         If gRptabSanadNoeAnbar = 2 Or gRptabSanadNoeAnbar = 5 Or gRptabSanadNoeAnbar = 10 Then
@@ -1684,6 +1754,7 @@ Public Class RptabSanad
             txtSumVaredeh.DataField = "MeghdareVaredeh"
             txtSumSadereh.DataField = "MeghdareSadereh"
         End If
+
 
     End Sub
 
