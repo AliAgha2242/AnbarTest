@@ -259,13 +259,7 @@ Public Class RptabSanad
         ''Me.txtSadereh.OutputFormat = resources.GetString("txtSadereh.OutputFormat") 
 
 
-        Dim NamayeshAshar As Boolean = If(CApp.GetAppConfig("gNamayeshAsharInPrintAsnad") Is System.DBNull.Value, False, True) ''ghasemi 14030309
 
-        ''ghasemi14021213
-        If Not NamayeshAshar Then
-            Me.txtSadereh.OutputFormat = "#.###"
-        End If
-        ''ghasemi14021213
 
         Me.txtSadereh.Style = "ddo-char-set: 1; text-align: center; font-weight: bold; font-size: 9pt; font-fami" &
     "ly: Koodak; vertical-align: middle; "
@@ -289,12 +283,6 @@ Public Class RptabSanad
 
         ''Me.txtVaredeh.OutputFormat = resources.GetString("txtVaredeh.OutputFormat") 
 
-        ''ghasemi14021213
-        If Not NamayeshAshar Then
-            Me.txtVaredeh.OutputFormat = "#.#"
-            'Me.txtVaredeh.SummaryType = DataDynamics.ActiveReports.SummaryType.GrandTotal
-        End If
-        ''ghasemi14021213
         ''
         Me.txtVaredeh.Style = "ddo-char-set: 0; text-align: center; font-weight: bold; font-size: 9pt; font-fami" &
     "ly: Koodak; vertical-align: middle; "
@@ -1478,10 +1466,7 @@ Public Class RptabSanad
         Me.txtSumSadereh.Name = "txtSumSadereh"
         '' Me.txtSumSadereh.OutputFormat = resources.GetString("txtSumSadereh.OutputFormat") --ghasemi14021213
         ''''ghasemi14021213
-        If Not NamayeshAshar Then
-            Me.txtSumSadereh.OutputFormat = "#.###"
-        End If
-        ''''ghasemi14021213
+
 
         Me.txtSumSadereh.Style = "text-align: center; font-weight: bold; background-color: White; font-size: 12pt; " &
     "vertical-align: middle; "
@@ -1508,11 +1493,6 @@ Public Class RptabSanad
         Me.txtSumVaredeh.Name = "txtSumVaredeh"
         '' Me.txtSumVaredeh.OutputFormat = resources.GetString("txtSumVaredeh.OutputFormat") 
 
-        ''ghasemi14021213
-        If Not NamayeshAshar Then
-            Me.txtSumVaredeh.OutputFormat = "#.###"
-        End If
-        ''ghasemi14021213
 
         Me.txtSumVaredeh.Style = "text-align: center; font-weight: bold; background-color: White; font-size: 12pt; " &
     "vertical-align: middle; "
@@ -1699,6 +1679,8 @@ Public Class RptabSanad
 #End Region
 
     Public Sub DefField()
+
+
         ' تعريف فيلدهاي گزارش با توجه به ستون هاي فراخواني شده از بانک اطلاعاتي
         GrpHedSanadSN.DataField = "SanadSN"
 
@@ -1755,6 +1737,17 @@ Public Class RptabSanad
             txtSumSadereh.DataField = "MeghdareSadereh"
         End If
 
+        Dim NamayeshAshar As Boolean = If(CApp.GetAppConfig("gNamayeshAsharInPrintAsnad") Is System.DBNull.Value, False, True) ''ghasemi 14030309
+
+        ''ghasemi14021213
+        If Not NamayeshAshar Then
+            Me.txtSadereh.OutputFormat = "#.###"
+            Me.txtSumVaredeh.OutputFormat = "#.###"
+            Me.txtVaredeh.OutputFormat = "#.#"
+            Me.txtSumSadereh.OutputFormat = "#.###"
+        End If
+        ''ghasemi14021213
+
 
     End Sub
 
@@ -1766,9 +1759,9 @@ Public Class RptabSanad
 
     Private Sub PageHeader_Format(ByVal sender As Object, ByVal e As System.EventArgs) Handles PageHeader.Format
         ' تهيه تاريخ از سرور
-        lblDate.Text = Minoo.Functions.FTDBCommonFunctions.Get_Date_Server_Jalali( _
+        lblDate.Text = Minoo.Functions.FTDBCommonFunctions.Get_Date_Server_Jalali(
                                                                                  cn, Functions.FTDBCommonFunctions.enmDateFormat.FullYearWithSlash)
-        lblTime.Text = Minoo.Functions.FTDBCommonFunctions.Get_Time_Server( _
+        lblTime.Text = Minoo.Functions.FTDBCommonFunctions.Get_Time_Server(
                                                                                  cn, Functions.FTDBCommonFunctions.enmTimeFormat.HHmm)
     End Sub
 
