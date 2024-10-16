@@ -1711,7 +1711,7 @@ Public Class RptabSanad
             Logo.Visible = False
         End If
 
-        If vbNoeTarakonesh = 51 And gVahedeTejariSN = 230027.935 Then
+        If vbNoeTarakonesh > 50 And gVahedeTejariSN = 230027.935 Then
             LblHerasat.Text = "حراست"
             LblForoosh.Text = "فروش"
         End If
