@@ -177,11 +177,17 @@ Public Class FrmTaghirNerkhAvaldore
         End With
 
 
-        If DetailDataView.DataRows > 0 Then
-            For i As Integer = 0 To DetailDataView.FlexGrid.ColumnCollection.Count - 1
-                DetailDataView.FlexGrid.AutoSizeCol(i)
-            Next
-        End If
+
+        ' -------------be elat vojod in job dar function DetailDataView_FillDetailsWithData dar inja comment shodan-------------
+
+        'If DetailDataView.DataRows > 0 Then
+        '    For i As Integer = 0 To DetailDataView.FlexGrid.ColumnCollection.Count
+        '        Dim a As String = DetailDataView.FlexGrid.get_ColKey(i)
+        '        DetailDataView.FlexGrid.AutoSizeCol(i)
+        '    Next
+        'End If
+
+
     End Sub
 
     Private Sub btnGetkala_Click_1(sender As Object, e As EventArgs) Handles btnGetkala.Click
@@ -342,13 +348,21 @@ Public Class FrmTaghirNerkhAvaldore
                 btnGhate.Enabled = False
             End With
         End If
-        ''ghasemi14010121
 
+
+
+        'Taghirat baraye kondy dar form
         If DetailDataView.DataRows > 0 Then
-            For i As Integer = 0 To DetailDataView.FlexGrid.ColumnCollection.Count - 1
-                DetailDataView.FlexGrid.AutoSizeCol(i)
-            Next
+            DetailDataView.FlexGrid.AutoSizeCol(3)
         End If
+
+        ' in dota baham jabaeja shodan \\ Balee omad jaye paeeni
+
+        'If DetailDataView.DataRows > 0 Then
+        '    For i As Integer = 0 To DetailDataView.FlexGrid.ColumnCollection.Count
+        '        DetailDataView.FlexGrid.AutoSizeCol(i)
+        '    Next
+        'End If
     End Sub
 
     Private Sub btnImportExcel_Click(sender As Object, e As EventArgs) Handles btnImportExcel.Click
@@ -540,7 +554,7 @@ Public Class FrmTaghirNerkhAvaldore
                 End If
 
             Else
-                    tp.MsgBox("خطا :  درج مقدار غیر عددی و منفی یا صفر برای نرخ مجاز نمی باشد ", MsgBoxStyle.Exclamation, "")
+                tp.MsgBox("خطا :  درج مقدار غیر عددی و منفی یا صفر برای نرخ مجاز نمی باشد ", MsgBoxStyle.Exclamation, "")
                 Exit Sub
             End If
 
