@@ -111,6 +111,8 @@ Public Class FrmTaghirNerkhAvaldore
                                            " And sanaddate Between " & gHesabdariSalFDate & " And " & gHesabdariSalTDate & ")"
 
                     '.RefreshCombo()
+                    .MinComponentWidth = 400
+
                 End With
                 ' end If 
                 With .Add("{abVw_abKalaPhiziki_Full.KalaNO + '.' + abVw_abKalaPhiziki_Full.KalaDS} AS KalaSN", "DataCombo", EnumFieldOptions.foDefault)
@@ -118,6 +120,7 @@ Public Class FrmTaghirNerkhAvaldore
                     .ComboLateBinding = True
                     .LockUpdate = True
                     .ReadOnly = True
+                    .MinComponentWidth = 300
                 End With
                 With .Add("KalaPhizikiSN-> abVw_abKalaPhiziki_Full.ShomarehRahgiri AS ShomarehRahgiri", "DataCombo", EnumFieldOptions.foDefault)
                     .Caption = "شماره رهگیری"
@@ -125,6 +128,8 @@ Public Class FrmTaghirNerkhAvaldore
                     .LockUpdate = True
                     .ReadOnly = True
                     .RefreshCombo()
+                    .MinComponentWidth = 100
+
                 End With
 
                 With .Add("VahedeTejariSN", , EnumFieldOptions.foHidden)
@@ -138,6 +143,8 @@ Public Class FrmTaghirNerkhAvaldore
                 With .Add("UserID_Name",, EnumFieldOptions.foDefault)
                     .DefaultValue = gSM.UserID_Name
                     .Caption = "ثبت کننده"
+                    .MinComponentWidth = 200
+
                 End With
                 With .Add("Host_Name", , EnumFieldOptions.foHidden)
                     .DefaultValue = System.Environment.MachineName
@@ -146,11 +153,15 @@ Public Class FrmTaghirNerkhAvaldore
 
                 With .Add("nerkh", "TextBox", EnumFieldOptions.foDefault)
                     .Caption = "نرخ"
+                    .MinComponentWidth = 100
+
                 End With
                 With .Add("SabtDate", , EnumFieldOptions.foDefault)
                     .Caption = "تاريخ ثبت"
                     .DateFormat = EnumDateFormat.dfFullYear
                     .DefaultValue = NetSql.Common.CShamsiDate.MiladiToShamsi(Today, .DateFormat)
+                    .MinComponentWidth = 50
+
                 End With
 
                 With .Add("SanadStatus-> {btStatus.StatusDS} as SanadStatus", "DataCombo", EnumFieldOptions.foDefault)
@@ -164,6 +175,7 @@ Public Class FrmTaghirNerkhAvaldore
                 .Add("RezSN3", , EnumFieldOptions.foHidden)
 
             End With
+            .FlexGrid.AutoSizeMode = AutoSizeSettings.flexAutoSizeColWidth
             .Refresh()
         End With
 
@@ -175,18 +187,6 @@ Public Class FrmTaghirNerkhAvaldore
             .SelectionMode = SelModeSettings.flexSelectionListBox
             .AllowSelection = True
         End With
-
-
-
-        ' -------------be elat vojod in job dar function DetailDataView_FillDetailsWithData dar inja comment shodan-------------
-
-        'If DetailDataView.DataRows > 0 Then
-        '    For i As Integer = 0 To DetailDataView.FlexGrid.ColumnCollection.Count
-        '        Dim a As String = DetailDataView.FlexGrid.get_ColKey(i)
-        '        DetailDataView.FlexGrid.AutoSizeCol(i)
-        '    Next
-        'End If
-
 
     End Sub
 
@@ -350,19 +350,6 @@ Public Class FrmTaghirNerkhAvaldore
         End If
 
 
-
-        'Taghirat baraye kondy dar form
-        If DetailDataView.DataRows > 0 Then
-            DetailDataView.FlexGrid.AutoSizeCol(3)
-        End If
-
-        ' in dota baham jabaeja shodan \\ Balee omad jaye paeeni
-
-        'If DetailDataView.DataRows > 0 Then
-        '    For i As Integer = 0 To DetailDataView.FlexGrid.ColumnCollection.Count
-        '        DetailDataView.FlexGrid.AutoSizeCol(i)
-        '    Next
-        'End If
     End Sub
 
     Private Sub btnImportExcel_Click(sender As Object, e As EventArgs) Handles btnImportExcel.Click
