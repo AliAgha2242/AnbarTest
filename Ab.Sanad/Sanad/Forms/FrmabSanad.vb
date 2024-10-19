@@ -4009,7 +4009,7 @@ Friend Class FrmSanad
                     vRptabSanad = New Report.RptHavalehForooshMinooCaspian
                 Else
                     vRptabSanad = New Report.RptabSanad
-
+                    vRptabSanad.vbNoeTarakonesh = TarakoneshSN
                 End If
                 With vRptabSanad
                     Dim vbNoeAnbarSN As Decimal
@@ -4022,7 +4022,7 @@ Friend Class FrmSanad
                     Else
                         .gRptabSanadNoeAnbar = vbNoeAnbarSN
                     End If
-                    .vbNoeTarakonesh = TarakoneshSN
+
                     .DefField()
                     .PageSettings.PaperKind = Printing.PaperKind.A4
                     .PageSettings.Margins.Left = 0
