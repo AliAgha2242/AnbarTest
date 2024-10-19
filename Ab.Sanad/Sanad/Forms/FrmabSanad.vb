@@ -4793,25 +4793,23 @@ Friend Class FrmSanad
         Dim VKalaDSComboWhereCondition As String
         ' ساختن شرط براي کامبو کالا
         'kouhdar 14030513
-        With DVabSanad
-            If aCommand = EnumCommands.cmEdit And Val(DVabSanad.Fields("TarakoneshSN").Value) = 46 Then
-                VKalaDSComboWhereCondition = "paKala.KalaSN IN (Select KalaSN From abVw_pakalaCode Where SubKalaSN =" & CStr(DVabSanadHa.Fields("KalaSN").Value) & " Union Select " & CStr(DVabSanadHa.Fields("KalaSN").Value) & ")"
+        If aCommand = EnumCommands.cmEdit And Val(DVabSanad.Fields("TarakoneshSN").Value) = 46 Then
+            VKalaDSComboWhereCondition = "paKala.KalaSN IN (Select KalaSN From abVw_pakalaCode Where SubKalaSN =" & CStr(DVabSanadHa.Fields("KalaSN").Value) & " Union Select " & CStr(DVabSanadHa.Fields("KalaSN").Value) & ")"
 
-                With DVabSanadHa
-                    .Fields("KalaDS").ReadOnly = False
-                    .Fields("KalaDS").ComboWhereCondition = VKalaDSComboWhereCondition
-                    .Fields("KalaDS").RefreshCombo()
-                End With
-            Else
-                VKalaDSComboWhereCondition = " AND paKala.KalaSN  IN (SELECT KalaSN " &
-            " FROM abAnbarKala WHERE AnbarKalaStatus = 1 AND AnbarSN = " &
-             gAnbarSN & " AND NoeAnbarSN = " & CStr(DVabSanad.Fields("NoeAnbarSN").Value) & ")"
-                If Val(DVabSanad.Fields("DarkhastSN").Value) <> 0 Then
-                    VKalaDSComboWhereCondition += " AND paKala.KalaSN  IN (SELECT KalaSN " &
-                            " FROM abDarkhastKala WHERE DarkhastSn =" & CDec(DVabSanad.Fields("DarkhastSN").Value) & ")"
-                End If
+            With DVabSanadHa
+                .Fields("KalaDS").ReadOnly = False
+                .Fields("KalaDS").ComboWhereCondition = VKalaDSComboWhereCondition
+                .Fields("KalaDS").RefreshCombo()
+            End With
+        Else
+            VKalaDSComboWhereCondition = " AND paKala.KalaSN  IN (SELECT KalaSN " &
+                " FROM abAnbarKala WHERE AnbarKalaStatus = 1 AND AnbarSN = " &
+                 gAnbarSN & " AND NoeAnbarSN = " & CStr(DVabSanad.Fields("NoeAnbarSN").Value) & ")"
+            If Val(DVabSanad.Fields("DarkhastSN").Value) <> 0 Then
+                VKalaDSComboWhereCondition += " AND paKala.KalaSN  IN (SELECT KalaSN " &
+                                " FROM abDarkhastKala WHERE DarkhastSn =" & CDec(DVabSanad.Fields("DarkhastSN").Value) & ")"
             End If
-        End With
+        End If
 
 
 
