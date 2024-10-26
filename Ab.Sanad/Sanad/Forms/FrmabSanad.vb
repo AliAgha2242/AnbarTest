@@ -8084,6 +8084,26 @@ Friend Class FrmSanad
     End Sub
 
     Private Sub dcbKalaDS_KeyUp(sender As Object, e As KeyEventArgs) Handles dcbKalaDS.KeyUp
+        If e.KeyCode = Keys.Enter Then
+            If IsNumeric(dcbKalaDS.Text) Then
+                If dcbKalaDS.SelectedValue Is Nothing Then
+                    If dcbKalaDS.Text.Length >= 5 Then
+                        cn.ExecuteNoneQuery("update abAnbarkala set AnbarKalaStatus=1,RecChksum='1' where KalaSN In (Select KalaSN from pakala where KalaNo='" & dcbKalaDS.Text & "')   and AnbarSN= " & gAnbarSN.ToString)
+                    End If
+                End If
+            End If
+        End If
+    End Sub
 
+    Private Sub dcbKalaDS_KeyDown(sender As Object, e As KeyEventArgs) Handles dcbKalaDS.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            If IsNumeric(dcbKalaDS.Text) Then
+                If dcbKalaDS.SelectedValue Is Nothing Then
+                    If dcbKalaDS.Text.Length >= 5 Then
+                        cn.ExecuteNoneQuery("update abAnbarkala set AnbarKalaStatus=1,RecChksum='1' where KalaSN In (Select KalaSN from pakala where KalaNo='" & dcbKalaDS.Text & "')   and AnbarSN= " & gAnbarSN.ToString)
+                    End If
+                End If
+            End If
+        End If
     End Sub
 End Class
