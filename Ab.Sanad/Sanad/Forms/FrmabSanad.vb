@@ -8088,7 +8088,7 @@ Friend Class FrmSanad
             If IsNumeric(dcbKalaDS.Text) Then
                 If dcbKalaDS.SelectedValue Is Nothing Then
                     If dcbKalaDS.Text.Length >= 5 Then
-                        cn.ExecuteNoneQuery("update abAnbarkala set AnbarKalaStatus=1,RecChksum='1' where KalaSN In (Select KalaSN from pakala where KalaNo='" & dcbKalaDS.Text & "')   and AnbarSN= " & gAnbarSN.ToString)
+                        cn.ExecuteNoneQuery("update abAnbarkala set AnbarKalaStatus=1,RecChksum='1' where AnbarKalaStatus=1=0 And KalaSN In (Select KalaSN from pakala where KalaNo='" & dcbKalaDS.Text & "')   and AnbarSN= " & gAnbarSN.ToString)
                     End If
                 End If
             End If
@@ -8100,7 +8100,7 @@ Friend Class FrmSanad
             If IsNumeric(dcbKalaDS.Text) Then
                 If dcbKalaDS.SelectedValue Is Nothing Then
                     If dcbKalaDS.Text.Length >= 5 Then
-                        cn.ExecuteNoneQuery("update abAnbarkala set AnbarKalaStatus=1,RecChksum='1' where KalaSN In (Select KalaSN from pakala where KalaNo='" & dcbKalaDS.Text & "')   and AnbarSN= " & gAnbarSN.ToString)
+                        cn.ExecuteNoneQuery("update abAnbarkala set AnbarKalaStatus=1,RecChksum='1' where AnbarKalaStatus=1=0 And KalaSN In (Select KalaSN from pakala where KalaNo='" & dcbKalaDS.Text & "')   and AnbarSN= " & gAnbarSN.ToString)
                     End If
                 End If
             End If
