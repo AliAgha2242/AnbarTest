@@ -473,7 +473,10 @@ Public Class FrmabAnbarGardaniEnghezaDate
     Dim DVKalaNerkh As DataView
     Private Sub FromabAnbarGardaniEnghezaDate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Today = Minoo.Functions.FTDBCommonFunctions.Get_Date_Server_Jalali(cn, Functions.FTDBCommonFunctions.enmDateFormat.Normal)
-        DVKalaNerkh = cn.ExecuteQuery("Select distinct p.KalaSN,KalaNo,KalaDs,Convert(int,Nerkh) Nerkh from ( Select  * from ( " &
+        '----------
+        'Edited by Tavakoli
+        'taghir function Convert(int,nerkh) be Convert(BigInt,nerkh) be elat error OverFlow .....
+        DVKalaNerkh = cn.ExecuteQuery("Select distinct p.KalaSN,KalaNo,KalaDs,Convert(BigInt,Nerkh) Nerkh from ( Select  * from ( " &
                                         "select KalaSN,isnull(MasrafFee,VahedFee) Nerkh, " &
                                         "ROW_NUMBER() Over(partition by KalaSN Order by gdate Desc ) IDR " &
                                         "from foKalaGheymatHa join foKalaGheymat on foKalaGheymat.KalaGheymatSN=foKalaGheymatHa.KalaGheymatSN " &
