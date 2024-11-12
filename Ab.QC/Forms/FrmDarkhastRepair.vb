@@ -620,8 +620,8 @@ Public Class FrmDarkhastRepair
 
     Private Sub MasterDataview_AfterCommandClick(ByVal aCommand As NetSql.View.CEnum.EnumCommands) Handles MasterDataview.AfterCommandClick
         If aCommand = EnumCommands.cmSave Then
-            MasterDataview.Refresh()
-            MasterDataview.FlexGrid.Select(MasterDataview.DataRows, 1, Nothing, Nothing)
+            'MasterDataview.Refresh()
+            'MasterDataview.FlexGrid.Select(MasterDataview.DataRows, 1, Nothing, Nothing)
         End If
     End Sub
 
