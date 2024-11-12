@@ -953,7 +953,7 @@ Public Class FrmDarkhastRepair
                     End With
                     With .Add("DarkhastKonande", "TextBox", EnumFieldOptions.foDefault)
                         .Caption = "درخواست کننده"
-                        .DefaultValue = gSM.UserName
+                        .DefaultValue = gSM.UserID_Name
                         .ReadOnly = True
                     End With
                     With .Add("GhateeKonandeh", "TextBox", IIf(gVahedeTejariSN = 9.935, EnumFieldOptions.foHidden, EnumFieldOptions.foDefault))
@@ -982,7 +982,7 @@ Public Class FrmDarkhastRepair
                     .Add("Res3", , EnumFieldOptions.foHidden)
 
                     With .Add("UserId_Name", , EnumFieldOptions.foHidden)
-                        .DefaultValue = gSM.UserName
+                        .DefaultValue = gSM.UserID_Name
                     End With
                     With .Add("Host_Name", , EnumFieldOptions.foHidden)
                         .DefaultValue = System.Windows.Forms.SystemInformation.ComputerName
@@ -1066,7 +1066,7 @@ Public Class FrmDarkhastRepair
                     .Add("GhateeDate", , EnumFieldOptions.foHidden)
                     .Add("Res2", , EnumFieldOptions.foHidden)
                     With .Add("UserId_Name", , EnumFieldOptions.foDefault)
-                        .DefaultValue = gSM.UserName
+                        .DefaultValue = gSM.UserID_Name
                         .ReadOnly = True
                         .Caption = "ثبت کننده"
                     End With
@@ -1144,7 +1144,7 @@ Public Class FrmDarkhastRepair
                     .Add("GhateeDate", , EnumFieldOptions.foHidden)
                     .Add("Res2", , EnumFieldOptions.foHidden)
                     With .Add("UserId_Name", , EnumFieldOptions.foDefault)
-                        .DefaultValue = gSM.UserName
+                        .DefaultValue = gSM.UserID_Name
                         .ReadOnly = True
                         .Caption = "ثبت کننده"
                     End With
@@ -1247,7 +1247,7 @@ Public Class FrmDarkhastRepair
                 MasterDataview.Refresh()
                 MasterDataview.FlexGrid.Select(_Key, 1, Nothing, Nothing)
             Catch ex As Exception
-                NetSql.Common.CSystem.MsgBox("خطا در قطعی سازی درخواست" + ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.MsgBoxRtlReading, "")
+                NetSql.Common.CSystem.MsgBox("خطا در قطعی سازی درخواست : " + ex.Message, MsgBoxStyle.Critical + MsgBoxStyle.MsgBoxRtlReading, "")
             End Try
         End If
 
