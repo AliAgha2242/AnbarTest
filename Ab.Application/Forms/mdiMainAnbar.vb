@@ -947,7 +947,7 @@ Public Class mdiMainAnbar
         Me.mnu__ListMahsulateBarcodkhan.AppName = "mnu__ListMahsulateBarcodkhan"
         Me.mnu__ListMahsulateBarcodkhan.Name = "mnu__ListMahsulateBarcodkhan"
         Me.mnu__ListMahsulateBarcodkhan.Size = New System.Drawing.Size(259, 22)
-        Me.mnu__ListMahsulateBarcodkhan.Text = "لیست محصولات بارکد خوان(تخصیص محصول)؛"
+        Me.mnu__ListMahsulateBarcodkhan.Text = "لیست محصولات بارکد خوان"
 
         '
         'mnu__ReportAghlamTarikhNazdikeAsnadBarcodKhan
