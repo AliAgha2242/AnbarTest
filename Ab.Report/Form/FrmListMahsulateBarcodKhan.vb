@@ -2,13 +2,6 @@
     Private Sub btnViewReport_Click(sender As Object, e As EventArgs) Handles btnViewReport.Click
         getReport()
     End Sub
-    Private Sub SetColumns()
-
-        For Each Col As Janus.Windows.GridEX.GridEXColumn In GridEX1.RootTable.Columns
-            Col.AutoSize()
-        Next
-
-    End Sub
     Private Sub getReport()
         Dim _Dv As DataView
         Dim KalaSN As String = ""
@@ -36,7 +29,7 @@
             _Dv = cn.ExecuteQuery("Exec abSPr_ProductCatalogue_GetIRCGTIN_KalaBatch '" & TaminSN & "','" & KalaSN & "','" & txtIRC.Text & "','" & txtGTIN.Text & "'")
             GridEX1.DataSource = _Dv
             GridEX1.RetrieveStructure()
-            SetColumns()
+            GridEX1.AutoSizeColumns()
         Catch ex As Exception
             NetSql.Common.CSystem.MsgBox("بروز خطا " & vbNewLine & ex.Message, MsgBoxStyle.Critical, "هشدار")
         Finally
