@@ -226,6 +226,7 @@ Public Class mdiMainAnbar
     Friend WithEvents MnuSep111 As System.Windows.Forms.ToolStripSeparator
 
     Friend WithEvents MnuMoghayesehSanadRialiMaliVaAnbarReport As Minoo.Controls.FTMenuItem    'Bagheri (HB) 14030618
+    Friend WithEvents MnuRptBatchNoHistory As Minoo.Controls.FTMenuItem    'Bagheri (HB) 14030823
 
     'Friend WithEvents mnuReportAnbargardaniEnghezaDate As Minoo.Controls.FTMenuItem
 
@@ -245,7 +246,7 @@ Public Class mdiMainAnbar
         Me.MnuAnbarGardaniMain.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuAnbarGardani, Me.MnuAnbarGardaniMianDoreh, Me.MnuAnbarGardaniEnghezaDate})
         Me.mnuRptAnbarGardani.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuRptSooratjalaseAnbarGardani, Me.mnuRptTagAnbarGardani, Me.mnuRptMoghayratBienShomaresh, Me.mnuRptMoghayratAnbarGardani, Me.mnuRepAnbarGardaniEnghezaDate})
 
-        Me.mnuRptAsnadBarcodeKhan.DropDownItems.AddRange(New ToolStripItem() {Me.mnu__ReportAghlamTarikhNazdikeAsnadBarcodKhan, Me.mnuMojudiWithIRC_GTIN, Me.mnu__MoghayerateCatalogueMahsoolatBaSystemMap, Me.mnu__ListMahsulateBarcodkhan, mnuRptUIDtracking})
+        Me.mnuRptAsnadBarcodeKhan.DropDownItems.AddRange(New ToolStripItem() {Me.mnu__ReportAghlamTarikhNazdikeAsnadBarcodKhan, Me.mnuMojudiWithIRC_GTIN, Me.mnu__MoghayerateCatalogueMahsoolatBaSystemMap, Me.mnu__ListMahsulateBarcodkhan, Me.mnuRptUIDtracking, MnuRptBatchNoHistory})
 
         Me.mnuBeinAnbarControlReport.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTahvilBeGoroohReport, Me.mnuKardex, Me.mnuControlKardex})
         Me.mnuSepKasriEzafeShoab.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuHavalehKasriDryaft, Me.mnuResideKasriErsal, Me.mnuHavalehEzafehErsal, Me.mnuResideEzafehDryaft})
@@ -453,6 +454,7 @@ Public Class mdiMainAnbar
         Me.mnuRptPriodicService = New Minoo.Controls.FTMenuItem()
         Me.mnuRptUIDtracking = New Minoo.Controls.FTMenuItem()
         Me.MnuMoghayesehSanadRialiMaliVaAnbarReport = New Minoo.Controls.FTMenuItem()
+        Me.MnuRptBatchNoHistory = New Minoo.Controls.FTMenuItem()  ''Bagheri (HB) 14030823
 
         CType(Me.sbpVersion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.sbpUserName, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1676,6 +1678,13 @@ Public Class mdiMainAnbar
         Me.mnuRptUIDtracking.Size = New System.Drawing.Size(267, 22)
         Me.mnuRptUIDtracking.Text = "گزارش گردش UID دارو در انبار"
         '
+        'mnuRptDarkhastRepair
+        '
+        Me.MnuRptBatchNoHistory.AppName = "MnuRptBatchNoHistory"
+        Me.MnuRptBatchNoHistory.Name = "MnuRptBatchNoHistory"
+        Me.MnuRptBatchNoHistory.Size = New System.Drawing.Size(267, 22)
+        Me.MnuRptBatchNoHistory.Text = "گزارش تاریخچه تغییرات سری ساخت"
+        '
         'mdiMainAnbar
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
@@ -2770,5 +2779,13 @@ Handles mnuSefrKardaneMojoodiAnbar.Click
         Minoo.Applications.Anbar.Report.CReport.ShowMoghayesehSanadRialiMaliVaAnbarReport(Me)
         DBLog.WriteLOG("Form", 0, , MnuMoghayesehSanadRialiMaliVaAnbarReport.AppName, MnuMoghayesehSanadRialiMaliVaAnbarReport.Text)
     End Sub
+
+
+    ' Bagheri (HB) 14030823
+    Private Sub MnuRptBatchNoHistory_Click(sender As Object, e As EventArgs) Handles MnuRptBatchNoHistory.Click
+        Minoo.Applications.Anbar.Report.CReport.ShowRptBatchNoHistory(Me)
+        DBLog.WriteLOG("Form", 0, , MnuRptBatchNoHistory.AppName, MnuRptBatchNoHistory.Text)
+    End Sub
+
 
 End Class

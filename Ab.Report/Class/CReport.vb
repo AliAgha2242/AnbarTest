@@ -569,7 +569,7 @@
 
     ' Bagheri (HB) 14030618
     Public Shared Sub ShowMoghayesehSanadRialiMaliVaAnbarReport(ByVal aMDIParent As Form)
-        ' نمايش فرم گزارش کاردکس کالا
+        ' نمايش فرم گزارش مقایسه اسناد مالی با انبار
         With FrmMoghayesehSanadRialiMaliVaAnbarReport.DefInstance
             .MdiParent = aMDIParent
             .Show()
@@ -577,5 +577,18 @@
             DBLog.WriteLOG("Form", 0, , .Name, .Text)
         End With
     End Sub
+
+    ' Bagheri (HB) 14030823
+    Public Shared Sub ShowRptBatchNoHistory(ByVal aMDIParent As Form)
+        ' نمايش فرم گزارش تغییرات سری ساخت
+        With FrmRptBatchNoHistory.DefInstance
+            .MdiParent = aMDIParent
+            .Show()
+            .Activate()
+            DBLog.WriteLOG("Form", 0, , .Name, .Text)
+        End With
+    End Sub
+
+
 
 End Class
