@@ -60,6 +60,8 @@ Public Class FrmRptBatchNoHistory
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmRptBatchNoHistory))
         Me.CmbMahsool = New cmpCheckedComboBox(Me.components)
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.batchNoReportBtn = New System.Windows.Forms.Button()
+        Me.EnghezaReposrtBtn = New System.Windows.Forms.Button()
         Me.pnlF.SuspendLayout()
         Me.pnlGrid.SuspendLayout()
         Me.pnlCommand.SuspendLayout()
@@ -69,22 +71,34 @@ Public Class FrmRptBatchNoHistory
         '
         'pnlF
         '
+        Me.pnlF.AutoSize = True
+        Me.pnlF.Controls.Add(Me.EnghezaReposrtBtn)
+        Me.pnlF.Controls.Add(Me.batchNoReportBtn)
         Me.pnlF.Controls.Add(Me.Label3)
         Me.pnlF.Controls.Add(Me.CmbMahsool)
-        Me.pnlF.Size = New System.Drawing.Size(1252, 45)
+        Me.pnlF.Size = New System.Drawing.Size(1393, 42)
         Me.pnlF.Controls.SetChildIndex(Me.btnViewReport, 0)
         Me.pnlF.Controls.SetChildIndex(Me.btnChart, 0)
         Me.pnlF.Controls.SetChildIndex(Me.CmbMahsool, 0)
         Me.pnlF.Controls.SetChildIndex(Me.Label3, 0)
+        Me.pnlF.Controls.SetChildIndex(Me.batchNoReportBtn, 0)
+        Me.pnlF.Controls.SetChildIndex(Me.EnghezaReposrtBtn, 0)
         '
         'btnViewReport
         '
         Me.btnViewReport.Location = New System.Drawing.Point(12, 5)
+        Me.btnViewReport.Visible = False
         '
         'pnlGrid
         '
-        Me.pnlGrid.Location = New System.Drawing.Point(0, 45)
-        Me.pnlGrid.Size = New System.Drawing.Size(1252, 394)
+        Me.pnlGrid.AutoSize = True
+        Me.pnlGrid.Location = New System.Drawing.Point(0, 42)
+        Me.pnlGrid.Size = New System.Drawing.Size(1393, 339)
+        '
+        'pnlCommand
+        '
+        Me.pnlCommand.AutoSize = True
+        Me.pnlCommand.Size = New System.Drawing.Size(377, 94)
         '
         'GridEX1
         '
@@ -101,7 +115,7 @@ Public Class FrmRptBatchNoHistory
         Me.GridEX1.GroupTotalRowFormatStyle.ForeColor = System.Drawing.Color.Navy
         Me.GridEX1.HeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
         Me.GridEX1.SelectedFormatStyle.BackColor = System.Drawing.Color.Moccasin
-        Me.GridEX1.Size = New System.Drawing.Size(1252, 394)
+        Me.GridEX1.Size = New System.Drawing.Size(1393, 339)
         Me.GridEX1.TotalRowFormatStyle.BackColor = System.Drawing.Color.LightSteelBlue
         Me.GridEX1.TotalRowFormatStyle.BackColorGradient = System.Drawing.Color.White
         Me.GridEX1.TotalRowFormatStyle.Key = "سرجمع"
@@ -117,11 +131,15 @@ Public Class FrmRptBatchNoHistory
         '
         'btnChart
         '
+        Me.btnChart.BackColor = System.Drawing.Color.Pink
         Me.btnChart.Location = New System.Drawing.Point(106, 5)
+        Me.btnChart.UseVisualStyleBackColor = False
         '
         'pnlDownJanus
         '
-        Me.pnlDownJanus.Size = New System.Drawing.Size(1252, 36)
+        Me.pnlDownJanus.AutoSize = True
+        Me.pnlDownJanus.Location = New System.Drawing.Point(0, 381)
+        Me.pnlDownJanus.Size = New System.Drawing.Size(1393, 94)
         '
         'CmbMahsool
         '
@@ -143,9 +161,30 @@ Public Class FrmRptBatchNoHistory
         Me.Label3.Size = New System.Drawing.Size(100, 23)
         Me.Label3.TabIndex = 191
         '
+        'batchNoReportBtn --Added by Tavakoli
+        '
+        Me.batchNoReportBtn.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.batchNoReportBtn.Location = New System.Drawing.Point(1420, 9)
+        Me.batchNoReportBtn.Name = "batchNoReportBtn"
+        Me.batchNoReportBtn.Size = New System.Drawing.Size(133, 30)
+        Me.batchNoReportBtn.TabIndex = 193
+        Me.batchNoReportBtn.Text = "تاریخچه سری ساخت"
+        Me.batchNoReportBtn.UseVisualStyleBackColor = False
+        Me.batchNoReportBtn.BackColor = Color.Pink
+        '
+        'EnghezaReposrtBtn --Added by Tavakoli
+        '
+        Me.EnghezaReposrtBtn.Location = New System.Drawing.Point(1280, 9)
+        Me.EnghezaReposrtBtn.Name = "EnghezaReposrtBtn"
+        Me.EnghezaReposrtBtn.Size = New System.Drawing.Size(133, 30)
+        Me.EnghezaReposrtBtn.TabIndex = 193
+        Me.EnghezaReposrtBtn.Text = "تاریخچه انقضا"
+        Me.EnghezaReposrtBtn.UseVisualStyleBackColor = False
+        '
         'FrmRptBatchNoHistory
         '
-        Me.ClientSize = New System.Drawing.Size(1252, 475)
+        Me.AutoSize = True
+        Me.ClientSize = New System.Drawing.Size(1393, 475)
         Me.Name = "FrmRptBatchNoHistory"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "گزارش تاریخچه تغییرات سری ساخت"
@@ -156,33 +195,51 @@ Public Class FrmRptBatchNoHistory
         Me.pnlCommand.ResumeLayout(False)
         CType(Me.GridEX1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlDownJanus.ResumeLayout(False)
+        Me.pnlDownJanus.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Private Sub FrmRptBatchNoHistory_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        setColumnProperties()
+        'Tavkoli
+        'setColumnProperties()
+        Call batchNoReportBtn_Click(sender, e)
+
     End Sub
 
     Private Sub setColumnProperties()
         Dim dvTableFooter As DataView
         Dim i As Integer
 
-        dvTableFooter =
-            cn.ExecuteQuery("SELECT ObjectHaDS,ObjectHaFDS FROM PaObject T1 INNER JOIN PaObjectHa T2 ON T1.ObjectSN = T2.ObjectSN WHERE T1.ObjectDS='abQuery_Raked' AND ObjectHaNo <> '0' ORDER BY CAST(ObjectHaNo AS BIGINT)")
-        For i = 0 To dvTableFooter.Count - 1
-            With GridEX1.RootTable.Columns()
-                With .Add(dvTableFooter.Item(i).Item("ObjectHaDS"), Janus.Windows.GridEX.ColumnType.Text)
-                    .Caption = dvTableFooter.Item(i).Item("ObjectHaFDS")
+        'dvTableFooter =
+        '    cn.ExecuteQuery("SELECT ObjectHaDS,ObjectHaFDS FROM PaObject T1 INNER JOIN PaObjectHa T2 ON T1.ObjectSN = T2.ObjectSN WHERE T1.ObjectDS='abQuery_Raked' AND ObjectHaNo <> '0' ORDER BY CAST(ObjectHaNo AS BIGINT)")
+        'For i = 0 To dvTableFooter.Count - 1
+        '    With GridEX1.RootTable.Columns()
+        '        With .Add(dvTableFooter.Item(i).Item("ObjectHaDS"), Janus.Windows.GridEX.ColumnType.Text)
+        '            .Caption = dvTableFooter.Item(i).Item("ObjectHaFDS")
 
-                End With
+        '        End With
 
-            End With
-        Next
+        '    End With
+        'Next
+
     End Sub
 
 
-    Private Sub btnViewReport_Click(sender As Object, e As EventArgs) Handles btnViewReport.Click
+    'Private Sub btnViewReport_Click(sender As Object, e As EventArgs) Handles btnViewReport.Click
+
+    'End Sub
+
+    Friend WithEvents EnghezaReposrtBtn As Button
+    Friend WithEvents batchNoReportBtn As Button
+
+    Private Sub batchNoReportBtn_Click(sender As Object, e As EventArgs) Handles batchNoReportBtn.Click
+        'برای تاریخچه شماره رهگیری های کالا 
+        'Added by aliAsghar Tavakoli
+
+        EnghezaReposrtBtn.BackColor = Color.White
+        batchNoReportBtn.BackColor = Color.Pink
         Dim vFromDate, vToDate As String
         Dim vErrMsg As String
         Dim KalaNo, BatchNoNew As String
@@ -228,6 +285,10 @@ Public Class FrmRptBatchNoHistory
         da.Fill(dsj)
         GridEX1.DataSource = dsj.Tables(0)
         GridEX1.RetrieveStructure()
+        ' For Performence Added By AliAghar Tavakoli
+        If GridEX1.RowCount <= 5000 Then
+            GridEX1.AutoSizeColumns()
+        End If
 
 
 
@@ -235,5 +296,65 @@ Public Class FrmRptBatchNoHistory
         Me.Cursor = Cursors.Default
     End Sub
 
+    Private Sub EnghezaReposrtBtn_Click(sender As Object, e As EventArgs) Handles EnghezaReposrtBtn.Click
+        'برای فرم تاریخچه انقضای کالا
+        'Added by aliAsghar Tavakoli
+        EnghezaReposrtBtn.BackColor = Color.Pink
+        batchNoReportBtn.BackColor = Color.White
+        Dim vFromDate, vToDate As String
+        Dim vErrMsg As String
+        Dim KalaNo, BatchNoNew As String
+        Dim KalaDs As String
+        Dim BatchNoOld As String
+        Dim VahedeTejariDs As String
 
+        'Dim vFKalaCode As Object
+        'Dim vTKalaCode As Object
+        Dim TaminVahedeTejariDs As String
+        Dim ChangeDateTime As String
+        Dim vFromSabtDate As Object
+        Dim vToSabtDate As Object
+        Dim vStrFilterSelectedTaminKonandehSN As String
+
+        ' کنترل فيلدهاي اجباري مورد نياز گزارش   + لحاظ کردن مقادير فيلتر انبار در پارامترهاي اين گزارش
+
+
+        ' اگر خطايي در فيلتر گزارش نيست مي توان گزارش را اجرا کرد
+
+
+        Me.Cursor = Cursors.WaitCursor
+
+        Dim CheckNoeVahedTejari As Boolean = IsVahedTejariTolidi
+
+        Dim _XmlStr As String = "<DsSanad>"
+
+        Dim da As New SqlDataAdapter
+        Dim Cmnd As New SqlCommand
+        Dim dsj As New DataSet
+        Dim i As Integer
+        Dim _ErrMsg As String = ""
+
+
+        Dim StrSPName As String = "abSpR_EnghezaDateHistory"
+
+
+        Cmnd.CommandText = StrSPName
+        Cmnd.Connection = cn.Connection 'mcn
+        Cmnd.CommandType = CommandType.StoredProcedure
+        Cmnd.CommandTimeout = cn.ConnectionTimeout
+        da.SelectCommand = Cmnd
+        da.Fill(dsj)
+        GridEX1.DataSource = dsj.Tables(0)
+        GridEX1.RetrieveStructure()
+
+        ' For Performence Added By AliAghar Tavakoli
+        If GridEX1.RowCount <= 5000 Then
+            GridEX1.AutoSizeColumns()
+        End If
+
+
+
+        'RefreshDataSet()
+        Me.Cursor = Cursors.Default
+    End Sub
 End Class
