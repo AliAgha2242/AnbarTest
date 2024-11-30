@@ -3365,6 +3365,7 @@ Friend Class FrmSanad
                         (NoeTarakoneshSN = EnumNoeTarakoneshSN.ntHAVALEHHA Or
                          NoeTarakoneshSN = EnumNoeTarakoneshSN.ntKasriMojoodiAnbar Or
                          TarakoneshSN = EnumTarakoneshSN.RESIDE_48_BARGASHTE_AVALIEH_AZ_PAYEKAR Or
+                         TarakoneshSN = EnumTarakoneshSN.RESIDE_17_BARGASHTE_BASTEBANDI_AZ_PAYEKAR Or ''Bagheri (HB)_14030910 _Add Tarakonesh 17 In Rahgiri
                          TarakoneshSN = EnumTarakoneshSN.HAVALEH_116_EzafehErsal Or
                          TarakoneshSN = EnumTarakoneshSN.HAVALEH_117_KasriDryaft
                          ) Then   'محدود کردن عملکرد اف 8 به فرم حواله-860320-ايزدپناه
@@ -3384,6 +3385,7 @@ Friend Class FrmSanad
                         (NoeTarakoneshSN = EnumNoeTarakoneshSN.ntHAVALEHHA Or
                          NoeTarakoneshSN = EnumNoeTarakoneshSN.ntKasriMojoodiAnbar Or
                          TarakoneshSN = EnumTarakoneshSN.RESIDE_48_BARGASHTE_AVALIEH_AZ_PAYEKAR Or
+                         TarakoneshSN = EnumTarakoneshSN.RESIDE_17_BARGASHTE_BASTEBANDI_AZ_PAYEKAR Or ''Bagheri (HB)_14030910 _Add Tarakonesh 17 In Rahgiri
                          TarakoneshSN = EnumTarakoneshSN.HAVALEH_116_EzafehErsal Or
                          TarakoneshSN = EnumTarakoneshSN.HAVALEH_117_KasriDryaft
                          ) Then 'محدود کردن عملکرد اف 9 به فرم حواله-860320-ايزدپناه
@@ -7352,6 +7354,7 @@ Friend Class FrmSanad
                          NoeTarakoneshSN = EnumNoeTarakoneshSN.ntKasriMojoodiAnbar Or
                          NoeTarakoneshSN = EnumNoeTarakoneshSN.ntHAVALEHEZAFEHERSAL Or
                          TarakoneshSN = EnumTarakoneshSN.RESIDE_48_BARGASHTE_AVALIEH_AZ_PAYEKAR Or
+                         TarakoneshSN = EnumTarakoneshSN.RESIDE_17_BARGASHTE_BASTEBANDI_AZ_PAYEKAR Or ''Bagheri (HB)_14030910 _Add Tarakonesh 17 In Rahgiri
                          NoeTarakoneshSN = EnumNoeTarakoneshSN.ntHAVALEHKASRIDARYAFT
                          ) Then
                         Dim vFrmSelectRahgiri As New FrmSelectRahgiri

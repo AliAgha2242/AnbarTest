@@ -598,7 +598,8 @@ Friend Class FrmSelectRahgiri
 
 
             ''ghasemi14030118
-            If EnumTarakoneshSN.RESIDE_48_BARGASHTE_AVALIEH_AZ_PAYEKAR = SanadRow.Item("tarakoneshsn") Then
+            If ((EnumTarakoneshSN.RESIDE_48_BARGASHTE_AVALIEH_AZ_PAYEKAR = SanadRow.Item("tarakoneshsn")) Or
+                    (EnumTarakoneshSN.RESIDE_17_BARGASHTE_BASTEBANDI_AZ_PAYEKAR = SanadRow.Item("tarakoneshsn"))) Then ''Bagheri (HB)_14030910 _Add Tarakonesh 17 In Rahgiri
                 __AnbarSN = SanadRow.Item("ToAnbarSN")
             End If
             ''ghasemi14030118
@@ -815,6 +816,7 @@ Friend Class FrmSelectRahgiri
 
         Dim i As Short = 0
         Dim vMeghdar As Decimal
+        Dim _vMeghdar As Decimal
         vMeghdar = Val(txtMeghdar.Text)
 
         With pFlex_abVw_KalaKalaPhiziki
@@ -988,7 +990,8 @@ Friend Class FrmSelectRahgiri
                             aSanadHaRow.KalaSN = .get_TextMatrix(I, .get_ColIndex("KalaSN"))
                             aSanadHaRow.KalaPhizikiSN = .get_TextMatrix(I, .get_ColIndex("KalaPhizikiSN"))
 
-                            If EnumTarakoneshSN.RESIDE_48_BARGASHTE_AVALIEH_AZ_PAYEKAR = SanadRow.Item("tarakoneshsn") Then
+                            If (EnumTarakoneshSN.RESIDE_48_BARGASHTE_AVALIEH_AZ_PAYEKAR = SanadRow.Item("tarakoneshsn") Or
+                                   EnumTarakoneshSN.RESIDE_17_BARGASHTE_BASTEBANDI_AZ_PAYEKAR = SanadRow.Item("tarakoneshsn")) Then  ''Bagheri (HB)_14030910 _Add Tarakonesh 17 In Rahgiri
                                 aSanadHaRow.MeghdareVaredeh = .get_TextMatrix(I, .get_ColIndex("Meghdar"))
                                 aSanadHaRow.MeghdareSadereh = 0
                             Else
