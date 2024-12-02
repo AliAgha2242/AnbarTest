@@ -5614,11 +5614,10 @@ Friend Class FrmSanad
                 If IsVahedeTejariUseFodarkhastonSanad Then
                     With .Add("RezSN1->fovw_Darkhast_abSanad.{DarkhastDS} As RezSN1", DcbForooshDarkhast, EnumFieldOptions.foHidden)
                         .Caption = "شماره درخواست فروش"
-                        DcbForooshDarkhast.LateBinding = True
-                        .ComboWhereCondition = "fovw_Darkhast_abSanad.DarkhastSN In (Select DarkhastSN from fovw_DarkhastHamlMostaghim)"
-                        .RefreshCombo()
+                        'DcbForooshDarkhast.LateBinding = True
+                        '.ComboWhereCondition = "fovw_Darkhast_abSanad.DarkhastSN In (Select DarkhastSN from fovw_DarkhastHamlMostaghim)"
+                        '.RefreshCombo()
                     End With
-
                 End If
 
                 With .Add("RezSN2->{paDaftarforoosh.DaftarForooshDS } As RezSN2", dbcRezSN2, If(ShowDaftarForoosh, EnumFieldOptions.foDefault, EnumFieldOptions.foHidden))
