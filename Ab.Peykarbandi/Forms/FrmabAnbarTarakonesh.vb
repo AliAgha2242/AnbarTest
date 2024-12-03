@@ -55,7 +55,7 @@ Friend Class FrmAnbarTarakonesh
     Public ToolTip1 As System.Windows.Forms.ToolTip
     Public WithEvents picDetDet1 As System.Windows.Forms.Panel
 
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Tab2.SuspendLayout()
         Me.Tabp2.SuspendLayout()
@@ -136,7 +136,7 @@ Friend Class FrmAnbarTarakonesh
             DefInstance = m_vb6FormDefInstance
         End Get
         Set(value As FrmAnbarTarakonesh)
-            m_vb6FormDefInstance = Value
+            m_vb6FormDefInstance = value
         End Set
     End Property
 
@@ -394,7 +394,13 @@ Friend Class FrmAnbarTarakonesh
 
                 End With
 
-                .Add("RezSA", , EnumFieldOptions.foHidden)
+                With .Add("RezSA", "CheckBox", EnumFieldOptions.foDefault)
+                    .Caption = cn.FieldCaption("abAnbarTarakonesh.RezSA")
+                    .DefaultValue = 1
+                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
+                End With
+                '.Add("RezSA", , EnumFieldOptions.foHidden)
+
                 .Add("RezSB", , EnumFieldOptions.foHidden)
                 With .Add("UserID_Name", "TextBox", EnumFieldOptions.foHidden)
                     .DefaultValue = gSM.UserID_Name
