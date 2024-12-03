@@ -5615,7 +5615,7 @@ Friend Class FrmSanad
                     With .Add("RezSN1->fovw_Darkhast_abSanad.{DarkhastDS} As RezSN1", DcbForooshDarkhast, EnumFieldOptions.foHidden)
                         .Caption = "شماره درخواست فروش"
                         'DcbForooshDarkhast.LateBinding = True
-                        .RefreshCombo()
+                        '.RefreshCombo()
                     End With
                 End If
 
