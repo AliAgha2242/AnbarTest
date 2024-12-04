@@ -5614,8 +5614,6 @@ Friend Class FrmSanad
                 If IsVahedeTejariUseFodarkhastonSanad Then
                     With .Add("RezSN1->fovw_Darkhast_abSanad.{DarkhastDS} As RezSN1", DcbForooshDarkhast, EnumFieldOptions.foHidden)
                         .Caption = "شماره درخواست فروش"
-                        'DcbForooshDarkhast.LateBinding = True
-                        '.RefreshCombo()
                     End With
                 End If
 
@@ -8106,5 +8104,12 @@ Friend Class FrmSanad
                 End If
             End If
         End If
+    End Sub
+
+    Private Sub DcbForooshDarkhast_GotFocus(sender As Object, e As EventArgs) Handles DcbForooshDarkhast.GotFocus
+        If DVabSanad.Fields("RezSN1") IsNot Nothing Then
+            DVabSanad.Fields("RezSN1").RefreshCombo()
+        End If
+
     End Sub
 End Class
