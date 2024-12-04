@@ -388,10 +388,9 @@ Friend Class FrmAnbarTarakonesh
 
                 End With
                 With .Add("RezDD", "CheckBox")
-                    .Caption = "الزام انتخاب درخواست"
+                    .Caption = cn.FieldCaption("abAnbarTarakonesh.RezDD")
                     .DefaultValue = 1
                     .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
-
                 End With
                 '''''''
                 With .Add("RezSA", "CheckBox", EnumFieldOptions.foDefault)
