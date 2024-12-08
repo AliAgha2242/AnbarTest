@@ -408,6 +408,9 @@
     <Compile Include="Sanad\Forms\FrmabSanad.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Sanad\Forms\FrmTakhsisMahsolOnNewIrcAndGtin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Sanad\Forms\FrmabSanadBarcodeReader.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -512,6 +515,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sanad\Forms\FrmabSanad.resX">
       <DependentUpon>FrmabSanad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sanad\Forms\FrmTakhsisMahsolOnNewIrcAndGtin.resx">
+      <DependentUpon>FrmTakhsisMahsolOnNewIrcAndGtin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sanad\Forms\FrmabSanadBarcodeReader.resx">
       <DependentUpon>FrmabSanadBarcodeReader.vb</DependentUpon>
