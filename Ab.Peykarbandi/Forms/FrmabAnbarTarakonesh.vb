@@ -395,7 +395,7 @@ Friend Class FrmAnbarTarakonesh
                 '''''''
                 With .Add("RezSA", "CheckBox", EnumFieldOptions.foDefault)
                     .Caption = cn.FieldCaption("abAnbarTarakonesh.RezSA")
-                    .DefaultValue = 1
+                    .DefaultValue = 0
                     .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
                 End With
                 '.Add("RezSA", , EnumFieldOptions.foHidden)
