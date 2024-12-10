@@ -789,6 +789,7 @@ Public Class FrmabSanadBarcodeReader
             colf.HeaderAlignment = TextAlignment.Center
             colf.TextAlignment = TextAlignment.Center
         Next
+        'fghdbfhbffg
 
 
         'Dim CAppSet As Configuration.CAppSetting = New Configuration.CAppSetting(gVahedeTejariSN, gSM.ApplicationID)
