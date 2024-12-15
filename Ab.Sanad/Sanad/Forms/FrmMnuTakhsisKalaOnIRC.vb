@@ -563,7 +563,8 @@ Public Class FrmMnuTakhsisKalaOnIRC
     End Sub
 
     Dim abRule As New ClsDataAccessRule
-    Dim DSCatalogue As New DataSet
+    Dim DSCatalogue As New DataView
+
     Dim DvSourceKala As DataView
     Dim DvSourceDarkhast As DataView
     Dim DvSourceDarkhastHa As DataView
@@ -635,32 +636,32 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Call BtnRefreshData_Click(sender, e)
 
 
-        DvSourceKala =
-                     cn.ExecuteQuery("select  Distinct Top 100 Percent paKalaTamin.VahedeTejariSN TaminVahedeTejariSN,VahedeTejariNo TaminVahedeTejariNo,VahedeTejariDs TaminVahedeTejariDs,  " &
-                    "paKala.KalaSN  ,paKala.KalaNo, Case when isnull(KalaStatus,0)<>1 Then '<غیر فعال>' Else '' End + KalaDs KalaDS, Azmayesh GenericCodeMap,KalaStatus, " &
-                    "(Select Top 1 TedadAjza  from paVahedeSanjeshKala Where KalaSN=paKala.KalaSN And  VahedeSanjeshSN=9.935 And Pishfarz=1) TedadDarKarton, " &
-                    "(Select Top 1 TedadAjza  from paVahedeSanjeshKala Where KalaSN=paKala.KalaSN And  VahedeSanjeshSN=10.935 ) TedadDarBasteh " &
-                    "from  paKalaTamin Join paVahedeTejari Tamin On Tamin.VahedeTejariSN=paKalaTamin.VahedeTejariSN " &
-                    "Join paKala on pakala.KalaSN=paKalaTamin.KalaSN " &
-                    "Where len(isnull(paKala.IRC,''))>10 And len(isnull(paKala.GTIN,''))>10  And Tamin.NoeVahedeTejariSN in (14.935,16.935) Order by paKalaTamin.VahedeTejariSN Desc")
+        'DvSourceKala =
+        '             cn.ExecuteQuery("select  Distinct Top 100 Percent paKalaTamin.VahedeTejariSN TaminVahedeTejariSN,VahedeTejariNo TaminVahedeTejariNo,VahedeTejariDs TaminVahedeTejariDs,  " &
+        '            "paKala.KalaSN  ,paKala.KalaNo, Case when isnull(KalaStatus,0)<>1 Then '<غیر فعال>' Else '' End + KalaDs KalaDS, Azmayesh GenericCodeMap,KalaStatus, " &
+        '            "(Select Top 1 TedadAjza  from paVahedeSanjeshKala Where KalaSN=paKala.KalaSN And  VahedeSanjeshSN=9.935 And Pishfarz=1) TedadDarKarton, " &
+        '            "(Select Top 1 TedadAjza  from paVahedeSanjeshKala Where KalaSN=paKala.KalaSN And  VahedeSanjeshSN=10.935 ) TedadDarBasteh " &
+        '            "from  paKalaTamin Join paVahedeTejari Tamin On Tamin.VahedeTejariSN=paKalaTamin.VahedeTejariSN " &
+        '            "Join paKala on pakala.KalaSN=paKalaTamin.KalaSN " &
+        '            "Where len(isnull(paKala.IRC,''))>10 And len(isnull(paKala.GTIN,''))>10  And Tamin.NoeVahedeTejariSN in (14.935,16.935) Order by paKalaTamin.VahedeTejariSN Desc")
 
-        If gVahedeTejariSN <> 44.935 Then
-            ChkGetLastData.Visible = True
-            Dim dvDaftarForoosh As DataView = cn.ExecuteQuery("Select DaftarForooshSN,DaftarForooshDS from paDaftarForoosh where VahedeTejariSN=" & gVahedeTejariSN.ToString)
-            With GridBarcodeTajmie.RootTable.Columns.Item("DaftarForooshSN")
-                .HasValueList = True
-                .ValueList.PopulateValueList(dvDaftarForoosh, "DaftarForooshSN", "DaftarForooshDS")
-            End With
-        Else
-            GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDarkhast").Visible = False
-            GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisFactor").Visible = False
-            GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDaftarForoosh").Visible = False
-            GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisSanad").Visible = False
-            ChkGetLastData.Visible = True
-        End If
+        'If gVahedeTejariSN <> 44.935 Then
+        '    ChkGetLastData.Visible = True
+        '    Dim dvDaftarForoosh As DataView = cn.ExecuteQuery("Select DaftarForooshSN,DaftarForooshDS from paDaftarForoosh where VahedeTejariSN=" & gVahedeTejariSN.ToString)
+        '    With GridBarcodeTajmie.RootTable.Columns.Item("DaftarForooshSN")
+        '        .HasValueList = True
+        '        .ValueList.PopulateValueList(dvDaftarForoosh, "DaftarForooshSN", "DaftarForooshDS")
+        '    End With
+        'Else
+        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDarkhast").Visible = False
+        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisFactor").Visible = False
+        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDaftarForoosh").Visible = False
+        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisSanad").Visible = False
+        '    ChkGetLastData.Visible = True
+        'End If
 
         Timer1.Enabled = True
-        Call SyncCatalogueDataToGBID()
+        'Call SyncCatalogueDataToGBID()
 
 
     End Sub
@@ -711,21 +712,129 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
 
                 Try
-                    DSCatalogue = abRule.GetBarcodeScannerData(gVahedeTejariSN, gAnbarSN, Fdate, Tdate, CInt(0), cn)
+                    'DSCatalogue = abRule.GetBarcodeScannerData(gVahedeTejariSN, gAnbarSN, Fdate, Tdate, CInt(0), cn)
+                    GridBarcodeTajmie.ClearStructure()
+                    Dim Test As DataView = cn.ExecuteQuery("drop table if exists #KalaIRCGTIN
+                                                   drop table if exists #ForceInsertUIDforKala
+                                                   drop table if exists #TempCatalogue
+                                                   Select  * into #KalaIRCGTIN from (
+                                                   Select distinct 
+                                                   cast(kalasn as varchar)+isnull(IRC,'') +isnull(GTIN,'') KalaIdentifier,
+                                                   paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
+                                                   GTIN,IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
+                                                   from paVw_paKalaTaminFull 
+                                                   Union 
+                                                   Select distinct 
+                                                   cast(paVw_paKalaTaminFull.kalasn as varchar)+isnull(NewIRC,'') +isnull(NewGTIN,'') KalaIdentifier,
+                                                   paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
+                                                    NewGTIN GTIN,NewIRC IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
+                                                   from paVw_paKalaTaminFull 
+                                                    join abProductCatalogueKalaIRC on abProductCatalogueKalaIRC.KalaSN=paVw_paKalaTaminFull.KalaSN 
+                                                    )p
 
-                    If DSCatalogue Is Nothing Then
-                        CSystem.MsgBox("خطا در دریافت اطلاعات", MsgBoxStyle.Critical, "خطا!")
-                        Exit Sub
-                    Else
-                        GridBarcodeMaster.DataSource = DSCatalogue.Tables(0)
-                        GridBarcodeDetail.DataSource = DSCatalogue.Tables(1)
-                        Call FillTakhsisFieldsByLastValuesBeforeRefresh()
+                                                   Select Catalogue.ProductCatalogueSN
+                                                   ,UID
+                                                   ,ProductCatalogueDetailSN
+                                                   ,Amount
+                                                   Into #ForceInsertUIDforKala
+                                                   from abProductCatalogue Catalogue
+                                                   Join #KalaIRCGTIN on #KalaIRCGTIN.GTIN=Catalogue.GTIN and #KalaIRCGTIN.IRC=Catalogue.IRC
+                                                   Join abKalaParameter on abKalaParameter.KalaSN=#KalaIRCGTIN.KalaSN
+                                                   Join abProductCatalogueDetail on abProductCatalogueDetail.ProductCatalogueSN=Catalogue.ProductCatalogueSN
+                                                   where isnull(IsUID_UsedInSanad,0)=1 And ScanResultNo=0 And  Status<>3 
+                                                   
+                                                   
+                                                   select * from (
+                                                    Select  Distinct
+                                                   ProductCatalogueSN
+                                                   ,RegisterNumber
+                                                   ,PersianProductName
+                                                   ,EnglishProductName
+                                                   ,GenericCode
+                                                   ,UID
+                                                   ,abProductCatalogue.GTIN
+                                                   ,abProductCatalogue.IRC
+                                                   ,CatalogueInsertDate
+                                                   ,DeviceRegisterTime
+                                                   ,convert(int,
+                                                     Case 
+                                                   	  When ISNULL(cte_GTIN.GTIN,'')='' And ISNULL(cte_IRC.IRC,'')='' Then 1
+                                                         when ISNULL(cte_IRC.GTIN,'')<>abProductCatalogue.GTIN And cte_IRC.IRC=abProductCatalogue.IRC Then 2
+                                                   	  When ISNULL(cte_GTIN.IRC,'')<>abProductCatalogue.IRC And cte_GTIN.GTIN=abProductCatalogue.GTIN Then 3 
+                                                   	  Else Null End) MoghayeratNo 
+                                                   ,Case 
+                                                   	  When ISNULL(cte_GTIN.GTIN,'')='' And ISNULL(cte_IRC.IRC,'')='' Then 'عدم تعریف محصول در سیستم مپ'
+                                                   	  when ISNULL(cte_IRC.GTIN,'')<>abProductCatalogue.GTIN And cte_IRC.IRC=abProductCatalogue.IRC Then 'مغایرت GTIN'
+                                                   	  When ISNULL(cte_GTIN.IRC,'')<>abProductCatalogue.IRC And cte_GTIN.GTIN=abProductCatalogue.GTIN Then 'مغایرت IRC' 
+                                                   	  Else Null End Moghayerat 
+                                                   from abProductCatalogue 
+                                                   Left Join #KalaIRCGTIN  cte_GTIN on cte_GTIN.GTIN=abProductCatalogue.GTIN 
+                                                   And  cte_GTIN.KalaIdentifier in  (
+                                                   						Select Top 1  cast(#KalaIRCGTIN.kalasn as varchar)+isnull(#KalaIRCGTIN.IRC,'') +isnull(#KalaIRCGTIN.GTIN,'') 
+                                                   						from #KalaIRCGTIN where GTIN=abProductCatalogue.GTIN 
+                                                   						Order by 
+                                                   						Case When IRC=abProductCatalogue.IRC Then 1 Else 0 End Desc,
+                                                   						KalaStatus Desc,
+                                                   						Case When isnull(Azmayesh,'')=isnull(abProductCatalogue.GenericCode,' ') Then 1 Else 0 End Desc,
+                                                   						Case When TaminVahedeTejariDs=abProductCatalogue.LicenseOwner Then 1 Else 0 End Desc,
+                                                   						Case When KalaDS=abProductCatalogue.PersianProductName Then 1 Else 0 End Desc,
+                                                   						Case When isnull(KalaLatinDs,'')=abProductCatalogue.EnglishProductName Then 1 Else 0 End Desc,
+                                                   						Case When isnull(KalaLatinDs,'')=abProductCatalogue.GenericName Then 1 Else 0 End Desc,
+                                                   						Case When isnull(KalaBrandLatinDS,'')=abProductCatalogue.EnglishProductName Then 1 Else 0 End Desc,
+                                                   						Case When isnull(KalaBrandLatinDS,'')=abProductCatalogue.GenericName Then 1 Else 0 End Desc,
+                                                   						KalaSN Desc
+                                                   						)
+                                                   Left Join #KalaIRCGTIN cte_IRC on cte_IRC.IRC=abProductCatalogue.IRC 
+                                                   And  cte_IRC.KalaIdentifier in (
+                                                   						Select Top 1  cast(#KalaIRCGTIN.kalasn as varchar)+isnull(#KalaIRCGTIN.IRC,'') +isnull(#KalaIRCGTIN.GTIN,'') 
+                                                   						from #KalaIRCGTIN where IRC=abProductCatalogue.IRC 
+                                                   						Order by 
+                                                   						Case When GTIN=abProductCatalogue.GTIN Then 1 Else 0 End Desc,
+                                                   						KalaStatus Desc,
+                                                   						Case When isnull(Azmayesh,'')=isnull(abProductCatalogue.GenericCode,' ') Then 1 Else 0 End Desc,
+                                                   						Case When TaminVahedeTejariDs=abProductCatalogue.LicenseOwner Then 1 Else 0 End Desc,
+                                                   						Case When KalaDS=abProductCatalogue.PersianProductName Then 1 Else 0 End Desc,
+                                                   						Case When isnull(KalaLatinDs,'')=abProductCatalogue.EnglishProductName Then 1 Else 0 End Desc,
+                                                   						Case When isnull(KalaLatinDs,'')=abProductCatalogue.GenericName Then 1 Else 0 End Desc,
+                                                   						Case When isnull(KalaBrandLatinDS,'')=abProductCatalogue.EnglishProductName Then 1 Else 0 End Desc,
+                                                   						Case When isnull(KalaBrandLatinDS,'')=abProductCatalogue.GenericName Then 1 Else 0 End Desc,
+                                                   						KalaSN Desc
+                                                   						)
+                                                   Where 1=1
+                                                   and abProductCatalogue.VahedeTejariSN=44.935
+                                                   And isnull(abProductCatalogue.ResInt1,1)<>50
+                                                   And abProductCatalogue.TransferToDbDate Between 14030101 And 14030830
+                                                   ) as T
+                                                   Where T.MoghayeratNo in (1,2,3)")
+                    DSCatalogue = Test
 
-                        GridBarcodeTajmie.DataSource = DSCatalogue.Tables(2)
+                    'If DSCatalogue Is Nothing Then
+                    '    CSystem.MsgBox("خطا در دریافت اطلاعات", MsgBoxStyle.Critical, "خطا!")
+                    '    Exit Sub
+                    'Else
+                    '    'GridBarcodeMaster.DataSource = DSCatalogue.ToTable()
+                    '    'GridBarcodeDetail.DataSource = DSCatalogue.ToTable()
+                    '    'Call FillTakhsisFieldsByLastValuesBeforeRefresh()
+
+                    '    GridBarcodeTajmie.DataSource = DSCatalogue
+                    '    GridBarcodeTajmie.Refresh()
+                    '    GridBarcodeTajmie.RetrieveStructure()
+
+                    '    GridBarcodeTajmie.AutoSizeColumns()
+
+                    'End If
+                    If Not DSCatalogue Is Nothing Then
+                        'GridBarcodeMaster.DataSource = DSCatalogue.ToTable()
+                        'GridBarcodeDetail.DataSource = DSCatalogue.ToTable()
+                        'Call FillTakhsisFieldsByLastValuesBeforeRefresh()
+
+                        GridBarcodeTajmie.DataSource = DSCatalogue
+                        GridBarcodeTajmie.Refresh()
+                        GridBarcodeTajmie.RetrieveStructure()
 
                         GridBarcodeTajmie.AutoSizeColumns()
-                        GridBarcodeDetail.AutoSizeColumns()
-                        GridBarcodeMaster.AutoSizeColumns()
+                    Else
+                        Exit Sub
 
                     End If
                 Catch ex As Exception
@@ -744,7 +853,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
 
                 ''تنظیمات با توجه به تراکنش های دریافتی 
-                Dim tblTarakonesh As DataView = New DataView(DSCatalogue.Tables(2).Copy, "Status=1", "", DataViewRowState.CurrentRows).ToTable(True, "CatalogueTarakoneshSN").DefaultView
+                Dim tblTarakonesh As DataView = New DataView(DSCatalogue.ToTable.Copy(), "Status=1", "", DataViewRowState.CurrentRows).ToTable(True, "CatalogueTarakoneshSN").DefaultView
 
                 If tblTarakonesh.Count > 0 Then
 
@@ -773,7 +882,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         For Each row As DataRowView In tblTarakonesh
                             TarakoneshSNStr = row("CatalogueTarakoneshSN").ToString
                             KalaSNStr = ""
-                            Dim tblKala As DataTable = New DataView(DSCatalogue.Tables(2).Copy, "Status=1 And CatalogueTarakoneshSN=" & row("CatalogueTarakoneshSN").ToString, "CatalogueTarakoneshSN", DataViewRowState.CurrentRows).ToTable(True, {"SimilarKalaByIRCGTIN"})
+                            Dim tblKala As DataTable = New DataView(DSCatalogue.ToTable.Copy(), "Status=1 And CatalogueTarakoneshSN=" & row("CatalogueTarakoneshSN").ToString, "CatalogueTarakoneshSN", DataViewRowState.CurrentRows).ToTable(True, {"SimilarKalaByIRCGTIN"})
                             For Each rowKala As DataRow In tblKala.Rows
                                 KalaSNStr += rowKala("SimilarKalaByIRCGTIN").ToString + ","
                             Next
@@ -852,18 +961,18 @@ Public Class FrmMnuTakhsisKalaOnIRC
                 Else
                     If CType(GridBarcodeMaster.DataSource, DataTable).Rows.Count > 0 Then
                         Dim DtSource As DataTable = CType(GridBarcodeMaster.DataSource, DataTable)
-                        DtSource.Merge(DSCatalogue.Tables(0))
+                        DtSource.Merge(DSCatalogue.ToTable())
                         GridBarcodeMaster.DataSource = DtSource
                     Else
-                        GridBarcodeMaster.DataSource = DSCatalogue.Tables(0)
+                        GridBarcodeMaster.DataSource = DSCatalogue.ToTable()
                     End If
 
                     If CType(GridBarcodeDetail.DataSource, DataTable).Rows.Count > 0 Then
                         Dim DtSource As DataTable = CType(GridBarcodeDetail.DataSource, DataTable)
-                        DtSource.Merge(DSCatalogue.Tables(1))
+                        DtSource.Merge(DSCatalogue.ToTable())
                         GridBarcodeDetail.DataSource = DtSource
                     Else
-                        GridBarcodeDetail.DataSource = DSCatalogue.Tables(1)
+                        GridBarcodeDetail.DataSource = DSCatalogue.ToTable()
                     End If
 
                     'GridBarcodeRptKasriEzafi.DataSource = DSCatalogue.Tables(2)
@@ -1694,7 +1803,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
             DtTableBeforeChange = CType(GridBarcodeTajmie.DataSource, DataTable).Copy
 
             If DtTableBeforeChange.Rows.Count > 0 Then
-                For Each NowTableRow As DataRow In DSCatalogue.Tables(2).Rows
+                For Each NowTableRow As DataRow In DSCatalogue.ToTable().Rows
                     If NowTableRow("Status") = 1 Then
                         For Each LastTablerow As DataRow In DtTableBeforeChange.Rows
 
