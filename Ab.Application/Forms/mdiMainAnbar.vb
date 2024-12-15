@@ -886,7 +886,7 @@ Public Class mdiMainAnbar
         Me.MnuTakhsisKalaOnIRC.AppName = "MnuTakhsisKalaOnIRC"
         Me.MnuTakhsisKalaOnIRC.Name = "MnuTakhsisKalaOnIRC"
         Me.MnuTakhsisKalaOnIRC.Size = New System.Drawing.Size(32, 19)
-        Me.MnuTakhsisKalaOnIRC.Text = "تخصیص کالا به IRC جدید"
+        Me.MnuTakhsisKalaOnIRC.Text = "تخصیص کالا به بارکد "
 
         '
         'mnuSep112
