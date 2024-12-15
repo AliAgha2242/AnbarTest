@@ -1,9 +1,4 @@
-﻿' OK
-'Author ::نوشین علیپور و علی اصغر توکلی
-'CreateDate :: 14030917
-'ModifiedDate::
-'Description:: تخصیص کالا به IRC جدید
-'System ::انبار
+﻿
 
 Imports Janus.Windows.GridEX
 Imports Anbar.BRL
@@ -21,6 +16,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPageAggregateScan As TabPage
     Friend WithEvents SplitContainer1 As SplitContainer
+    Friend WithEvents TabPageScanRecords As TabPage
     Friend WithEvents Panel1 As Panel
     Friend WithEvents GridBarcodeMaster As Janus.Windows.GridEX.GridEX
     Friend WithEvents Panel2 As Panel
@@ -118,6 +114,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.GridBarcodeMaster = New Janus.Windows.GridEX.GridEX()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TabControl3 = New System.Windows.Forms.TabControl()
+        Me.TabPageScanRecords = New System.Windows.Forms.TabPage()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.GridBarcodeDetail = New Janus.Windows.GridEX.GridEX()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
@@ -303,6 +300,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPageAggregateScan)
+        Me.TabControl1.Controls.Add(Me.TabPageScanRecords)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.Location = New System.Drawing.Point(0, 65)
         Me.TabControl1.Name = "TabControl1"
@@ -349,6 +347,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         '
         'GroupBox1
         '
+
         Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.GroupBox1.Controls.Add(Me.RdbUseColumnSets)
@@ -358,6 +357,17 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.GroupBox1.Size = New System.Drawing.Size(371, 34)
         Me.GroupBox1.TabIndex = 219
         Me.GroupBox1.TabStop = False
+        '
+        'TabPageScanRecords
+        '
+        Me.TabPageScanRecords.Controls.Add(Me.SplitContainer1)
+        Me.TabPageScanRecords.Location = New System.Drawing.Point(4, 23)
+        Me.TabPageScanRecords.Name = "TabPageScanRecords"
+        Me.TabPageScanRecords.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPageScanRecords.Size = New System.Drawing.Size(1360, 542)
+        Me.TabPageScanRecords.TabIndex = 1
+        Me.TabPageScanRecords.Text = "ثبت کالا برای بارکد های جدید"
+        Me.TabPageScanRecords.UseVisualStyleBackColor = True
         '
         'RdbUseColumnSets
         '
@@ -541,6 +551,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.GrpDate.ResumeLayout(False)
         Me.GrpDate.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
+        Me.TabPageScanRecords.SuspendLayout()
         Me.TabPageAggregateScan.ResumeLayout(False)
         Me.TabPageAggregateScan.PerformLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -553,6 +564,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.SplitContainer1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.TabPageScanRecords.ResumeLayout(False)
         CType(Me.GridBarcodeMaster, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.TabControl3.ResumeLayout(False)
@@ -807,7 +819,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
                                                    ) as T
                                                    Where T.MoghayeratNo in (1,2,3)")
                     DSCatalogue = Test
-
                     'If DSCatalogue Is Nothing Then
                     '    CSystem.MsgBox("خطا در دریافت اطلاعات", MsgBoxStyle.Critical, "خطا!")
                     '    Exit Sub
@@ -833,6 +844,51 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         GridBarcodeTajmie.RetrieveStructure()
 
                         GridBarcodeTajmie.AutoSizeColumns()
+
+
+
+                        GridBarcodeMaster.DataSource = DSCatalogue
+                        GridBarcodeMaster.Refresh()
+                        GridBarcodeMaster.RetrieveStructure()
+
+                        GridBarcodeMaster.AutoSizeColumns()
+
+                        Dim Detail As DataView = cn.ExecuteQuery("drop table if exists #KalaIRCGTIN
+                                                      Select  * into #KalaIRCGTIN from (
+                                                      Select distinct 
+                                                      cast(kalasn as varchar)+isnull(IRC,'') +isnull(GTIN,'') KalaIdentifier,
+                                                      paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
+                                                      GTIN,IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
+                                                      from paVw_paKalaTaminFull 
+                                                      Union 
+                                                      Select distinct 
+                                                      cast(paVw_paKalaTaminFull.kalasn as varchar)+isnull(NewIRC,'') +isnull(NewGTIN,'') KalaIdentifier,
+                                                      paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
+                                                       NewGTIN GTIN,NewIRC IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
+                                                      from paVw_paKalaTaminFull 
+                                                       join abProductCatalogueKalaIRC on abProductCatalogueKalaIRC.KalaSN=paVw_paKalaTaminFull.KalaSN 
+                                                       )p
+                                                      
+                                                      
+                                                      
+                                                      ;With Cte
+                                                      AS 
+                                                      (
+                                                      select KalaSN,kalaDs,KalaLatinDs,TaminVahedeTejariDs,Cte_Kala.GTIN,Cte_Kala.IRC 
+                                                      from #KalaIRCGTIN cte_Kala join abProductCatalogue abp on cte_Kala.IRC = abp.IRC 
+                                                      where ProductCatalogueSN = 33156.301
+                                                      union 
+                                                      select KalaSN,kalaDs,KalaLatinDs,TaminVahedeTejariDs,Cte_Kala.GTIN,Cte_Kala.IRC 
+                                                      from #KalaIRCGTIN cte_Kala Join abProductCatalogue abp on cte_Kala.GTIN = abp.GTIN
+                                                      where ProductCatalogueSN = 33156.301
+                                                      )
+                                                      select * from Cte
+                                                      ")
+
+                        GridBarcodeDetail.DataSource = Detail
+                        GridBarcodeDetail.Refresh()
+                        GridBarcodeDetail.RetrieveStructure()
+
                     Else
                         Exit Sub
 
