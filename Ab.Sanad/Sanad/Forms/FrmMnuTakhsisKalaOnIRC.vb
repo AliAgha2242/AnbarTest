@@ -21,7 +21,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
     Friend WithEvents GridBarcodeMaster As Janus.Windows.GridEX.GridEX
     Friend WithEvents Panel2 As Panel
     Friend WithEvents TabControl3 As TabControl
-    Friend WithEvents TabPage4 As TabPage
+    'Friend WithEvents TabPage4 As TabPage
     Friend WithEvents GridBarcodeDetail As Janus.Windows.GridEX.GridEX
     'Friend WithEvents GridBarcodeTajmie As Janus.Windows.GridEX.GridEX
     Friend WithEvents Label3 As Label
@@ -43,6 +43,12 @@ Public Class FrmMnuTakhsisKalaOnIRC
     'Friend WithEvents LinkLabelEbtalSabt As LinkLabel
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Timer1 As Timer
+
+    '------------------------------------------------------------------------------
+    Friend WithEvents MyPanel As Panel
+    Friend WithEvents MyPanelCommand As Panel
+    Friend WithEvents MyPanelNav As Panel
+
 
     Public Sub New()
         MyBase.New()
@@ -82,10 +88,12 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        'Dim GridBarcodeTajmie_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMnuTakhsisKalaOnIRC))
         Dim GridBarcodeMaster_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMnuTakhsisKalaOnIRC))
         Dim GridBarcodeDetail_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Me.MyPanelCommand = New System.Windows.Forms.Panel()
+        Me.MyPanelNav = New System.Windows.Forms.Panel()
+        Me.MyPanel = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.ChkTikWithoutMoghayerat = New System.Windows.Forms.CheckBox()
         Me.ChkGetLastData = New System.Windows.Forms.CheckBox()
@@ -100,32 +108,24 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.LinkLoadLayout = New System.Windows.Forms.LinkLabel()
         Me.LinkSaveLayout = New System.Windows.Forms.LinkLabel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        'Me.TabPageAggregateScan = New System.Windows.Forms.TabPage()
+        Me.TabPageScanRecords = New System.Windows.Forms.TabPage()
+        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.GridBarcodeMaster = New Janus.Windows.GridEX.GridEX()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.TabControl3 = New System.Windows.Forms.TabControl()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.RdbUseColumnSets = New System.Windows.Forms.RadioButton()
         Me.RdbUseColumns = New System.Windows.Forms.RadioButton()
-        'Me.GridBarcodeTajmie = New Janus.Windows.GridEX.GridEX()
-        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        'Me.LinkLabelEbtalSabt = New System.Windows.Forms.LinkLabel()
-        'Me.LinkRemoveFilter = New System.Windows.Forms.LinkLabel()
-        Me.GridBarcodeMaster = New Janus.Windows.GridEX.GridEX()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.TabControl3 = New System.Windows.Forms.TabControl()
-        Me.TabPageScanRecords = New System.Windows.Forms.TabPage()
-        Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.GridBarcodeDetail = New Janus.Windows.GridEX.GridEX()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel3.SuspendLayout()
         Me.GrpDate.SuspendLayout()
         Me.TabControl1.SuspendLayout()
-        'Me.TabPageAggregateScan.SuspendLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
-        'CType(Me.GridBarcodeTajmie, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPageScanRecords.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -133,10 +133,37 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.Panel1.SuspendLayout()
         CType(Me.GridBarcodeMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
-        Me.TabControl3.SuspendLayout()
-        Me.TabPage4.SuspendLayout()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         CType(Me.GridBarcodeDetail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'MyPanelCommand
+        '
+        Me.MyPanelCommand.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.MyPanelCommand.Location = New System.Drawing.Point(1138, 140)
+        Me.MyPanelCommand.Name = "MyPanelCommand"
+        Me.MyPanelCommand.Size = New System.Drawing.Size(214, 40)
+        Me.MyPanelCommand.TabIndex = 3
+        '
+        'MyPanelNav
+        '
+        Me.MyPanelNav.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.MyPanelNav.Location = New System.Drawing.Point(3, 140)
+        Me.MyPanelNav.Name = "MyPanelNav"
+        Me.MyPanelNav.Size = New System.Drawing.Size(214, 38)
+        Me.MyPanelNav.TabIndex = 2
+        '
+        'MyPanel
+        '
+        Me.MyPanel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.MyPanel.Location = New System.Drawing.Point(3, 4)
+        Me.MyPanel.MaximumSize = New System.Drawing.Size(1590, 275)
+        Me.MyPanel.Name = "MyPanel"
+        Me.MyPanel.Size = New System.Drawing.Size(1350, 153)
+        Me.MyPanel.TabIndex = 4
         '
         'Panel3
         '
@@ -299,7 +326,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
         '
         'TabControl1
         '
-        ' Me.TabControl1.Controls.Add(Me.TabPageAggregateScan)
         Me.TabControl1.Controls.Add(Me.TabPageScanRecords)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl1.Location = New System.Drawing.Point(0, 65)
@@ -308,55 +334,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(1368, 569)
         Me.TabControl1.TabIndex = 3
-        ''
-        ''TabPageAggregateScan
-        ''
-        'Me.TabPageAggregateScan.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        'Me.TabPageAggregateScan.Controls.Add(Me.LinkLoadLayout)
-        'Me.TabPageAggregateScan.Controls.Add(Me.NumericUpDown1)
-        'Me.TabPageAggregateScan.Controls.Add(Me.LinkSaveLayout)
-        'Me.TabPageAggregateScan.Controls.Add(Me.Label4)
-        'Me.TabPageAggregateScan.Controls.Add(Me.GroupBox1)
-        ''Me.TabPageAggregateScan.Controls.Add(Me.GridBarcodeTajmie)
-        'Me.TabPageAggregateScan.Location = New System.Drawing.Point(4, 23)
-        'Me.TabPageAggregateScan.Name = "TabPageAggregateScan"
-        'Me.TabPageAggregateScan.Padding = New System.Windows.Forms.Padding(3)
-        'Me.TabPageAggregateScan.Size = New System.Drawing.Size(1360, 542)
-        'Me.TabPageAggregateScan.TabIndex = 0
-        'Me.TabPageAggregateScan.Text = "تجمیع محصولات اسکن شده موفق(ثبت رسید انبار)"
-        '
-        'NumericUpDown1
-        '
-        Me.NumericUpDown1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.NumericUpDown1.Enabled = False
-        Me.NumericUpDown1.Location = New System.Drawing.Point(761, 9)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(46, 22)
-        Me.NumericUpDown1.TabIndex = 221
-        '
-        'Label4
-        '
-        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(813, 14)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(147, 14)
-        Me.Label4.TabIndex = 220
-        Me.Label4.Text = "قفل کردن ستون های اول : "
-        '
-        'GroupBox1
-        '
-
-        Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.GroupBox1.Controls.Add(Me.RdbUseColumnSets)
-        Me.GroupBox1.Controls.Add(Me.RdbUseColumns)
-        Me.GroupBox1.Location = New System.Drawing.Point(984, 1)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(371, 34)
-        Me.GroupBox1.TabIndex = 219
-        Me.GroupBox1.TabStop = False
         '
         'TabPageScanRecords
         '
@@ -368,50 +345,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.TabPageScanRecords.TabIndex = 1
         Me.TabPageScanRecords.Text = "تخصیص کالا به بارکد "
         Me.TabPageScanRecords.UseVisualStyleBackColor = True
-        '
-        'RdbUseColumnSets
-        '
-        Me.RdbUseColumnSets.AutoSize = True
-        Me.RdbUseColumnSets.Checked = True
-        Me.RdbUseColumnSets.Location = New System.Drawing.Point(180, 11)
-        Me.RdbUseColumnSets.Name = "RdbUseColumnSets"
-        Me.RdbUseColumnSets.Size = New System.Drawing.Size(185, 18)
-        Me.RdbUseColumnSets.TabIndex = 1
-        Me.RdbUseColumnSets.TabStop = True
-        Me.RdbUseColumnSets.Text = "نمایش بر اساس مجموعه ستون"
-        Me.RdbUseColumnSets.UseVisualStyleBackColor = True
-        '
-        'RdbUseColumns
-        '
-        Me.RdbUseColumns.AutoSize = True
-        Me.RdbUseColumns.Location = New System.Drawing.Point(22, 11)
-        Me.RdbUseColumns.Name = "RdbUseColumns"
-        Me.RdbUseColumns.Size = New System.Drawing.Size(141, 18)
-        Me.RdbUseColumns.TabIndex = 0
-        Me.RdbUseColumns.Text = "نمایش بر اساس ستون"
-        Me.RdbUseColumns.UseVisualStyleBackColor = True
-        ''
-        ''GridBarcodeTajmie
-        ''
-        'Me.GridBarcodeTajmie.AllowRemoveColumns = Janus.Windows.GridEX.InheritableBoolean.[True]
-        'Me.GridBarcodeTajmie.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-        '    Or System.Windows.Forms.AnchorStyles.Left) _
-        '    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        'GridBarcodeTajmie_DesignTimeLayout.LayoutString = resources.GetString("GridBarcodeTajmie_DesignTimeLayout.LayoutString")
-        'Me.GridBarcodeTajmie.DesignTimeLayout = GridBarcodeTajmie_DesignTimeLayout
-        'Me.GridBarcodeTajmie.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic
-        'Me.GridBarcodeTajmie.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown
-        'Me.GridBarcodeTajmie.FilterRowFormatStyle.BackColor = System.Drawing.SystemColors.Info
-        'Me.GridBarcodeTajmie.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        'Me.GridBarcodeTajmie.GroupByBoxVisible = False
-        'Me.GridBarcodeTajmie.Location = New System.Drawing.Point(3, 36)
-        'Me.GridBarcodeTajmie.Name = "GridBarcodeTajmie"
-        'Me.GridBarcodeTajmie.RecordNavigator = True
-        'Me.GridBarcodeTajmie.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.[True]
-        'Me.GridBarcodeTajmie.SelectedFormatStyle.BackColor = System.Drawing.Color.Bisque
-        'Me.GridBarcodeTajmie.Size = New System.Drawing.Size(1354, 503)
-        'Me.GridBarcodeTajmie.TabIndex = 15
-        'Me.GridBarcodeTajmie.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'SplitContainer1
         '
@@ -431,35 +364,19 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.SplitContainer1.Panel2.Controls.Add(Me.Panel2)
         Me.SplitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.SplitContainer1.Size = New System.Drawing.Size(1354, 536)
-        Me.SplitContainer1.SplitterDistance = 388
+        Me.SplitContainer1.SplitterDistance = 339
         Me.SplitContainer1.TabIndex = 2
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ControlLightLight
-        ' Me.Panel1.Controls.Add(Me.LinkLabelEbtalSabt)
-        Me.Panel1.Controls.Add(Me.LinkRemoveFilter)
         Me.Panel1.Controls.Add(Me.GridBarcodeMaster)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.MaximumSize = New System.Drawing.Size(1590, 800)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1354, 388)
+        Me.Panel1.Size = New System.Drawing.Size(1354, 339)
         Me.Panel1.TabIndex = 0
-        ''
-        ''LinkRemoveFilter
-        ''
-        'Me.LinkRemoveFilter.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        'Me.LinkRemoveFilter.AutoSize = True
-        'Me.LinkRemoveFilter.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        'Me.LinkRemoveFilter.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
-        'Me.LinkRemoveFilter.ForeColor = System.Drawing.SystemColors.Desktop
-        'Me.LinkRemoveFilter.LinkColor = System.Drawing.Color.Red
-        'Me.LinkRemoveFilter.Location = New System.Drawing.Point(1250, 9)
-        'Me.LinkRemoveFilter.Name = "LinkRemoveFilter"
-        'Me.LinkRemoveFilter.Size = New System.Drawing.Size(67, 14)
-        'Me.LinkRemoveFilter.TabIndex = 15
-        'Me.LinkRemoveFilter.TabStop = True
-        'Me.LinkRemoveFilter.Text = "حذف فیلتر"
         '
         'GridBarcodeMaster
         '
@@ -471,45 +388,92 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.GridBarcodeMaster.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.GridBarcodeMaster.GroupByBoxVisible = False
         Me.GridBarcodeMaster.Location = New System.Drawing.Point(0, 0)
+        Me.GridBarcodeMaster.MaximumSize = New System.Drawing.Size(0, 500)
         Me.GridBarcodeMaster.Name = "GridBarcodeMaster"
         Me.GridBarcodeMaster.RecordNavigator = True
         Me.GridBarcodeMaster.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.[True]
         Me.GridBarcodeMaster.SelectedFormatStyle.BackColor = System.Drawing.Color.Bisque
-        Me.GridBarcodeMaster.Size = New System.Drawing.Size(1354, 388)
+        Me.GridBarcodeMaster.Size = New System.Drawing.Size(1354, 339)
         Me.GridBarcodeMaster.TabIndex = 14
         Me.GridBarcodeMaster.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Panel2.Controls.Add(Me.MyPanelCommand)
+        Me.Panel2.Controls.Add(Me.MyPanelNav)
+        Me.Panel2.Controls.Add(Me.MyPanel)
         Me.Panel2.Controls.Add(Me.TabControl3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.MaximumSize = New System.Drawing.Size(1590, 600)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1354, 144)
+        Me.Panel2.Size = New System.Drawing.Size(1354, 193)
         Me.Panel2.TabIndex = 1
         '
         'TabControl3
         '
-        Me.TabControl3.Controls.Add(Me.TabPage4)
         Me.TabControl3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl3.Location = New System.Drawing.Point(0, 0)
         Me.TabControl3.Name = "TabControl3"
         Me.TabControl3.RightToLeftLayout = True
         Me.TabControl3.SelectedIndex = 0
-        Me.TabControl3.Size = New System.Drawing.Size(1354, 144)
+        Me.TabControl3.Size = New System.Drawing.Size(1354, 193)
         Me.TabControl3.TabIndex = 3
         '
-        'TabPage4
+        'NumericUpDown1
         '
-        Me.TabPage4.Controls.Add(Me.GridBarcodeDetail)
-        Me.TabPage4.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(1346, 118)
-        Me.TabPage4.TabIndex = 1
-        Me.TabPage4.Text = "کالاهای متصل شده به این بارکد"
-        Me.TabPage4.UseVisualStyleBackColor = True
+        Me.NumericUpDown1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.NumericUpDown1.Enabled = False
+        Me.NumericUpDown1.Location = New System.Drawing.Point(761, 9)
+        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.NumericUpDown1.Name = "NumericUpDown1"
+        Me.NumericUpDown1.Size = New System.Drawing.Size(46, 20)
+        Me.NumericUpDown1.TabIndex = 221
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(813, 14)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(147, 14)
+        Me.Label4.TabIndex = 220
+        Me.Label4.Text = "قفل کردن ستون های اول : "
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.GroupBox1.Controls.Add(Me.RdbUseColumnSets)
+        Me.GroupBox1.Controls.Add(Me.RdbUseColumns)
+        Me.GroupBox1.Location = New System.Drawing.Point(984, 1)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(371, 34)
+        Me.GroupBox1.TabIndex = 219
+        Me.GroupBox1.TabStop = False
+        '
+        'RdbUseColumnSets
+        '
+        Me.RdbUseColumnSets.AutoSize = True
+        Me.RdbUseColumnSets.Checked = True
+        Me.RdbUseColumnSets.Location = New System.Drawing.Point(180, 11)
+        Me.RdbUseColumnSets.Name = "RdbUseColumnSets"
+        Me.RdbUseColumnSets.Size = New System.Drawing.Size(158, 17)
+        Me.RdbUseColumnSets.TabIndex = 1
+        Me.RdbUseColumnSets.TabStop = True
+        Me.RdbUseColumnSets.Text = "نمایش بر اساس مجموعه ستون"
+        Me.RdbUseColumnSets.UseVisualStyleBackColor = True
+        '
+        'RdbUseColumns
+        '
+        Me.RdbUseColumns.AutoSize = True
+        Me.RdbUseColumns.Location = New System.Drawing.Point(22, 11)
+        Me.RdbUseColumns.Name = "RdbUseColumns"
+        Me.RdbUseColumns.Size = New System.Drawing.Size(120, 17)
+        Me.RdbUseColumns.TabIndex = 0
+        Me.RdbUseColumns.Text = "نمایش بر اساس ستون"
+        Me.RdbUseColumns.UseVisualStyleBackColor = True
         '
         'GridBarcodeDetail
         '
@@ -551,24 +515,17 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.GrpDate.ResumeLayout(False)
         Me.GrpDate.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
-        Me.TabPageScanRecords.SuspendLayout()
-        'Me.TabPageAggregateScan.ResumeLayout(False)
-        ' Me.TabPageAggregateScan.PerformLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        'CType(Me.GridBarcodeTajmie, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPageScanRecords.ResumeLayout(False)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        Me.TabPageScanRecords.ResumeLayout(False)
         CType(Me.GridBarcodeMaster, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
-        Me.TabControl3.ResumeLayout(False)
-        Me.TabPage4.ResumeLayout(False)
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         CType(Me.GridBarcodeDetail, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -591,7 +548,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
     Private Sub FrmMnuTakhsisKalaOnIRC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
+        CreateDetail()
         'Me.LinkRemoveFilter.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
         'Me.LinkLabelEbtalSabt.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
         Me.BtnRefreshData.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
@@ -1427,64 +1384,64 @@ Public Class FrmMnuTakhsisKalaOnIRC
         '        GridBarcodeDetail.Refresh()
         '    End If
         'End If
-        Dim ProductCatalogueSN As Decimal = CDec(GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value)
+        'Dim ProductCatalogueSN As Decimal = CDec(GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value)
 
-        GridBarcodeDetail.DataSource = cn.ExecuteQuery(String.Concat("drop table if exists #KalaIRCGTIN
-                                                                      Select  * into #KalaIRCGTIN from (
-                                                                      Select distinct 
-                                                                      cast(kalasn as varchar)+isnull(IRC,'') +isnull(GTIN,'') KalaIdentifier,
-                                                                      paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
-                                                                      GTIN,IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
-                                                                      from paVw_paKalaTaminFull 
-                                                                      Union 
-                                                                      Select distinct 
-                                                                      cast(paVw_paKalaTaminFull.kalasn as varchar)+isnull(NewIRC,'') +isnull(NewGTIN,'') KalaIdentifier,
-                                                                      paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
-                                                                       NewGTIN GTIN,NewIRC IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
-                                                                      from paVw_paKalaTaminFull 
-                                                                       join abProductCatalogueKalaIRC on abProductCatalogueKalaIRC.KalaSN=paVw_paKalaTaminFull.KalaSN 
-                                                                       )p
-                                                                      
-                                                                      Select *,
-                                                                      case kalaStatus when 1 then 'فعال'
-                                                                      Else 'غیر فعال'
-                                                                      End 'وضعیت'
-                                                                      From
-                                                                      (
-                                                                      select KalaSN,
-                                                                      kalaDs 'نام کالا',
-                                                                      KalaLatinDs 'نام لاتین کالا',
-                                                                      TaminVahedeTejariDs 'تامین کننده',
-                                                                      Cte_Kala.GTIN 'کد GTIN',
-                                                                      Cte_Kala.IRC 'کد IRC'
-                                                                      ,kalaStatus
-                                                                      from #KalaIRCGTIN cte_Kala join abProductCatalogue abp on cte_Kala.IRC = abp.IRC 
-                                                                      where ProductCatalogueSN = ", ProductCatalogueSN,
-                                                                      "union 
-                                                                      select KalaSN,kalaDs,KalaLatinDs,TaminVahedeTejariDs,Cte_Kala.GTIN,Cte_Kala.IRC
-                                                                      ,kalaStatus
-                                                                      from #KalaIRCGTIN cte_Kala Join abProductCatalogue abp on cte_Kala.GTIN = abp.GTIN
-                                                                      where ProductCatalogueSN = ", ProductCatalogueSN,
-                                                                      ") AS P
-                                                                      "))
-        Dim FormatStyle As GridEXFormatStyle = New GridEXFormatStyle()
-        FormatStyle.ForeColor = Color.White
-        FormatStyle.BackColor = Color.Orange
+        'GridBarcodeDetail.DataSource = cn.ExecuteQuery(String.Concat("drop table if exists #KalaIRCGTIN
+        '                                                              Select  * into #KalaIRCGTIN from (
+        '                                                              Select distinct 
+        '                                                              cast(kalasn as varchar)+isnull(IRC,'') +isnull(GTIN,'') KalaIdentifier,
+        '                                                              paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
+        '                                                              GTIN,IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
+        '                                                              from paVw_paKalaTaminFull 
+        '                                                              Union 
+        '                                                              Select distinct 
+        '                                                              cast(paVw_paKalaTaminFull.kalasn as varchar)+isnull(NewIRC,'') +isnull(NewGTIN,'') KalaIdentifier,
+        '                                                              paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
+        '                                                               NewGTIN GTIN,NewIRC IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
+        '                                                              from paVw_paKalaTaminFull 
+        '                                                               join abProductCatalogueKalaIRC on abProductCatalogueKalaIRC.KalaSN=paVw_paKalaTaminFull.KalaSN 
+        '                                                               )p
 
-
+        '                                                              Select *,
+        '                                                              case kalaStatus when 1 then 'فعال'
+        '                                                              Else 'غیر فعال'
+        '                                                              End 'وضعیت'
+        '                                                              From
+        '                                                              (
+        '                                                              select KalaSN,
+        '                                                              kalaDs 'نام کالا',
+        '                                                              KalaLatinDs 'نام لاتین کالا',
+        '                                                              TaminVahedeTejariDs 'تامین کننده',
+        '                                                              Cte_Kala.GTIN 'کد GTIN',
+        '                                                              Cte_Kala.IRC 'کد IRC'
+        '                                                              ,kalaStatus
+        '                                                              from #KalaIRCGTIN cte_Kala join abProductCatalogue abp on cte_Kala.IRC = abp.IRC 
+        '                                                              where ProductCatalogueSN = ", ProductCatalogueSN,
+        '                                                              "union 
+        '                                                              select KalaSN,kalaDs,KalaLatinDs,TaminVahedeTejariDs,Cte_Kala.GTIN,Cte_Kala.IRC
+        '                                                              ,kalaStatus
+        '                                                              from #KalaIRCGTIN cte_Kala Join abProductCatalogue abp on cte_Kala.GTIN = abp.GTIN
+        '                                                              where ProductCatalogueSN = ", ProductCatalogueSN,
+        '                                                              ") AS P
+        '                                                              "))
+        'Dim FormatStyle As GridEXFormatStyle = New GridEXFormatStyle()
+        'FormatStyle.ForeColor = Color.White
+        'FormatStyle.BackColor = Color.Orange
 
 
-        GridBarcodeDetail.RetrieveStructure()
-        GridBarcodeDetail.Refresh()
-
-        For Each item As Janus.Windows.GridEX.GridEXColumn In GridBarcodeDetail.RootTable.Columns
-            If (item.Key.ToUpper() = "KALASTATUS") Then
-                item.Visible = False
-            End If
-        Next
 
 
-        GridBarcodeDetail.AutoSizeColumns()
+        'GridBarcodeDetail.RetrieveStructure()
+        'GridBarcodeDetail.Refresh()
+
+        'For Each item As Janus.Windows.GridEX.GridEXColumn In GridBarcodeDetail.RootTable.Columns
+        '    If (item.Key.ToUpper() = "KALASTATUS") Then
+        '        item.Visible = False
+        '    End If
+        'Next
+
+
+        'GridBarcodeDetail.AutoSizeColumns()
 
 
     End Sub
@@ -2032,5 +1989,15 @@ Public Class FrmMnuTakhsisKalaOnIRC
         ''آخرین اطلاعات تخصیص ها(سند،فاکتور،درخواست) مجددا بر اساس آخرین داده موجود تکمیل میشود
 
     End Sub
-
+    Private Sub CreateDetail()
+        Dim a As CDataView = New CDataView(cn)
+        With a
+            .TableName = "paKala"
+            .Init(MyPanel,, MyPanelCommand, MyPanelNav)
+            With .Fields
+                .Add("KalaDs")
+            End With
+            .Refresh()
+        End With
+    End Sub
 End Class
