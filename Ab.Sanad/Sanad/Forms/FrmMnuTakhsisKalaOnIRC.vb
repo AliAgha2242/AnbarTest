@@ -508,7 +508,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage4.Size = New System.Drawing.Size(1346, 118)
         Me.TabPage4.TabIndex = 1
-        Me.TabPage4.Text = "تفکیک وضعیت اسکن"
+        Me.TabPage4.Text = "کالاهای متصل شده به این بارکد"
         Me.TabPage4.UseVisualStyleBackColor = True
         '
         'GridBarcodeDetail
@@ -726,7 +726,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
                 Try
                     'DSCatalogue = abRule.GetBarcodeScannerData(gVahedeTejariSN, gAnbarSN, Fdate, Tdate, CInt(0), cn)
                     GridBarcodeMaster.ClearStructure()
-                    Dim Test As DataView = cn.ExecuteQuery("drop table if exists #KalaIRCGTIN
+                    Dim Test As DataView = cn.ExecuteQuery($"drop table if exists #KalaIRCGTIN
                                                    drop table if exists #ForceInsertUIDforKala
                                                    drop table if exists #TempCatalogue
                                                    Select  * into #KalaIRCGTIN from (
@@ -763,7 +763,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
                                                    ,PersianProductName 'نام فارسی محصول'
                                                    ,EnglishProductName 'نام لاتین محصول'
                                                    ,GenericCode 'کد یکتا'
-                                                   ,UID ''
+                                                   ,UID 
                                                    ,abProductCatalogue.GTIN 'کد GTIN' 
                                                    ,abProductCatalogue.IRC 'کد IRC'
                                                    ,CatalogueInsertDate 'زمان درج'
@@ -773,11 +773,13 @@ Public Class FrmMnuTakhsisKalaOnIRC
                                                    	  When ISNULL(cte_GTIN.GTIN,'')='' And ISNULL(cte_IRC.IRC,'')='' Then 1
                                                          when ISNULL(cte_IRC.GTIN,'')<>abProductCatalogue.GTIN And cte_IRC.IRC=abProductCatalogue.IRC Then 2
                                                    	  When ISNULL(cte_GTIN.IRC,'')<>abProductCatalogue.IRC And cte_GTIN.GTIN=abProductCatalogue.GTIN Then 3 
+	                                                  When Isnull((Select count(1) from #KalaIRCGTIN where IRC=abProductCatalogue.IRC and GTIN=abProductCatalogue.GTIN),0)>1 Then 13
                                                    	  Else Null End) MoghayeratNo
                                                    ,Case 
                                                    	  When ISNULL(cte_GTIN.GTIN,'')='' And ISNULL(cte_IRC.IRC,'')='' Then 'عدم تعریف محصول در سیستم مپ'
                                                    	  when ISNULL(cte_IRC.GTIN,'')<>abProductCatalogue.GTIN And cte_IRC.IRC=abProductCatalogue.IRC Then 'مغایرت GTIN'
                                                    	  When ISNULL(cte_GTIN.IRC,'')<>abProductCatalogue.IRC And cte_GTIN.GTIN=abProductCatalogue.GTIN Then 'مغایرت IRC' 
+	                                                  When Isnull((Select count(1) from #KalaIRCGTIN where IRC=abProductCatalogue.IRC and GTIN=abProductCatalogue.GTIN),0)>1 Then 'کد محصول متفاوت برای IRC,GTIN '
                                                    	  Else Null End 'نوع مغایرت' 
                                                    from abProductCatalogue 
                                                    Left Join #KalaIRCGTIN  cte_GTIN on cte_GTIN.GTIN=abProductCatalogue.GTIN 
@@ -813,12 +815,13 @@ Public Class FrmMnuTakhsisKalaOnIRC
                                                    						KalaSN Desc
                                                    						)
                                                    Where 1=1
-                                                   and abProductCatalogue.VahedeTejariSN=44.935
+                                                   and abProductCatalogue.VahedeTejariSN={gVahedeTejariSN}
                                                    And isnull(abProductCatalogue.ResInt1,1)<>50
-                                                   And abProductCatalogue.TransferToDbDate Between 14030101 And 14030830
+                                                   And abProductCatalogue.TransferToDbDate Between {Fdate} And {Tdate}
                                                    ) as T
-                                                   Where T.MoghayeratNo in (1,2,3)")
+                                                   Where T.MoghayeratNo in (1,2,3,13)")
                     DSCatalogue = Test
+                    DSCatalogue.AllowEdit = False
                     'If DSCatalogue Is Nothing Then
                     '    CSystem.MsgBox("خطا در دریافت اطلاعات", MsgBoxStyle.Critical, "خطا!")
                     '    Exit Sub
@@ -845,55 +848,87 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
                         'GridBarcodeTajmie.AutoSizeColumns()
 
-
-
+                        Dim a As DataGridView = New DataGridView()
                         GridBarcodeMaster.DataSource = DSCatalogue
                         GridBarcodeMaster.Refresh()
                         GridBarcodeMaster.RetrieveStructure()
-
+                        GridBarcodeMaster.AllowAddNew = InheritableBoolean.False
                         GridBarcodeMaster.AutoSizeColumns()
+                        GridBarcodeMaster.FilterMode = FilterMode.None
 
-                        Dim Detail As DataView = cn.ExecuteQuery("drop table if exists #KalaIRCGTIN
-                                                      Select  * into #KalaIRCGTIN from (
-                                                      Select distinct 
-                                                      cast(kalasn as varchar)+isnull(IRC,'') +isnull(GTIN,'') KalaIdentifier,
-                                                      paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
-                                                      GTIN,IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
-                                                      from paVw_paKalaTaminFull 
-                                                      Union 
-                                                      Select distinct 
-                                                      cast(paVw_paKalaTaminFull.kalasn as varchar)+isnull(NewIRC,'') +isnull(NewGTIN,'') KalaIdentifier,
-                                                      paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
-                                                       NewGTIN GTIN,NewIRC IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
-                                                      from paVw_paKalaTaminFull 
-                                                       join abProductCatalogueKalaIRC on abProductCatalogueKalaIRC.KalaSN=paVw_paKalaTaminFull.KalaSN 
-                                                       )p
-                                                      
-                                                      
-                                                      
-                                                      ;With Cte
-                                                      AS 
-                                                      (
-                                                      select KalaSN,
-                                                      kalaDs 'نام کالا',
-                                                      KalaLatinDs 'نام لاتین کالا',
-                                                      TaminVahedeTejariDs 'تامین کننده',
-                                                      Cte_Kala.GTIN 'کد GTIN',
-                                                      Cte_Kala.IRC 'کد IRC'
-                                                      from #KalaIRCGTIN cte_Kala join abProductCatalogue abp on cte_Kala.IRC = abp.IRC 
-                                                      where ProductCatalogueSN = 33156.301
-                                                      union 
-                                                      select KalaSN,kalaDs,KalaLatinDs,TaminVahedeTejariDs,Cte_Kala.GTIN,Cte_Kala.IRC 
-                                                      from #KalaIRCGTIN cte_Kala Join abProductCatalogue abp on cte_Kala.GTIN = abp.GTIN
-                                                      where ProductCatalogueSN = 33156.301
-                                                      )
-                                                      select * from Cte
-                                                      ")
 
-                        GridBarcodeDetail.DataSource = Detail
-                        GridBarcodeDetail.Refresh()
-                        GridBarcodeDetail.RetrieveStructure()
-                        GridBarcodeMaster.AutoSizeColumns()
+                        'Dim Detail As DataView = cn.ExecuteQuery("drop table if exists #KalaIRCGTIN
+                        '                              Select  * into #KalaIRCGTIN from (
+                        '                              Select distinct 
+                        '                              cast(kalasn as varchar)+isnull(IRC,'') +isnull(GTIN,'') KalaIdentifier,
+                        '                              paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
+                        '                              GTIN,IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
+                        '                              from paVw_paKalaTaminFull 
+                        '                              Union 
+                        '                              Select distinct 
+                        '                              cast(paVw_paKalaTaminFull.kalasn as varchar)+isnull(NewIRC,'') +isnull(NewGTIN,'') KalaIdentifier,
+                        '                              paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
+                        '                               NewGTIN GTIN,NewIRC IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
+                        '                              from paVw_paKalaTaminFull 
+                        '                               join abProductCatalogueKalaIRC on abProductCatalogueKalaIRC.KalaSN=paVw_paKalaTaminFull.KalaSN 
+                        '                               )p
+
+
+
+                        '                              ;With Cte
+                        '                              AS 
+                        '                              (
+                        '                              select KalaSN,
+                        '                              kalaDs 'نام کالا',
+                        '                              KalaLatinDs 'نام لاتین کالا',
+                        '                              TaminVahedeTejariDs 'تامین کننده',
+                        '                              Cte_Kala.GTIN 'کد GTIN',
+                        '                              Cte_Kala.IRC 'کد IRC'
+                        '                              from #KalaIRCGTIN cte_Kala join abProductCatalogue abp on cte_Kala.IRC = abp.IRC 
+                        '                              where ProductCatalogueSN = 33156.301
+                        '                              union 
+                        '                              select KalaSN,kalaDs,KalaLatinDs,TaminVahedeTejariDs,Cte_Kala.GTIN,Cte_Kala.IRC 
+                        '                              from #KalaIRCGTIN cte_Kala Join abProductCatalogue abp on cte_Kala.GTIN = abp.GTIN
+                        '                              where ProductCatalogueSN = 33156.301
+                        '                              )
+                        '                              select * from Cte
+                        '                              ")
+
+                        'GridBarcodeDetail.DataSource = Detail
+
+
+                        Dim FormatStyle As GridEXFormatStyle = New GridEXFormatStyle()
+                        FormatStyle.ForeColor = Color.White
+                        FormatStyle.BackColor = Color.Red
+
+
+                        For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
+                            If col.Key.ToUpper.EndsWith("SN") OrElse col.Key.ToUpper = "MOGHAYERATNO" Then
+                                col.Visible = False
+                            End If
+                            If (col.Key = "نوع مغایرت") Then
+                                col.CellStyle = FormatStyle
+                            End If
+                        Next
+
+
+
+
+
+                        '---------------------------------------------------------
+
+                        'Dim t As CDataView = New CDataView(cn)
+                        't.Init(Panel2, Panel1, aCommandsPanel:=Panel2, aOptions:=EnumButtonOptions.boCmdInsert)
+
+
+                        '---------------------------------------------------------
+
+                        For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeDetail.RootTable.Columns
+                            If col.Key.ToUpper.EndsWith("SN") Then
+                                col.Visible = False
+                            End If
+
+                        Next
 
                     Else
                         Exit Sub
@@ -903,7 +938,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
                     CSystem.MsgBox(ex.Message, MsgBoxStyle.Critical, "خطا!")
                 End Try
 
-                Call GridBarcodeMaster_SelectionChanged(sender, e)
+                'Call GridBarcodeMaster_SelectionChanged(sender, e)
 
                 GridBarcodeMaster.AutoSizeColumns()
 
@@ -1043,7 +1078,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
                     GridBarcodeDetail.AutoSizeColumns()
                     GridBarcodeMaster.AutoSizeColumns()
 
-                    Call GridBarcodeMaster_SelectionChanged(sender, e)
+                    'Call GridBarcodeMaster_SelectionChanged(sender, e)
 
                     GridBarcodeMaster.AutoSizeColumns()
 
@@ -1374,27 +1409,83 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
     Private Sub GridBarcodeMaster_SelectionChanged(sender As Object, e As EventArgs) Handles GridBarcodeMaster.SelectionChanged
 
-        TabPage4.Text = "تفکیک وضعیت شمارش ها"
-        If GridBarcodeMaster.CurrentRow Is Nothing Then
-            If Not GridBarcodeDetail.DataSource Is Nothing Then
-                CType(GridBarcodeDetail.DataSource, DataTable).DefaultView.RowFilter = "1=0"
-            End If
-            Exit Sub
-        End If
+        'TabPage4.Text = "تفکیک وضعیت شمارش ها"
+        'If GridBarcodeMaster.CurrentRow Is Nothing Then
+        '    If Not GridBarcodeDetail.DataSource Is Nothing Then
+        '        CType(GridBarcodeDetail.DataSource, DataTable).DefaultView.RowFilter = "1=0"
+        '    End If
+        '    Exit Sub
+        'End If
+        'If Not IsNothing(GridBarcodeDetail.DataSource) Then
+        '    If IsNumeric(GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value) Then
+        '        CType(GridBarcodeDetail.DataSource, DataTable).DefaultView.RowFilter = "ProductCatalogueSN=" & GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value.ToString
+        '        GridBarcodeDetail.Refresh()
+        '        TabPage4.Text = "تفکیک وضعیت شمارش ها" + " - شماره ثبت " + GridBarcodeMaster.CurrentRow.Cells("RegisterNumber").Text
 
-        If Not IsNothing(GridBarcodeDetail.DataSource) Then
-            If IsNumeric(GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value) Then
-                CType(GridBarcodeDetail.DataSource, DataTable).DefaultView.RowFilter = "ProductCatalogueSN=" & GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value.ToString
-                GridBarcodeDetail.Refresh()
-                TabPage4.Text = "تفکیک وضعیت شمارش ها" + " - شماره ثبت " + GridBarcodeMaster.CurrentRow.Cells("RegisterNumber").Text
+        '    Else
+        '        CType(GridBarcodeDetail.DataSource, DataTable).DefaultView.RowFilter = "1=0"
+        '        GridBarcodeDetail.Refresh()
+        '    End If
+        'End If
+        Dim ProductCatalogueSN As Decimal = CDec(GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value)
 
-            Else
-                CType(GridBarcodeDetail.DataSource, DataTable).DefaultView.RowFilter = "1=0"
-                GridBarcodeDetail.Refresh()
+        GridBarcodeDetail.DataSource = cn.ExecuteQuery(String.Concat("drop table if exists #KalaIRCGTIN
+                                                                      Select  * into #KalaIRCGTIN from (
+                                                                      Select distinct 
+                                                                      cast(kalasn as varchar)+isnull(IRC,'') +isnull(GTIN,'') KalaIdentifier,
+                                                                      paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
+                                                                      GTIN,IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
+                                                                      from paVw_paKalaTaminFull 
+                                                                      Union 
+                                                                      Select distinct 
+                                                                      cast(paVw_paKalaTaminFull.kalasn as varchar)+isnull(NewIRC,'') +isnull(NewGTIN,'') KalaIdentifier,
+                                                                      paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
+                                                                       NewGTIN GTIN,NewIRC IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
+                                                                      from paVw_paKalaTaminFull 
+                                                                       join abProductCatalogueKalaIRC on abProductCatalogueKalaIRC.KalaSN=paVw_paKalaTaminFull.KalaSN 
+                                                                       )p
+                                                                      
+                                                                      Select *,
+                                                                      case kalaStatus when 1 then 'فعال'
+                                                                      Else 'غیر فعال'
+                                                                      End 'وضعیت'
+                                                                      From
+                                                                      (
+                                                                      select KalaSN,
+                                                                      kalaDs 'نام کالا',
+                                                                      KalaLatinDs 'نام لاتین کالا',
+                                                                      TaminVahedeTejariDs 'تامین کننده',
+                                                                      Cte_Kala.GTIN 'کد GTIN',
+                                                                      Cte_Kala.IRC 'کد IRC'
+                                                                      ,kalaStatus
+                                                                      from #KalaIRCGTIN cte_Kala join abProductCatalogue abp on cte_Kala.IRC = abp.IRC 
+                                                                      where ProductCatalogueSN = ", ProductCatalogueSN,
+                                                                      "union 
+                                                                      select KalaSN,kalaDs,KalaLatinDs,TaminVahedeTejariDs,Cte_Kala.GTIN,Cte_Kala.IRC
+                                                                      ,kalaStatus
+                                                                      from #KalaIRCGTIN cte_Kala Join abProductCatalogue abp on cte_Kala.GTIN = abp.GTIN
+                                                                      where ProductCatalogueSN = ", ProductCatalogueSN,
+                                                                      ") AS P
+                                                                      "))
+        Dim FormatStyle As GridEXFormatStyle = New GridEXFormatStyle()
+        FormatStyle.ForeColor = Color.White
+        FormatStyle.BackColor = Color.Orange
+
+
+
+
+        GridBarcodeDetail.RetrieveStructure()
+        GridBarcodeDetail.Refresh()
+
+        For Each item As Janus.Windows.GridEX.GridEXColumn In GridBarcodeDetail.RootTable.Columns
+            If (item.Key.ToUpper() = "KALASTATUS") Then
+                item.Visible = False
             End If
-        End If
+        Next
+
 
         GridBarcodeDetail.AutoSizeColumns()
+
 
     End Sub
 
