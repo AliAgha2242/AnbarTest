@@ -160,7 +160,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.MyPanel.Location = New System.Drawing.Point(3, 4)
-        Me.MyPanel.MaximumSize = New System.Drawing.Size(1590, 275)
+        Me.MyPanel.MaximumSize = New System.Drawing.Size(2000, 275)
         Me.MyPanel.Name = "MyPanel"
         Me.MyPanel.Size = New System.Drawing.Size(1350, 153)
         Me.MyPanel.TabIndex = 4
@@ -373,7 +373,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.Panel1.Controls.Add(Me.GridBarcodeMaster)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.MaximumSize = New System.Drawing.Size(1590, 800)
+        Me.Panel1.MaximumSize = New System.Drawing.Size(2000, 800)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1354, 339)
         Me.Panel1.TabIndex = 0
@@ -683,100 +683,10 @@ Public Class FrmMnuTakhsisKalaOnIRC
                 Try
                     'DSCatalogue = abRule.GetBarcodeScannerData(gVahedeTejariSN, gAnbarSN, Fdate, Tdate, CInt(0), cn)
                     GridBarcodeMaster.ClearStructure()
-                    Dim Test As DataView = cn.ExecuteQuery($"drop table if exists #KalaIRCGTIN
-                                                   drop table if exists #ForceInsertUIDforKala
-                                                   drop table if exists #TempCatalogue
-                                                   Select  * into #KalaIRCGTIN from (
-                                                   Select distinct 
-                                                   cast(kalasn as varchar)+isnull(IRC,'') +isnull(GTIN,'') KalaIdentifier,
-                                                   paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
-                                                   GTIN,IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
-                                                   from paVw_paKalaTaminFull 
-                                                   Union 
-                                                   Select distinct 
-                                                   cast(paVw_paKalaTaminFull.kalasn as varchar)+isnull(NewIRC,'') +isnull(NewGTIN,'') KalaIdentifier,
-                                                   paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
-                                                    NewGTIN GTIN,NewIRC IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
-                                                   from paVw_paKalaTaminFull 
-                                                    join abProductCatalogueKalaIRC on abProductCatalogueKalaIRC.KalaSN=paVw_paKalaTaminFull.KalaSN 
-                                                    )p
 
-                                                   Select Catalogue.ProductCatalogueSN
-                                                   ,UID
-                                                   ,ProductCatalogueDetailSN
-                                                   ,Amount
-                                                   Into #ForceInsertUIDforKala
-                                                   from abProductCatalogue Catalogue
-                                                   Join #KalaIRCGTIN on #KalaIRCGTIN.GTIN=Catalogue.GTIN and #KalaIRCGTIN.IRC=Catalogue.IRC
-                                                   Join abKalaParameter on abKalaParameter.KalaSN=#KalaIRCGTIN.KalaSN
-                                                   Join abProductCatalogueDetail on abProductCatalogueDetail.ProductCatalogueSN=Catalogue.ProductCatalogueSN
-                                                   where isnull(IsUID_UsedInSanad,0)=1 And ScanResultNo=0 And  Status<>3 
-                                                   
-                                                   
-                                                   select * from (
-                                                    Select  Distinct
-                                                   ProductCatalogueSN
-                                                   ,RegisterNumber 'کد ثبت'
-                                                   ,PersianProductName 'نام فارسی محصول'
-                                                   ,EnglishProductName 'نام لاتین محصول'
-                                                   ,GenericCode 'کد یکتا'
-                                                   ,UID 
-                                                   ,abProductCatalogue.GTIN 'کد GTIN' 
-                                                   ,abProductCatalogue.IRC 'کد IRC'
-                                                   ,CatalogueInsertDate 'زمان درج'
-                                                   ,DeviceRegisterTime 'زمان ثبت'
-                                                   ,convert(int,
-                                                     Case 
-                                                   	  When ISNULL(cte_GTIN.GTIN,'')='' And ISNULL(cte_IRC.IRC,'')='' Then 1
-                                                         when ISNULL(cte_IRC.GTIN,'')<>abProductCatalogue.GTIN And cte_IRC.IRC=abProductCatalogue.IRC Then 2
-                                                   	  When ISNULL(cte_GTIN.IRC,'')<>abProductCatalogue.IRC And cte_GTIN.GTIN=abProductCatalogue.GTIN Then 3 
-	                                                  When Isnull((Select count(1) from #KalaIRCGTIN where IRC=abProductCatalogue.IRC and GTIN=abProductCatalogue.GTIN),0)>1 Then 13
-                                                   	  Else Null End) MoghayeratNo
-                                                   ,Case 
-                                                   	  When ISNULL(cte_GTIN.GTIN,'')='' And ISNULL(cte_IRC.IRC,'')='' Then 'عدم تعریف محصول در سیستم مپ'
-                                                   	  when ISNULL(cte_IRC.GTIN,'')<>abProductCatalogue.GTIN And cte_IRC.IRC=abProductCatalogue.IRC Then 'مغایرت GTIN'
-                                                   	  When ISNULL(cte_GTIN.IRC,'')<>abProductCatalogue.IRC And cte_GTIN.GTIN=abProductCatalogue.GTIN Then 'مغایرت IRC' 
-	                                                  When Isnull((Select count(1) from #KalaIRCGTIN where IRC=abProductCatalogue.IRC and GTIN=abProductCatalogue.GTIN),0)>1 Then 'کد محصول متفاوت برای IRC,GTIN '
-                                                   	  Else Null End 'نوع مغایرت' 
-                                                   from abProductCatalogue 
-                                                   Left Join #KalaIRCGTIN  cte_GTIN on cte_GTIN.GTIN=abProductCatalogue.GTIN 
-                                                   And  cte_GTIN.KalaIdentifier in  (
-                                                   						Select Top 1  cast(#KalaIRCGTIN.kalasn as varchar)+isnull(#KalaIRCGTIN.IRC,'') +isnull(#KalaIRCGTIN.GTIN,'') 
-                                                   						from #KalaIRCGTIN where GTIN=abProductCatalogue.GTIN 
-                                                   						Order by 
-                                                   						Case When IRC=abProductCatalogue.IRC Then 1 Else 0 End Desc,
-                                                   						KalaStatus Desc,
-                                                   						Case When isnull(Azmayesh,'')=isnull(abProductCatalogue.GenericCode,' ') Then 1 Else 0 End Desc,
-                                                   						Case When TaminVahedeTejariDs=abProductCatalogue.LicenseOwner Then 1 Else 0 End Desc,
-                                                   						Case When KalaDS=abProductCatalogue.PersianProductName Then 1 Else 0 End Desc,
-                                                   						Case When isnull(KalaLatinDs,'')=abProductCatalogue.EnglishProductName Then 1 Else 0 End Desc,
-                                                   						Case When isnull(KalaLatinDs,'')=abProductCatalogue.GenericName Then 1 Else 0 End Desc,
-                                                   						Case When isnull(KalaBrandLatinDS,'')=abProductCatalogue.EnglishProductName Then 1 Else 0 End Desc,
-                                                   						Case When isnull(KalaBrandLatinDS,'')=abProductCatalogue.GenericName Then 1 Else 0 End Desc,
-                                                   						KalaSN Desc
-                                                   						)
-                                                   Left Join #KalaIRCGTIN cte_IRC on cte_IRC.IRC=abProductCatalogue.IRC 
-                                                   And  cte_IRC.KalaIdentifier in (
-                                                   						Select Top 1  cast(#KalaIRCGTIN.kalasn as varchar)+isnull(#KalaIRCGTIN.IRC,'') +isnull(#KalaIRCGTIN.GTIN,'') 
-                                                   						from #KalaIRCGTIN where IRC=abProductCatalogue.IRC 
-                                                   						Order by 
-                                                   						Case When GTIN=abProductCatalogue.GTIN Then 1 Else 0 End Desc,
-                                                   						KalaStatus Desc,
-                                                   						Case When isnull(Azmayesh,'')=isnull(abProductCatalogue.GenericCode,' ') Then 1 Else 0 End Desc,
-                                                   						Case When TaminVahedeTejariDs=abProductCatalogue.LicenseOwner Then 1 Else 0 End Desc,
-                                                   						Case When KalaDS=abProductCatalogue.PersianProductName Then 1 Else 0 End Desc,
-                                                   						Case When isnull(KalaLatinDs,'')=abProductCatalogue.EnglishProductName Then 1 Else 0 End Desc,
-                                                   						Case When isnull(KalaLatinDs,'')=abProductCatalogue.GenericName Then 1 Else 0 End Desc,
-                                                   						Case When isnull(KalaBrandLatinDS,'')=abProductCatalogue.EnglishProductName Then 1 Else 0 End Desc,
-                                                   						Case When isnull(KalaBrandLatinDS,'')=abProductCatalogue.GenericName Then 1 Else 0 End Desc,
-                                                   						KalaSN Desc
-                                                   						)
-                                                   Where 1=1
-                                                   and abProductCatalogue.VahedeTejariSN={gVahedeTejariSN}
-                                                   And isnull(abProductCatalogue.ResInt1,1)<>50
-                                                   And abProductCatalogue.TransferToDbDate Between {Fdate} And {Tdate}
-                                                   ) as T
-                                                   Where T.MoghayeratNo in (1,2,3,13)")
+                    Dim Test As DataView = abRule.GetBarcodeThatsNotHaveProduct(cn, gVahedeTejariSN, Fdate, Tdate)
+
+                    'Dim Test1 As DataView = cn.ExecuteQuery("abSpC_abProductCatalogueKalaIRC_Insert", Fdate, Tdate, gVahedeTejariSN)
                     DSCatalogue = Test
                     DSCatalogue.AllowEdit = False
                     'If DSCatalogue Is Nothing Then
@@ -907,7 +817,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
 
                 ''تنظیمات با توجه به تراکنش های دریافتی 
-                Dim tblTarakonesh As DataView = New DataView(DSCatalogue.ToTable.Copy(), "Status=1", "", DataViewRowState.CurrentRows).ToTable(True, "CatalogueTarakoneshSN").DefaultView
+                Dim tblTarakonesh As DataView = New DataView(DSCatalogue.ToTable(), "Status=1", "", DataViewRowState.CurrentRows).ToTable(True, "CatalogueTarakoneshSN").DefaultView
 
                 If tblTarakonesh.Count > 0 Then
 
@@ -1997,6 +1907,11 @@ Public Class FrmMnuTakhsisKalaOnIRC
             .AddJoin("paKalaTamin", EnumTableJoin.tjInnerJoin, "paVahedeTejari", "VahedeTejariSN", "VahedeTejariSN")
             .AddJoin("paKalaTamin", EnumTableJoin.tjInnerJoin, "paKala", "KalaSN", "KalaSN")
             .AddJoin("pakala", EnumTableJoin.tjInnerJoin, "paGeneralStatus", "kalaStatus", "GeneralStatusSn")
+            .SQLWhere = "len(isnull(paKala.IRC,''))>10 And len(isnull(paKala.GTIN,''))>10  And paVahedeTejari.NoeVahedeTejariSN in (14.935,16.935)"
+            .SQLOrderBy = "paKalaTamin.VahedeTejariSN Desc"
+            .AccessRight = EnumAccessRight.arAll
+            .EditInGrid = False
+            .FlexGrid.Size = New Size(1350, 153)
             With .Fields
                 .Add("paKala.KalaNo", "TextBox", EnumFieldOptions.foDefault)
                 .Add("paKala.KalaDs", "TextBox")
@@ -2009,15 +1924,22 @@ Public Class FrmMnuTakhsisKalaOnIRC
                 With .Add("paGeneralStatus.GeneralStatusDs", "TextBox")
                     .DefaultValue = "غیر فعال"
                     .Caption = "وضعیت"
-
                 End With
-
-                '.Add("paKalaTamin.VahedeTejariSN", EnumFieldOptions.foHidden)
-                '.Add("VahedeTejariNo")
-                '.Add("VahedeTejariDs")
-                '.Add("GeneralStatusDs")
+                With .Add("paKala.Azmayesh")
+                    .Caption = "GenericCodeMap"
+                End With
+                With .Add("paKala.Irc")
+                    .Caption = "Irc"
+                End With
+                With .Add("paKala.Gtin")
+                    .Caption = "Gtin"
+                End With
             End With
             .Refresh()
         End With
+        For col As Integer = 0 To a.FlexGrid.ColumnCollection.Count
+            a.FlexGrid.AutoSizeCol(col)
+        Next
     End Sub
+
 End Class

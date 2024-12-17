@@ -1948,7 +1948,44 @@ Implements IClsDataAccess.GetGozareshKardexKalaphiziki
 
 
     End Function
+    '------------Tavakoli------------------
+    Public Function GetBarcodeThatsNotHaveProduct(ByVal Cn As NetSql.DB.CConnection, ByVal VahedeTejariSN As Decimal, ByVal FDate As String,
+                                                  ByVal TDate As String, ByVal Sp As String)
+        Dim _Cstr As String = ""
+        'Dim _Errmsg As String = ""
+        Dim Cmnd As New SqlCommand
+        Dim mcn As New SqlClient.SqlConnection
+        Dim sda As New SqlDataAdapter
+        Dim dsdr As New DataSet
 
+
+
+        _Cstr = Cn.ConnectionString + "; password=" & Cn.SQLPassword
+        Try
+            mcn.ConnectionString = _Cstr
+
+            If mcn.State = ConnectionState.Closed Then
+                mcn.Open()
+            End If
+
+            Cmnd.CommandText = Sp
+            Cmnd.Parameters.AddWithValue("@VahedeTejariSN", VahedeTejariSN)
+            Cmnd.Parameters.AddWithValue("@FDate", FDate)
+            Cmnd.Parameters.AddWithValue("@ToDate", TDate)
+            Cmnd.Connection = mcn
+            Cmnd.CommandType = CommandType.StoredProcedure
+            Cmnd.CommandTimeout = mcn.ConnectionTimeout
+            sda.SelectCommand = Cmnd
+            sda.Fill(dsdr)
+
+            Return dsdr.Tables(0).AsDataView()
+
+        Catch ex As Exception
+            Throw New System.Exception("خطا در دریافت اطلاعات " + vbCrLf + ex.ToString)
+        Finally
+            mcn.Close()
+        End Try
+    End Function
     Public Function GetBarcodeScannerData(ByVal VahedeTejariSN As Decimal, ByVal AnbarSN As Decimal, ByVal Fromdate As String, ByVal Todate As String, ByVal State As Integer,
                                                     ByVal Cn As NetSql.DB.CConnection, Optional ByVal SpName As String = "abSPG_ProductCatalogueGetData") As DataSet Implements IClsDataAccess.GetBarcodeScannerData
         Dim _Cstr As String = ""

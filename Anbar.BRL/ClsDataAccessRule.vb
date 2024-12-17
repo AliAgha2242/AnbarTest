@@ -345,6 +345,8 @@ Public Class ClsDataAccessRule
 
     End Function
 
+
+
     Sub GetLastProductCatalogue(ByVal Cn As NetSql.DB.CConnection, ByVal UserName As String, ByVal HostName As String)
         Try
             _ClsDataAccess.GetLastProductCatalogue(Cn, UserName, HostName)
@@ -358,6 +360,15 @@ Public Class ClsDataAccessRule
                                                 ByVal Cn As NetSql.DB.CConnection, Optional ByVal SpName As String = "abSPG_ProductCatalogueGetData") As DataSet
         Try
             GetBarcodeScannerData = _ClsDataAccess.GetBarcodeScannerData(VahedeTejariSN, AnbarSN, Fromdate, Todate, State, Cn, SpName)
+        Catch ex As Exception
+            Throw New System.Exception(ex.Message)
+        End Try
+    End Function
+    '-------------Tavakoli---Alipour -------------
+    Public Function GetBarcodeThatsNotHaveProduct(ByVal Cn As NetSql.DB.CConnection, ByVal VahedeTejariSN As Decimal, ByVal FDate As String,
+                                                  TDate As String, Optional ByVal Sp As String = "abSpC_abProductCatalogueKalaIRC_Insert") As DataView
+        Try
+            GetBarcodeThatsNotHaveProduct = _ClsDataAccess.GetBarcodeThatsNotHaveProduct(Cn, VahedeTejariSN, FDate, TDate, Sp)
         Catch ex As Exception
             Throw New System.Exception(ex.Message)
         End Try
