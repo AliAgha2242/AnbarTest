@@ -45,9 +45,9 @@ Public Class FrmMnuTakhsisKalaOnIRC
     Friend WithEvents Timer1 As Timer
 
     '------------------------------------------------------------------------------
-    Friend WithEvents MyPanel As Panel
-    Friend WithEvents MyPanelCommand As Panel
-    Friend WithEvents MyPanelNav As Panel
+    Friend WithEvents PanelDetail As Panel
+    Friend WithEvents PanelDetailCom As Panel
+    Friend WithEvents PanelDetailNav As Panel
 
 
     Public Sub New()
@@ -91,9 +91,9 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Dim GridBarcodeMaster_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMnuTakhsisKalaOnIRC))
         Dim GridBarcodeDetail_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
-        Me.MyPanelCommand = New System.Windows.Forms.Panel()
-        Me.MyPanelNav = New System.Windows.Forms.Panel()
-        Me.MyPanel = New System.Windows.Forms.Panel()
+        Me.PanelDetailCom = New System.Windows.Forms.Panel()
+        Me.PanelDetailNav = New System.Windows.Forms.Panel()
+        Me.PanelDetail = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.ChkTikWithoutMoghayerat = New System.Windows.Forms.CheckBox()
         Me.ChkGetLastData = New System.Windows.Forms.CheckBox()
@@ -138,32 +138,32 @@ Public Class FrmMnuTakhsisKalaOnIRC
         CType(Me.GridBarcodeDetail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'MyPanelCommand
+        'PanelDetailCom
         '
-        Me.MyPanelCommand.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.MyPanelCommand.Location = New System.Drawing.Point(1138, 160)
-        Me.MyPanelCommand.Name = "MyPanelCommand"
-        Me.MyPanelCommand.Size = New System.Drawing.Size(214, 40)
-        Me.MyPanelCommand.TabIndex = 3
+        Me.PanelDetailCom.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelDetailCom.Location = New System.Drawing.Point(1138, 160)
+        Me.PanelDetailCom.Name = "MyPanelCommand"
+        Me.PanelDetailCom.Size = New System.Drawing.Size(214, 40)
+        Me.PanelDetailCom.TabIndex = 3
         '
-        'MyPanelNav
+        'PanelDetailNav
         '
-        Me.MyPanelNav.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.MyPanelNav.Location = New System.Drawing.Point(3, 158)
-        Me.MyPanelNav.Name = "MyPanelNav"
-        Me.MyPanelNav.Size = New System.Drawing.Size(214, 38)
-        Me.MyPanelNav.TabIndex = 2
+        Me.PanelDetailNav.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelDetailNav.Location = New System.Drawing.Point(3, 158)
+        Me.PanelDetailNav.Name = "MyPanelNav"
+        Me.PanelDetailNav.Size = New System.Drawing.Size(214, 38)
+        Me.PanelDetailNav.TabIndex = 2
         '
-        'MyPanel
+        'PanelDetail
         '
-        Me.MyPanel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.PanelDetail.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.MyPanel.Location = New System.Drawing.Point(3, 4)
-        Me.MyPanel.MaximumSize = New System.Drawing.Size(2000, 275)
-        Me.MyPanel.Name = "MyPanel"
-        Me.MyPanel.Size = New System.Drawing.Size(1350, 153)
-        Me.MyPanel.TabIndex = 4
+        Me.PanelDetail.Location = New System.Drawing.Point(3, 4)
+        Me.PanelDetail.MaximumSize = New System.Drawing.Size(2000, 275)
+        Me.PanelDetail.Name = "MyPanel"
+        Me.PanelDetail.Size = New System.Drawing.Size(1350, 153)
+        Me.PanelDetail.TabIndex = 4
         '
         'Panel3
         '
@@ -400,9 +400,9 @@ Public Class FrmMnuTakhsisKalaOnIRC
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Panel2.Controls.Add(Me.MyPanelCommand)
-        Me.Panel2.Controls.Add(Me.MyPanelNav)
-        Me.Panel2.Controls.Add(Me.MyPanel)
+        Me.Panel2.Controls.Add(Me.PanelDetailCom)
+        Me.Panel2.Controls.Add(Me.PanelDetailNav)
+        Me.Panel2.Controls.Add(Me.PanelDetail)
         Me.Panel2.Controls.Add(Me.TabControl3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
@@ -1903,7 +1903,8 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Dim a As CDataView = New CDataView(cn)
         With a
             .TableName = "paKalaTamin"
-            .Init(MyPanel,, MyPanelCommand, MyPanelNav)
+            .Init(PanelDetail,, PanelDetailCom, PanelDetailNav, CType(EnumButtonOptions.boCmdInsert + EnumButtonOptions.boCmdUpdate + EnumButtonOptions.boCmdDelete +
+                  EnumButtonOptions.boCmdFilter + EnumButtonOptions.boCmdRefresh, EnumButtonOptions))
             .AddJoin("paKalaTamin", EnumTableJoin.tjInnerJoin, "paVahedeTejari", "VahedeTejariSN", "VahedeTejariSN")
             .AddJoin("paKalaTamin", EnumTableJoin.tjInnerJoin, "paKala", "KalaSN", "KalaSN")
             .AddJoin("pakala", EnumTableJoin.tjInnerJoin, "paGeneralStatus", "kalaStatus", "GeneralStatusSn")
@@ -1911,6 +1912,9 @@ Public Class FrmMnuTakhsisKalaOnIRC
             .SQLOrderBy = "paKalaTamin.VahedeTejariSN Desc"
             .AccessRight = EnumAccessRight.arAll
             .EditInGrid = False
+            .CommandEnabled(EnumCommands.cmAdd) = False
+            .CommandEnabled(EnumCommands.cmDelete) = False
+            .CommandEnabled(EnumCommands.cmEdit) = False
             .FlexGrid.Size = New Size(1350, 153)
             With .Fields
                 .Add("paKala.KalaNo", "TextBox", EnumFieldOptions.foDefault)
