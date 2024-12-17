@@ -141,7 +141,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         'MyPanelCommand
         '
         Me.MyPanelCommand.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.MyPanelCommand.Location = New System.Drawing.Point(1138, 140)
+        Me.MyPanelCommand.Location = New System.Drawing.Point(1138, 160)
         Me.MyPanelCommand.Name = "MyPanelCommand"
         Me.MyPanelCommand.Size = New System.Drawing.Size(214, 40)
         Me.MyPanelCommand.TabIndex = 3
@@ -149,7 +149,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         'MyPanelNav
         '
         Me.MyPanelNav.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.MyPanelNav.Location = New System.Drawing.Point(3, 140)
+        Me.MyPanelNav.Location = New System.Drawing.Point(3, 158)
         Me.MyPanelNav.Name = "MyPanelNav"
         Me.MyPanelNav.Size = New System.Drawing.Size(214, 38)
         Me.MyPanelNav.TabIndex = 2
@@ -1992,10 +1992,30 @@ Public Class FrmMnuTakhsisKalaOnIRC
     Private Sub CreateDetail()
         Dim a As CDataView = New CDataView(cn)
         With a
-            .TableName = "paKala"
+            .TableName = "paKalaTamin"
             .Init(MyPanel,, MyPanelCommand, MyPanelNav)
+            .AddJoin("paKalaTamin", EnumTableJoin.tjInnerJoin, "paVahedeTejari", "VahedeTejariSN", "VahedeTejariSN")
+            .AddJoin("paKalaTamin", EnumTableJoin.tjInnerJoin, "paKala", "KalaSN", "KalaSN")
+            .AddJoin("pakala", EnumTableJoin.tjInnerJoin, "paGeneralStatus", "kalaStatus", "GeneralStatusSn")
             With .Fields
-                .Add("KalaDs")
+                .Add("paKala.KalaNo", "TextBox", EnumFieldOptions.foDefault)
+                .Add("paKala.KalaDs", "TextBox")
+                .Add("paKala.KalaSn",, EnumFieldOptions.foHidden)
+                .Add("VahedeTejariSN",, EnumFieldOptions.foHidden)
+                .Add("paVahedeTejari.VahedeTejariNo", "TextBox")
+                With .Add("paVahedeTejari.VahedeTejariDs", "TextBox")
+                    .Caption = "تامین کننده"
+                End With
+                With .Add("paGeneralStatus.GeneralStatusDs", "TextBox")
+                    .DefaultValue = "غیر فعال"
+                    .Caption = "وضعیت"
+
+                End With
+
+                '.Add("paKalaTamin.VahedeTejariSN", EnumFieldOptions.foHidden)
+                '.Add("VahedeTejariNo")
+                '.Add("VahedeTejariDs")
+                '.Add("GeneralStatusDs")
             End With
             .Refresh()
         End With
