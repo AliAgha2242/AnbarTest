@@ -1,5 +1,13 @@
 ﻿
 
+' OK
+'Author ::نوشین علیپور و علی اصغر توکلی
+'CreateDate :: 14030917
+'ModifiedDate::
+'Description:: تخصیص کالا به بارکد
+'System ::انبار
+
+
 Imports Janus.Windows.GridEX
 Imports Anbar.BRL
 Imports Janus.Windows.GridEX.Export
@@ -43,7 +51,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
     'Friend WithEvents LinkLabelEbtalSabt As LinkLabel
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Timer1 As Timer
-
     '------------------------------------------------------------------------------
     Friend WithEvents PanelDetail As Panel
     Friend WithEvents PanelDetailCom As Panel
@@ -548,7 +555,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
     Private Sub FrmMnuTakhsisKalaOnIRC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        CreateDetail()
         'Me.LinkRemoveFilter.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
         'Me.LinkLabelEbtalSabt.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
         Me.BtnRefreshData.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
@@ -603,6 +609,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         'dcbanbarStatus.BoundText = "1"
 
         Call BtnRefreshData_Click(sender, e)
+        CInitDetailDataView()
 
 
         'DvSourceKala =
@@ -769,14 +776,14 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         FormatStyle.BackColor = Color.Red
 
 
-                        For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
-                            If col.Key.ToUpper.EndsWith("SN") OrElse col.Key.ToUpper = "MOGHAYERATNO" Then
-                                col.Visible = False
-                            End If
-                            If (col.Key = "نوع مغایرت") Then
-                                col.CellStyle = FormatStyle
-                            End If
-                        Next
+                        'For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
+                        '    If col.Key.ToUpper.EndsWith("SN") OrElse col.Key.ToUpper = "MOGHAYERATNO" Then
+                        '        col.Visible = False
+                        '    End If
+                        '    If (col.Key = "نوع مغایرت") Then
+                        '        col.CellStyle = FormatStyle
+                        '    End If
+                        'Next
 
 
 
@@ -789,13 +796,21 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
 
                         '---------------------------------------------------------
-
-                        For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeDetail.RootTable.Columns
-                            If col.Key.ToUpper.EndsWith("SN") Then
+                        For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
+                            If (col.Key = "نوع مغایرت") Then
+                                col.CellStyle = FormatStyle
+                            End If
+                            If col.Key.ToUpper.EndsWith("SN") Or col.Key.ToUpper() = "MOGHAYERATNO" Then
                                 col.Visible = False
                             End If
-
                         Next
+
+                        For Each row As GridEXRow In GridBarcodeMaster.GetRows()
+                            If row.Cells("MoghayeratNo").Value.ToString() = "1" Then
+                                row.Cells("Moghayerat").FormatStyle = FormatStyle
+                            End If
+                        Next
+
 
                     Else
                         Exit Sub
@@ -1899,51 +1914,59 @@ Public Class FrmMnuTakhsisKalaOnIRC
         ''آخرین اطلاعات تخصیص ها(سند،فاکتور،درخواست) مجددا بر اساس آخرین داده موجود تکمیل میشود
 
     End Sub
-    Private Sub CreateDetail()
-        Dim a As CDataView = New CDataView(cn)
-        With a
-            .TableName = "paKalaTamin"
-            .Init(PanelDetail,, PanelDetailCom, PanelDetailNav, CType(EnumButtonOptions.boCmdInsert + EnumButtonOptions.boCmdUpdate + EnumButtonOptions.boCmdDelete +
-                  EnumButtonOptions.boCmdFilter + EnumButtonOptions.boCmdRefresh, EnumButtonOptions))
-            .AddJoin("paKalaTamin", EnumTableJoin.tjInnerJoin, "paVahedeTejari", "VahedeTejariSN", "VahedeTejariSN")
-            .AddJoin("paKalaTamin", EnumTableJoin.tjInnerJoin, "paKala", "KalaSN", "KalaSN")
-            .AddJoin("pakala", EnumTableJoin.tjInnerJoin, "paGeneralStatus", "kalaStatus", "GeneralStatusSn")
-            .SQLWhere = "len(isnull(paKala.IRC,''))>10 And len(isnull(paKala.GTIN,''))>10  And paVahedeTejari.NoeVahedeTejariSN in (14.935,16.935)"
-            .SQLOrderBy = "paKalaTamin.VahedeTejariSN Desc"
-            .AccessRight = EnumAccessRight.arAll
-            .EditInGrid = False
-            .CommandEnabled(EnumCommands.cmAdd) = False
-            .CommandEnabled(EnumCommands.cmDelete) = False
-            .CommandEnabled(EnumCommands.cmEdit) = False
-            .FlexGrid.Size = New Size(1350, 153)
+    Private Sub CInitDetailDataView()
+        Dim DVDetail As CDataView = New CDataView(cn)
+        With DVDetail
+            .TableName = "abProductCatalogueKalaIRC"
+            .InsertSPName = "abProductCatalogueKalaIRC_Insert"
+            .DeleteSPName = "abProductCatalogueKalaIRC_Delete"
+            .UpdateSPName = "abProductCatalogueKalaIRC_Update"
+
+            .Init(PanelDetail,, PanelDetailCom, PanelDetailNav,
+                  EnumButtonOptions.boCmdModify Or EnumButtonOptions.boCmdExit _
+              Or EnumButtonOptions.boCmdFilter Or EnumButtonOptions.boCmdFind Or EnumButtonOptions.boCmdPrint)
+            .AddJoin("abProductCatalogueKalaIRC", EnumTableJoin.tjInnerJoin, "paKala", "KalaSN", "KalaSN")
+            .SQLWhere = "len(isnull(paKala.IRC,''))>10 And len(isnull(paKala.GTIN,''))>10 "
+            .FlexGrid.Size = New Size(1590, 153)
+            .FlexGrid.MaximumSize = New Size(2000, 600)
+
             With .Fields
-                .Add("paKala.KalaNo", "TextBox", EnumFieldOptions.foDefault)
-                .Add("paKala.KalaDs", "TextBox")
-                .Add("paKala.KalaSn",, EnumFieldOptions.foHidden)
-                .Add("VahedeTejariSN",, EnumFieldOptions.foHidden)
-                .Add("paVahedeTejari.VahedeTejariNo", "TextBox")
-                With .Add("paVahedeTejari.VahedeTejariDs", "TextBox")
-                    .Caption = "تامین کننده"
+                With .Add("pakala.kalaSN", "textbox", gSNFieldOption)
+                    .Caption = "شماره سریال کالا"
+                    .Format = "#,###"
+                    .DefaultValue = gSM.Identifier
+                    .ReadOnly = True
                 End With
-                With .Add("paGeneralStatus.GeneralStatusDs", "TextBox")
-                    .DefaultValue = "غیر فعال"
-                    .Caption = "وضعیت"
+                With .Add("paKala.KalaNo")
+                    .Caption = "شماره کالا"
+                    .Format = "#,###"
                 End With
-                With .Add("paKala.Azmayesh")
-                    .Caption = "GenericCodeMap"
+
+                With .Add("paKala.KalaDS", "DataCombo")
+                    .Caption = "نام کالا"
+                    .ComboWhereCondition = "  1 = 2 "
+                    .Format = "#,###"
+                    .RefreshCombo()
+                    .ComboLateBinding = True
                 End With
-                With .Add("paKala.Irc")
-                    .Caption = "Irc"
+                With .Add("abProductCatalogueKalaIRC.NewIRC")
+                    .Caption = "جدیدIRC"
+                    .Format = "#,###"
                 End With
-                With .Add("paKala.Gtin")
-                    .Caption = "Gtin"
+                With .Add("abProductCatalogueKalaIRC.NewGTIN")
+                    .Caption = "جدیدGTIN"
+                    .Format = "#,###"
                 End With
+
             End With
             .Refresh()
         End With
-        For col As Integer = 0 To a.FlexGrid.ColumnCollection.Count
-            a.FlexGrid.AutoSizeCol(col)
+        For col As Integer = 0 To DVDetail.FlexGrid.ColumnCollection.Count
+            DVDetail.FlexGrid.AutoSizeCol(col)
         Next
+
     End Sub
+
+
 
 End Class
