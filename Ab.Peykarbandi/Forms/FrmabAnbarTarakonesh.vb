@@ -320,6 +320,7 @@ Friend Class FrmAnbarTarakonesh
                     dcbTarakoneshSN = .Component
                     .LockUpdate = False
                     .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
+
                 End With
                 With .Add("TarakoneshSN->{CAst(abTarakonesh.TarakoneshNO As INT)} As TarakoneshNO")
                     .LockUpdate = True
@@ -411,6 +412,7 @@ Friend Class FrmAnbarTarakonesh
             .Refresh()
         End With
     End Sub
+
 End Class
 
 
