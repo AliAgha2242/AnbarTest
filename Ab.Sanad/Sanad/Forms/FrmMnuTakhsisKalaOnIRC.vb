@@ -551,6 +551,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
     Public IsSabtResidActive As Boolean = True
     Public NoControlBatchFactorAndMarjooei As Boolean = True
     Dim DtTableBeforeChange As New DataTable
+    Public WithEvents DVDetail As CDataView
 
 
     Private Sub FrmMnuTakhsisKalaOnIRC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -1915,37 +1916,29 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
     End Sub
     Private Sub CInitDetailDataView()
-        Dim DVDetail As CDataView = New CDataView(cn)
+        DVDetail = New CDataView(cn)
         With DVDetail
             .TableName = "abProductCatalogueKalaIRC"
-            .InsertSPName = "abProductCatalogueKalaIRC_Insert"
-            .DeleteSPName = "abProductCatalogueKalaIRC_Delete"
-            .UpdateSPName = "abProductCatalogueKalaIRC_Update"
-
             .Init(PanelDetail,, PanelDetailCom, PanelDetailNav,
                   EnumButtonOptions.boCmdModify Or EnumButtonOptions.boCmdExit _
               Or EnumButtonOptions.boCmdFilter Or EnumButtonOptions.boCmdFind Or EnumButtonOptions.boCmdPrint)
             .AddJoin("abProductCatalogueKalaIRC", EnumTableJoin.tjInnerJoin, "paKala", "KalaSN", "KalaSN")
-            .SQLWhere = "len(isnull(paKala.IRC,''))>10 And len(isnull(paKala.GTIN,''))>10 "
-            .FlexGrid.Size = New Size(1590, 153)
-            .FlexGrid.MaximumSize = New Size(2000, 600)
+            .EditInGrid = True
 
             With .Fields
-                With .Add("pakala.kalaSN", "textbox", gSNFieldOption)
+                With .Add("pakala.kalaSN", "textbox", EnumFieldOptions.foHidden)
                     .Caption = "شماره سریال کالا"
                     .Format = "#,###"
                     .DefaultValue = gSM.Identifier
                     .ReadOnly = True
                 End With
-                With .Add("paKala.KalaNo")
-                    .Caption = "شماره کالا"
-                    .Format = "#,###"
-                End With
+                'With .Add("paKala.KalaNo")
+                '    .Caption = "شماره کالا"
+                'End With
 
-                With .Add("paKala.KalaDS", "DataCombo")
+                With .Add("KalaSN->{paKala.KalaNO + ' _ ' + paKala.KalaDS} AS KalaSN", "DataCombo")
                     .Caption = "نام کالا"
-                    .ComboWhereCondition = "  1 = 2 "
-                    .Format = "#,###"
+                    .ComboWhereCondition = "Kalasn in (select kalasn from pakala where len(isnull(paKala.IRC,''))>10 And len(isnull(paKala.GTIN,''))>10 )"
                     .RefreshCombo()
                     .ComboLateBinding = True
                 End With
@@ -1967,6 +1960,10 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
     End Sub
 
+    Private Sub DVDetail_CommandClick(aCommand As EnumCommands, ByRef aCancel As Boolean) Handles DVDetail.CommandClick
+        If aCommand = EnumCommands.cmAdd Then
 
+        End If
 
+    End Sub
 End Class
