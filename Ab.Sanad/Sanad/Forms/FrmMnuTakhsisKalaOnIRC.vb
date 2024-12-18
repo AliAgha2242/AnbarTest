@@ -1,4 +1,10 @@
-﻿
+﻿' OK
+'Author ::نوشین علیپور و علی اصغر توکلی
+'CreateDate :: 14030917
+'ModifiedDate::
+'Description:: تخصیص کالا به بارکد
+'System ::انبار
+
 ' OK
 'Author ::نوشین علیپور و علی اصغر توکلی
 'CreateDate :: 14030917
@@ -567,15 +573,30 @@ Public Class FrmMnuTakhsisKalaOnIRC
     Private Sub FrmMnuTakhsisKalaOnIRC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
+        'Me.LinkLabelEbtalSabt.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
         Me.BtnRefreshData.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
         Me.BtnSabtResid.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
         Me.ChkGetLastData.Font = New System.Drawing.Font("Tahoma", 10.0!, FontStyle.Bold)
+        'Me.BtnAnbarGardaniCatalogue.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
+        'Me.LinkExcelReportAnbargardani.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
+
+        'Me.LinkExportExcelBarcodeTajmie.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold) 'HB_14030410
+        'Me.LinkExportExcelBarcodeMaster.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold) 'HB_14030410
+
         Me.ChkTikWithoutMoghayerat.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
         TxtToDate.Text = MiladiToShamsi(Today(), EnumDateFormat.dfFullYear)
+
         TxtFromDate.Text = TxtToDate.Text.Substring(0, 8) + "01"
         Dim Fdate, Tdate As String
         Fdate = TxtFromDate.Text.Replace("/", "")
         Tdate = TxtToDate.Text.Replace("/", "")
+
+
+        'For Each colf As Janus.Windows.GridEX.GridEXColumn In GridBarcodeTajmie.RootTable.Columns
+        '    colf.HeaderAlignment = TextAlignment.Center
+        '    colf.TextAlignment = TextAlignment.Center
+        'Next
+
 
         For Each colf As Janus.Windows.GridEX.GridEXColumn In GridBarcodeDetail.RootTable.Columns
             colf.HeaderAlignment = TextAlignment.Center
@@ -586,9 +607,14 @@ Public Class FrmMnuTakhsisKalaOnIRC
             colf.HeaderAlignment = TextAlignment.Center
             colf.TextAlignment = TextAlignment.Center
         Next
+        'For Each colf As Janus.Windows.GridEX.GridEXColumn In GridBarcodeRptKasriEzafi.RootTable.Columns
+        '    colf.HeaderAlignment = TextAlignment.Center
+        '    colf.TextAlignment = TextAlignment.Center
+        'Next
+        'fghdbfhbffg
 
 
-        Call BtnRefreshData_Click(sender, e)
+
         Timer1.Enabled = True
         Call CInitDetailDataView()
     End Sub
@@ -653,6 +679,8 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         GridBarcodeMaster.AllowAddNew = InheritableBoolean.False
                         GridBarcodeMaster.AutoSizeColumns()
                         GridBarcodeMaster.FilterMode = FilterMode.None
+                        GridBarcodeMaster.AllowEdit = InheritableBoolean.False
+
 
 
                         'Dim Detail As DataView = cn.ExecuteQuery("drop table if exists #KalaIRCGTIN
@@ -698,14 +726,24 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         Dim FormatStyle As GridEXFormatStyle = New GridEXFormatStyle()
                         FormatStyle.ForeColor = Color.White
                         FormatStyle.BackColor = Color.Red
+                        FormatStyle.FontBold = TriState.True
 
 
-                        For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
-                            If col.Key.ToUpper.EndsWith("SN") OrElse col.Key.ToUpper = "MOGHAYERATNO" Then
-                                col.Visible = False
-                            End If
-                            If (col.Key = "نوع مغایرت") Then
-                                col.CellStyle = FormatStyle
+                        'For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
+                        '    If col.Key.ToUpper.EndsWith("SN") OrElse col.Key.ToUpper = "MOGHAYERATNO" Then
+                        '        col.Visible = False
+                        '    End If
+                        '    If (col.Key.ToUpper() = "MOGHAYERAT") Then
+                        '        For Each val As GridEXValueListItem In col.ValueList
+                        '            If val.Text = "عدم تعریف محصول در سیستم مپ" Then
+                        '                col.CellStyle = FormatStyle
+                        '            End If
+                        '        Next
+                        '    End If
+                        'Next
+                        For Each row As GridEXRow In GridBarcodeMaster.GetRows()
+                            If row.Cells("MoghayeratNo").Value.ToString() = "1" Then
+                                row.Cells("Moghayerat").FormatStyle = FormatStyle
                             End If
                         Next
                         '--------------------------------------------------------
@@ -713,7 +751,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         '---------------------------------------------------------
 
                         For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeDetail.RootTable.Columns
-                            If col.Key.ToUpper.EndsWith("SN") Then
+                            If col.Key.ToUpper.EndsWith("SN") Or col.Key = "MoghayeratNo" Then
                                 col.Visible = False
                             End If
 
@@ -737,14 +775,10 @@ Public Class FrmMnuTakhsisKalaOnIRC
                     tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (12)"
                     tblTarakonesh.RowFilter = "0=0"
                     tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (38,39,45)"
-
                     If tblTarakonesh.Count > 0 Then
-
                         Dim WhereClauseStr As String = ""
-
                         Dim KalaSNStr As String = ""
                         Dim TarakoneshSNStr As String = ""
-
                         For Each row As DataRowView In tblTarakonesh
                             TarakoneshSNStr = row("CatalogueTarakoneshSN").ToString
                             KalaSNStr = ""
