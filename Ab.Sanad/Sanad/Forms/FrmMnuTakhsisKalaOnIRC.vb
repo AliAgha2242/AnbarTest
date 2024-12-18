@@ -1,4 +1,10 @@
-﻿
+﻿' OK
+'Author ::نوشین علیپور و علی اصغر توکلی
+'CreateDate :: 14030917
+'ModifiedDate::
+'Description:: تخصیص کالا به بارکد
+'System ::انبار
+
 
 Imports Janus.Windows.GridEX
 Imports Anbar.BRL
@@ -406,7 +412,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.Panel2.Controls.Add(Me.TabControl3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.MaximumSize = New System.Drawing.Size(1590, 600)
+        Me.Panel2.MaximumSize = New System.Drawing.Size(2000, 600)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1354, 193)
         Me.Panel2.TabIndex = 1
@@ -548,7 +554,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
     Private Sub FrmMnuTakhsisKalaOnIRC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        CreateDetail()
         'Me.LinkRemoveFilter.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
         'Me.LinkLabelEbtalSabt.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
         Me.BtnRefreshData.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
@@ -603,6 +608,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         'dcbanbarStatus.BoundText = "1"
 
         Call BtnRefreshData_Click(sender, e)
+        CreateDetail()
 
 
         'DvSourceKala =
@@ -722,6 +728,8 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         GridBarcodeMaster.AllowAddNew = InheritableBoolean.False
                         GridBarcodeMaster.AutoSizeColumns()
                         GridBarcodeMaster.FilterMode = FilterMode.None
+                        GridBarcodeMaster.AllowEdit = InheritableBoolean.False
+
 
 
                         'Dim Detail As DataView = cn.ExecuteQuery("drop table if exists #KalaIRCGTIN
@@ -767,20 +775,37 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         Dim FormatStyle As GridEXFormatStyle = New GridEXFormatStyle()
                         FormatStyle.ForeColor = Color.White
                         FormatStyle.BackColor = Color.Red
+                        FormatStyle.FontBold = TriState.True
 
 
-                        For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
-                            If col.Key.ToUpper.EndsWith("SN") OrElse col.Key.ToUpper = "MOGHAYERATNO" Then
-                                col.Visible = False
-                            End If
-                            If (col.Key = "نوع مغایرت") Then
-                                col.CellStyle = FormatStyle
+                        'For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
+                        '    If col.Key.ToUpper.EndsWith("SN") OrElse col.Key.ToUpper = "MOGHAYERATNO" Then
+                        '        col.Visible = False
+                        '    End If
+                        '    If (col.Key.ToUpper() = "MOGHAYERAT") Then
+                        '        For Each val As GridEXValueListItem In col.ValueList
+                        '            If val.Text = "عدم تعریف محصول در سیستم مپ" Then
+                        '                col.CellStyle = FormatStyle
+                        '            End If
+                        '        Next
+                        '    End If
+                        'Next
+                        For Each row As GridEXRow In GridBarcodeMaster.GetRows()
+                            If row.Cells("MoghayeratNo").Value.ToString() = "1" Then
+                                row.Cells("Moghayerat").FormatStyle = FormatStyle
                             End If
                         Next
 
+                        'For Each col As GridEXColumn In GridBarcodeMaster.RootTable.Columns
+                        '    If col.Key.ToUpper = "MOGHAYERAT" Then
+                        '        For Each item As GridEXValueListItem In col.ValueList
+                        '            If item.Value Is "عدم تعریف محصول در سیستم مپ" Then
+                        '                col.CellStyle = FormatStyle
+                        '            End If
+                        '        Next
 
-
-
+                        '    End If
+                        'Next
 
                         '---------------------------------------------------------
 
@@ -791,7 +816,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         '---------------------------------------------------------
 
                         For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeDetail.RootTable.Columns
-                            If col.Key.ToUpper.EndsWith("SN") Then
+                            If col.Key.ToUpper.EndsWith("SN") Or col.Key = "MoghayeratNo" Then
                                 col.Visible = False
                             End If
 
@@ -835,14 +860,10 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
                     tblTarakonesh.RowFilter = "0=0"
                     tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (38,39,45)"
-
                     If tblTarakonesh.Count > 0 Then
-
                         Dim WhereClauseStr As String = ""
-
                         Dim KalaSNStr As String = ""
                         Dim TarakoneshSNStr As String = ""
-
                         For Each row As DataRowView In tblTarakonesh
                             TarakoneshSNStr = row("CatalogueTarakoneshSN").ToString
                             KalaSNStr = ""
