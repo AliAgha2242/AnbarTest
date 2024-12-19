@@ -365,10 +365,10 @@ Public Class ClsDataAccessRule
         End Try
     End Function
     '-------------Tavakoli---Alipour -------------
-    Public Function GetBarcodeThatsNotHaveProduct(ByVal Cn As NetSql.DB.CConnection, ByVal VahedeTejariSN As Decimal, ByVal FDate As String,
-                                                  TDate As String, Optional ByVal Sp As String = "abSpC_abProductCatalogueKalaIRC") As DataView
+    Public Function GetBarcodeThatsNotHaveProduct(ByVal Cn As NetSql.DB.CConnection, ByVal VahedeTejariSN As Decimal _
+            , Optional ByVal Sp As String = "abSpC_abProductCatalogueKalaIRC") As DataView
         Try
-            GetBarcodeThatsNotHaveProduct = _ClsDataAccess.GetBarcodeThatsNotHaveProduct(Cn, VahedeTejariSN, FDate, TDate, Sp)
+            GetBarcodeThatsNotHaveProduct = _ClsDataAccess.GetBarcodeThatsNotHaveProduct(Cn, VahedeTejariSN, Sp)
         Catch ex As Exception
             Throw New System.Exception(ex.Message)
         End Try
