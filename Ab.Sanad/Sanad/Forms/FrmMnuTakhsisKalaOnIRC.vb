@@ -610,7 +610,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         'dcbanbarStatus.BoundText = "1"
 
         Call BtnRefreshData_Click(sender, e)
-        CInitDetailDataView()
+
 
 
         'DvSourceKala =
@@ -649,20 +649,17 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Dim Fdate, Tdate As String
         Fdate = TxtFromDate.Text.Replace("/", "")
         Tdate = TxtToDate.Text.Replace("/", "")
-
         If IsSabtResidActive Then
-
             Dim CApp As Configuration.CAppSetting = New Configuration.CAppSetting(gVahedeTejariSN, gSM.ApplicationID)
             NoControlBatchFactorAndMarjooei = IIf(CApp.GetAppConfig("gVahedeTejariNoControlBatchBetweenFactorAndMarjooei") Is System.DBNull.Value, False, CApp.GetAppConfig("gVahedeTejariNoControlBatchBetweenFactorAndMarjooei"))
 
             Dim wfrm As New Anbar.Common.Frmwait
             wfrm.Show()
-
-
             Try
                 If ChkGetLastData.Checked Then
                     wfrm.Label3.Text = "...سیستم در حال دریافت اطلاعات از سرور مرکزی بارکدخوان می باشد..."
                     wfrm.Refresh()
+
                     If gVahedeTejariSN = 44.935 Then
                         Try
                             Dim Errmsg As String = abRule.GetBarcodeScannerDataFromMainServer(cn)
@@ -690,8 +687,9 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
                 Try
                     'DSCatalogue = abRule.GetBarcodeScannerData(gVahedeTejariSN, gAnbarSN, Fdate, Tdate, CInt(0), cn)
-                    GridBarcodeMaster.ClearStructure()
 
+                    GridBarcodeMaster.ClearStructure()
+                    CInitDetailDataView()
                     Dim Test As DataView = abRule.GetBarcodeThatsNotHaveProduct(cn, gVahedeTejariSN, Fdate, Tdate)
 
                     'Dim Test1 As DataView = cn.ExecuteQuery("abSpC_abProductCatalogueKalaIRC_Insert", Fdate, Tdate, gVahedeTejariSN)
@@ -716,7 +714,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         'GridBarcodeMaster.DataSource = DSCatalogue.ToTable()
                         'GridBarcodeDetail.DataSource = DSCatalogue.ToTable()
                         'Call FillTakhsisFieldsByLastValuesBeforeRefresh()
-
                         'GridBarcodeTajmie.DataSource = DSCatalogue
                         'GridBarcodeTajmie.Refresh()
                         'GridBarcodeTajmie.RetrieveStructure()
@@ -727,9 +724,12 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         GridBarcodeMaster.DataSource = DSCatalogue
                         GridBarcodeMaster.Refresh()
                         GridBarcodeMaster.RetrieveStructure()
-                        GridBarcodeMaster.AllowAddNew = InheritableBoolean.False
                         GridBarcodeMaster.AutoSizeColumns()
                         GridBarcodeMaster.FilterMode = FilterMode.None
+
+                        GridBarcodeMaster.AllowAddNew = InheritableBoolean.False
+                        GridBarcodeMaster.AllowEdit = InheritableBoolean.False
+                        GridBarcodeMaster.AllowDelete = InheritableBoolean.False
 
 
                         'Dim Detail As DataView = cn.ExecuteQuery("drop table if exists #KalaIRCGTIN
@@ -775,6 +775,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         Dim FormatStyle As GridEXFormatStyle = New GridEXFormatStyle()
                         FormatStyle.ForeColor = Color.White
                         FormatStyle.BackColor = Color.Red
+                        FormatStyle.IsReadOnly()
 
 
                         'For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
@@ -800,6 +801,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
                             If (col.Key = "نوع مغایرت") Then
                                 col.CellStyle = FormatStyle
+                                Exit For
                             End If
                             If col.Key.ToUpper.EndsWith("SN") Or col.Key.ToUpper() = "MOGHAYERATNO" Then
                                 col.Visible = False
@@ -809,6 +811,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         For Each row As GridEXRow In GridBarcodeMaster.GetRows()
                             If row.Cells("MoghayeratNo").Value.ToString() = "1" Then
                                 row.Cells("Moghayerat").FormatStyle = FormatStyle
+                                Exit For
                             End If
                         Next
 
@@ -833,87 +836,86 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
 
                 ''تنظیمات با توجه به تراکنش های دریافتی 
-                Dim tblTarakonesh As DataView = New DataView(DSCatalogue.ToTable(), "Status=1", "", DataViewRowState.CurrentRows).ToTable(True, "CatalogueTarakoneshSN").DefaultView
+                'Dim tblTarakonesh As DataView = New DataView(DSCatalogue.ToTable(), "Status=1", "", DataViewRowState.CurrentRows).ToTable(True, "CatalogueTarakoneshSN").DefaultView
 
-                If tblTarakonesh.Count > 0 Then
+                'If tblTarakonesh.Count > 0 Then
 
-                    tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (12)"
+                '    tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (12)"
 
-                    'If tblTarakonesh.Count > 0 Then
-                    '    DvSourceDarkhast = cn.ExecuteQuery("Select * from fovw_DarkhastHamlMostaghim")
-                    '    With GridBarcodeTajmie.RootTable.Columns.Item("DarkhastSN")
-                    '        .HasValueList = True
-                    '        .ValueList.PopulateValueList(DvSourceDarkhast, "DarkhastSN", "DarkhastDS")
-                    '    End With
-                    '    DvSourceDarkhastHa = cn.ExecuteQuery("Select DarkhastSN,KalaSN,Tedad from foDarkhastHa Where DarkhastSN In (Select DarkhastSN from fovw_DarkhastHamlMostaghim)")
-                    '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDarkhast").Visible = True
-                    'End If
+                '    'If tblTarakonesh.Count > 0 Then
+                '    '    DvSourceDarkhast = cn.ExecuteQuery("Select * from fovw_DarkhastHamlMostaghim")
+                '    '    With GridBarcodeTajmie.RootTable.Columns.Item("DarkhastSN")
+                '    '        .HasValueList = True
+                '    '        .ValueList.PopulateValueList(DvSourceDarkhast, "DarkhastSN", "DarkhastDS")
+                '    '    End With
+                '    '    DvSourceDarkhastHa = cn.ExecuteQuery("Select DarkhastSN,KalaSN,Tedad from foDarkhastHa Where DarkhastSN In (Select DarkhastSN from fovw_DarkhastHamlMostaghim)")
+                '    '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDarkhast").Visible = True
+                '    'End If
 
-                    tblTarakonesh.RowFilter = "0=0"
-                    tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (38,39,45)"
+                '    tblTarakonesh.RowFilter = "0=0"
+                '    tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (38,39,45)"
 
-                    If tblTarakonesh.Count > 0 Then
+                '    If tblTarakonesh.Count > 0 Then
 
-                        Dim WhereClauseStr As String = ""
+                '        Dim WhereClauseStr As String = ""
 
-                        Dim KalaSNStr As String = ""
-                        Dim TarakoneshSNStr As String = ""
+                '        Dim KalaSNStr As String = ""
+                '        Dim TarakoneshSNStr As String = ""
 
-                        For Each row As DataRowView In tblTarakonesh
-                            TarakoneshSNStr = row("CatalogueTarakoneshSN").ToString
-                            KalaSNStr = ""
-                            Dim tblKala As DataTable = New DataView(DSCatalogue.ToTable.Copy(), "Status=1 And CatalogueTarakoneshSN=" & row("CatalogueTarakoneshSN").ToString, "CatalogueTarakoneshSN", DataViewRowState.CurrentRows).ToTable(True, {"SimilarKalaByIRCGTIN"})
-                            For Each rowKala As DataRow In tblKala.Rows
-                                KalaSNStr += rowKala("SimilarKalaByIRCGTIN").ToString + ","
-                            Next
-                            If KalaSNStr.EndsWith(",") Then
-                                KalaSNStr = KalaSNStr.Substring(0, KalaSNStr.Length - 1)
-                            End If
-                            WhereClauseStr += "(TarakoneshSN=" + TarakoneshSNStr.ToString + " And KalaSN In (" & KalaSNStr & ")) Or "
+                '        For Each row As DataRowView In tblTarakonesh
+                '            TarakoneshSNStr = row("CatalogueTarakoneshSN").ToString
+                '            KalaSNStr = ""
+                '            Dim tblKala As DataTable = New DataView(DSCatalogue.ToTable.Copy(), "Status=1 And CatalogueTarakoneshSN=" & row("CatalogueTarakoneshSN").ToString, "CatalogueTarakoneshSN", DataViewRowState.CurrentRows).ToTable(True, {"SimilarKalaByIRCGTIN"})
+                '            For Each rowKala As DataRow In tblKala.Rows
+                '                KalaSNStr += rowKala("SimilarKalaByIRCGTIN").ToString + ","
+                '            Next
+                '            If KalaSNStr.EndsWith(",") Then
+                '                KalaSNStr = KalaSNStr.Substring(0, KalaSNStr.Length - 1)
+                '            End If
+                '            WhereClauseStr += "(TarakoneshSN=" + TarakoneshSNStr.ToString + " And KalaSN In (" & KalaSNStr & ")) Or "
 
-                        Next
+                '        Next
 
-                        If WhereClauseStr.EndsWith("Or ") Then
-                            WhereClauseStr = WhereClauseStr.Substring(0, WhereClauseStr.Length - 3)
-                        End If
-
-
-                        Dim StrFactor As String = "Select * from abVw_ProductCatalogue_Factor_Marjooei where " & WhereClauseStr & " Order by SodoorDate desc"
+                '        If WhereClauseStr.EndsWith("Or ") Then
+                '            WhereClauseStr = WhereClauseStr.Substring(0, WhereClauseStr.Length - 3)
+                '        End If
 
 
-                        DvSourceFactor = cn.ExecuteQuery(StrFactor)
-
-                        'tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (38,39)"
-                        'If tblTarakonesh.Count > 0 Then
-                        '    With GridBarcodeTajmie.RootTable.Columns.Item("FactorSN")
-                        '        .HasValueList = True
-                        '        .ValueList.PopulateValueList(DvSourceFactor, "FactorSN", "FactorDS")
-                        '    End With
-                        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisFactor").Visible = True
-                        'End If
-
-                        'tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (45)"
-                        'If tblTarakonesh.Count > 0 Then
-                        '    With GridBarcodeTajmie.RootTable.Columns.Item("SanadSN")
-                        '        .HasValueList = True
-                        '        .ValueList.PopulateValueList(DvSourceFactor, "SanadSN", "FactorDS")
-                        '    End With
-                        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisSanad").Visible = True
-
-                        'End If
-
-                    End If
-
-                    tblTarakonesh.RowFilter = "0=0"
-                    tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (11,18)"
-
-                    'If tblTarakonesh.Count > 0 AndAlso gVahedeTejariSN = 23000.935 Then ''فقط برای شعب دارای دفتر فروش
-                    '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDaftarForoosh").Visible = True
-                    'End If
+                '        Dim StrFactor As String = "Select * from abVw_ProductCatalogue_Factor_Marjooei where " & WhereClauseStr & " Order by SodoorDate desc"
 
 
-                End If
+                '        DvSourceFactor = cn.ExecuteQuery(StrFactor)
 
+                '        'tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (38,39)"
+                '        'If tblTarakonesh.Count > 0 Then
+                '        '    With GridBarcodeTajmie.RootTable.Columns.Item("FactorSN")
+                '        '        .HasValueList = True
+                '        '        .ValueList.PopulateValueList(DvSourceFactor, "FactorSN", "FactorDS")
+                '        '    End With
+                '        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisFactor").Visible = True
+                '        'End If
+
+                '        'tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (45)"
+                '        'If tblTarakonesh.Count > 0 Then
+                '        '    With GridBarcodeTajmie.RootTable.Columns.Item("SanadSN")
+                '        '        .HasValueList = True
+                '        '        .ValueList.PopulateValueList(DvSourceFactor, "SanadSN", "FactorDS")
+                '        '    End With
+                '        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisSanad").Visible = True
+
+                '        'End If
+
+                '    End If
+
+                '    tblTarakonesh.RowFilter = "0=0"
+                '    tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (11,18)"
+
+                '    'If tblTarakonesh.Count > 0 AndAlso gVahedeTejariSN = 23000.935 Then ''فقط برای شعب دارای دفتر فروش
+                '    '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDaftarForoosh").Visible = True
+                '    'End If
+
+
+                'End If
             Catch ex As Exception
             Finally
                 wfrm.Close()
@@ -958,7 +960,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
                     'GridBarcodeRptKasriEzafi.DataSource = DSCatalogue.Tables(2)
 
                     'GridBarcodeRptKasriEzafi.AutoSizeColumns()
-                    GridBarcodeDetail.AutoSizeColumns()
                     GridBarcodeMaster.AutoSizeColumns()
 
                     'Call GridBarcodeMaster_SelectionChanged(sender, e)
@@ -998,6 +999,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         '        TabControl1.TabPages.Remove(TabPageKasriEzafi)
         '    End If
         'End If
+
 
     End Sub
 
@@ -1282,15 +1284,23 @@ Public Class FrmMnuTakhsisKalaOnIRC
         GridBarcodeMaster.AutoSizeColumns()
     End Sub
 
-    Private Sub GridBarcodeDetail_DoubleClick(sender As Object, e As EventArgs) Handles GridBarcodeDetail.DoubleClick
-        GridBarcodeDetail.AutoSizeColumns()
-    End Sub
+    'Private Sub GridBarcodeDetail_DoubleClick(sender As Object, e As EventArgs) Handles GridBarcodeDetail.DoubleClick
+    '    GridBarcodeDetail.AutoSizeColumns()
+    'End Sub
 
     'Private Sub GridBarcodeTajmie_DoubleClick(sender As Object, e As EventArgs) Handles GridBarcodeTajmie.DoubleClick
     '    GridBarcodeTajmie.AutoSizeColumns()
     'End Sub
 
     Private Sub GridBarcodeMaster_SelectionChanged(sender As Object, e As EventArgs) Handles GridBarcodeMaster.SelectionChanged
+        Dim SqlWhere As String = "ProductCatalogueSn = "
+        Dim productcatalogueSn As Decimal = CDec(GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value)
+        If productcatalogueSn = 0 Then
+            MsgBox("رکوردی انتخاب نشد", MsgBoxStyle.OkOnly)
+        End If
+        SqlWhere = String.Concat(SqlWhere, productcatalogueSn.ToString())
+        DVDetail.SQLWhere = SqlWhere
+        DVDetail.Refresh()
 
         'TabPage4.Text = "تفکیک وضعیت شمارش ها"
         'If GridBarcodeMaster.CurrentRow Is Nothing Then
@@ -1919,23 +1929,20 @@ Public Class FrmMnuTakhsisKalaOnIRC
         DVDetail = New CDataView(cn)
         With DVDetail
             .TableName = "abProductCatalogueKalaIRC"
-            .Init(PanelDetail,, PanelDetailCom, PanelDetailNav,
-                  EnumButtonOptions.boCmdModify Or EnumButtonOptions.boCmdExit _
-              Or EnumButtonOptions.boCmdFilter Or EnumButtonOptions.boCmdFind Or EnumButtonOptions.boCmdPrint)
+            .Init(PanelDetail,, PanelDetailCom, PanelDetailNav, EnumButtonOptions.boCmdRefresh Or EnumButtonOptions.boCmdInsert _
+                  Or EnumButtonOptions.boCmdFilter Or EnumButtonOptions.boCmdModify Or EnumButtonOptions.boCmdFind)
             .AddJoin("abProductCatalogueKalaIRC", EnumTableJoin.tjInnerJoin, "paKala", "KalaSN", "KalaSN")
             .EditInGrid = True
-
             With .Fields
                 With .Add("pakala.kalaSN", "textbox", EnumFieldOptions.foHidden)
                     .Caption = "شماره سریال کالا"
                     .Format = "#,###"
                     .DefaultValue = gSM.Identifier
-                    .ReadOnly = True
                 End With
                 'With .Add("paKala.KalaNo")
                 '    .Caption = "شماره کالا"
                 'End With
-
+                'key asli -> {esmesho bezar ina } dar nahayat esmesh beshe in
                 With .Add("KalaSN->{paKala.KalaNO + ' _ ' + paKala.KalaDS} AS KalaSN", "DataCombo")
                     .Caption = "نام کالا"
                     .ComboWhereCondition = "Kalasn in (select kalasn from pakala where len(isnull(paKala.IRC,''))>10 And len(isnull(paKala.GTIN,''))>10 )"
@@ -1945,25 +1952,26 @@ Public Class FrmMnuTakhsisKalaOnIRC
                 With .Add("abProductCatalogueKalaIRC.NewIRC")
                     .Caption = "جدیدIRC"
                     .Format = "#,###"
+                    .ReadOnly = True
                 End With
                 With .Add("abProductCatalogueKalaIRC.NewGTIN")
                     .Caption = "جدیدGTIN"
                     .Format = "#,###"
+                    .ReadOnly = True
                 End With
-
             End With
             .Refresh()
         End With
         For col As Integer = 0 To DVDetail.FlexGrid.ColumnCollection.Count
             DVDetail.FlexGrid.AutoSizeCol(col)
         Next
-
     End Sub
 
-    Private Sub DVDetail_CommandClick(aCommand As EnumCommands, ByRef aCancel As Boolean) Handles DVDetail.CommandClick
-        If aCommand = EnumCommands.cmAdd Then
-
-        End If
-
+    Private Sub DVDetail_AfterCommandClick(aCommand As EnumCommands) Handles DVDetail.AfterCommandClick
+        Select Case aCommand
+            Case EnumCommands.cmAdd
+                DVDetail.Fields("NewIRC").Value = GridBarcodeMaster.CurrentRow.Cells("IRC").Value
+                DVDetail.Fields("NewGTIN").Value = GridBarcodeMaster.CurrentRow.Cells("GTIN").Value
+        End Select
     End Sub
 End Class

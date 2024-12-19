@@ -1953,37 +1953,37 @@ Implements IClsDataAccess.GetGozareshKardexKalaphiziki
                                                   ByVal TDate As String, ByVal Sp As String)
         Dim _Cstr As String = ""
         'Dim _Errmsg As String = ""
-        Dim Cmnd As New SqlCommand
-        Dim mcn As New SqlClient.SqlConnection
-        Dim sda As New SqlDataAdapter
-        Dim dsdr As New DataSet
+        Dim SqlCommand As New SqlCommand
+        Dim SqlConn As New SqlClient.SqlConnection
+        Dim SqlAdaptor As New SqlDataAdapter
+        Dim dataSet As New DataSet
 
 
 
         _Cstr = Cn.ConnectionString + "; password=" & Cn.SQLPassword
         Try
-            mcn.ConnectionString = _Cstr
+            SqlConn.ConnectionString = _Cstr
 
-            If mcn.State = ConnectionState.Closed Then
-                mcn.Open()
+            If SqlConn.State = ConnectionState.Closed Then
+                SqlConn.Open()
             End If
 
-            Cmnd.CommandText = Sp
-            Cmnd.Parameters.AddWithValue("@VahedeTejariSN", VahedeTejariSN)
-            Cmnd.Parameters.AddWithValue("@FDate", FDate)
-            Cmnd.Parameters.AddWithValue("@ToDate", TDate)
-            Cmnd.Connection = mcn
-            Cmnd.CommandType = CommandType.StoredProcedure
-            Cmnd.CommandTimeout = mcn.ConnectionTimeout
-            sda.SelectCommand = Cmnd
-            sda.Fill(dsdr)
+            SqlCommand.CommandText = Sp
+            SqlCommand.Parameters.AddWithValue("@VahedeTejariSN", VahedeTejariSN)
+            SqlCommand.Parameters.AddWithValue("@FDate", FDate)
+            SqlCommand.Parameters.AddWithValue("@ToDate", TDate)
+            SqlCommand.Connection = SqlConn
+            SqlCommand.CommandType = CommandType.StoredProcedure
+            SqlCommand.CommandTimeout = SqlConn.ConnectionTimeout
+            SqlAdaptor.SelectCommand = SqlCommand
+            SqlAdaptor.Fill(dataSet)
 
-            Return dsdr.Tables(0).AsDataView()
+            Return dataSet.Tables(0).AsDataView()
 
         Catch ex As Exception
             Throw New System.Exception("خطا در دریافت اطلاعات " + vbCrLf + ex.ToString)
         Finally
-            mcn.Close()
+            SqlConn.Close()
         End Try
     End Function
     Public Function GetBarcodeScannerData(ByVal VahedeTejariSN As Decimal, ByVal AnbarSN As Decimal, ByVal Fromdate As String, ByVal Todate As String, ByVal State As Integer,
