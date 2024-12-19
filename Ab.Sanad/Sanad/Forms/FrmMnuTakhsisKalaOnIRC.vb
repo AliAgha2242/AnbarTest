@@ -33,11 +33,11 @@ Public Class FrmMnuTakhsisKalaOnIRC
     Friend WithEvents GridBarcodeDetail As Janus.Windows.GridEX.GridEX
     'Friend WithEvents GridBarcodeTajmie As Janus.Windows.GridEX.GridEX
     Friend WithEvents Label3 As Label
-    Friend WithEvents GrpDate As GroupBox
+    'Friend WithEvents GrpDate As GroupBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents TxtToDate As NetSql.Components.cmpFarsiDatePicker
-    Friend WithEvents TxtFromDate As NetSql.Components.cmpFarsiDatePicker
+    'Friend WithEvents TxtToDate As NetSql.Components.cmpFarsiDatePicker
+    'Friend WithEvents TxtFromDate As NetSql.Components.cmpFarsiDatePicker
     Friend WithEvents LinkRemoveFilter As LinkLabel
     Friend WithEvents ChkGetLastData As CheckBox
     Friend WithEvents LinkSaveLayout As LinkLabel
@@ -104,14 +104,11 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.ChkTikWithoutMoghayerat = New System.Windows.Forms.CheckBox()
         Me.ChkGetLastData = New System.Windows.Forms.CheckBox()
-        Me.GrpDate = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TxtToDate = New NetSql.Components.cmpFarsiDatePicker()
-        Me.TxtFromDate = New NetSql.Components.cmpFarsiDatePicker()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.BtnSabtResid = New Janus.Windows.EditControls.UIButton()
         Me.BtnRefreshData = New Janus.Windows.EditControls.UIButton()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.LinkLoadLayout = New System.Windows.Forms.LinkLabel()
         Me.LinkSaveLayout = New System.Windows.Forms.LinkLabel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -130,7 +127,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel3.SuspendLayout()
-        Me.GrpDate.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPageScanRecords.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -149,7 +145,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         '
         Me.PanelDetailCom.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PanelDetailCom.Location = New System.Drawing.Point(1138, 160)
-        Me.PanelDetailCom.Name = "MyPanelCommand"
+        Me.PanelDetailCom.Name = "PanelDetailCom"
         Me.PanelDetailCom.Size = New System.Drawing.Size(214, 40)
         Me.PanelDetailCom.TabIndex = 3
         '
@@ -157,7 +153,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         '
         Me.PanelDetailNav.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PanelDetailNav.Location = New System.Drawing.Point(3, 158)
-        Me.PanelDetailNav.Name = "MyPanelNav"
+        Me.PanelDetailNav.Name = "PanelDetailNav"
         Me.PanelDetailNav.Size = New System.Drawing.Size(214, 38)
         Me.PanelDetailNav.TabIndex = 2
         '
@@ -168,7 +164,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PanelDetail.Location = New System.Drawing.Point(3, 4)
         Me.PanelDetail.MaximumSize = New System.Drawing.Size(2000, 275)
-        Me.PanelDetail.Name = "MyPanel"
+        Me.PanelDetail.Name = "PanelDetail"
         Me.PanelDetail.Size = New System.Drawing.Size(1350, 153)
         Me.PanelDetail.TabIndex = 4
         '
@@ -178,7 +174,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.ChkTikWithoutMoghayerat)
         Me.Panel3.Controls.Add(Me.ChkGetLastData)
-        Me.Panel3.Controls.Add(Me.GrpDate)
         Me.Panel3.Controls.Add(Me.Label3)
         Me.Panel3.Controls.Add(Me.BtnSabtResid)
         Me.Panel3.Controls.Add(Me.BtnRefreshData)
@@ -192,7 +187,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         '
         Me.ChkTikWithoutMoghayerat.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.ChkTikWithoutMoghayerat.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
-        Me.ChkTikWithoutMoghayerat.Location = New System.Drawing.Point(540, 5)
+        Me.ChkTikWithoutMoghayerat.Location = New System.Drawing.Point(885, 6)
         Me.ChkTikWithoutMoghayerat.Name = "ChkTikWithoutMoghayerat"
         Me.ChkTikWithoutMoghayerat.Size = New System.Drawing.Size(193, 52)
         Me.ChkTikWithoutMoghayerat.TabIndex = 217
@@ -206,73 +201,13 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.ChkGetLastData.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.ChkGetLastData.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.ChkGetLastData.ForeColor = System.Drawing.Color.Black
-        Me.ChkGetLastData.Location = New System.Drawing.Point(739, 5)
+        Me.ChkGetLastData.Location = New System.Drawing.Point(1083, 5)
         Me.ChkGetLastData.Name = "ChkGetLastData"
         Me.ChkGetLastData.Size = New System.Drawing.Size(181, 55)
         Me.ChkGetLastData.TabIndex = 215
         Me.ChkGetLastData.Text = "آخرین اطلاعات از سرور مرکزی دریافت گردد"
         Me.ChkGetLastData.UseVisualStyleBackColor = False
         Me.ChkGetLastData.Visible = False
-        '
-        'GrpDate
-        '
-        Me.GrpDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GrpDate.Controls.Add(Me.Label2)
-        Me.GrpDate.Controls.Add(Me.Label1)
-        Me.GrpDate.Controls.Add(Me.TxtToDate)
-        Me.GrpDate.Controls.Add(Me.TxtFromDate)
-        Me.GrpDate.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
-        Me.GrpDate.Location = New System.Drawing.Point(1047, 3)
-        Me.GrpDate.Name = "GrpDate"
-        Me.GrpDate.Size = New System.Drawing.Size(313, 52)
-        Me.GrpDate.TabIndex = 214
-        Me.GrpDate.TabStop = False
-        Me.GrpDate.Text = "تاریخ اسکن محصول"
-        '
-        'Label2
-        '
-        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(105, 21)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(48, 14)
-        Me.Label2.TabIndex = 179
-        Me.Label2.Text = "تا تاریخ :"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
-        'Label1
-        '
-        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(257, 21)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(48, 14)
-        Me.Label1.TabIndex = 178
-        Me.Label1.Text = "از تاریخ :"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
-        'TxtToDate
-        '
-        Me.TxtToDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtToDate.Location = New System.Drawing.Point(7, 17)
-        Me.TxtToDate.Mask = "9900/90/90"
-        Me.TxtToDate.Name = "TxtToDate"
-        Me.TxtToDate.SelectedDateTimeShamsi = "    /  /"
-        Me.TxtToDate.Size = New System.Drawing.Size(96, 20)
-        Me.TxtToDate.TabIndex = 177
-        Me.TxtToDate.Theme = FarsiLibrary.Win.Enums.ThemeTypes.Office2003
-        '
-        'TxtFromDate
-        '
-        Me.TxtFromDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtFromDate.IsDefault = True
-        Me.TxtFromDate.Location = New System.Drawing.Point(159, 18)
-        Me.TxtFromDate.Mask = "9900/90/90"
-        Me.TxtFromDate.Name = "TxtFromDate"
-        Me.TxtFromDate.SelectedDateTimeShamsi = "    /  /"
-        Me.TxtFromDate.Size = New System.Drawing.Size(95, 20)
-        Me.TxtFromDate.TabIndex = 176
-        Me.TxtFromDate.Theme = FarsiLibrary.Win.Enums.ThemeTypes.Office2003
         '
         'Label3
         '
@@ -293,7 +228,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.BtnRefreshData.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.BtnRefreshData.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BtnRefreshData.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
-        Me.BtnRefreshData.Location = New System.Drawing.Point(938, 5)
+        Me.BtnRefreshData.Location = New System.Drawing.Point(1270, 3)
         Me.BtnRefreshData.Name = "BtnRefreshData"
         Me.BtnRefreshData.Office2007ColorScheme = Janus.Windows.UI.Office2007ColorScheme.Blue
         Me.BtnRefreshData.Office2007CustomColor = System.Drawing.Color.LightSlateGray
@@ -301,6 +236,20 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.BtnRefreshData.TabIndex = 207
         Me.BtnRefreshData.Text = "بروزرسانی اطلاعات"
         Me.BtnRefreshData.VisualStyle = Janus.Windows.UI.VisualStyle.Office2007
+        '
+        'Label2
+        '
+        Me.Label2.Location = New System.Drawing.Point(0, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(100, 23)
+        Me.Label2.TabIndex = 0
+        '
+        'Label1
+        '
+        Me.Label1.Location = New System.Drawing.Point(0, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(100, 23)
+        Me.Label1.TabIndex = 0
         '
         'LinkLoadLayout
         '
@@ -519,8 +468,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.Text = "تخصیص کالا به IRC جدید"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel3.ResumeLayout(False)
-        Me.GrpDate.ResumeLayout(False)
-        Me.GrpDate.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
         Me.TabPageScanRecords.ResumeLayout(False)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
@@ -568,12 +515,12 @@ Public Class FrmMnuTakhsisKalaOnIRC
         'Me.LinkExportExcelBarcodeTajmie.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold) 'HB_14030410
         'Me.LinkExportExcelBarcodeMaster.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold) 'HB_14030410
 
-        TxtToDate.Text = MiladiToShamsi(Today(), EnumDateFormat.dfFullYear)
-        TxtFromDate.Text = TxtToDate.Text.Substring(0, 8) + "01"
+        'TxtToDate.Text = MiladiToShamsi(Today(), EnumDateFormat.dfFullYear)
+        'TxtFromDate.Text = TxtToDate.Text.Substring(0, 8) + "01"
 
-        Dim Fdate, Tdate As String
-        Fdate = TxtFromDate.Text.Replace("/", "")
-        Tdate = TxtToDate.Text.Replace("/", "")
+        'Dim Fdate, Tdate As String
+        'Fdate = TxtFromDate.Text.Replace("/", "")
+        'Tdate = TxtToDate.Text.Replace("/", "")
 
 
 
@@ -647,8 +594,8 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
 
         Dim Fdate, Tdate As String
-        Fdate = TxtFromDate.Text.Replace("/", "")
-        Tdate = TxtToDate.Text.Replace("/", "")
+        'Fdate = TxtFromDate.Text.Replace("/", "")
+        'Tdate = TxtToDate.Text.Replace("/", "")
         If IsSabtResidActive Then
             Dim CApp As Configuration.CAppSetting = New Configuration.CAppSetting(gVahedeTejariSN, gSM.ApplicationID)
             NoControlBatchFactorAndMarjooei = IIf(CApp.GetAppConfig("gVahedeTejariNoControlBatchBetweenFactorAndMarjooei") Is System.DBNull.Value, False, CApp.GetAppConfig("gVahedeTejariNoControlBatchBetweenFactorAndMarjooei"))
@@ -1298,6 +1245,14 @@ Public Class FrmMnuTakhsisKalaOnIRC
         If productcatalogueSn = 0 Then
             MsgBox("رکوردی انتخاب نشد", MsgBoxStyle.OkOnly)
         End If
+        If DVDetail.DataRows > 0 Then
+            DVDetail.Fields("kalaSN").ReadOnly = True
+            DVDetail.Fields("kalaSN").Component.Enabled = False
+        Else
+            DVDetail.Fields("kalaSN").ReadOnly = False
+            DVDetail.Fields("kalaSN").Component.Enabled = True
+        End If
+
         SqlWhere = String.Concat(SqlWhere, productcatalogueSn.ToString())
         DVDetail.SQLWhere = SqlWhere
         DVDetail.Refresh()
@@ -1929,8 +1884,8 @@ Public Class FrmMnuTakhsisKalaOnIRC
         DVDetail = New CDataView(cn)
         With DVDetail
             .TableName = "abProductCatalogueKalaIRC"
-            .Init(PanelDetail,, PanelDetailCom, PanelDetailNav, EnumButtonOptions.boCmdRefresh Or EnumButtonOptions.boCmdInsert _
-                  Or EnumButtonOptions.boCmdFilter Or EnumButtonOptions.boCmdModify Or EnumButtonOptions.boCmdFind)
+            .Init(PanelDetail,, PanelDetailCom, PanelDetailNav, EnumButtonOptions.boCmdPrint Or EnumButtonOptions.boCmdFilter _
+                                          Or EnumButtonOptions.boCmdFind Or EnumButtonOptions.boCmdRefresh Or EnumButtonOptions.boCmdInsert)
             .AddJoin("abProductCatalogueKalaIRC", EnumTableJoin.tjInnerJoin, "paKala", "KalaSN", "KalaSN")
             .EditInGrid = True
             With .Fields
@@ -1969,4 +1924,5 @@ Public Class FrmMnuTakhsisKalaOnIRC
                 DVDetail.Fields("ProductCatalogueSN").Value = GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value
         End Select
     End Sub
+
 End Class
