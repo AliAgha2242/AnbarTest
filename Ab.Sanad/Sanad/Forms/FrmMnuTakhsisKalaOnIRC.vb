@@ -1934,15 +1934,13 @@ Public Class FrmMnuTakhsisKalaOnIRC
             .AddJoin("abProductCatalogueKalaIRC", EnumTableJoin.tjInnerJoin, "paKala", "KalaSN", "KalaSN")
             .EditInGrid = True
             With .Fields
-                With .Add("pakala.kalaSN", "textbox", EnumFieldOptions.foHidden)
-                    .Caption = "شماره سریال کالا"
-                    .Format = "#,###"
+                With .Add("ProductCatalogueNewIRCSN", "", gSNFieldOption)
                     .DefaultValue = gSM.Identifier
                 End With
-                'With .Add("paKala.KalaNo")
-                '    .Caption = "شماره کالا"
-                'End With
-                'key asli -> {esmesho bezar ina } dar nahayat esmesh beshe in
+
+                With .Add("ProductCatalogueSN", "", EnumFieldOptions.foHidden)
+                End With
+
                 With .Add("KalaSN->{paKala.KalaNO + ' _ ' + paKala.KalaDS} AS KalaSN", "DataCombo")
                     .Caption = "نام کالا"
                     .ComboWhereCondition = "Kalasn in (select kalasn from pakala where len(isnull(paKala.IRC,''))>10 And len(isnull(paKala.GTIN,''))>10 )"
@@ -1951,20 +1949,16 @@ Public Class FrmMnuTakhsisKalaOnIRC
                 End With
                 With .Add("abProductCatalogueKalaIRC.NewIRC")
                     .Caption = "جدیدIRC"
-                    .Format = "#,###"
                     .ReadOnly = True
                 End With
                 With .Add("abProductCatalogueKalaIRC.NewGTIN")
                     .Caption = "جدیدGTIN"
-                    .Format = "#,###"
                     .ReadOnly = True
                 End With
             End With
             .Refresh()
         End With
-        For col As Integer = 0 To DVDetail.FlexGrid.ColumnCollection.Count
-            DVDetail.FlexGrid.AutoSizeCol(col)
-        Next
+
     End Sub
 
     Private Sub DVDetail_AfterCommandClick(aCommand As EnumCommands) Handles DVDetail.AfterCommandClick
@@ -1972,6 +1966,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
             Case EnumCommands.cmAdd
                 DVDetail.Fields("NewIRC").Value = GridBarcodeMaster.CurrentRow.Cells("IRC").Value
                 DVDetail.Fields("NewGTIN").Value = GridBarcodeMaster.CurrentRow.Cells("GTIN").Value
+                DVDetail.Fields("ProductCatalogueSN").Value = GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value
         End Select
     End Sub
 End Class
