@@ -1955,8 +1955,10 @@ Public Class FrmMnuTakhsisKalaOnIRC
                     .Caption = "جدیدGTIN"
                     .ReadOnly = True
                 End With
+                .Add("abProductCatalogueKalaIRC.ResC1",, EnumFieldOptions.foHidden)
+
             End With
-            .Refresh()
+                .Refresh()
         End With
 
     End Sub
@@ -1967,6 +1969,9 @@ Public Class FrmMnuTakhsisKalaOnIRC
                 DVDetail.Fields("NewIRC").Value = GridBarcodeMaster.CurrentRow.Cells("IRC").Value
                 DVDetail.Fields("NewGTIN").Value = GridBarcodeMaster.CurrentRow.Cells("GTIN").Value
                 DVDetail.Fields("ProductCatalogueSN").Value = GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value
+                DVDetail.Fields("ResC1").Value = DateTime.Now().ToString("####")
+            Case EnumCommands.cmSave
+
         End Select
     End Sub
 End Class
