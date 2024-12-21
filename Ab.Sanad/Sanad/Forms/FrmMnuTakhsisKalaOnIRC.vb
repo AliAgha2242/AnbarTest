@@ -20,35 +20,24 @@ Public Class FrmMnuTakhsisKalaOnIRC
     Private WithEvents dataView As CDataView
     Friend WithEvents Panel3 As Panel
     Friend WithEvents BtnSabtResid As Janus.Windows.EditControls.UIButton
-    'Friend WithEvents BtnRefreshData As Janus.Windows.EditControls.UIButton
+
     Friend WithEvents TabControl1 As TabControl
-    'Friend WithEvents TabPageAggregateScan As TabPage
+
     Friend WithEvents SplitContainer1 As SplitContainer
     Friend WithEvents TabPageScanRecords As TabPage
     Friend WithEvents Panel1 As Panel
     Friend WithEvents GridBarcodeMaster As Janus.Windows.GridEX.GridEX
     Friend WithEvents Panel2 As Panel
     Friend WithEvents TabControl3 As TabControl
-    'Friend WithEvents TabPage4 As TabPage
+
     Friend WithEvents GridBarcodeDetail As Janus.Windows.GridEX.GridEX
-    'Friend WithEvents GridBarcodeTajmie As Janus.Windows.GridEX.GridEX
+
     Friend WithEvents Label3 As Label
-    'Friend WithEvents GrpDate As GroupBox
-    ' Friend WithEvents Label2 As Label
-    'Friend WithEvents Label1 As Label
-    'Friend WithEvents TxtToDate As NetSql.Components.cmpFarsiDatePicker
-    'Friend WithEvents TxtFromDate As NetSql.Components.cmpFarsiDatePicker
+
     Friend WithEvents LinkRemoveFilter As LinkLabel
-    'Friend WithEvents ChkGetLastData As CheckBox
-    'Friend WithEvents LinkSaveLayout As LinkLabel
-    'Friend WithEvents LinkLoadLayout As LinkLabel
+
     Friend WithEvents GroupBox1 As GroupBox
-    'Friend WithEvents RdbUseColumnSets As RadioButton
-    'Friend WithEvents RdbUseColumns As RadioButton
     Friend WithEvents NumericUpDown1 As NumericUpDown
-    'Friend WithEvents Label4 As Label
-    'Friend WithEvents ChkTikWithoutMoghayerat As CheckBox
-    'Friend WithEvents LinkLabelEbtalSabt As LinkLabel
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Timer1 As Timer
     '------------------------------------------------------------------------------
@@ -179,7 +168,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(200, Byte))
         Me.Label1.Location = New System.Drawing.Point(669, 20)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(422, 50)
+        Me.Label1.Size = New System.Drawing.Size(422, 34)
         Me.Label1.TabIndex = 220
         Me.Label1.Text = "کاربر گرامی" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "لطفا توجه داشته باشید مهلت ویرایش کالای ثبت شده یک روز می باشد"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -386,32 +375,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
     Private Sub FrmMnuTakhsisKalaOnIRC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'Me.LinkRemoveFilter.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
-        'Me.LinkLabelEbtalSabt.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
-        'Me.BtnRefreshData.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
-        'Me.BtnSabtResid.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
-        'Me.ChkGetLastData.Font = New System.Drawing.Font("Tahoma", 10.0!, FontStyle.Bold)
-        'Me.ChkTikWithoutMoghayerat.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
-        'Me.BtnAnbarGardaniCatalogue.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
-        'Me.LinkExcelReportAnbargardani.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
-
-        'Me.LinkExportExcelBarcodeTajmie.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold) 'HB_14030410
-        'Me.LinkExportExcelBarcodeMaster.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold) 'HB_14030410
-
-        'TxtToDate.Text = MiladiToShamsi(Today(), EnumDateFormat.dfFullYear)
-        'TxtFromDate.Text = TxtToDate.Text.Substring(0, 8) + "01"
-
-        'Dim Fdate, Tdate As String
-        'Fdate = TxtFromDate.Text.Replace("/", "")
-        'Tdate = TxtToDate.Text.Replace("/", "")
-
-
-
-        'For Each colf As Janus.Windows.GridEX.GridEXColumn In GridBarcodeTajmie.RootTable.Columns
-        '    colf.HeaderAlignment = TextAlignment.Center
-        '    colf.TextAlignment = TextAlignment.Center
-        'Next
-
         For Each colf As Janus.Windows.GridEX.GridEXColumn In GridBarcodeDetail.RootTable.Columns
             colf.HeaderAlignment = TextAlignment.Center
             colf.TextAlignment = TextAlignment.Center
@@ -422,63 +385,20 @@ Public Class FrmMnuTakhsisKalaOnIRC
             colf.TextAlignment = TextAlignment.Center
         Next
 
-        'For Each colf As Janus.Windows.GridEX.GridEXColumn In GridBarcodeRptKasriEzafi.RootTable.Columns
-        '    colf.HeaderAlignment = TextAlignment.Center
-        '    colf.TextAlignment = TextAlignment.Center
-        'Next
-        'fghdbfhbffg
 
-
-        'Dim CAppSet As Configuration.CAppSetting = New Configuration.CAppSetting(gVahedeTejariSN, gSM.ApplicationID)
-        'TarakoneshMojaz = IIf(CAppSet.GetAppConfig("gVahedeTejariUseBarcodeReaderForSabtResid") Is System.DBNull.Value, "", CAppSet.GetAppConfig("gVahedeTejariUseBarcodeReaderForSabtResid").ToString)
-        'BtnSabtResid.Visible = TarakoneshMojaz <> "0"
-
-        'IsAnbarGardaniActive = CBool(IIf(CAppSet.GetAppConfig("gVahedeTejariUseBarcodeReaderForAnbarGardani") Is System.DBNull.Value, False, CAppSet.GetAppConfig("gVahedeTejariUseBarcodeReaderForAnbarGardani")))
-
-
-        'dcbanbarStatus.Bind(cn, "Select * from abVw_productCatalogueAnbarStaus", "Status", "StatusDS")
-        'dcbanbarStatus.BoundText = "1"
 
         Call BtnRefreshData_Click(sender, e)
 
 
 
-        'DvSourceKala =
-        '             cn.ExecuteQuery("select  Distinct Top 100 Percent paKalaTamin.VahedeTejariSN TaminVahedeTejariSN,VahedeTejariNo TaminVahedeTejariNo,VahedeTejariDs TaminVahedeTejariDs,  " &
-        '            "paKala.KalaSN  ,paKala.KalaNo, Case when isnull(KalaStatus,0)<>1 Then '<غیر فعال>' Else '' End + KalaDs KalaDS, Azmayesh GenericCodeMap,KalaStatus, " &
-        '            "(Select Top 1 TedadAjza  from paVahedeSanjeshKala Where KalaSN=paKala.KalaSN And  VahedeSanjeshSN=9.935 And Pishfarz=1) TedadDarKarton, " &
-        '            "(Select Top 1 TedadAjza  from paVahedeSanjeshKala Where KalaSN=paKala.KalaSN And  VahedeSanjeshSN=10.935 ) TedadDarBasteh " &
-        '            "from  paKalaTamin Join paVahedeTejari Tamin On Tamin.VahedeTejariSN=paKalaTamin.VahedeTejariSN " &
-        '            "Join paKala on pakala.KalaSN=paKalaTamin.KalaSN " &
-        '            "Where len(isnull(paKala.IRC,''))>10 And len(isnull(paKala.GTIN,''))>10  And Tamin.NoeVahedeTejariSN in (14.935,16.935) Order by paKalaTamin.VahedeTejariSN Desc")
-
-        'If gVahedeTejariSN <> 44.935 Then
-        '    ChkGetLastData.Visible = True
-        '    Dim dvDaftarForoosh As DataView = cn.ExecuteQuery("Select DaftarForooshSN,DaftarForooshDS from paDaftarForoosh where VahedeTejariSN=" & gVahedeTejariSN.ToString)
-        '    With GridBarcodeTajmie.RootTable.Columns.Item("DaftarForooshSN")
-        '        .HasValueList = True
-        '        .ValueList.PopulateValueList(dvDaftarForoosh, "DaftarForooshSN", "DaftarForooshDS")
-        '    End With
-        'Else
-        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDarkhast").Visible = False
-        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisFactor").Visible = False
-        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDaftarForoosh").Visible = False
-        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisSanad").Visible = False
-        '    ChkGetLastData.Visible = True
-        'End If
 
         Timer1.Enabled = True
-        'Call SyncCatalogueDataToGBID()
 
 
     End Sub
 
     Private Sub BtnRefreshData_Click(sender As Object, e As EventArgs)
 
-
-        'Dim Fdate, Tdate As String
-        'Fdate = TxtFromDate.Text.Replace("/", "")
-        'Tdate = TxtToDate.Text.Replace("/", "")
         If IsSabtResidActive Then
             Dim CApp As Configuration.CAppSetting = New Configuration.CAppSetting(gVahedeTejariSN, gSM.ApplicationID)
             NoControlBatchFactorAndMarjooei = IIf(CApp.GetAppConfig("gVahedeTejariNoControlBatchBetweenFactorAndMarjooei") Is System.DBNull.Value, False, CApp.GetAppConfig("gVahedeTejariNoControlBatchBetweenFactorAndMarjooei"))
@@ -486,69 +406,22 @@ Public Class FrmMnuTakhsisKalaOnIRC
             Dim wfrm As New Anbar.Common.Frmwait
             wfrm.Show()
             Try
-                'If ChkGetLastData.Checked Then
-                '    wfrm.Label3.Text = "...سیستم در حال دریافت اطلاعات از سرور مرکزی بارکدخوان می باشد..."
-                '    wfrm.Refresh()
 
-                '    If gVahedeTejariSN = 44.935 Then
-                '        Try
-                '            Dim Errmsg As String = abRule.GetBarcodeScannerDataFromMainServer(cn)
-                '            If Errmsg.Length > 0 Then
-                '                CSystem.MsgBox("خطا : " + vbNewLine + Errmsg, MsgBoxStyle.Critical, "")
-                '                Exit Sub
-                '            End If
-                '            Threading.Thread.Sleep(10000)
-                '        Catch ex As Exception
-                '            CSystem.MsgBox(ex.Message, MsgBoxStyle.Critical, "")
-                '        End Try
-                '    Else
-                '        Try
-                '            abRule.GetLastProductCatalogue(cn, gSM.UserID_Name, System.Windows.Forms.SystemInformation.ComputerName)
-                '        Catch ex As Exception
-                '            CSystem.MsgBox("خطا در دریافت اطلاعات از سرور مرکزی" + vbNewLine + ex.Message, MsgBoxStyle.Critical, "")
-                '        End Try
-                '    End If
-
-                'End If
 
                 wfrm.Label3.Text = "...سیستم در حال بروزرسانی آخرین اطلاعات می باشد..."
                 wfrm.Refresh()
 
 
                 Try
-                    'DSCatalogue = abRule.GetBarcodeScannerData(gVahedeTejariSN, gAnbarSN, Fdate, Tdate, CInt(0), cn)
 
                     GridBarcodeMaster.ClearStructure()
                     CInitDetailDataView()
                     Dim Test As DataView = abRule.GetBarcodeThatsNotHaveProduct(cn, gVahedeTejariSN)
 
-                    'Dim Test1 As DataView = cn.ExecuteQuery("abSpC_abProductCatalogueKalaIRC_Insert", Fdate, Tdate, gVahedeTejariSN)
                     DSCatalogue = Test
                     DSCatalogue.AllowEdit = False
-                    'If DSCatalogue Is Nothing Then
-                    '    CSystem.MsgBox("خطا در دریافت اطلاعات", MsgBoxStyle.Critical, "خطا!")
-                    '    Exit Sub
-                    'Else
-                    '    'GridBarcodeMaster.DataSource = DSCatalogue.ToTable()
-                    '    'GridBarcodeDetail.DataSource = DSCatalogue.ToTable()
-                    '    'Call FillTakhsisFieldsByLastValuesBeforeRefresh()
 
-                    '    GridBarcodeTajmie.DataSource = DSCatalogue
-                    '    GridBarcodeTajmie.Refresh()
-                    '    GridBarcodeTajmie.RetrieveStructure()
-
-                    '    GridBarcodeTajmie.AutoSizeColumns()
-
-                    'End If
                     If Not DSCatalogue Is Nothing Then
-                        'GridBarcodeMaster.DataSource = DSCatalogue.ToTable()
-                        'GridBarcodeDetail.DataSource = DSCatalogue.ToTable()
-                        'Call FillTakhsisFieldsByLastValuesBeforeRefresh()
-                        'GridBarcodeTajmie.DataSource = DSCatalogue
-                        'GridBarcodeTajmie.Refresh()
-                        'GridBarcodeTajmie.RetrieveStructure()
-
-                        'GridBarcodeTajmie.AutoSizeColumns()
 
                         Dim a As DataGridView = New DataGridView()
                         GridBarcodeMaster.DataSource = DSCatalogue
@@ -560,70 +433,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         GridBarcodeMaster.AllowAddNew = InheritableBoolean.False
                         GridBarcodeMaster.AllowEdit = InheritableBoolean.False
                         GridBarcodeMaster.AllowDelete = InheritableBoolean.False
-
-
-                        'Dim Detail As DataView = cn.ExecuteQuery("drop table if exists #KalaIRCGTIN
-                        '                              Select  * into #KalaIRCGTIN from (
-                        '                              Select distinct 
-                        '                              cast(kalasn as varchar)+isnull(IRC,'') +isnull(GTIN,'') KalaIdentifier,
-                        '                              paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
-                        '                              GTIN,IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
-                        '                              from paVw_paKalaTaminFull 
-                        '                              Union 
-                        '                              Select distinct 
-                        '                              cast(paVw_paKalaTaminFull.kalasn as varchar)+isnull(NewIRC,'') +isnull(NewGTIN,'') KalaIdentifier,
-                        '                              paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
-                        '                               NewGTIN GTIN,NewIRC IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
-                        '                              from paVw_paKalaTaminFull 
-                        '                               join abProductCatalogueKalaIRC on abProductCatalogueKalaIRC.KalaSN=paVw_paKalaTaminFull.KalaSN 
-                        '                               )p
-
-
-
-                        '                              ;With Cte
-                        '                              AS 
-                        '                              (
-                        '                              select KalaSN,
-                        '                              kalaDs 'نام کالا',
-                        '                              KalaLatinDs 'نام لاتین کالا',
-                        '                              TaminVahedeTejariDs 'تامین کننده',
-                        '                              Cte_Kala.GTIN 'کد GTIN',
-                        '                              Cte_Kala.IRC 'کد IRC'
-                        '                              from #KalaIRCGTIN cte_Kala join abProductCatalogue abp on cte_Kala.IRC = abp.IRC 
-                        '                              where ProductCatalogueSN = 33156.301
-                        '                              union 
-                        '                              select KalaSN,kalaDs,KalaLatinDs,TaminVahedeTejariDs,Cte_Kala.GTIN,Cte_Kala.IRC 
-                        '                              from #KalaIRCGTIN cte_Kala Join abProductCatalogue abp on cte_Kala.GTIN = abp.GTIN
-                        '                              where ProductCatalogueSN = 33156.301
-                        '                              )
-                        '                              select * from Cte
-                        '                              ")
-
-                        'GridBarcodeDetail.DataSource = Detail
-
-
-
-
-                        'For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
-                        '    If col.Key.ToUpper.EndsWith("SN") OrElse col.Key.ToUpper = "MOGHAYERATNO" Then
-                        '        col.Visible = False
-                        '    End If
-                        '    If (col.Key = "نوع مغایرت") Then
-                        '        col.CellStyle = FormatStyle
-                        '    End If
-                        'Next
-
-
-
-
-
-                        '---------------------------------------------------------
-
-                        'Dim t As CDataView = New CDataView(cn)
-                        't.Init(Panel2, Panel1, aCommandsPanel:=Panel2, aOptions:=EnumButtonOptions.boCmdInsert)
-
-
-                        '---------------------------------------------------------
                         For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
                             If col.Key.ToUpper.EndsWith("SN") Or col.Key.ToUpper() = "MOGHAYERATNO" Then
                                 col.Visible = False
@@ -637,108 +446,18 @@ Public Class FrmMnuTakhsisKalaOnIRC
                     CSystem.MsgBox(ex.Message, MsgBoxStyle.Critical, "خطا!")
                 End Try
 
-                'Call GridBarcodeMaster_SelectionChanged(sender, e)
 
                 GridBarcodeMaster.AutoSizeColumns()
 
 
-                'GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDarkhast").Visible = False
-                'GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisFactor").Visible = False
-                'GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDaftarForoosh").Visible = False
-                'GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisSanad").Visible = False
 
-
-                ''تنظیمات با توجه به تراکنش های دریافتی 
-                'Dim tblTarakonesh As DataView = New DataView(DSCatalogue.ToTable(), "Status=1", "", DataViewRowState.CurrentRows).ToTable(True, "CatalogueTarakoneshSN").DefaultView
-
-                'If tblTarakonesh.Count > 0 Then
-
-                '    tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (12)"
-
-                '    'If tblTarakonesh.Count > 0 Then
-                '    '    DvSourceDarkhast = cn.ExecuteQuery("Select * from fovw_DarkhastHamlMostaghim")
-                '    '    With GridBarcodeTajmie.RootTable.Columns.Item("DarkhastSN")
-                '    '        .HasValueList = True
-                '    '        .ValueList.PopulateValueList(DvSourceDarkhast, "DarkhastSN", "DarkhastDS")
-                '    '    End With
-                '    '    DvSourceDarkhastHa = cn.ExecuteQuery("Select DarkhastSN,KalaSN,Tedad from foDarkhastHa Where DarkhastSN In (Select DarkhastSN from fovw_DarkhastHamlMostaghim)")
-                '    '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDarkhast").Visible = True
-                '    'End If
-
-                '    tblTarakonesh.RowFilter = "0=0"
-                '    tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (38,39,45)"
-
-                '    If tblTarakonesh.Count > 0 Then
-
-                '        Dim WhereClauseStr As String = ""
-
-                '        Dim KalaSNStr As String = ""
-                '        Dim TarakoneshSNStr As String = ""
-
-                '        For Each row As DataRowView In tblTarakonesh
-                '            TarakoneshSNStr = row("CatalogueTarakoneshSN").ToString
-                '            KalaSNStr = ""
-                '            Dim tblKala As DataTable = New DataView(DSCatalogue.ToTable.Copy(), "Status=1 And CatalogueTarakoneshSN=" & row("CatalogueTarakoneshSN").ToString, "CatalogueTarakoneshSN", DataViewRowState.CurrentRows).ToTable(True, {"SimilarKalaByIRCGTIN"})
-                '            For Each rowKala As DataRow In tblKala.Rows
-                '                KalaSNStr += rowKala("SimilarKalaByIRCGTIN").ToString + ","
-                '            Next
-                '            If KalaSNStr.EndsWith(",") Then
-                '                KalaSNStr = KalaSNStr.Substring(0, KalaSNStr.Length - 1)
-                '            End If
-                '            WhereClauseStr += "(TarakoneshSN=" + TarakoneshSNStr.ToString + " And KalaSN In (" & KalaSNStr & ")) Or "
-
-                '        Next
-
-                '        If WhereClauseStr.EndsWith("Or ") Then
-                '            WhereClauseStr = WhereClauseStr.Substring(0, WhereClauseStr.Length - 3)
-                '        End If
-
-
-                '        Dim StrFactor As String = "Select * from abVw_ProductCatalogue_Factor_Marjooei where " & WhereClauseStr & " Order by SodoorDate desc"
-
-
-                '        DvSourceFactor = cn.ExecuteQuery(StrFactor)
-
-                '        'tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (38,39)"
-                '        'If tblTarakonesh.Count > 0 Then
-                '        '    With GridBarcodeTajmie.RootTable.Columns.Item("FactorSN")
-                '        '        .HasValueList = True
-                '        '        .ValueList.PopulateValueList(DvSourceFactor, "FactorSN", "FactorDS")
-                '        '    End With
-                '        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisFactor").Visible = True
-                '        'End If
-
-                '        'tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (45)"
-                '        'If tblTarakonesh.Count > 0 Then
-                '        '    With GridBarcodeTajmie.RootTable.Columns.Item("SanadSN")
-                '        '        .HasValueList = True
-                '        '        .ValueList.PopulateValueList(DvSourceFactor, "SanadSN", "FactorDS")
-                '        '    End With
-                '        '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisSanad").Visible = True
-
-                '        'End If
-
-                '    End If
-
-                '    tblTarakonesh.RowFilter = "0=0"
-                '    tblTarakonesh.RowFilter = "CatalogueTarakoneshSN In (11,18)"
-
-                '    'If tblTarakonesh.Count > 0 AndAlso gVahedeTejariSN = 23000.935 Then ''فقط برای شعب دارای دفتر فروش
-                '    '    GridBarcodeTajmie.RootTable.ColumnSets.Item("ColumnSetTakhsisDaftarForoosh").Visible = True
-                '    'End If
-
-
-                'End If
             Catch ex As Exception
             Finally
                 wfrm.Close()
-                'ChkGetLastData.Checked = False
             End Try
 
         End If
 
-        'Dim dv As DataView = cn.ExecuteQuery("select Top 1 1 from abProductCatalogue join abProductCatalogueDetail on abProductCatalogue.ProductCatalogueSN=abProductCatalogueDetail.ProductCatalogueSN where (Status=1  And TransferToDbDate between '" & Fdate & "' And '" & Tdate & "' ) ) and abProductCatalogue.ResInt1=50 and ScanResultNo=0 and Amount>0 and VahedeTejariSN=" & gVahedeTejariSN.ToString & " and AnbarSN=" & gAnbarSN.ToString)
-        'IsAnbarGardaniActive = dv.Count > 0
 
         If IsAnbarGardaniActive Then
             Dim Wfrm As New Anbar.Common.Frmwait
@@ -748,7 +467,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
             Try
                 DSCatalogue = Nothing
-                'DSCatalogue = abRule.GetBarcodeScannerData(gVahedeTejariSN, gAnbarSN, Fdate, Tdate, ', "abSPG_ProductCatalogueGetDataForAnbarGardani")
 
                 If DSCatalogue Is Nothing Then
                     CSystem.MsgBox("خطا در دریافت اطلاعات", MsgBoxStyle.Critical, "خطا!")
@@ -770,12 +488,9 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         GridBarcodeDetail.DataSource = DSCatalogue.ToTable()
                     End If
 
-                    'GridBarcodeRptKasriEzafi.DataSource = DSCatalogue.Tables(2)
 
-                    'GridBarcodeRptKasriEzafi.AutoSizeColumns()
                     GridBarcodeMaster.AutoSizeColumns()
 
-                    'Call GridBarcodeMaster_SelectionChanged(sender, e)
 
                     GridBarcodeMaster.AutoSizeColumns()
 
@@ -788,323 +503,16 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
         End If
 
-        'If IsSabtResidActive Then
-        '    If TabControl1.TabPages.IndexOf(TabPageAggregateScan) >= 0 Then
-        '        TabControl1.SelectTab(TabPageAggregateScan)
-        '    Else
-        '        TabControl1.TabPages.Add(TabPageAggregateScan)
-        '    End If
-        'Else
-        '    If TabControl1.TabPages.IndexOf(TabPageAggregateScan) >= 0 Then
-        '        TabControl1.TabPages.Remove(TabPageAggregateScan)
-        '    End If
-        'End If
 
-        'If IsAnbarGardaniActive Then
-        '    If TabControl1.TabPages.IndexOf(TabPageKasriEzafi) >= 0 Then
-        '        TabControl1.SelectTab(TabPageKasriEzafi)
-        '    Else
-        '        TabControl1.TabPages.Add(TabPageKasriEzafi)
-        '    End If
-
-        'Else
-        '    If TabControl1.TabPages.IndexOf(TabPageKasriEzafi) >= 0 Then
-        '        TabControl1.TabPages.Remove(TabPageKasriEzafi)
-        '    End If
-        'End If
 
 
     End Sub
 
-    'Private Sub BtnTaeed_Click(sender As Object, e As EventArgs) Handles BtnSabtResid.Click
 
-    '    Dim wfrm As New Anbar.Common.Frmwait
-
-    '    Try
-    '        'If GridBarcodeTajmie.GetCheckedRows.Length = 0 Then
-    '        '    CSystem.MsgBox("موردی برای ارسال به انبار انتخاب نشده است!", MsgBoxStyle.Exclamation, "خطا")
-    '        '    Exit Sub
-    '        'End If
-
-    '        Dim CntTakhsis As Integer = 0
-    '        For Each Row As Janus.Windows.GridEX.GridEXRow In GridBarcodeTajmie.GetCheckedRows
-    '            If CDec(Row.Cells("FlagInsert_IRC_GTIN").Value) = 1 Then
-    '                CntTakhsis += 1
-    '            End If
-    '        Next
-
-    '        If CSystem.MsgBox(GridBarcodeTajmie.GetCheckedRows.Length.ToString + " ردیف جهت ثبت رسید انتخاب شده است" + vbNewLine +
-    '                            "آیا مایل به ثبت رسید  برای محصولات انتخاب شده می باشید؟" + vbNewLine +
-    '                           If(CntTakhsis > 0, "همچنین " + CntTakhsis.ToString + " ردیف محصول تخصیص یافته در موارد انتخاب شده وجود دارد", ""), MsgBoxStyle.YesNo + MsgBoxStyle.Question, "ثبت رسید") = MsgBoxResult.No Then
-    '            Exit Sub
-    '        End If
-
-    '        wfrm.Show()
-    '        wfrm.Label3.Text = "...سیستم در حال ثبت سند موارد انتخابی می باشد..."
-    '        wfrm.Refresh()
-    '        Dim XmlStr As String = ""
-
-    '        Dim DsCatalogueForInsertInDB As New DataSet
-    '        Dim DtCatalogueForInsertInDB As New DataTable
-    '        DtCatalogueForInsertInDB.TableName = "ProductCatalogue"
-
-    '        'Dim _Col1 As New System.Data.DataColumn
-    '        '_Col1.ColumnName = "ProductCatalogueSN"
-    '        '_Col1.DataType = System.Type.GetType("System.Decimal")
-    '        'DtCatalogueForInsertInDB.Columns.Add(_Col1)
-
-    '        Dim _Col2 As New System.Data.DataColumn
-    '        _Col2.ColumnName = "KalaSN"
-    '        _Col2.DataType = System.Type.GetType("System.Decimal")
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col2)
-
-    '        Dim _Col22 As New System.Data.DataColumn
-    '        _Col22.ColumnName = "TaminVahedeTejariSN"
-    '        _Col22.DataType = System.Type.GetType("System.Decimal")
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col22)
-
-    '        Dim _Col3 As New System.Data.DataColumn
-    '        _Col3.ColumnName = "BatchCode"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col3)
-
-    '        Dim _Col4 As New System.Data.DataColumn
-    '        _Col4.ColumnName = "Manufacturing"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col4)
-
-    '        Dim _Col5 As New System.Data.DataColumn
-    '        _Col5.ColumnName = "Expiration"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col5)
-
-    '        Dim _Col6 As New System.Data.DataColumn
-    '        _Col6.ColumnName = "Amount"
-    '        _Col6.DataType = System.Type.GetType("System.Int32")
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col6)
-
-    '        Dim _Col66 As New System.Data.DataColumn
-    '        _Col66.ColumnName = "Tozih"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col66)
-
-    '        Dim _Col7 As New System.Data.DataColumn
-    '        _Col7.ColumnName = "FlagInsert_IRC_GTIN"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col7)
-
-    '        Dim _Col8 As New System.Data.DataColumn
-    '        _Col8.ColumnName = "IRC"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col8)
-
-    '        Dim _Col9 As New System.Data.DataColumn
-    '        _Col9.ColumnName = "GTIN"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col9)
-
-    '        Dim _Col10 As New System.Data.DataColumn
-    '        _Col10.ColumnName = "RegisterNumber"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col10)
-
-    '        Dim _Col11 As New System.Data.DataColumn
-    '        _Col11.ColumnName = "TarakoneshSN"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col11)
-
-    '        Dim _Col12 As New System.Data.DataColumn
-    '        _Col12.ColumnName = "DarkhastSN"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col12)
-
-    '        Dim _Col13 As New System.Data.DataColumn
-    '        _Col13.ColumnName = "FactorSN"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col13)
-
-    '        Dim _Col14 As New System.Data.DataColumn
-    '        _Col14.ColumnName = "FactorAsliSN"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col14)
-
-    '        Dim _Col15 As New System.Data.DataColumn
-    '        _Col15.ColumnName = "CatalogueTarakoneshSN"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col15)
-
-    '        Dim _Col16 As New System.Data.DataColumn
-    '        _Col16.ColumnName = "UID"
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col16)
-
-    '        Dim _Col17 As New System.Data.DataColumn
-    '        _Col17.ColumnName = "DaftarForooshSN"
-    '        _Col17.DataType = System.Type.GetType("System.Decimal")
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col17)
-
-    '        Dim _Col18 As New System.Data.DataColumn
-    '        _Col18.ColumnName = "SanadSN"
-    '        _Col18.DataType = System.Type.GetType("System.Decimal")
-    '        DtCatalogueForInsertInDB.Columns.Add(_Col18)
-
-    '        For Each Tajmieitem As Janus.Windows.GridEX.GridEXRow In GridBarcodeTajmie.GetCheckedRows
-
-    '            'If CDec(Tajmieitem.Cells("KalaSN").Value) = 0 Then
-    '            '    CSystem.MsgBox("ردیف های انتخابی حاوی محصول نامشخص می باشد!", MsgBoxStyle.Exclamation, "خطا")
-    '            '    Exit Sub
-    '            'End If
-    '            'If CDec(Tajmieitem.Cells("TaminVahedeTejariSN").Value) = 0 Then
-    '            '    CSystem.MsgBox("ردیف های انتخابی حاوی تامین کننده نامشخص می باشد!", MsgBoxStyle.Exclamation, "خطا")
-    '            '    Exit Sub
-    '            'End If
-
-
-    '            'If IsNumeric(Tajmieitem.Cells("AnbarTarakoneshSN").Value) Then
-    '            '    If Not TarakoneshMojaz.Contains(Tajmieitem.Cells("AnbarTarakoneshSN").Value.ToString) Then
-    '            '        CSystem.MsgBox("برای ردیف های انتخابی تراکنش صحیح انتخاب نشده است !", MsgBoxStyle.Exclamation, "خطا")
-    '            '        Exit Sub
-    '            '    End If
-    '            'Else
-    '            If Not IsNumeric(Tajmieitem.Cells("AnbarTarakoneshSN").Value) Then
-    '                CSystem.MsgBox("برای ردیف های انتخابی تراکنش انتخاب نشده است !", MsgBoxStyle.Exclamation, "خطا")
-    '                Exit Sub
-    '            End If
-
-
-
-    '            If IsNumeric(Tajmieitem.Cells("MoghayeratNo").Value) Then
-    '                If CDec(Tajmieitem.Cells("MoghayeratNo").Value) >= 1 AndAlso CDec(Tajmieitem.Cells("MoghayeratNo").Value) <= 10 Then
-    '                    CSystem.MsgBox("ردیف های انتخابی حاوی مغایرت (" & Tajmieitem.Cells("Moghayerat").Text & ") می باشد!", MsgBoxStyle.Exclamation, "خطا")
-    '                    Exit Sub
-    '                End If
-    '            End If
-
-    '            If IsNumeric(Tajmieitem.Cells("AnbarTarakoneshSN").Value) Then
-    '                If CDec(Tajmieitem.Cells("AnbarTarakoneshSN").Value) >= 50 AndAlso CDec(Tajmieitem.Cells("AnbarTarakoneshSN").Value) <= 0 Then
-    '                    CSystem.MsgBox("یکی از ردیف های انتخابی حاوی تراکنش عددی غیرمجاز می باشد", MsgBoxStyle.Exclamation, "خطا")
-    '                    Exit Sub
-    '                End If
-    '            Else
-    '                CSystem.MsgBox("یکی از ردیف های انتخابی حاوی تراکنش غیرعددی می باشد", MsgBoxStyle.Exclamation, "خطا")
-    '                Exit Sub
-    '            End If
-
-
-    '            If CDec(Tajmieitem.Cells("Status").Value) = 2 AndAlso CDec(Tajmieitem.Cells("FlagInsert_IRC_GTIN").Value) = 1 Then
-    '                CSystem.MsgBox("ردیف های انتخابی حاوی محصولات ارسال شده می باشد!" +
-    '                               vbNewLine + vbNewLine + "تامین کننده : " + Tajmieitem.Cells("TaminVahedeTejariDS").Text + vbNewLine + "محصول : " +
-    '                               Tajmieitem.Cells("KalaDS").Text + vbNewLine + "بچ : " + Tajmieitem.Cells("BatchCode").Text, MsgBoxStyle.Exclamation, "خطا")
-    '                Exit Sub
-    '            End If
-
-    '            If CDec(Tajmieitem.Cells("Status").Value) <> 1 AndAlso CDec(Tajmieitem.Cells("FlagInsert_IRC_GTIN").Value) = 0 Then
-    '                CSystem.MsgBox("ردیف های انتخابی حاوی محصولات " & Tajmieitem.Cells("StatusDS").Text & " می باشد!" +
-    '                               vbNewLine + vbNewLine + "تامین کننده : " + Tajmieitem.Cells("TaminVahedeTejariDS").Text + vbNewLine + "محصول : " +
-    '                               Tajmieitem.Cells("KalaDS").Text + vbNewLine + "بچ : " + Tajmieitem.Cells("BatchCode").Text, MsgBoxStyle.Exclamation, "خطا")
-    '                Exit Sub
-    '            End If
-
-    '            'If IsNumeric(Tajmieitem.Cells("SanadSN").Value) Then
-    '            '    If CDec(Tajmieitem.Cells("SanadSN").Value) > 0 Then
-    '            '        If IsNumeric(Tajmieitem.Cells("TedadSanadAnbar").Value) Then
-    '            '            If CDec(Tajmieitem.Cells("TedadSanadAnbar").Value) > 0 AndAlso CDec(Tajmieitem.Cells("TedadSanadAnbar").Value) > CDec(Tajmieitem.Cells("Amount").Value) Then
-    '            '                CSystem.MsgBox("تعداد مرجوعی جایزه از تعداد اسکن بیشتر است!" + vbNewLine + "محصول : " + Tajmieitem.Cells("KalaDS").Text + vbNewLine + "بچ : " + Tajmieitem.Cells("BatchCode").Text, MsgBoxStyle.Exclamation, "")
-    '            '                Exit Sub
-    '            '            End If
-    '            '            If CDec(Tajmieitem.Cells("TedadSanadAnbar").Value) = 0 Then
-    '            '                CSystem.MsgBox("تعداد مرجوعی جایزه وارد نشده است!" + vbNewLine + "محصول : " + Tajmieitem.Cells("KalaDS").Text + vbNewLine + "بچ : " + Tajmieitem.Cells("BatchCode").Text, MsgBoxStyle.Exclamation, "")
-    '            '                Exit Sub
-    '            '            End If
-
-    '            '        End If
-    '            '    End If
-    '            'End If
-
-    '            'If IsNumeric(Tajmieitem.Cells("TedadSanadAnbar").Value) Then
-    '            '    If CDec(Tajmieitem.Cells("TedadSanadAnbar").Value) > 0 Then
-    '            '        If IsNumeric(Tajmieitem.Cells("SanadSN").Value) Then
-    '            '            If CDec(Tajmieitem.Cells("SanadSN").Value) = 0 Then
-    '            '                CSystem.MsgBox("مقدار مرجوعی وارد شده اما سند انبار برای ردیف ذیل انتخاب نشده است!" + vbNewLine + "محصول : " + Tajmieitem.Cells("KalaDS").Text + vbNewLine + "بچ : " + Tajmieitem.Cells("BatchCode").Text, MsgBoxStyle.Exclamation, "")
-    '            '                Exit Sub
-    '            '            End If
-    '            '        Else
-    '            '            CSystem.MsgBox("مقدار مرجوعی وارد شده اما سند انبار برای ردیف ذیل انتخاب نشده است!" + vbNewLine + "محصول : " + Tajmieitem.Cells("KalaDS").Text + vbNewLine + "بچ : " + Tajmieitem.Cells("BatchCode").Text, MsgBoxStyle.Exclamation, "")
-    '            '            Exit Sub
-    '            '        End If
-    '            '    End If
-    '            'End If
-
-
-
-
-    '            Dim NewRow As DataRow = DtCatalogueForInsertInDB.NewRow
-    '            NewRow("UID") = Tajmieitem.Cells("UID").Text
-    '            NewRow("KalaSN") = Tajmieitem.Cells("KalaSN").Value
-    '            NewRow("TaminVahedeTejariSN") = Tajmieitem.Cells("TaminVahedeTejariSN").Value
-    '            NewRow("BatchCode") = Tajmieitem.Cells("BatchCode").Value
-    '            NewRow("Manufacturing") = Tajmieitem.Cells("Manufacturing").Value
-    '            NewRow("Expiration") = Tajmieitem.Cells("Expiration").Value
-    '            NewRow("Amount") = Tajmieitem.Cells("Amount").Value
-    '            NewRow("Tozih") = Tajmieitem.Cells("Tozih").Text
-    '            NewRow("FlagInsert_IRC_GTIN") = Tajmieitem.Cells("FlagInsert_IRC_GTIN").Text
-    '            NewRow("IRC") = Tajmieitem.Cells("IRC").Text
-    '            NewRow("GTIN") = Tajmieitem.Cells("GTIN").Text
-    '            NewRow("RegisterNumber") = ""
-    '            NewRow("TarakoneshSN") = Tajmieitem.Cells("AnbarTarakoneshSN").Value
-    '            NewRow("CatalogueTarakoneshSN") = Tajmieitem.Cells("CatalogueTarakoneshSN").Value
-    '            NewRow("DarkhastSN") = Tajmieitem.Cells("DarkhastSN").Value
-    '            NewRow("FactorSN") = Tajmieitem.Cells("FactorSN").Value
-    '            NewRow("FactorAsliSN") = Tajmieitem.Cells("FactorAsliSN").Value
-    '            NewRow("DaftarForooshSN") = Tajmieitem.Cells("DaftarForooshSN").Value
-    '            NewRow("SanadSN") = Tajmieitem.Cells("SanadSN").Value
-
-    '            If CInt(NewRow("FlagInsert_IRC_GTIN")) = 1 Then
-    '                Dim RegNumbers As String = ""
-    '                GridBarcodeMaster.RemoveFilters()
-    '                For Each item As DataRow In CType(GridBarcodeMaster.DataSource, DataTable).Rows
-    '                    If item("IRC").ToString = NewRow("IRC").ToString AndAlso item("GTIN").ToString = NewRow("GTIN").ToString AndAlso item("BatchCode").ToString = NewRow("BatchCode").ToString Then
-    '                        RegNumbers += item("RegisterNumber").ToString + ","
-    '                    End If
-    '                Next
-    '                If RegNumbers.EndsWith(",") Then
-    '                    RegNumbers = RegNumbers.Substring(0, RegNumbers.Length - 1)
-    '                End If
-    '                NewRow("RegisterNumber") = RegNumbers
-    '            End If
-
-    '            DtCatalogueForInsertInDB.Rows.Add(NewRow)
-
-
-    '        Next
-
-    '        If DtCatalogueForInsertInDB.Rows.Count > 0 Then
-    '            DsCatalogueForInsertInDB.Tables.Add(DtCatalogueForInsertInDB)
-    '            XmlStr = DsCatalogueForInsertInDB.GetXml
-    '        End If
-
-
-    '        Try
-    '            Dim Errmsg As String = abRule.SabteSanadByBarcodeScannerData(gVahedeTejariSN, gAnbarSN, XmlStr, gSM.UserID, gSM.UserName, cn)
-    '            If Errmsg <> "" Then
-    '                CSystem.MsgBox("خطا در ثبت سند " + vbNewLine + Errmsg, MsgBoxStyle.Exclamation, "خطا!")
-    '            Else
-    '                Call BtnRefreshData_Click(sender, e)
-
-    '                CSystem.MsgBox("ثبت سند با موفقیت انجام گردید", MsgBoxStyle.Information, "ثبت سند")
-    '            End If
-    '        Catch ex As Exception
-    '            CSystem.MsgBox("خطا در ثبت سند " + vbNewLine + ex.Message, MsgBoxStyle.Critical, "خطا!")
-    '        End Try
-
-    '    Catch ex As Exception
-    '    Finally
-    '        wfrm.Close()
-    '        ChkGetLastData.Checked = False
-    '    End Try
-
-    '    'test 14030523
-
-    'End Sub
 
     Private Sub GridBarcodeMaster_DoubleClick(sender As Object, e As EventArgs) Handles GridBarcodeMaster.DoubleClick
         GridBarcodeMaster.AutoSizeColumns()
     End Sub
-
-    'Private Sub GridBarcodeDetail_DoubleClick(sender As Object, e As EventArgs) Handles GridBarcodeDetail.DoubleClick
-    '    GridBarcodeDetail.AutoSizeColumns()
-    'End Sub
-
-    'Private Sub GridBarcodeTajmie_DoubleClick(sender As Object, e As EventArgs) Handles GridBarcodeTajmie.DoubleClick
-    '    GridBarcodeTajmie.AutoSizeColumns()
-    'End Sub
-
     Private Sub GridBarcodeMaster_SelectionChanged(sender As Object, e As EventArgs) Handles GridBarcodeMaster.SelectionChanged
         Dim SqlWhere As String = "ProductCatalogueSn = "
         Dim productcatalogueSn As Decimal = CDec(GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value)
@@ -1120,367 +528,12 @@ Public Class FrmMnuTakhsisKalaOnIRC
             DVDetail.CommandEnabled(EnumCommands.cmAdd) = True
         End If
 
-        'TabPage4.Text = "تفکیک وضعیت شمارش ها"
-        'If GridBarcodeMaster.CurrentRow Is Nothing Then
-        '    If Not GridBarcodeDetail.DataSource Is Nothing Then
-        '        CType(GridBarcodeDetail.DataSource, DataTable).DefaultView.RowFilter = "1=0"
-        '    End If
-        '    Exit Sub
-        'End If
-        'If Not IsNothing(GridBarcodeDetail.DataSource) Then
-        '    If IsNumeric(GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value) Then
-        '        CType(GridBarcodeDetail.DataSource, DataTable).DefaultView.RowFilter = "ProductCatalogueSN=" & GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value.ToString
-        '        GridBarcodeDetail.Refresh()
-        '        TabPage4.Text = "تفکیک وضعیت شمارش ها" + " - شماره ثبت " + GridBarcodeMaster.CurrentRow.Cells("RegisterNumber").Text
 
-        '    Else
-        '        CType(GridBarcodeDetail.DataSource, DataTable).DefaultView.RowFilter = "1=0"
-        '        GridBarcodeDetail.Refresh()
-        '    End If
-        'End If
-        'Dim ProductCatalogueSN As Decimal = CDec(GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value)
-
-        'GridBarcodeDetail.DataSource = cn.ExecuteQuery(String.Concat("drop table if exists #KalaIRCGTIN
-        '                                                              Select  * into #KalaIRCGTIN from (
-        '                                                              Select distinct 
-        '                                                              cast(kalasn as varchar)+isnull(IRC,'') +isnull(GTIN,'') KalaIdentifier,
-        '                                                              paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
-        '                                                              GTIN,IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
-        '                                                              from paVw_paKalaTaminFull 
-        '                                                              Union 
-        '                                                              Select distinct 
-        '                                                              cast(paVw_paKalaTaminFull.kalasn as varchar)+isnull(NewIRC,'') +isnull(NewGTIN,'') KalaIdentifier,
-        '                                                              paVw_paKalaTaminFull.KalaSN,kalano,KalaDs,KalaLatinDs,KalaBrandLatinDS,TaminVahedeTejariSN,TaminVahedeTejariNo,TaminVahedeTejariDs,
-        '                                                               NewGTIN GTIN,NewIRC IRC,Convert(Varchar,Azmayesh) Azmayesh,KalaStatus
-        '                                                              from paVw_paKalaTaminFull 
-        '                                                               join abProductCatalogueKalaIRC on abProductCatalogueKalaIRC.KalaSN=paVw_paKalaTaminFull.KalaSN 
-        '                                                               )p
-
-        '                                                              Select *,
-        '                                                              case kalaStatus when 1 then 'فعال'
-        '                                                              Else 'غیر فعال'
-        '                                                              End 'وضعیت'
-        '                                                              From
-        '                                                              (
-        '                                                              select KalaSN,
-        '                                                              kalaDs 'نام کالا',
-        '                                                              KalaLatinDs 'نام لاتین کالا',
-        '                                                              TaminVahedeTejariDs 'تامین کننده',
-        '                                                              Cte_Kala.GTIN 'کد GTIN',
-        '                                                              Cte_Kala.IRC 'کد IRC'
-        '                                                              ,kalaStatus
-        '                                                              from #KalaIRCGTIN cte_Kala join abProductCatalogue abp on cte_Kala.IRC = abp.IRC 
-        '                                                              where ProductCatalogueSN = ", ProductCatalogueSN,
-        '                                                              "union 
-        '                                                              select KalaSN,kalaDs,KalaLatinDs,TaminVahedeTejariDs,Cte_Kala.GTIN,Cte_Kala.IRC
-        '                                                              ,kalaStatus
-        '                                                              from #KalaIRCGTIN cte_Kala Join abProductCatalogue abp on cte_Kala.GTIN = abp.GTIN
-        '                                                              where ProductCatalogueSN = ", ProductCatalogueSN,
-        '                                                              ") AS P
-        '                                                              "))
-        'Dim FormatStyle As GridEXFormatStyle = New GridEXFormatStyle()
-        'FormatStyle.ForeColor = Color.White
-        'FormatStyle.BackColor = Color.Orange
-
-
-
-
-        'GridBarcodeDetail.RetrieveStructure()
-        'GridBarcodeDetail.Refresh()
-
-        'For Each item As Janus.Windows.GridEX.GridEXColumn In GridBarcodeDetail.RootTable.Columns
-        '    If (item.Key.ToUpper() = "KALASTATUS") Then
-        '        item.Visible = False
-        '    End If
-        'Next
-
-
-        'GridBarcodeDetail.AutoSizeColumns()
 
 
     End Sub
 
-    'Private Sub GridBarcodeTajmie_LinkClicked(sender As Object, e As ColumnActionEventArgs) Handles GridBarcodeTajmie.LinkClicked
 
-    '    'If GridBarcodeTajmie.CurrentRow Is Nothing Then
-    '    '    Exit Sub
-    '    'End If
-
-    '    If GridBarcodeTajmie.CurrentColumn.Key.ToUpper = "TAKHSISMAHSUL" Then
-    '        If CDec(GridBarcodeTajmie.CurrentRow.Cells("FlagInsert_IRC_GTIN").Value) = 1 Then
-    '            If GridBarcodeTajmie.CurrentRow.Cells("TakhsisMahsul").Text Is Nothing OrElse GridBarcodeTajmie.CurrentRow.Cells("TakhsisMahsul").Text <> "تخصيص محصول" Then
-    '                Exit Sub
-    '            End If
-    '            Dim TakhsisKalaForm As New Common.FrmProductCatalogueAsistant
-    '            Dim KalaSN As Decimal = 0
-
-    '            With TakhsisKalaForm
-    '                DvSourceKala.RowFilter = "0=0"
-    '                .DvSource = DvSourceKala
-    '                .Text = "محصولات دارویی دارای GTIN و IRC در لیست نمایش داده میشوند - برای انتخاب محصول روی سطر محصول فعال انتخاب شده دابل کلیک کنید"
-    '                .HideSNColumns = True
-    '                .ArrayOfHideColumns = {"KalaStatus"}
-
-    '                Dim FormatCondition1 As Janus.Windows.GridEX.GridEXFormatCondition = New Janus.Windows.GridEX.GridEXFormatCondition(New Janus.Windows.GridEX.GridEXColumn("KalaStatus"), ConditionOperator.Equal, 0)
-    '                FormatCondition1.FormatStyle.BackColor = Color.OrangeRed
-    '                .FormatCondition1 = FormatCondition1
-
-    '                .ShowDialog()
-
-    '                KalaSN = .SelectedKalaSN
-    '                Dim Grow As Janus.Windows.GridEX.GridEXRow = GridBarcodeTajmie.CurrentRow
-    '                Dim DvForUpdate As DataView = New DataView(DvSourceKala.ToTable, "KalaStatus=1 And KalaSN=" & KalaSN.ToString, "", DataViewRowState.CurrentRows).ToTable.DefaultView
-    '                If DvForUpdate.Count = 1 Then
-    '                    Grow.BeginEdit()
-    '                    For Each col1 As DataColumn In DvForUpdate.ToTable.Columns
-    '                        For Each col2 As Janus.Windows.GridEX.GridEXColumn In GridBarcodeTajmie.RootTable.Columns
-    '                            If col1.ColumnName = col2.Key Then
-    '                                Grow.Cells(col2.Key).Value = DvForUpdate(0)(col1.ColumnName)
-    '                            End If
-    '                        Next
-    '                    Next
-    '                    If IsNumeric(DvForUpdate(0)("TedadDarKarton")) Then
-    '                        Grow.Cells("AmountKarton").Value = Math.Floor(Grow.Cells("Amount").Value / DvForUpdate(0)("TedadDarKarton"))
-    '                        Grow.Cells("AmountMandehAzKarton").Value = (Grow.Cells("Amount").Value Mod DvForUpdate(0)("TedadDarKarton"))
-    '                    Else
-    '                        CSystem.MsgBox("توجه داشته باشید تعداد در کارتن محصول انتخابی در سیستم تعریف نشده است!")
-    '                    End If
-    '                    Grow.Cells("Moghayerat").Value = DBNull.Value
-    '                    Grow.Cells("MoghayeratNo").Value = DBNull.Value
-    '                    Grow.EndEdit()
-    '                End If
-    '                .Dispose()
-    '            End With
-
-
-    '        Else
-    '            If GridBarcodeTajmie.CurrentRow.Cells("TakhsisMahsul").Text Is Nothing OrElse GridBarcodeTajmie.CurrentRow.Cells("TakhsisMahsul").Text <> "تخصيص محصول" Then
-    '                Exit Sub
-    '            End If
-    '            If IsNumeric(GridBarcodeTajmie.CurrentRow.Cells("MoghayeratNo").Value) AndAlso CInt(GridBarcodeTajmie.CurrentRow.Cells("MoghayeratNo").Value) <> 13 Then
-    '                Exit Sub
-    '            End If
-    '            Dim TakhsisKalaForm As New Common.FrmProductCatalogueAsistant
-    '            Dim KalaSN As Decimal = 0
-    '            Dim Grow As Janus.Windows.GridEX.GridEXRow = GridBarcodeTajmie.CurrentRow
-
-
-    '            With TakhsisKalaForm
-    '                DvSourceKala.RowFilter = "0=0"
-    '                .DvSource = New DataView(DvSourceKala.ToTable, "KalaSN <> " & Grow.Cells("KalaSN").Text & " And KalaSN IN (" & If(Grow.Cells("SimilarKalaByIRCGTIN").Text <> "", Grow.Cells("SimilarKalaByIRCGTIN").Text, "0") & ")", "", DataViewRowState.CurrentRows).ToTable.DefaultView
-    '                .Text = "محصولات  دارای GTIN و IRC مشابه محصول انتخابی در لیست نمایش داده میشوند -  برای انتخاب محصول روی سطر محصول انتخاب شده دابل کلیک کنید"
-
-    '                .HideSNColumns = True
-    '                .ArrayOfHideColumns = {"KalaStatus"}
-
-    '                Dim FormatCondition1 As Janus.Windows.GridEX.GridEXFormatCondition = New Janus.Windows.GridEX.GridEXFormatCondition(New Janus.Windows.GridEX.GridEXColumn("KalaStatus"), ConditionOperator.Equal, 0)
-    '                FormatCondition1.FormatStyle.BackColor = Color.OrangeRed
-    '                .FormatCondition1 = FormatCondition1
-
-    '                .ShowDialog()
-    '                KalaSN = .SelectedKalaSN
-    '                Dim DvForUpdate As DataView = New DataView(DvSourceKala.ToTable, "KalaStatus=1 And KalaSN=" & KalaSN.ToString, "", DataViewRowState.CurrentRows).ToTable.DefaultView
-    '                If DvForUpdate.Count = 1 Then
-    '                    Grow.BeginEdit()
-    '                    For Each col1 As DataColumn In DvForUpdate.ToTable.Columns
-    '                        For Each col2 As Janus.Windows.GridEX.GridEXColumn In GridBarcodeTajmie.RootTable.Columns
-    '                            If col1.ColumnName = col2.Key Then
-    '                                Grow.Cells(col2.Key).Value = DvForUpdate(0)(col1.ColumnName)
-    '                            End If
-    '                        Next
-    '                    Next
-    '                    If IsNumeric(DvForUpdate(0)("TedadDarKarton")) Then
-    '                        Grow.Cells("AmountKarton").Value = Math.Floor(Grow.Cells("Amount").Value / DvForUpdate(0)("TedadDarKarton"))
-    '                        Grow.Cells("AmountMandehAzKarton").Value = (Grow.Cells("Amount").Value Mod DvForUpdate(0)("TedadDarKarton"))
-    '                    Else
-    '                        CSystem.MsgBox("توجه داشته باشید تعداد در کارتن محصول انتخابی در سیستم تعریف نشده است!")
-    '                    End If
-    '                    Grow.Cells("Moghayerat").Value = DBNull.Value
-    '                    Grow.Cells("MoghayeratNo").Value = DBNull.Value
-    '                    Grow.EndEdit()
-    '                End If
-    '                .Dispose()
-    '            End With
-    '        End If
-
-    '    ElseIf GridBarcodeTajmie.CurrentColumn.Key.ToUpper = "TAKHSISDARKHASTFOROOSH" Then
-    '        If GridBarcodeTajmie.CurrentRow.Cells("TakhsisDarkhastForoosh").Text Is Nothing OrElse Not GridBarcodeTajmie.CurrentRow.Cells("TakhsisDarkhastForoosh").Text.Contains("تخصيص") Then
-    '            Exit Sub
-    '        End If
-    '        Dim TakhsisDarkhastForm As New Common.FrmProductCatalogueAsistant
-    '        Dim DarkhastSN As Decimal = 0
-    '        With TakhsisDarkhastForm
-    '            .DvSource = DvSourceDarkhast
-    '            .Text = "درخواست های حمل مستقیم پیش فاکتور شده سیستم فروش در لیست نمایش داده میشوند - برای انتخاب درخواست روی آن دابل کلیک کنید"
-    '            .HideSNColumns = True
-    '            .ShowDialog()
-    '            DarkhastSN = .SelectedDarkhastSN
-
-    '            Dim Grow As Janus.Windows.GridEX.GridEXRow = GridBarcodeTajmie.CurrentRow
-    '            If DarkhastSN > 0 Then
-    '                DvSourceDarkhastHa.RowFilter = "0=0"
-    '                DvSourceDarkhastHa.RowFilter = "DarkhastSN=" & DarkhastSN.ToString & " And KalaSN=" & Grow.Cells("KalaSN").Text
-    '                If DvSourceDarkhastHa.Count = 0 Then
-    '                    CSystem.MsgBox("محصول " + vbNewLine + Grow.Cells("KalaDS").Text + vbNewLine + " در اقلام درخواست انتخابی وجود ندارد! ", MsgBoxStyle.Exclamation, "")
-    '                Else
-    '                    If CDec(DvSourceDarkhastHa(0)("Tedad")) <> CDec(Grow.Cells("Amount").Value) Then
-    '                        CSystem.MsgBox("تعداد اسکن محصول " + vbNewLine + Grow.Cells("KalaDS").Text + vbNewLine + " با تعداد آن در درخواست مغایرت دارد! " + vbNewLine +
-    '                                       "تعداد اسکن : " + Grow.Cells("Amount").Text + vbNewLine +
-    '                                       "تعداد درخواست : " + DvSourceDarkhastHa(0)("Tedad").ToString, MsgBoxStyle.Exclamation, "")
-    '                    Else
-    '                        Grow.BeginEdit()
-    '                        Grow.Cells("DarkhastSN").Value = DarkhastSN
-    '                        Grow.EndEdit()
-    '                    End If
-    '                End If
-    '            End If
-
-
-    '            .Dispose()
-    '            GridBarcodeTajmie.AutoSizeColumns()
-    '        End With
-    '    ElseIf GridBarcodeTajmie.CurrentColumn.Key.ToUpper = "TAKHSISSANAD" Then
-    '        If GridBarcodeTajmie.CurrentRow.Cells("TakhsisSanad").Text Is Nothing OrElse Not GridBarcodeTajmie.CurrentRow.Cells("TakhsisSanad").Text.Contains("تخصيص") Then
-    '            Exit Sub
-    '        End If
-    '        Dim TakhsisSanadForm As New Common.FrmProductCatalogueAsistant
-    '        Dim DarkhastSN As Decimal = 0
-    '        Dim SanadSN As Decimal = 0
-    '        Dim SelectedBatchCode As String = ""
-    '        Dim Grow As Janus.Windows.GridEX.GridEXRow = GridBarcodeTajmie.CurrentRow
-    '        Dim TarakoneshSn As Integer = CInt(Grow.Cells("AnbarTarakoneshSN").Value)
-
-    '        With TakhsisSanadForm
-    '            'Dim dvSource As DataView = New DataView(DvSourceFactor.ToTable.Copy, "KalaSN=" & Grow.Cells("KalaSN").Text & " And TarakoneshSN=45" & If(NoControlBatchFactorAndMarjooei, "", " And ShomarehRahgiri='" & Grow.Cells("BatchCode").Text & "'"), "SodoorDate Desc", DataViewRowState.CurrentRows).ToTable.Copy.DefaultView
-    '            Dim dvSource As DataView = New DataView(DvSourceFactor.ToTable.Copy, "KalaSN=" & Grow.Cells("KalaSN").Text & " And TarakoneshSN=45", "SodoorDate Desc", DataViewRowState.CurrentRows).ToTable.Copy.DefaultView
-    '            For Each Drow As DataRowView In dvSource
-    '                If Drow("ShomarehRahgiri").ToString = Grow.Cells("BatchCode").Text Then
-    '                    Drow("MatchBatchCode") = 1
-    '                End If
-    '            Next
-
-    '            dvSource.Sort = "MatchBatchCode Desc,SodoorDate DESc"
-
-    '            .DvSource = dvSource
-    '            .Text = "اسناد حواله نمونه در لیست نمایش داده میشوند - برای انتخاب حواله مورد نظر روی آن دابل کلیک کنید " + " - محصول : " + Grow.Cells("KalaDS").Text + If(NoControlBatchFactorAndMarjooei, "", " - بچ : " + Grow.Cells("BatchCode").Text) + " - ردیف هایی که بچ آنها با بچ اسکن شده یکسان باشد با رنگ سبز نمایش داده میشوند"
-    '            .HideSNColumns = True
-    '            If NoControlBatchFactorAndMarjooei = False Then
-    '                '.ArrayOfHideColumns = {"ShomarehRahgiri", "MatchBatchCode"}
-    '                .ArrayOfHideColumns = {"MatchBatchCode"}
-
-    '            Else
-    '                .ArrayOfHideColumns = {"MatchBatchCode"}
-    '            End If
-
-    '            Dim FormatCondition1 As Janus.Windows.GridEX.GridEXFormatCondition = New Janus.Windows.GridEX.GridEXFormatCondition(New Janus.Windows.GridEX.GridEXColumn("MatchBatchCode"), ConditionOperator.Equal, 1)
-    '            FormatCondition1.FormatStyle.BackColor = Color.FromArgb(192, 255, 192)
-    '            .FormatCondition1 = FormatCondition1
-
-    '            .ShowDialog()
-    '            DarkhastSN = .SelectedDarkhastSN
-    '            SanadSN = .SelectedSanadSN
-    '            SelectedBatchCode = .SelectedBatchNo
-
-
-    '            If SanadSN > 0 Then
-    '                If Grow.Cells("BatchCode").Text <> SelectedBatchCode Then
-    '                    If CSystem.MsgBox("توجه داشته باشید بچ اسکن شده با بچ موجود در اقلام سند متفاوت است .آیا مایل به ادامه عملیات تخصیص سند هستید؟" + vbNewLine +
-    '                                      "محصول : " + Grow.Cells("KalaDS").Text + vbNewLine +
-    '                                      "بچ اسکن شده : " + Grow.Cells("BatchCode").Text + vbNewLine +
-    '                                      "بچ سند : " + SelectedBatchCode, MsgBoxStyle.YesNo, "") = MsgBoxResult.Yes Then
-    '                        Grow.BeginEdit()
-    '                        Grow.Cells("SanadSN").Value = SanadSN
-    '                        Grow.Cells("DarkhastSN").Value = DarkhastSN
-    '                        Grow.EndEdit()
-    '                    End If
-    '                Else
-    '                    Grow.BeginEdit()
-    '                    Grow.Cells("SanadSN").Value = SanadSN
-    '                    Grow.Cells("DarkhastSN").Value = DarkhastSN
-    '                    Grow.EndEdit()
-    '                End If
-    '            End If
-
-    '            .Dispose()
-    '            GridBarcodeTajmie.AutoSizeColumns()
-    '        End With
-    '    ElseIf GridBarcodeTajmie.CurrentColumn.Key.ToUpper = "TAKHSISFACTOR" Then
-    '        If GridBarcodeTajmie.CurrentRow.Cells("TakhsisFactor").Text Is Nothing OrElse Not GridBarcodeTajmie.CurrentRow.Cells("TakhsisFactor").Text.Contains("تخصيص") Then
-    '            Exit Sub
-    '        End If
-    '        Dim TakhsisFactorForm As New Common.FrmProductCatalogueAsistant
-    '        Dim FactorSN As Decimal = 0
-    '        Dim FactorAsliSN As Decimal = 0
-    '        Dim SelectedBatchCode As String = ""
-    '        Dim Grow As Janus.Windows.GridEX.GridEXRow = GridBarcodeTajmie.CurrentRow
-    '        Dim TarakoneshSn As Integer = CInt(Grow.Cells("AnbarTarakoneshSN").Value)
-    '        With TakhsisFactorForm
-    '            'Dim dvSource As DataView = New DataView(DvSourceFactor.ToTable.Copy, "KalaSN=" & Grow.Cells("KalaSN").Text & " And TarakoneshSN=" & TarakoneshSn.ToString & If(NoControlBatchFactorAndMarjooei, "", " And ShomarehRahgiri='" & Grow.Cells("BatchCode").Text & "'"), "SodoorDate Desc", DataViewRowState.CurrentRows).ToTable.Copy.DefaultView
-    '            Dim dvSource As DataView = New DataView(DvSourceFactor.ToTable.Copy, "KalaSN=" & Grow.Cells("KalaSN").Text & " And TarakoneshSN=" & TarakoneshSn.ToString, "SodoorDate Desc", DataViewRowState.CurrentRows).ToTable.Copy.DefaultView
-    '            For Each Drow As DataRowView In dvSource
-    '                If Drow("ShomarehRahgiri").ToString = Grow.Cells("BatchCode").Text Then
-    '                    Drow("MatchBatchCode") = 1
-    '                End If
-    '            Next
-
-    '            dvSource.Sort = "MatchBatchCode Desc,SodoorDate DESc"
-
-    '            .DvSource = dvSource
-    '            .Text = "برای انتخاب فاکتور روی آن دابل کلیک کنید - " + If(TarakoneshSn = 38, "لیست زیر فاکتوری های ", "لیست فاکتورهای ") + "محصول : " + Grow.Cells("KalaDS").Text + If(NoControlBatchFactorAndMarjooei, "", " - بچ : " + Grow.Cells("BatchCode").Text) + " - ردیف هایی که بچ آنها با بچ اسکن شده یکسان باشد با رنگ سبز نمایش داده میشوند"
-    '            .HideSNColumns = True
-    '            If NoControlBatchFactorAndMarjooei = False Then
-    '                '.ArrayOfHideColumns = {"ShomarehRahgiri", "MatchBatchCode"}
-    '                .ArrayOfHideColumns = {"MatchBatchCode"}
-
-    '            Else
-    '                .ArrayOfHideColumns = {"MatchBatchCode"}
-    '            End If
-
-    '            Dim FormatCondition1 As Janus.Windows.GridEX.GridEXFormatCondition = New Janus.Windows.GridEX.GridEXFormatCondition(New Janus.Windows.GridEX.GridEXColumn("MatchBatchCode"), ConditionOperator.Equal, 1)
-    '            FormatCondition1.FormatStyle.BackColor = Color.FromArgb(192, 255, 192)
-    '            .FormatCondition1 = FormatCondition1
-
-    '            .ShowDialog()
-    '            FactorSN = .SelectedFactorSN
-    '            FactorAsliSN = .SelectedFactorAsliSN
-    '            SelectedBatchCode = .SelectedBatchNo
-
-    '            If FactorSN > 0 Then
-    '                If Grow.Cells("BatchCode").Text <> SelectedBatchCode Then
-    '                    If CSystem.MsgBox("توجه داشته باشید بچ اسکن شده با بچ موجود در اقلام فاکتور اصلی متفاوت است .آیا مایل به ادامه عملیات تخصیص فاکتور هستید؟" + vbNewLine +
-    '                                  "محصول : " + Grow.Cells("KalaDS").Text + vbNewLine +
-    '                                  "بچ اسکن شده : " + Grow.Cells("BatchCode").Text + vbNewLine +
-    '                                  "بچ فاکتور : " + SelectedBatchCode, MsgBoxStyle.YesNo, "") = MsgBoxResult.Yes Then
-    '                        Grow.BeginEdit()
-    '                        Grow.Cells("FactorSN").Value = FactorSN
-    '                        Grow.Cells("FactorAsliSN").Value = IIf(FactorAsliSN = 0, DBNull.Value, FactorAsliSN)
-    '                        Grow.EndEdit()
-    '                    End If
-    '                Else
-    '                    Grow.BeginEdit()
-    '                    Grow.Cells("FactorSN").Value = FactorSN
-    '                    Grow.Cells("FactorAsliSN").Value = IIf(FactorAsliSN = 0, DBNull.Value, FactorAsliSN)
-    '                    Grow.EndEdit()
-    '                End If
-    '            End If
-    '            .Dispose()
-    '            GridBarcodeTajmie.AutoSizeColumns()
-    '        End With
-    '    ElseIf GridBarcodeTajmie.CurrentColumn.Key.ToUpper = "DETAILRECORDS" Then
-
-    '        Dim _GRow As Janus.Windows.GridEX.GridEXRow = GridBarcodeTajmie.CurrentRow
-
-    '        CType(GridBarcodeMaster.DataSource, DataTable).DefaultView.RowFilter = "GTIN='" & _GRow.Cells("GTIN").Text & "' " &
-    '        "And IRC='" & _GRow.Cells("IRC").Text & "' " &
-    '        "And BatchCode='" & _GRow.Cells("BatchCode").Text & "' " &
-    '        "And Status=" & _GRow.Cells("Status").Text & " " &
-    '        "And CatalogueTarakoneshSN=" & _GRow.Cells("CatalogueTarakoneshSN").Value.ToString
-
-    '        'TabControl1.SelectTab(TabPageScanRecords)
-    '        GridBarcodeMaster.AutoSizeColumns()
-
-    '    End If
-    'End Sub
 
     Private Sub LinkRemoveFilter_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkRemoveFilter.LinkClicked
         CType(GridBarcodeMaster.DataSource, DataTable).DefaultView.RowFilter = "0=0"
@@ -1504,119 +557,11 @@ Public Class FrmMnuTakhsisKalaOnIRC
                 Exit Sub
             End If
             cn.ExecuteNoneQuery("update abProductCatalogue set Status=3 where ProductCatalogueSN=" & GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Text)
-            'ChkGetLastData.Checked = False
             Call BtnRefreshData_Click(sender, e)
         End If
     End Sub
 
-    'Private Sub LinkSaveLayout_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkSaveLayout.LinkClicked
-    '    Try
-    '        Dim stream As System.IO.FileStream = New System.IO.FileStream(System.Windows.Forms.Application.StartupPath + "\GridBarcodeTajmie.gxl", IO.FileMode.Create)
-    '        GridBarcodeTajmie.SaveLayoutFile(stream)
-    '        stream.Close()
-    '        CSystem.MsgBox("تنطیمات با موفقیت ذخیره شد")
-    '    Catch ex As Exception
-    '        CSystem.MsgBox("خطا : " + ex.Message, MsgBoxStyle.Exclamation, "")
-    '    End Try
 
-    'End Sub
-
-    'Private Sub LinkLoadLayout_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLoadLayout.LinkClicked
-    '    Try
-    '        Dim fi As System.IO.FileInfo = New System.IO.FileInfo(System.Windows.Forms.Application.StartupPath + "\GridBarcodeTajmie.gxl")
-    '        Dim stream As System.IO.FileStream = New System.IO.FileStream(fi.FullName, IO.FileMode.Open)
-    '        GridBarcodeTajmie.LoadLayoutFile(stream)
-    '        stream.Close()
-    '    Catch ex As Exception
-    '        CSystem.MsgBox("خطا : " + ex.Message, MsgBoxStyle.Exclamation, "")
-    '    End Try
-    'End Sub
-
-    'Private Sub RdbUseColumns_CheckedChanged(sender As Object, e As EventArgs) Handles RdbUseColumns.CheckedChanged
-    '    If RdbUseColumns.Checked Then
-    '        GridBarcodeTajmie.RootTable.CellLayoutMode = CellLayoutMode.UseColumns
-    '        For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeTajmie.RootTable.Columns
-    '            If Not col.ColumnSet Is Nothing Then
-    '                If col.ColumnSet.Key = "ColumnSetMap" Then
-    '                    col.Caption = col.Caption + If(col.Caption.Contains("(مپ)"), "", "(مپ)")
-    '                ElseIf col.ColumnSet.Key = "ColumnSetCatalogueSystem" Then
-    '                    col.Caption = col.Caption + If(col.Caption.Contains("(سامانه)"), "", "(سامانه)")
-    '                End If
-    '            End If
-    '        Next
-    '        NumericUpDown1.Enabled = True
-    '        LinkSaveLayout.Visible = True
-    '    Else
-    '        GridBarcodeTajmie.RootTable.CellLayoutMode = CellLayoutMode.UseColumnSets
-    '        For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeTajmie.RootTable.Columns
-    '            If Not col.ColumnSet Is Nothing Then
-    '                If col.ColumnSet.Key = "ColumnSetMap" Then
-    '                    col.Caption = col.Caption.Replace("(مپ)", "")
-    '                End If
-    '                If col.ColumnSet.Key = "ColumnSetCatalogueSystem" Then
-    '                    col.Caption = col.Caption.Replace("(سامانه)", "")
-    '                End If
-    '            End If
-    '        Next
-    '        NumericUpDown1.Value = 0
-    '        NumericUpDown1.Enabled = False
-    '        LinkSaveLayout.Visible = False
-    '    End If
-    'End Sub
-
-    'Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown1.ValueChanged
-    '    If GridBarcodeTajmie.RootTable.CellLayoutMode = CellLayoutMode.UseColumns Then
-    '        GridBarcodeTajmie.FrozenColumns = CInt(NumericUpDown1.Value)
-    '    ElseIf GridBarcodeTajmie.RootTable.CellLayoutMode = CellLayoutMode.UseColumnSets Then
-    '        GridBarcodeTajmie.FrozenColumns = 0
-    '    End If
-    'End Sub
-
-    'Private Sub GridBarcodeMaster_RowCheckStateChanged(sender As Object, e As RowCheckStateChangeEventArgs) Handles GridBarcodeMaster.RowCheckStateChanged
-    '    LinkLabelEbtalSabt.Text = If(GridBarcodeMaster.GetCheckedRows.Length = 0, "ابطال گروهی ثبت ها", "ابطال <" + GridBarcodeMaster.GetCheckedRows.Length.ToString + "> ثبت انتخاب شده")
-    'End Sub
-
-    'Private Sub LinkLabelEbtalSabt_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelEbtalSabt.LinkClicked
-    '    If GridBarcodeMaster.GetCheckedRows.Length = 0 Then
-    '        CSystem.MsgBox("ثبتی جهت ابطال انتخاب نشده است.ابتدا ثبت های مورد نظر را تیک بزنید", MsgBoxStyle.Critical, "ابطال گروهی ثبت ها")
-    '        Exit Sub
-    '    End If
-    '    Dim CatalogueSN_Str As String = ""
-    '    For Each grow As Janus.Windows.GridEX.GridEXRow In GridBarcodeMaster.GetCheckedRows
-    '        If CDec(grow.Cells("Status").Value) <> 1 Then
-    '            CSystem.MsgBox("فقط موارد ارسال نشده به انبار قابلیت ابطال دارند" + vbNewLine +
-    '                           "محصول : " + grow.Cells("KalaDS").Text + vbNewLine +
-    '                           "بچ : " + grow.Cells("BatchCode").Text, MsgBoxStyle.Critical, "")
-    '            Exit Sub
-    '        End If
-    '        If CBool(grow.Cells("ForceUseUIDforSanad").Value) = True Then
-    '            CSystem.MsgBox("محصول <" + GridBarcodeMaster.CurrentRow.Cells("KalaDS").Text + "> جز دسته محصولاتی است که ثبت سند بر اساس UID برای آن الزامیست لذا ابطال ثبت آن امکانپذیر نمی باشد ", MsgBoxStyle.Critical, "")
-    '            Exit Sub
-    '        End If
-    '        CatalogueSN_Str += grow.Cells("ProductCatalogueSN").Text + ","
-    '    Next
-
-    '    If CSystem.MsgBox("آیا مایل به ابطال <" + GridBarcodeMaster.GetCheckedRows.Length.ToString + "> ثبت انتخاب شده می باشید؟", MsgBoxStyle.YesNo, "ابطال گروهی ثبت ها") = MsgBoxResult.No Then
-    '        Exit Sub
-    '    End If
-
-    '    If CatalogueSN_Str.EndsWith(",") Then
-    '        CatalogueSN_Str = CatalogueSN_Str.Substring(0, CatalogueSN_Str.Length - 1)
-    '    End If
-
-    '    Try
-    '        abRule.EbtalSabtBarcodeReader(CatalogueSN_Str, cn)
-    '    Catch ex As Exception
-    '        CSystem.MsgBox(ex.Message)
-    '    Finally
-    '        ChkGetLastData.Checked = False
-    '        'LinkLabelEbtalSabt.Text = "ابطال گروهی ثبت ها"
-    '        Call BtnRefreshData_Click(sender, e)
-    '    End Try
-
-
-
-    'End Sub
 
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
         Call SyncCatalogueDataToGBID()
@@ -1660,89 +605,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
     End Sub
 
 
-    Sub FillTakhsisFieldsByLastValuesBeforeRefresh()
 
-        ''آخرین اطلاعات تخصیص ها(سند،فاکتور،درخواست) بر اساس آخرین داده موجود قبل از بروزرسانی تکمیل میشود
-        'If GridBarcodeTajmie.DataSource IsNot Nothing AndAlso CType(GridBarcodeTajmie.DataSource, DataTable).Rows.Count > 0 Then
-        '    DtTableBeforeChange = CType(GridBarcodeTajmie.DataSource, DataTable).Copy
-
-        '    If DtTableBeforeChange.Rows.Count > 0 Then
-        '        For Each NowTableRow As DataRow In DSCatalogue.ToTable().Rows
-        '            If NowTableRow("Status") = 1 Then
-        '                For Each LastTablerow As DataRow In DtTableBeforeChange.Rows
-
-        '                    If IsNumeric(LastTablerow("DarkhastSN")) OrElse
-        '                                    IsNumeric(LastTablerow("FactorSN")) OrElse
-        '                                    IsNumeric(LastTablerow("FactorAsliSN")) OrElse
-        '                                    IsNumeric(LastTablerow("SanadSN")) Then
-
-        '                        If (Not IsDBNull(LastTablerow("UID")) AndAlso
-        '                                                LastTablerow("UID").ToString.Length = 20 AndAlso
-        '                                                LastTablerow("UID") = NowTableRow("UID") AndAlso
-        '                                                LastTablerow("CatalogueTarakoneshSN") = NowTableRow("CatalogueTarakoneshSN")) Then
-
-        '                            NowTableRow("DarkhastSN") = LastTablerow("DarkhastSN")
-        '                            NowTableRow("FactorSN") = LastTablerow("FactorSN")
-        '                            NowTableRow("FactorAsliSN") = LastTablerow("FactorAsliSN")
-        '                            NowTableRow("SanadSN") = LastTablerow("SanadSN")
-        '                            NowTableRow("KalaSN") = LastTablerow("KalaSN")
-        '                            NowTableRow("KalaNo") = LastTablerow("KalaNo")
-        '                            NowTableRow("KalaDS") = LastTablerow("KalaDS")
-        '                            NowTableRow("TaminVahedeTejariSN") = LastTablerow("TaminVahedeTejariSN")
-        '                            NowTableRow("TaminVahedeTejariNo") = LastTablerow("TaminVahedeTejariNo")
-        '                            NowTableRow("TaminVahedeTejariDS") = LastTablerow("TaminVahedeTejariDS")
-        '                            NowTableRow("TedadDarKarton") = LastTablerow("TedadDarKarton")
-        '                            NowTableRow("TedadDarBasteh") = LastTablerow("TedadDarBasteh")
-        '                            NowTableRow("GenericCodeMap") = LastTablerow("GenericCodeMap")
-
-        '                            If IsNumeric(NowTableRow("TedadDarKarton")) Then
-        '                                NowTableRow("AmountKarton") = Math.Floor(NowTableRow("Amount") / NowTableRow("TedadDarKarton"))
-        '                                NowTableRow("AmountMandehAzKarton") = (NowTableRow("Amount") Mod NowTableRow("TedadDarKarton"))
-        '                            End If
-
-        '                        ElseIf (IsDBNull(LastTablerow("UID")) OrElse
-        '                                            LastTablerow("UID").ToString.Length <> 20) Then
-
-        '                            If LastTablerow("GTIN") = NowTableRow("GTIN") AndAlso
-        '                                                LastTablerow("IRC") = NowTableRow("IRC") AndAlso
-        '                                                LastTablerow("BatchCode") = NowTableRow("BatchCode") AndAlso
-        '                                                LastTablerow("CatalogueTarakoneshSN") = NowTableRow("CatalogueTarakoneshSN") Then
-
-        '                                NowTableRow("DarkhastSN") = LastTablerow("DarkhastSN")
-        '                                NowTableRow("FactorSN") = LastTablerow("FactorSN")
-        '                                NowTableRow("FactorAsliSN") = LastTablerow("FactorAsliSN")
-        '                                NowTableRow("SanadSN") = LastTablerow("SanadSN")
-        '                                NowTableRow("KalaSN") = LastTablerow("KalaSN")
-        '                                NowTableRow("KalaNo") = LastTablerow("KalaNo")
-        '                                NowTableRow("KalaDS") = LastTablerow("KalaDS")
-        '                                NowTableRow("TaminVahedeTejariSN") = LastTablerow("TaminVahedeTejariSN")
-        '                                NowTableRow("TaminVahedeTejariNo") = LastTablerow("TaminVahedeTejariNo")
-        '                                NowTableRow("TaminVahedeTejariDS") = LastTablerow("TaminVahedeTejariDS")
-        '                                NowTableRow("TedadDarKarton") = LastTablerow("TedadDarKarton")
-        '                                NowTableRow("TedadDarBasteh") = LastTablerow("TedadDarBasteh")
-        '                                NowTableRow("GenericCodeMap") = LastTablerow("GenericCodeMap")
-
-        '                                If IsNumeric(NowTableRow("TedadDarKarton")) Then
-        '                                    NowTableRow("AmountKarton") = Math.Floor(NowTableRow("Amount") / NowTableRow("TedadDarKarton"))
-        '                                    NowTableRow("AmountMandehAzKarton") = (NowTableRow("Amount") Mod NowTableRow("TedadDarKarton"))
-        '                                End If
-
-        '                            End If
-
-        '                        End If
-
-        '                    End If
-
-        '                Next
-
-        '            End If
-
-        '        Next
-        '    End If
-        'End If
-        ''آخرین اطلاعات تخصیص ها(سند،فاکتور،درخواست) مجددا بر اساس آخرین داده موجود تکمیل میشود
-
-    End Sub
     Private Sub CInitDetailDataView()
         DVDetail = New CDataView(cn)
         With DVDetail
@@ -1788,8 +651,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
                 DVDetail.Fields("NewIRC").Value = GridBarcodeMaster.CurrentRow.Cells("IRC").Value
                 DVDetail.Fields("NewGTIN").Value = GridBarcodeMaster.CurrentRow.Cells("GTIN").Value
                 DVDetail.Fields("ProductCatalogueSN").Value = GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value
-                'DVDetail.Fields("ResC1").Value = DateTime.Now().ToString("yyyy-MM-dd HH:MM:ss")
-                DVDetail.Fields("ResC1").Value = "2024-12-18 17:12:38"
+                DVDetail.Fields("ResC1").Value = DateTime.Now().ToString("yyyy-MM-dd HH:MM:ss")
         End Select
     End Sub
 End Class
