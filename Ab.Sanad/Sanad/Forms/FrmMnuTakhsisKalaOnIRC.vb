@@ -612,8 +612,8 @@ Public Class FrmMnuTakhsisKalaOnIRC
             .TableName = "abProductCatalogueKalaIRC"
             .Init(PanelDetail,, PanelDetailCom, PanelDetailNav, EnumButtonOptions.boCmdRefresh Or EnumButtonOptions.boCmdInsert _
                   Or EnumButtonOptions.boCmdFilter Or EnumButtonOptions.boCmdFind)
-
             .AddJoin("abProductCatalogueKalaIRC", EnumTableJoin.tjInnerJoin, "paKala", "KalaSN", "KalaSN")
+            .SQLWhere = "productCatalogueSn = 0"
             .EditInGrid = True
             With .Fields
                 With .Add("ProductCatalogueNewIRCSN", "", gSNFieldOption)
@@ -648,6 +648,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
     Private Sub DVDetail_AfterCommandClick(aCommand As EnumCommands) Handles DVDetail.AfterCommandClick
         Select Case aCommand
             Case EnumCommands.cmAdd
+
                 DVDetail.Fields("NewIRC").Value = GridBarcodeMaster.CurrentRow.Cells("IRC").Value
                 DVDetail.Fields("NewGTIN").Value = GridBarcodeMaster.CurrentRow.Cells("GTIN").Value
                 DVDetail.Fields("ProductCatalogueSN").Value = GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value
