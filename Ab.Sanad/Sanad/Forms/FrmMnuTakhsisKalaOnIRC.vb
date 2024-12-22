@@ -12,10 +12,10 @@ Imports Janus.Windows.GridEX
 Imports Anbar.BRL
 Imports Janus.Windows.GridEX.Export
 
-Public Class FrmMnuTakhsisKalaOnIRC
+Public Class FrmTakhsisKalaOnIRC
     Inherits Minoo.Base.FTBaseForm
     Private components As System.ComponentModel.IContainer
-    Private Shared m_vb6formdefinstance As FrmMnuTakhsisKalaOnIRC
+    Private Shared m_vb6formdefinstance As FrmTakhsisKalaOnIRC
     Private Shared m_initializingdefinstance As Boolean
     Private WithEvents dataView As CDataView
     Friend WithEvents Panel3 As Panel
@@ -34,7 +34,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents BtnRefreshData As Janus.Windows.EditControls.UIButton
+    'Friend WithEvents BtnRefreshData As Janus.Windows.EditControls.UIButton
     '------------------------------------------------------------------------------
     Friend WithEvents PanelDetail As Panel
     Friend WithEvents PanelDetailCom As Panel
@@ -57,20 +57,20 @@ Public Class FrmMnuTakhsisKalaOnIRC
         MyBase.Dispose(disposing)
     End Sub
 
-    Public Shared Property DefInstance() As FrmMnuTakhsisKalaOnIRC
+    Public Shared Property DefInstance() As FrmTakhsisKalaOnIRC
 
         Get
 
             If m_vb6formdefinstance Is Nothing OrElse m_vb6formdefinstance.IsDisposed Then
                 m_initializingdefinstance = True
-                m_vb6formdefinstance = New FrmMnuTakhsisKalaOnIRC
+                m_vb6formdefinstance = New FrmTakhsisKalaOnIRC
                 m_initializingdefinstance = False
             End If
             DefInstance = m_vb6formdefinstance
 
         End Get
 
-        Set(ByVal Value As FrmMnuTakhsisKalaOnIRC)
+        Set(ByVal Value As FrmTakhsisKalaOnIRC)
             m_vb6formdefinstance = Value
 
         End Set
@@ -80,7 +80,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim GridBarcodeMaster_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMnuTakhsisKalaOnIRC))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmTakhsisKalaOnIRC))
         Dim GridBarcodeDetail_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.PanelDetailCom = New System.Windows.Forms.Panel()
         Me.PanelDetailNav = New System.Windows.Forms.Panel()
@@ -88,7 +88,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.BtnRefreshData = New Janus.Windows.EditControls.UIButton()
+        'Me.BtnRefreshData = New Janus.Windows.EditControls.UIButton()
         Me.BtnSabtResid = New Janus.Windows.EditControls.UIButton()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPageScanRecords = New System.Windows.Forms.TabPage()
@@ -149,7 +149,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.Label1)
         Me.Panel3.Controls.Add(Me.Label3)
-        Me.Panel3.Controls.Add(Me.BtnRefreshData)
+        'Me.Panel3.Controls.Add(Me.BtnRefreshData)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
@@ -177,17 +177,17 @@ Public Class FrmMnuTakhsisKalaOnIRC
         '
         'BtnRefreshData
         '
-        Me.BtnRefreshData.AccessibleRole = System.Windows.Forms.AccessibleRole.None
-        Me.BtnRefreshData.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnRefreshData.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
-        Me.BtnRefreshData.Location = New System.Drawing.Point(1265, 5)
-        Me.BtnRefreshData.Name = "BtnRefreshData"
-        Me.BtnRefreshData.Office2007ColorScheme = Janus.Windows.UI.Office2007ColorScheme.Blue
-        Me.BtnRefreshData.Office2007CustomColor = System.Drawing.Color.LightSlateGray
-        Me.BtnRefreshData.Size = New System.Drawing.Size(90, 55)
-        Me.BtnRefreshData.TabIndex = 207
-        Me.BtnRefreshData.Text = "بروزرسانی اطلاعات"
-        Me.BtnRefreshData.VisualStyle = Janus.Windows.UI.VisualStyle.Office2007
+        'Me.BtnRefreshData.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        'Me.BtnRefreshData.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        'Me.BtnRefreshData.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
+        'Me.BtnRefreshData.Location = New System.Drawing.Point(1265, 5)
+        'Me.BtnRefreshData.Name = "BtnRefreshData"
+        'Me.BtnRefreshData.Office2007ColorScheme = Janus.Windows.UI.Office2007ColorScheme.Blue
+        'Me.BtnRefreshData.Office2007CustomColor = System.Drawing.Color.LightSlateGray
+        'Me.BtnRefreshData.Size = New System.Drawing.Size(90, 55)
+        'Me.BtnRefreshData.TabIndex = 207
+        'Me.BtnRefreshData.Text = "بروزرسانی اطلاعات"
+        'Me.BtnRefreshData.VisualStyle = Janus.Windows.UI.VisualStyle.Office2007
         '
         'BtnSabtResid
         '
@@ -341,14 +341,14 @@ Public Class FrmMnuTakhsisKalaOnIRC
         '
         Me.Timer1.Interval = 1000000
         '
-        'FrmMnuTakhsisKalaOnIRC
+        'FrmTakhsisKalaOnIRC
         '
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.ClientSize = New System.Drawing.Size(1368, 634)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Panel3)
-        Me.Name = "FrmMnuTakhsisKalaOnIRC"
-        Me.Text = "تخصیص کالا به IRC جدید"
+        Me.Name = "FrmTakhsisKalaOnIRC"
+        Me.Text = "تخصیص محصول به ثبت های بارکدخوان"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
@@ -382,9 +382,9 @@ Public Class FrmMnuTakhsisKalaOnIRC
     Public WithEvents DVDetail As CDataView
 
 
-    Private Sub FrmMnuTakhsisKalaOnIRC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FrmTakhsisKalaOnIRC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Me.BtnRefreshData.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
+        'Me.BtnRefreshData.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
 
         For Each colf As Janus.Windows.GridEX.GridEXColumn In GridBarcodeDetail.RootTable.Columns
             colf.HeaderAlignment = TextAlignment.Center
@@ -548,7 +548,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
             BackgroundWorker1.RunWorkerAsync()
         End If
     End Sub
-    Private Sub MnuTakhsisKalaOnIRC_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+    Private Sub FrmTakhsisKalaOnIRC_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         While BackgroundWorker1.IsBusy
             Threading.Thread.Sleep(3000)
 

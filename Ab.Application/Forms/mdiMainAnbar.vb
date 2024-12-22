@@ -886,7 +886,7 @@ Public Class mdiMainAnbar
         Me.MnuTakhsisKalaOnIRC.AppName = "MnuTakhsisKalaOnIRC"
         Me.MnuTakhsisKalaOnIRC.Name = "MnuTakhsisKalaOnIRC"
         Me.MnuTakhsisKalaOnIRC.Size = New System.Drawing.Size(32, 19)
-        Me.MnuTakhsisKalaOnIRC.Text = "تخصیص کالا به بارکد "
+        Me.MnuTakhsisKalaOnIRC.Text = "تخصیص محصول به ثبت های بارکدخوان  "
 
         '
         'mnuSep112
@@ -2777,7 +2777,7 @@ Handles mnuSefrKardaneMojoodiAnbar.Click
 
 
     Private Sub MnuTakhsisKalaOnIRC_Click(sender As Object, e As EventArgs) Handles MnuTakhsisKalaOnIRC.Click
-        With FrmMnuTakhsisKalaOnIRC.DefInstance
+        With FrmTakhsisKalaOnIRC.DefInstance
             .MdiParent = Me
             .Show()
             .Activate()
