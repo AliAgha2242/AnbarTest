@@ -20,32 +20,26 @@ Public Class FrmMnuTakhsisKalaOnIRC
     Private WithEvents dataView As CDataView
     Friend WithEvents Panel3 As Panel
     Friend WithEvents BtnSabtResid As Janus.Windows.EditControls.UIButton
-
     Friend WithEvents TabControl1 As TabControl
-
     Friend WithEvents SplitContainer1 As SplitContainer
     Friend WithEvents TabPageScanRecords As TabPage
     Friend WithEvents Panel1 As Panel
     Friend WithEvents GridBarcodeMaster As Janus.Windows.GridEX.GridEX
     Friend WithEvents Panel2 As Panel
     Friend WithEvents TabControl3 As TabControl
-
     Friend WithEvents GridBarcodeDetail As Janus.Windows.GridEX.GridEX
-
     Friend WithEvents Label3 As Label
-
     Friend WithEvents LinkRemoveFilter As LinkLabel
-
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents BtnRefreshData As Janus.Windows.EditControls.UIButton
     '------------------------------------------------------------------------------
     Friend WithEvents PanelDetail As Panel
     Friend WithEvents PanelDetailCom As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents PanelDetailNav As Panel
-
 
     Public Sub New()
         MyBase.New()
@@ -94,6 +88,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.BtnRefreshData = New Janus.Windows.EditControls.UIButton()
         Me.BtnSabtResid = New Janus.Windows.EditControls.UIButton()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPageScanRecords = New System.Windows.Forms.TabPage()
@@ -124,7 +119,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         'PanelDetailCom
         '
         Me.PanelDetailCom.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PanelDetailCom.Location = New System.Drawing.Point(1138, 160)
+        Me.PanelDetailCom.Location = New System.Drawing.Point(892, 160)
         Me.PanelDetailCom.Name = "PanelDetailCom"
         Me.PanelDetailCom.Size = New System.Drawing.Size(214, 40)
         Me.PanelDetailCom.TabIndex = 3
@@ -132,7 +127,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         'PanelDetailNav
         '
         Me.PanelDetailNav.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PanelDetailNav.Location = New System.Drawing.Point(3, 158)
+        Me.PanelDetailNav.Location = New System.Drawing.Point(-243, 158)
         Me.PanelDetailNav.Name = "PanelDetailNav"
         Me.PanelDetailNav.Size = New System.Drawing.Size(214, 38)
         Me.PanelDetailNav.TabIndex = 2
@@ -145,7 +140,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.PanelDetail.Location = New System.Drawing.Point(3, 4)
         Me.PanelDetail.MaximumSize = New System.Drawing.Size(2000, 275)
         Me.PanelDetail.Name = "PanelDetail"
-        Me.PanelDetail.Size = New System.Drawing.Size(1350, 153)
+        Me.PanelDetail.Size = New System.Drawing.Size(1354, 153)
         Me.PanelDetail.TabIndex = 4
         '
         'Panel3
@@ -154,7 +149,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.Label1)
         Me.Panel3.Controls.Add(Me.Label3)
-        Me.Panel3.Controls.Add(Me.BtnSabtResid)
+        Me.Panel3.Controls.Add(Me.BtnRefreshData)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
@@ -179,6 +174,20 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(100, 23)
         Me.Label3.TabIndex = 218
+        '
+        'BtnRefreshData
+        '
+        Me.BtnRefreshData.AccessibleRole = System.Windows.Forms.AccessibleRole.None
+        Me.BtnRefreshData.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnRefreshData.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
+        Me.BtnRefreshData.Location = New System.Drawing.Point(1265, 5)
+        Me.BtnRefreshData.Name = "BtnRefreshData"
+        Me.BtnRefreshData.Office2007ColorScheme = Janus.Windows.UI.Office2007ColorScheme.Blue
+        Me.BtnRefreshData.Office2007CustomColor = System.Drawing.Color.LightSlateGray
+        Me.BtnRefreshData.Size = New System.Drawing.Size(90, 55)
+        Me.BtnRefreshData.TabIndex = 207
+        Me.BtnRefreshData.Text = "بروزرسانی اطلاعات"
+        Me.BtnRefreshData.VisualStyle = Janus.Windows.UI.VisualStyle.Office2007
         '
         'BtnSabtResid
         '
@@ -248,6 +257,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.GridBarcodeMaster.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GridBarcodeMaster.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic
         Me.GridBarcodeMaster.FilterRowFormatStyle.BackColor = System.Drawing.SystemColors.Info
+        Me.GridBarcodeMaster.FlatBorderColor = System.Drawing.SystemColors.WindowText
         Me.GridBarcodeMaster.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.GridBarcodeMaster.GroupByBoxVisible = False
         Me.GridBarcodeMaster.Location = New System.Drawing.Point(0, 0)
@@ -269,7 +279,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Me.Panel2.Controls.Add(Me.TabControl3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.MaximumSize = New System.Drawing.Size(1590, 600)
+        Me.Panel2.MaximumSize = New System.Drawing.Size(2000, 600)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1354, 193)
         Me.Panel2.TabIndex = 1
@@ -359,7 +369,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
     Dim abRule As New ClsDataAccessRule
     Dim DSCatalogue As New DataView
-
     Dim DvSourceKala As DataView
     Dim DvSourceDarkhast As DataView
     Dim DvSourceDarkhastHa As DataView
@@ -375,6 +384,8 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
     Private Sub FrmMnuTakhsisKalaOnIRC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Me.BtnRefreshData.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
+
         For Each colf As Janus.Windows.GridEX.GridEXColumn In GridBarcodeDetail.RootTable.Columns
             colf.HeaderAlignment = TextAlignment.Center
             colf.TextAlignment = TextAlignment.Center
@@ -386,10 +397,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Next
 
         Call BtnRefreshData_Click(sender, e)
-
-
-
-
         Timer1.Enabled = True
 
 
@@ -398,7 +405,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
         If IsSabtResidActive Then
             Dim CApp As Configuration.CAppSetting = New Configuration.CAppSetting(gVahedeTejariSN, gSM.ApplicationID)
-            NoControlBatchFactorAndMarjooei = IIf(CApp.GetAppConfig("gVahedeTejariNoControlBatchBetweenFactorAndMarjooei") Is System.DBNull.Value, False, CApp.GetAppConfig("gVahedeTejariNoControlBatchBetweenFactorAndMarjooei"))
+            'NoControlBatchFactorAndMarjooei = IIf(CApp.GetAppConfig("gVahedeTejariNoControlBatchBetweenFactorAndMarjooei") Is System.DBNull.Value, False, CApp.GetAppConfig("gVahedeTejariNoControlBatchBetweenFactorAndMarjooei"))
 
             Dim wfrm As New Anbar.Common.Frmwait
             wfrm.Show()
@@ -410,8 +417,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
 
                 Try
-
-                    'GridBarcodeMaster.ClearStructure()
                     CInitDetailDataView()
                     Dim Test As DataView = abRule.GetBarcodeThatsNotHaveProduct(cn)
 
@@ -423,18 +428,12 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         Dim a As DataGridView = New DataGridView()
                         GridBarcodeMaster.DataSource = DSCatalogue
                         GridBarcodeMaster.Refresh()
-                        'GridBarcodeMaster.RetrieveStructure()
                         GridBarcodeMaster.AutoSizeColumns()
                         GridBarcodeMaster.FilterMode = FilterMode.None
 
                         GridBarcodeMaster.AllowAddNew = InheritableBoolean.False
                         GridBarcodeMaster.AllowEdit = InheritableBoolean.False
                         GridBarcodeMaster.AllowDelete = InheritableBoolean.False
-                        'For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
-                        '    If col.Key.ToUpper.EndsWith("SN") Or col.Key.ToUpper() = "MOGHAYERATNO" Then
-                        '        col.Visible = False
-                        '    End If
-                        'Next
                     Else
                         Exit Sub
 
@@ -459,7 +458,7 @@ Public Class FrmMnuTakhsisKalaOnIRC
         If IsAnbarGardaniActive Then
             Dim Wfrm As New Anbar.Common.Frmwait
             Wfrm.Show()
-            Wfrm.Label3.Text = "...سیستم در حال پردازش موجودی سیستم و مقایسه با موجودی اسکن شده جهت انبارگردانی می باشد...."
+            Wfrm.Label3.Text = "...سیستم در حال پردازش موجودی سیستم و مقایسه با موجودی اسکن شده می باشد...."
             Wfrm.Refresh()
 
             Try
@@ -487,9 +486,9 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
 
                     GridBarcodeMaster.AutoSizeColumns()
-
-
                     GridBarcodeMaster.AutoSizeColumns()
+
+                    Call BtnRefreshData_Click(sender, e)
 
                 End If
             Catch ex As Exception
@@ -499,10 +498,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
             End Try
 
         End If
-
-
-
-
     End Sub
     Private Sub GridBarcodeMaster_DoubleClick(sender As Object, e As EventArgs) Handles GridBarcodeMaster.DoubleClick
         GridBarcodeMaster.AutoSizeColumns()
@@ -521,10 +516,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
         Else
             DVDetail.CommandEnabled(EnumCommands.cmAdd) = True
         End If
-
-
-
-
     End Sub
     Private Sub LinkRemoveFilter_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkRemoveFilter.LinkClicked
         CType(GridBarcodeMaster.DataSource, DataTable).DefaultView.RowFilter = "0=0"
@@ -547,7 +538,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
                 Exit Sub
             End If
             cn.ExecuteNoneQuery("update abProductCatalogue set Status=3 where ProductCatalogueSN=" & GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Text)
-            Call BtnRefreshData_Click(sender, e)
         End If
     End Sub
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
@@ -584,8 +574,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
             End Try
 
         End If
-
-
     End Sub
     Private Sub CInitDetailDataView()
         DVDetail = New CDataView(cn)
@@ -622,7 +610,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
             End With
             .Refresh()
         End With
-
     End Sub
     Private Sub DVDetail_AfterCommandClick(aCommand As EnumCommands) Handles DVDetail.AfterCommandClick
         Select Case aCommand
