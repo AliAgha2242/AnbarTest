@@ -385,8 +385,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
             colf.TextAlignment = TextAlignment.Center
         Next
 
-
-
         Call BtnRefreshData_Click(sender, e)
 
 
@@ -396,7 +394,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
 
     End Sub
-
     Private Sub BtnRefreshData_Click(sender As Object, e As EventArgs)
 
         If IsSabtResidActive Then
@@ -414,9 +411,9 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
                 Try
 
-                    GridBarcodeMaster.ClearStructure()
+                    'GridBarcodeMaster.ClearStructure()
                     CInitDetailDataView()
-                    Dim Test As DataView = abRule.GetBarcodeThatsNotHaveProduct(cn, gVahedeTejariSN)
+                    Dim Test As DataView = abRule.GetBarcodeThatsNotHaveProduct(cn)
 
                     DSCatalogue = Test
                     DSCatalogue.AllowEdit = False
@@ -426,18 +423,18 @@ Public Class FrmMnuTakhsisKalaOnIRC
                         Dim a As DataGridView = New DataGridView()
                         GridBarcodeMaster.DataSource = DSCatalogue
                         GridBarcodeMaster.Refresh()
-                        GridBarcodeMaster.RetrieveStructure()
+                        'GridBarcodeMaster.RetrieveStructure()
                         GridBarcodeMaster.AutoSizeColumns()
                         GridBarcodeMaster.FilterMode = FilterMode.None
 
                         GridBarcodeMaster.AllowAddNew = InheritableBoolean.False
                         GridBarcodeMaster.AllowEdit = InheritableBoolean.False
                         GridBarcodeMaster.AllowDelete = InheritableBoolean.False
-                        For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
-                            If col.Key.ToUpper.EndsWith("SN") Or col.Key.ToUpper() = "MOGHAYERATNO" Then
-                                col.Visible = False
-                            End If
-                        Next
+                        'For Each col As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
+                        '    If col.Key.ToUpper.EndsWith("SN") Or col.Key.ToUpper() = "MOGHAYERATNO" Then
+                        '        col.Visible = False
+                        '    End If
+                        'Next
                     Else
                         Exit Sub
 
@@ -507,9 +504,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
 
     End Sub
-
-
-
     Private Sub GridBarcodeMaster_DoubleClick(sender As Object, e As EventArgs) Handles GridBarcodeMaster.DoubleClick
         GridBarcodeMaster.AutoSizeColumns()
     End Sub
@@ -532,13 +526,9 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
 
     End Sub
-
-
-
     Private Sub LinkRemoveFilter_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkRemoveFilter.LinkClicked
         CType(GridBarcodeMaster.DataSource, DataTable).DefaultView.RowFilter = "0=0"
     End Sub
-
     Private Sub GridBarcodeMaster_LinkClicked(sender As Object, e As ColumnActionEventArgs) Handles GridBarcodeMaster.LinkClicked
         If GridBarcodeMaster.CurrentRow Is Nothing OrElse GridBarcodeMaster.CurrentColumn Is Nothing Then
             Exit Sub
@@ -560,26 +550,20 @@ Public Class FrmMnuTakhsisKalaOnIRC
             Call BtnRefreshData_Click(sender, e)
         End If
     End Sub
-
-
-
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
         Call SyncCatalogueDataToGBID()
     End Sub
-
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If Not BackgroundWorker1.IsBusy Then
             BackgroundWorker1.RunWorkerAsync()
         End If
     End Sub
-
     Private Sub MnuTakhsisKalaOnIRC_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         While BackgroundWorker1.IsBusy
             Threading.Thread.Sleep(3000)
 
         End While
     End Sub
-
     Sub SyncCatalogueDataToGBID()
         Dim Dv As DataView = cn.ExecuteQuery("select ProductCatalogueSN,TransferToAnbarTime,Status,Tozih,ResC1,ResC2,ResC3,ResC4,ResC5,ResInt1,ResInt2,ResInt3,ResDesc1, " &
                                             "ResDesc2,ResDesc3,isnull(UserID_Name,'" & gSM.UserID_Name & "') UserID_Name,isnull(Host_Name,'" & System.Windows.Forms.SystemInformation.ComputerName & "') Host_Name " &
@@ -603,15 +587,12 @@ Public Class FrmMnuTakhsisKalaOnIRC
 
 
     End Sub
-
-
-
     Private Sub CInitDetailDataView()
         DVDetail = New CDataView(cn)
         With DVDetail
             .TableName = "abProductCatalogueKalaIRC"
             .Init(PanelDetail,, PanelDetailCom, PanelDetailNav, EnumButtonOptions.boCmdRefresh Or EnumButtonOptions.boCmdInsert _
-                  Or EnumButtonOptions.boCmdFilter Or EnumButtonOptions.boCmdFind)
+                  Or EnumButtonOptions.boCmdFilter Or EnumButtonOptions.boCmdFind Or EnumButtonOptions.boCmdUpdate)
             .AddJoin("abProductCatalogueKalaIRC", EnumTableJoin.tjInnerJoin, "paKala", "KalaSN", "KalaSN")
             .SQLWhere = "productCatalogueSn = 0"
             .EditInGrid = True
@@ -637,14 +618,12 @@ Public Class FrmMnuTakhsisKalaOnIRC
                     .Caption = "جدیدGTIN"
                     .ReadOnly = True
                 End With
-                .Add("abProductCatalogueKalaIRC.ResC1",, EnumFieldOptions.foHidden)
 
             End With
-                .Refresh()
+            .Refresh()
         End With
 
     End Sub
-
     Private Sub DVDetail_AfterCommandClick(aCommand As EnumCommands) Handles DVDetail.AfterCommandClick
         Select Case aCommand
             Case EnumCommands.cmAdd
@@ -652,7 +631,6 @@ Public Class FrmMnuTakhsisKalaOnIRC
                 DVDetail.Fields("NewIRC").Value = GridBarcodeMaster.CurrentRow.Cells("IRC").Value
                 DVDetail.Fields("NewGTIN").Value = GridBarcodeMaster.CurrentRow.Cells("GTIN").Value
                 DVDetail.Fields("ProductCatalogueSN").Value = GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Value
-                DVDetail.Fields("ResC1").Value = DateTime.Now().ToString("yyyy-MM-dd HH:MM:ss")
         End Select
     End Sub
 End Class

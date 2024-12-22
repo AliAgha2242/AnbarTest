@@ -1949,7 +1949,7 @@ Implements IClsDataAccess.GetGozareshKardexKalaphiziki
 
     End Function
     '------------Tavakoli------------------
-    Public Function GetBarcodeThatsNotHaveProduct(ByVal Cn As NetSql.DB.CConnection, ByVal VahedeTejariSN As Decimal _
+    Public Function GetBarcodeThatsNotHaveProduct(ByVal Cn As NetSql.DB.CConnection _
                                                   , ByVal Sp As String)
         Dim _Cstr As String = ""
         'Dim _Errmsg As String = ""
@@ -1969,7 +1969,6 @@ Implements IClsDataAccess.GetGozareshKardexKalaphiziki
             End If
 
             SqlCommand.CommandText = Sp
-            SqlCommand.Parameters.AddWithValue("@VahedeTejariSN", VahedeTejariSN)
             SqlCommand.Connection = SqlConn
             SqlCommand.CommandType = CommandType.StoredProcedure
             SqlCommand.CommandTimeout = SqlConn.ConnectionTimeout
