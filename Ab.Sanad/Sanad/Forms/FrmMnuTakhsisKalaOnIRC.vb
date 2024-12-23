@@ -439,49 +439,6 @@ Public Class FrmTakhsisKalaOnIRC
         End If
 
 
-        If IsAnbarGardaniActive Then
-            Dim Wfrm As New Anbar.Common.Frmwait
-            Wfrm.Show()
-            Wfrm.Label3.Text = "...سیستم در حال پردازش موجودی سیستم و مقایسه با موجودی اسکن شده می باشد...."
-            Wfrm.Refresh()
-
-            Try
-                DSCatalogue = Nothing
-
-                If DSCatalogue Is Nothing Then
-                    CSystem.MsgBox("خطا در دریافت اطلاعات", MsgBoxStyle.Critical, "خطا!")
-                    Exit Sub
-                Else
-                    If CType(GridBarcodeMaster.DataSource, DataTable).Rows.Count > 0 Then
-                        Dim DtSource As DataTable = CType(GridBarcodeMaster.DataSource, DataTable)
-                        DtSource.Merge(DSCatalogue.ToTable())
-                        GridBarcodeMaster.DataSource = DtSource
-                    Else
-                        GridBarcodeMaster.DataSource = DSCatalogue.ToTable()
-                    End If
-
-                    If CType(GridBarcodeDetail.DataSource, DataTable).Rows.Count > 0 Then
-                        Dim DtSource As DataTable = CType(GridBarcodeDetail.DataSource, DataTable)
-                        DtSource.Merge(DSCatalogue.ToTable())
-                        GridBarcodeDetail.DataSource = DtSource
-                    Else
-                        GridBarcodeDetail.DataSource = DSCatalogue.ToTable()
-                    End If
-
-
-                    GridBarcodeMaster.AutoSizeColumns()
-                    GridBarcodeMaster.AutoSizeColumns()
-
-                    Call BtnRefreshData_Click(sender, e)
-
-                End If
-            Catch ex As Exception
-                CSystem.MsgBox(ex.Message, MsgBoxStyle.Critical, "خطا!")
-            Finally
-                Wfrm.Close()
-            End Try
-
-        End If
     End Sub
     Private Sub GridBarcodeMaster_DoubleClick(sender As Object, e As EventArgs) Handles GridBarcodeMaster.DoubleClick
         GridBarcodeMaster.AutoSizeColumns()
@@ -501,64 +458,8 @@ Public Class FrmTakhsisKalaOnIRC
             DVDetail.CommandEnabled(EnumCommands.cmAdd) = True
         End If
     End Sub
-    Private Sub LinkRemoveFilter_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkRemoveFilter.LinkClicked
-        CType(GridBarcodeMaster.DataSource, DataTable).DefaultView.RowFilter = "0=0"
-    End Sub
-    Private Sub GridBarcodeMaster_LinkClicked(sender As Object, e As ColumnActionEventArgs) Handles GridBarcodeMaster.LinkClicked
-        If GridBarcodeMaster.CurrentRow Is Nothing OrElse GridBarcodeMaster.CurrentColumn Is Nothing Then
-            Exit Sub
-        End If
 
-        If GridBarcodeMaster.CurrentColumn.Key.ToUpper = "EBTALSABT" Then
-            If CDec(GridBarcodeMaster.CurrentRow.Cells("Status").Value) <> 1 Then
-                CSystem.MsgBox("فقط موارد ارسال نشده به انبار قابلیت ابطال دارند", MsgBoxStyle.Exclamation, "")
-                Exit Sub
-            End If
-            If CBool(GridBarcodeMaster.CurrentRow.Cells("ForceUseUIDforSanad").Value) = True Then
-                CSystem.MsgBox("محصول <" + GridBarcodeMaster.CurrentRow.Cells("KalaDS").Text + "> جز دسته محصولاتی است که ثبت سند بر اساس UID برای آن الزامیست لذا ابطال ثبت آن امکانپذیر نمی باشد ", MsgBoxStyle.Exclamation, "")
-                Exit Sub
-            End If
-            If CSystem.MsgBox("آیا مایل به ابطال شماره ثبت " + GridBarcodeMaster.CurrentRow.Cells("RegisterNumber").Text + "می باشید؟", MsgBoxStyle.YesNo, "ابطال شماره ثبت") = MsgBoxResult.No Then
-                Exit Sub
-            End If
-            cn.ExecuteNoneQuery("update abProductCatalogue set Status=3 where ProductCatalogueSN=" & GridBarcodeMaster.CurrentRow.Cells("ProductCatalogueSN").Text)
-        End If
-    End Sub
-    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
-        Call SyncCatalogueDataToGBID()
-    End Sub
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        If Not BackgroundWorker1.IsBusy Then
-            BackgroundWorker1.RunWorkerAsync()
-        End If
-    End Sub
-    Private Sub FrmTakhsisKalaOnIRC_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        While BackgroundWorker1.IsBusy
-            Threading.Thread.Sleep(3000)
 
-        End While
-    End Sub
-    Sub SyncCatalogueDataToGBID()
-        Dim Dv As DataView = cn.ExecuteQuery("select ProductCatalogueSN,TransferToAnbarTime,Status,Tozih,ResC1,ResC2,ResC3,ResC4,ResC5,ResInt1,ResInt2,ResInt3,ResDesc1, " &
-                                            "ResDesc2,ResDesc3,isnull(UserID_Name,'" & gSM.UserID_Name & "') UserID_Name,isnull(Host_Name,'" & System.Windows.Forms.SystemInformation.ComputerName & "') Host_Name " &
-                                         "from abProductCatalogue where Status<>1 And VahedeTejariSN=" & gVahedeTejariSN.ToString & " And AnbarSN=" & gAnbarSN.ToString & " And right(isnull(UserID_Name,''),1)<>'T' ")
-        If Dv.Count > 0 Then
-            Dim DtCatalogueForUpdateDB As DataTable = New DataView(Dv.ToTable, "", "", DataViewRowState.CurrentRows).ToTable
-            DtCatalogueForUpdateDB.TableName = "ProductCatalogue"
-            Dim DsCatalogueForUpdateDB As New DataSet
-            DsCatalogueForUpdateDB.Tables.Add(DtCatalogueForUpdateDB)
-
-            Dim Xmlstr As String = DsCatalogueForUpdateDB.GetXml
-
-            Try
-                abRule.SyncProductCatalogueData_ShoabToGBID(Xmlstr, cn)
-            Catch ex As Exception
-                CSystem.MsgBox("BackgroundWorker1_DoWork" + vbNewLine + ex.Message)
-
-            End Try
-
-        End If
-    End Sub
     Private Sub CInitDetailDataView()
         DVDetail = New CDataView(cn)
         With DVDetail
