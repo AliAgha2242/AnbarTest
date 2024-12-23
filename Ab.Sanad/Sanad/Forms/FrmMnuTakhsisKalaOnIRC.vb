@@ -19,7 +19,6 @@ Public Class FrmTakhsisKalaOnIRC
     Private Shared m_initializingdefinstance As Boolean
     Private WithEvents dataView As CDataView
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents BtnSabtResid As Janus.Windows.EditControls.UIButton
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents SplitContainer1 As SplitContainer
     Friend WithEvents TabPageScanRecords As TabPage
@@ -27,14 +26,7 @@ Public Class FrmTakhsisKalaOnIRC
     Friend WithEvents GridBarcodeMaster As Janus.Windows.GridEX.GridEX
     Friend WithEvents Panel2 As Panel
     Friend WithEvents TabControl3 As TabControl
-    Friend WithEvents GridBarcodeDetail As Janus.Windows.GridEX.GridEX
-    Friend WithEvents Label3 As Label
-    Friend WithEvents LinkRemoveFilter As LinkLabel
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
-    Friend WithEvents Timer1 As Timer
-    'Friend WithEvents BtnRefreshData As Janus.Windows.EditControls.UIButton
     '------------------------------------------------------------------------------
     Friend WithEvents PanelDetail As Panel
     Friend WithEvents PanelDetailCom As Panel
@@ -87,8 +79,6 @@ Public Class FrmTakhsisKalaOnIRC
         Me.PanelDetail = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.BtnSabtResid = New Janus.Windows.EditControls.UIButton()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPageScanRecords = New System.Windows.Forms.TabPage()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
@@ -96,11 +86,7 @@ Public Class FrmTakhsisKalaOnIRC
         Me.GridBarcodeMaster = New Janus.Windows.GridEX.GridEX()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TabControl3 = New System.Windows.Forms.TabControl()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GridBarcodeDetail = New Janus.Windows.GridEX.GridEX()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel3.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPageScanRecords.SuspendLayout()
@@ -111,8 +97,6 @@ Public Class FrmTakhsisKalaOnIRC
         Me.Panel1.SuspendLayout()
         CType(Me.GridBarcodeMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridBarcodeDetail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelDetailCom
@@ -147,7 +131,6 @@ Public Class FrmTakhsisKalaOnIRC
         Me.Panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.Label1)
-        Me.Panel3.Controls.Add(Me.Label3)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
@@ -165,20 +148,7 @@ Public Class FrmTakhsisKalaOnIRC
         Me.Label1.TabIndex = 220
         Me.Label1.Text = "کاربر گرامی" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "لطفا توجه داشته باشید مهلت ویرایش کالای ثبت شده یک روز می باشد"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label3
-        '
-        Me.Label3.Location = New System.Drawing.Point(0, 0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(100, 23)
-        Me.Label3.TabIndex = 218
-        '
-        'BtnSabtResid
-        '
-        Me.BtnSabtResid.Location = New System.Drawing.Point(0, 0)
-        Me.BtnSabtResid.Name = "BtnSabtResid"
-        Me.BtnSabtResid.Size = New System.Drawing.Size(75, 23)
-        Me.BtnSabtResid.TabIndex = 219
+
         '
         'TabControl1
         '
@@ -277,53 +247,7 @@ Public Class FrmTakhsisKalaOnIRC
         Me.TabControl3.SelectedIndex = 0
         Me.TabControl3.Size = New System.Drawing.Size(1354, 193)
         Me.TabControl3.TabIndex = 3
-        '
-        'NumericUpDown1
-        '
-        Me.NumericUpDown1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.NumericUpDown1.Enabled = False
-        Me.NumericUpDown1.Location = New System.Drawing.Point(761, 9)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(46, 20)
-        Me.NumericUpDown1.TabIndex = 221
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.GroupBox1.Location = New System.Drawing.Point(984, 1)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(371, 34)
-        Me.GroupBox1.TabIndex = 219
-        Me.GroupBox1.TabStop = False
-        '
-        'GridBarcodeDetail
-        '
-        GridBarcodeDetail_DesignTimeLayout.LayoutString = resources.GetString("GridBarcodeDetail_DesignTimeLayout.LayoutString")
-        Me.GridBarcodeDetail.DesignTimeLayout = GridBarcodeDetail_DesignTimeLayout
-        Me.GridBarcodeDetail.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GridBarcodeDetail.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown
-        Me.GridBarcodeDetail.FilterRowFormatStyle.BackColor = System.Drawing.SystemColors.Info
-        Me.GridBarcodeDetail.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.GridBarcodeDetail.GroupByBoxVisible = False
-        Me.GridBarcodeDetail.Location = New System.Drawing.Point(3, 3)
-        Me.GridBarcodeDetail.Name = "GridBarcodeDetail"
-        Me.GridBarcodeDetail.RecordNavigator = True
-        Me.GridBarcodeDetail.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowPosition
-        Me.GridBarcodeDetail.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.[True]
-        Me.GridBarcodeDetail.SelectedFormatStyle.BackColor = System.Drawing.Color.Bisque
-        Me.GridBarcodeDetail.Size = New System.Drawing.Size(1340, 112)
-        Me.GridBarcodeDetail.TabIndex = 14
-        Me.GridBarcodeDetail.TotalRow = Janus.Windows.GridEX.InheritableBoolean.[True]
-        Me.GridBarcodeDetail.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
-        '
-        'BackgroundWorker1
-        '
-        '
-        'Timer1
-        '
-        Me.Timer1.Interval = 1000000
+
         '
         'FrmTakhsisKalaOnIRC
         '
@@ -345,8 +269,6 @@ Public Class FrmTakhsisKalaOnIRC
         Me.Panel1.ResumeLayout(False)
         CType(Me.GridBarcodeMaster, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridBarcodeDetail, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -368,12 +290,6 @@ Public Class FrmTakhsisKalaOnIRC
 
     Private Sub FrmTakhsisKalaOnIRC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'Me.BtnRefreshData.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold)
-
-        For Each colf As Janus.Windows.GridEX.GridEXColumn In GridBarcodeDetail.RootTable.Columns
-            colf.HeaderAlignment = TextAlignment.Center
-            colf.TextAlignment = TextAlignment.Center
-        Next
 
         For Each colf As Janus.Windows.GridEX.GridEXColumn In GridBarcodeMaster.RootTable.Columns
             colf.HeaderAlignment = TextAlignment.Center
@@ -381,62 +297,57 @@ Public Class FrmTakhsisKalaOnIRC
         Next
 
         Call BtnRefreshData_Click(sender, e)
-        Timer1.Enabled = True
-
-
     End Sub
     Private Sub BtnRefreshData_Click(sender As Object, e As EventArgs)
 
-        If IsSabtResidActive Then
-            Dim CApp As Configuration.CAppSetting = New Configuration.CAppSetting(gVahedeTejariSN, gSM.ApplicationID)
-            'NoControlBatchFactorAndMarjooei = IIf(CApp.GetAppConfig("gVahedeTejariNoControlBatchBetweenFactorAndMarjooei") Is System.DBNull.Value, False, CApp.GetAppConfig("gVahedeTejariNoControlBatchBetweenFactorAndMarjooei"))
 
-            Dim wfrm As New Anbar.Common.Frmwait
+        Dim CApp As Configuration.CAppSetting = New Configuration.CAppSetting(gVahedeTejariSN, gSM.ApplicationID)
+
+
+        Dim wfrm As New Anbar.Common.Frmwait
             wfrm.Show()
+        Try
+
+
+            wfrm.Label3.Text = "...سیستم در حال بروزرسانی آخرین اطلاعات می باشد..."
+            wfrm.Refresh()
+
+
             Try
+                CInitDetailDataView()
+                Dim Test As DataView = abRule.GetBarcodeThatsNotHaveProduct(cn)
 
+                DSCatalogue = Test
+                DSCatalogue.AllowEdit = False
 
-                wfrm.Label3.Text = "...سیستم در حال بروزرسانی آخرین اطلاعات می باشد..."
-                wfrm.Refresh()
+                If Not DSCatalogue Is Nothing Then
 
+                    Dim a As DataGridView = New DataGridView()
+                    GridBarcodeMaster.DataSource = DSCatalogue
+                    GridBarcodeMaster.Refresh()
+                    GridBarcodeMaster.AutoSizeColumns()
+                    GridBarcodeMaster.FilterMode = FilterMode.None
 
-                Try
-                    CInitDetailDataView()
-                    Dim Test As DataView = abRule.GetBarcodeThatsNotHaveProduct(cn)
+                    GridBarcodeMaster.AllowAddNew = InheritableBoolean.False
+                    GridBarcodeMaster.AllowEdit = InheritableBoolean.False
+                    GridBarcodeMaster.AllowDelete = InheritableBoolean.False
+                Else
+                    Exit Sub
 
-                    DSCatalogue = Test
-                    DSCatalogue.AllowEdit = False
-
-                    If Not DSCatalogue Is Nothing Then
-
-                        Dim a As DataGridView = New DataGridView()
-                        GridBarcodeMaster.DataSource = DSCatalogue
-                        GridBarcodeMaster.Refresh()
-                        GridBarcodeMaster.AutoSizeColumns()
-                        GridBarcodeMaster.FilterMode = FilterMode.None
-
-                        GridBarcodeMaster.AllowAddNew = InheritableBoolean.False
-                        GridBarcodeMaster.AllowEdit = InheritableBoolean.False
-                        GridBarcodeMaster.AllowDelete = InheritableBoolean.False
-                    Else
-                        Exit Sub
-
-                    End If
-                Catch ex As Exception
-                    CSystem.MsgBox(ex.Message, MsgBoxStyle.Critical, "خطا!")
-                End Try
-
-
-                GridBarcodeMaster.AutoSizeColumns()
-
-
-
+                End If
             Catch ex As Exception
-            Finally
-                wfrm.Close()
+                CSystem.MsgBox(ex.Message, MsgBoxStyle.Critical, "خطا!")
             End Try
 
-        End If
+
+            GridBarcodeMaster.AutoSizeColumns()
+
+
+
+        Catch ex As Exception
+        Finally
+            wfrm.Close()
+        End Try
 
 
     End Sub
