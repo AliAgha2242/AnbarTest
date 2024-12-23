@@ -3,7 +3,7 @@
 ' OK
 'Author ::نوشین علیپور و علی اصغر توکلی
 'CreateDate :: 14030917
-'ModifiedDate::
+'ModifiedDate:: 14031001
 'Description:: تخصیص کالا به بارکد
 'System ::انبار
 
@@ -88,7 +88,6 @@ Public Class FrmTakhsisKalaOnIRC
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        'Me.BtnRefreshData = New Janus.Windows.EditControls.UIButton()
         Me.BtnSabtResid = New Janus.Windows.EditControls.UIButton()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPageScanRecords = New System.Windows.Forms.TabPage()
@@ -119,7 +118,7 @@ Public Class FrmTakhsisKalaOnIRC
         'PanelDetailCom
         '
         Me.PanelDetailCom.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PanelDetailCom.Location = New System.Drawing.Point(892, 160)
+        Me.PanelDetailCom.Location = New System.Drawing.Point(1140, 160)
         Me.PanelDetailCom.Name = "PanelDetailCom"
         Me.PanelDetailCom.Size = New System.Drawing.Size(214, 40)
         Me.PanelDetailCom.TabIndex = 3
@@ -127,7 +126,7 @@ Public Class FrmTakhsisKalaOnIRC
         'PanelDetailNav
         '
         Me.PanelDetailNav.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PanelDetailNav.Location = New System.Drawing.Point(-243, 158)
+        Me.PanelDetailNav.Location = New System.Drawing.Point(0, 158)
         Me.PanelDetailNav.Name = "PanelDetailNav"
         Me.PanelDetailNav.Size = New System.Drawing.Size(214, 38)
         Me.PanelDetailNav.TabIndex = 2
@@ -149,7 +148,6 @@ Public Class FrmTakhsisKalaOnIRC
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.Label1)
         Me.Panel3.Controls.Add(Me.Label3)
-        'Me.Panel3.Controls.Add(Me.BtnRefreshData)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
@@ -174,20 +172,6 @@ Public Class FrmTakhsisKalaOnIRC
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(100, 23)
         Me.Label3.TabIndex = 218
-        '
-        'BtnRefreshData
-        '
-        'Me.BtnRefreshData.AccessibleRole = System.Windows.Forms.AccessibleRole.None
-        'Me.BtnRefreshData.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        'Me.BtnRefreshData.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
-        'Me.BtnRefreshData.Location = New System.Drawing.Point(1265, 5)
-        'Me.BtnRefreshData.Name = "BtnRefreshData"
-        'Me.BtnRefreshData.Office2007ColorScheme = Janus.Windows.UI.Office2007ColorScheme.Blue
-        'Me.BtnRefreshData.Office2007CustomColor = System.Drawing.Color.LightSlateGray
-        'Me.BtnRefreshData.Size = New System.Drawing.Size(90, 55)
-        'Me.BtnRefreshData.TabIndex = 207
-        'Me.BtnRefreshData.Text = "بروزرسانی اطلاعات"
-        'Me.BtnRefreshData.VisualStyle = Janus.Windows.UI.VisualStyle.Office2007
         '
         'BtnSabtResid
         '
@@ -220,7 +204,7 @@ Public Class FrmTakhsisKalaOnIRC
         '
         'SplitContainer1
         '
-        Me.SplitContainer1.BackColor = System.Drawing.Color.Maroon
+        Me.SplitContainer1.BackColor = System.Drawing.SystemColors.Control
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainer1.Location = New System.Drawing.Point(3, 3)
         Me.SplitContainer1.Name = "SplitContainer1"
