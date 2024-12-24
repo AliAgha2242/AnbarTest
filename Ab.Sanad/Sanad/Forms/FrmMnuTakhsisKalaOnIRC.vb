@@ -305,7 +305,7 @@ Public Class FrmTakhsisKalaOnIRC
 
 
         Dim wfrm As New Anbar.Common.Frmwait
-            wfrm.Show()
+        wfrm.Show()
         Try
 
 
