@@ -70,10 +70,8 @@ Public Class FrmTakhsisKalaOnIRC
     End Property
 
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim GridBarcodeMaster_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmTakhsisKalaOnIRC))
-        Dim GridBarcodeDetail_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.PanelDetailCom = New System.Windows.Forms.Panel()
         Me.PanelDetailNav = New System.Windows.Forms.Panel()
         Me.PanelDetail = New System.Windows.Forms.Panel()
@@ -148,7 +146,6 @@ Public Class FrmTakhsisKalaOnIRC
         Me.Label1.TabIndex = 220
         Me.Label1.Text = "کاربر گرامی" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "لطفا توجه داشته باشید مهلت ویرایش کالای ثبت شده یک روز می باشد"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-
         '
         'TabControl1
         '
@@ -247,7 +244,6 @@ Public Class FrmTakhsisKalaOnIRC
         Me.TabControl3.SelectedIndex = 0
         Me.TabControl3.Size = New System.Drawing.Size(1354, 193)
         Me.TabControl3.TabIndex = 3
-
         '
         'FrmTakhsisKalaOnIRC
         '
