@@ -25,13 +25,10 @@ Public Class FrmTakhsisKalaOnIRC
     Friend WithEvents Panel1 As Panel
     Friend WithEvents GridBarcodeMaster As Janus.Windows.GridEX.GridEX
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents TabControl3 As TabControl
-    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
-    '------------------------------------------------------------------------------
-    Friend WithEvents PanelDetail As Panel
     Friend WithEvents PanelDetailCom As Panel
-    Friend WithEvents Label1 As Label
     Friend WithEvents PanelDetailNav As Panel
+    Friend WithEvents PanelDetail As Panel
+    Friend WithEvents Label1 As Label
 
     Public Sub New()
         MyBase.New()
@@ -72,9 +69,6 @@ Public Class FrmTakhsisKalaOnIRC
     Private Sub InitializeComponent()
         Dim GridBarcodeMaster_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmTakhsisKalaOnIRC))
-        Me.PanelDetailCom = New System.Windows.Forms.Panel()
-        Me.PanelDetailNav = New System.Windows.Forms.Panel()
-        Me.PanelDetail = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -83,8 +77,9 @@ Public Class FrmTakhsisKalaOnIRC
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GridBarcodeMaster = New Janus.Windows.GridEX.GridEX()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.TabControl3 = New System.Windows.Forms.TabControl()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.PanelDetailCom = New System.Windows.Forms.Panel()
+        Me.PanelDetailNav = New System.Windows.Forms.Panel()
+        Me.PanelDetail = New System.Windows.Forms.Panel()
         Me.Panel3.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPageScanRecords.SuspendLayout()
@@ -96,33 +91,6 @@ Public Class FrmTakhsisKalaOnIRC
         CType(Me.GridBarcodeMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'PanelDetailCom
-        '
-        Me.PanelDetailCom.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PanelDetailCom.Location = New System.Drawing.Point(1140, 160)
-        Me.PanelDetailCom.Name = "PanelDetailCom"
-        Me.PanelDetailCom.Size = New System.Drawing.Size(214, 40)
-        Me.PanelDetailCom.TabIndex = 3
-        '
-        'PanelDetailNav
-        '
-        Me.PanelDetailNav.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PanelDetailNav.Location = New System.Drawing.Point(0, 158)
-        Me.PanelDetailNav.Name = "PanelDetailNav"
-        Me.PanelDetailNav.Size = New System.Drawing.Size(214, 38)
-        Me.PanelDetailNav.TabIndex = 2
-        '
-        'PanelDetail
-        '
-        Me.PanelDetail.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PanelDetail.Location = New System.Drawing.Point(3, 4)
-        Me.PanelDetail.MaximumSize = New System.Drawing.Size(2000, 275)
-        Me.PanelDetail.Name = "PanelDetail"
-        Me.PanelDetail.Size = New System.Drawing.Size(1354, 153)
-        Me.PanelDetail.TabIndex = 4
         '
         'Panel3
         '
@@ -203,6 +171,7 @@ Public Class FrmTakhsisKalaOnIRC
         '
         'GridBarcodeMaster
         '
+        Me.GridBarcodeMaster.ColumnAutoSizeMode = Janus.Windows.GridEX.ColumnAutoSizeMode.DisplayedCellsAndHeader
         GridBarcodeMaster_DesignTimeLayout.LayoutString = resources.GetString("GridBarcodeMaster_DesignTimeLayout.LayoutString")
         Me.GridBarcodeMaster.DesignTimeLayout = GridBarcodeMaster_DesignTimeLayout
         Me.GridBarcodeMaster.Dock = System.Windows.Forms.DockStyle.Fill
@@ -223,11 +192,10 @@ Public Class FrmTakhsisKalaOnIRC
         '
         'Panel2
         '
-        Me.Panel2.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Panel2.BackColor = System.Drawing.SystemColors.Control
         Me.Panel2.Controls.Add(Me.PanelDetailCom)
         Me.Panel2.Controls.Add(Me.PanelDetailNav)
         Me.Panel2.Controls.Add(Me.PanelDetail)
-        Me.Panel2.Controls.Add(Me.TabControl3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.MaximumSize = New System.Drawing.Size(2000, 600)
@@ -235,15 +203,32 @@ Public Class FrmTakhsisKalaOnIRC
         Me.Panel2.Size = New System.Drawing.Size(1354, 193)
         Me.Panel2.TabIndex = 1
         '
-        'TabControl3
+        'PanelDetailCom
         '
-        Me.TabControl3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControl3.Location = New System.Drawing.Point(0, 0)
-        Me.TabControl3.Name = "TabControl3"
-        Me.TabControl3.RightToLeftLayout = True
-        Me.TabControl3.SelectedIndex = 0
-        Me.TabControl3.Size = New System.Drawing.Size(1354, 193)
-        Me.TabControl3.TabIndex = 3
+        Me.PanelDetailCom.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelDetailCom.Location = New System.Drawing.Point(1137, 152)
+        Me.PanelDetailCom.Name = "PanelDetailCom"
+        Me.PanelDetailCom.Size = New System.Drawing.Size(214, 37)
+        Me.PanelDetailCom.TabIndex = 6
+        '
+        'PanelDetailNav
+        '
+        Me.PanelDetailNav.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelDetailNav.Location = New System.Drawing.Point(2, 152)
+        Me.PanelDetailNav.Name = "PanelDetailNav"
+        Me.PanelDetailNav.Size = New System.Drawing.Size(214, 38)
+        Me.PanelDetailNav.TabIndex = 5
+        '
+        'PanelDetail
+        '
+        Me.PanelDetail.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelDetail.Location = New System.Drawing.Point(0, 3)
+        Me.PanelDetail.MaximumSize = New System.Drawing.Size(2000, 275)
+        Me.PanelDetail.Name = "PanelDetail"
+        Me.PanelDetail.Size = New System.Drawing.Size(1354, 145)
+        Me.PanelDetail.TabIndex = 7
         '
         'FrmTakhsisKalaOnIRC
         '
