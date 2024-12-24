@@ -383,7 +383,12 @@ Public Class FrmTakhsisKalaOnIRC
                     .Caption = "جدیدGTIN"
                     .ReadOnly = True
                 End With
-
+                With .Add("UserID_Name", "", EnumFieldOptions.foHidden)
+                    .DefaultValue = gSM.UserID_Name
+                End With
+                With .Add("Host_Name", "", EnumFieldOptions.foHidden)
+                    .DefaultValue = System.Environment.MachineName
+                End With
             End With
             .Refresh()
         End With
