@@ -65,7 +65,7 @@ Friend Class FrmAnbarTarakonesh
         '
         'Tab2
         '
-        Me.Tab2.Location = New System.Drawing.Point(0, 163)
+        Me.Tab2.Location = New System.Drawing.Point(0, 322)
         Me.Tab2.Size = New System.Drawing.Size(902, 252)
         '
         'Tabp2
@@ -74,11 +74,12 @@ Friend Class FrmAnbarTarakonesh
         '
         'pnlN2
         '
-        Me.pnlN2.Size = New System.Drawing.Size(470, 35)
+        Me.pnlN2.Size = New System.Drawing.Size(646, 35)
         '
         'pnlC2
         '
-        Me.pnlC2.Location = New System.Drawing.Point(474, 188)
+        Me.pnlC2.Location = New System.Drawing.Point(650, 188)
+        Me.pnlC2.Size = New System.Drawing.Size(241, 35)
         '
         'pnlG2
         '
@@ -86,28 +87,29 @@ Friend Class FrmAnbarTarakonesh
         '
         'Tab1
         '
-        Me.Tab1.Size = New System.Drawing.Size(902, 158)
+        Me.Tab1.Size = New System.Drawing.Size(902, 317)
         '
         'Tabp1
         '
-        Me.Tabp1.Size = New System.Drawing.Size(894, 131)
+        Me.Tabp1.Size = New System.Drawing.Size(894, 290)
         '
         'pnlN1
         '
-        Me.pnlN1.Location = New System.Drawing.Point(0, 94)
-        Me.pnlN1.Size = New System.Drawing.Size(470, 35)
+        Me.pnlN1.Location = New System.Drawing.Point(0, 252)
+        Me.pnlN1.Size = New System.Drawing.Size(646, 35)
         '
         'pnlC1
         '
-        Me.pnlC1.Location = New System.Drawing.Point(474, 94)
+        Me.pnlC1.Location = New System.Drawing.Point(650, 252)
+        Me.pnlC1.Size = New System.Drawing.Size(241, 35)
         '
         'pnlG1
         '
-        Me.pnlG1.Size = New System.Drawing.Size(894, 93)
+        Me.pnlG1.Size = New System.Drawing.Size(891, 246)
         '
         'FrmAnbarTarakonesh
         '
-        Me.ClientSize = New System.Drawing.Size(902, 415)
+        Me.ClientSize = New System.Drawing.Size(902, 574)
         Me.Name = "FrmAnbarTarakonesh"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -156,9 +158,6 @@ Friend Class FrmAnbarTarakonesh
 
     ' جهت استفاده در عمليات پشتيباني رويدادهاي گريد
     Private pRowNomber As Short
-    Public AccessForEditAnbarTarakoneshStatusBySetad As Boolean = False
-    'Public ListTarakoneshMojazForEditBySetad As String = ""
-
 
     Private Sub dcbTarakoneshSN_Enter(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) _
         Handles dcbTarakoneshSN.Enter
@@ -208,10 +207,8 @@ Friend Class FrmAnbarTarakonesh
                     DVaAnbarTarakonesh.Fields("NoeAnbarSN").Component.Enabled = True
                 End If
             Case Else
-                'DVaAnbarTarakonesh.Fields("AnbarTarakoneshStatus").Value = 1
                 DVaAnbarTarakonesh.Fields("TarakoneshSN").ComboWhereCondition = ""
                 DVaAnbarTarakonesh.Fields("TarakoneshSN").RefreshCombo()
-
         End Select
 
     End Sub
@@ -228,7 +225,6 @@ Friend Class FrmAnbarTarakonesh
                 pRowNomber = pFLX_aAnbaraNoeAnbar.Row
                 If DVabVw_abAnbarabNoeAnbar_Tran.FlexGrid.Rows > 1 Then
                     vSql_where = " abAnbarTarakonesh.AnbarSN = " & .TextMatrix(.Row, .ColIndex("HiddenAnbarSN"))
-                    '+ If(AccessForEditAnbarTarakoneshStatusBySetad And ListTarakoneshMojazForEditBySetad <> "", " And abAnbarTarakonesh.TarakoneshSN In (" & ListTarakoneshMojazForEditBySetad & ")", "")
                 Else
                     vSql_where = " 1 = 2 "
                 End If
@@ -242,26 +238,14 @@ Friend Class FrmAnbarTarakonesh
 
     Private Sub FrmAnbarTarakonesh_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) _
         Handles MyBase.Load
-        'AccessForEditAnbarTarakoneshStatusBySetad = gSM.ActionVisible("AccessForEditAnbarTarakoneshStatus")
-        'Dim CApp1 As Configuration.CAppSetting = New Configuration.CAppSetting(gVahedeTejariSN, gSM.ApplicationID)
-        'ListTarakoneshMojazForEditBySetad = If(CApp1.GetAppConfig("gTarakoneshGheirMojazGhaza") Is System.DBNull.Value, "", CApp1.GetAppConfig("gTarakoneshGheirMojazGhaza"))
-        'If AccessForEditAnbarTarakoneshStatusBySetad AndAlso ListTarakoneshMojazForEditBySetad = "" Then
-        '    CSystem.MsgBox("برای دسترسی شما تراکنشی جهت فعال/غیر فعال سازی در این واحد تجاری ثبت نشده است", MsgBoxStyle.Exclamation, "")
-        '    Exit Sub
-        'End If
+
         Call InitDataView()
     End Sub
 
     Private Sub FrmAnbarTarakonesh_Closed(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) _
         Handles MyBase.Closed
-        'If DVabVw_abAnbarabNoeAnbar_Tran Is Nothing Then
-        '    Exit Sub
-        'End If
         DVabVw_abAnbarabNoeAnbar_Tran.Done()
         DVabVw_abAnbarabNoeAnbar_Tran = Nothing
-        'If DVaAnbarTarakonesh Is Nothing Then
-        '    Exit Sub
-        'End If
         DVaAnbarTarakonesh.Done()
         DVaAnbarTarakonesh = Nothing
     End Sub
@@ -276,11 +260,14 @@ Friend Class FrmAnbarTarakonesh
             .TableName = "abVw_abAnbarabNoeAnbar_Tran"
             .Text = Me.Text
             .SQLOrderBy = " HiddenVahedeTejariSN "
-            If gIsTajmie = 1 Then
-                .SQLWhere = " HiddenVahedeTejariSN =  " & CStr(gVahedeTejariSN)
-            Else
-                .SQLWhere = " HiddenAnbarSN = " & CStr(gAnbarSN)
+            If cn.SQLServerName.ToUpper <> "BIS" Then
+                If gIsTajmie = 1 Then
+                    .SQLWhere = " HiddenVahedeTejariSN =  " & CStr(gVahedeTejariSN)
+                Else
+                    .SQLWhere = " HiddenAnbarSN = " & CStr(gAnbarSN)
+                End If
             End If
+
             .Fields.AddAllFields()
             .AccessRight = EnumAccessRight.arView
             .Refresh()
@@ -291,7 +278,6 @@ Friend Class FrmAnbarTarakonesh
             If .Rows > 1 Then
                 pRowNomber = 1
                 vSql_where = " abAnbarTarakonesh.AnbarSN = " & .TextMatrix(.Row, .ColIndex("HiddenAnbarSN"))
-                '+                 If(AccessForEditAnbarTarakoneshStatusBySetad And ListTarakoneshMojazForEditBySetad <> "", " And abAnbarTarakonesh.TarakoneshSN In (" & ListTarakoneshMojazForEditBySetad & ")", "")
             Else
                 vSql_where = " 1 = 2 "
             End If
@@ -319,40 +305,29 @@ Friend Class FrmAnbarTarakonesh
                     'With .Add("TarakoneshSN->{abTarakonesh.TarakoneshNO+'.'+abTarakonesh.TarakoneshDs} As TarakoneshSN", dcbTarakoneshSN)
                     dcbTarakoneshSN = .Component
                     .LockUpdate = False
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
-
                 End With
                 With .Add("TarakoneshSN->{CAst(abTarakonesh.TarakoneshNO As INT)} As TarakoneshNO")
                     .LockUpdate = True
                     .Caption = "کد تراکنش"
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
                 End With
                 .Add("AnbarSN", "DataCombo", EnumFieldOptions.foHidden)
                 With .Add("MinDateDoreh", "TextBox", EnumFieldOptions.foDate)
                     ' تهيه تاريخ از سرور
                     .DefaultValue = VB.Left(Minoo.Functions.FTDBCommonFunctions.Get_Date_Server_Jalali(cn, Functions.FTDBCommonFunctions.enmDateFormat.Normal), 2) & "0101"
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
                 End With
                 With .Add("MaxDateDoreh", "TextBox", EnumFieldOptions.foDate)
                     ' تهيه تاريخ از سرور
                     .DefaultValue = VB.Left(Minoo.Functions.FTDBCommonFunctions.Get_Date_Server_Jalali(cn, Functions.FTDBCommonFunctions.enmDateFormat.Normal), 2) & "1229"
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
-
                 End With
                 With .Add("MohlatVorood", "TextBox", EnumFieldOptions.foDefault)
                     .DefaultValue = 15
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
-
                 End With
                 With .Add("MohlatNahaee", "TextBox", EnumFieldOptions.foHidden)
                     .DefaultValue = 15
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
-
                 End With
 
                 With .Add("NumberOfEdit", "TextBox", EnumFieldOptions.foHidden)
                     .DefaultValue = 4
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
                 End With
                 With .Add("AnbarTarakoneshStatus", "CheckBox")
                     .DefaultValue = 1
@@ -360,43 +335,31 @@ Friend Class FrmAnbarTarakonesh
                 With .Add("UnqStr AS QCOK", "CheckBox")
                     .Caption = cn.FieldCaption("abAnbarTarakonesh.QCOK")
                     .DefaultValue = 0
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
-
                 End With
                 With .Add("SabteRialVaghei", "CheckBox")
                     .Caption = cn.FieldCaption("abAnbarTarakonesh.SabteRialVaghei")
                     .DefaultValue = 0
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
-
                 End With
                 With .Add("RezDA", "CheckBox")
                     .Caption = cn.FieldCaption("abAnbarTarakonesh.RezDA")
                     .DefaultValue = 0
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
-
                 End With
                 With .Add("RezDB", "CheckBox")
                     .Caption = cn.FieldCaption("abAnbarTarakonesh.RezDB")
                     .DefaultValue = 1
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
-
                 End With
                 With .Add("RezDC", "CheckBox")
                     .Caption = cn.FieldCaption("abAnbarTarakonesh.RezDC")
                     .DefaultValue = 1
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
-
                 End With
                 With .Add("RezDD", "CheckBox")
                     .Caption = cn.FieldCaption("abAnbarTarakonesh.RezDD")
                     .DefaultValue = 1
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
                 End With
                 '''''''
                 With .Add("RezSA", "CheckBox", EnumFieldOptions.foDefault)
                     .Caption = cn.FieldCaption("abAnbarTarakonesh.RezSA")
                     .DefaultValue = 0
-                    .ReadOnly = AccessForEditAnbarTarakoneshStatusBySetad
                 End With
                 '.Add("RezSA", , EnumFieldOptions.foHidden)
 
