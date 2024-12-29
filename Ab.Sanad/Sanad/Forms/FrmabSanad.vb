@@ -514,7 +514,7 @@ Friend Class FrmSanad
         Me._sstParent_TabPage1.Controls.Add(Me.pnlG)
         Me._sstParent_TabPage1.Location = New System.Drawing.Point(4, 27)
         Me._sstParent_TabPage1.Name = "_sstParent_TabPage1"
-        Me._sstParent_TabPage1.Size = New System.Drawing.Size(1176, 210)
+        Me._sstParent_TabPage1.Size = New System.Drawing.Size(1373, 210)
         Me._sstParent_TabPage1.TabIndex = 1
         Me._sstParent_TabPage1.Text = "مشاهده كليه اسناد"
         '
@@ -531,7 +531,7 @@ Friend Class FrmSanad
         Me.pnlG.Location = New System.Drawing.Point(3, 6)
         Me.pnlG.Name = "pnlG"
         Me.pnlG.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.pnlG.Size = New System.Drawing.Size(1172, 207)
+        Me.pnlG.Size = New System.Drawing.Size(1369, 207)
         Me.pnlG.TabIndex = 8
         '
         '_sstParent_TabPage0
@@ -1492,7 +1492,7 @@ Friend Class FrmSanad
         Me.tabBarnameh.Location = New System.Drawing.Point(4, 24)
         Me.tabBarnameh.Name = "tabBarnameh"
         Me.tabBarnameh.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabBarnameh.Size = New System.Drawing.Size(1457, 327)
+        Me.tabBarnameh.Size = New System.Drawing.Size(1371, 327)
         Me.tabBarnameh.TabIndex = 2
         Me.tabBarnameh.Text = "بـارنـامـه"
         '
@@ -1504,7 +1504,7 @@ Friend Class FrmSanad
         Me.btnPrintBargeKhorooj.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnPrintBargeKhorooj.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.btnPrintBargeKhorooj.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnPrintBargeKhorooj.Location = New System.Drawing.Point(780, 288)
+        Me.btnPrintBargeKhorooj.Location = New System.Drawing.Point(694, 288)
         Me.btnPrintBargeKhorooj.Name = "btnPrintBargeKhorooj"
         Me.btnPrintBargeKhorooj.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.btnPrintBargeKhorooj.Size = New System.Drawing.Size(90, 34)
@@ -1515,7 +1515,7 @@ Friend Class FrmSanad
         'pnlcBarnameh
         '
         Me.pnlcBarnameh.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pnlcBarnameh.Location = New System.Drawing.Point(1041, 288)
+        Me.pnlcBarnameh.Location = New System.Drawing.Point(955, 288)
         Me.pnlcBarnameh.Name = "pnlcBarnameh"
         Me.pnlcBarnameh.Size = New System.Drawing.Size(410, 35)
         Me.pnlcBarnameh.TabIndex = 7
@@ -1528,7 +1528,7 @@ Friend Class FrmSanad
         Me.btnListBarnameh.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnListBarnameh.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.btnListBarnameh.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnListBarnameh.Location = New System.Drawing.Point(947, 288)
+        Me.btnListBarnameh.Location = New System.Drawing.Point(861, 288)
         Me.btnListBarnameh.Name = "btnListBarnameh"
         Me.btnListBarnameh.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.btnListBarnameh.Size = New System.Drawing.Size(90, 34)
@@ -1543,7 +1543,7 @@ Friend Class FrmSanad
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlgBarnameh.Location = New System.Drawing.Point(5, 6)
         Me.pnlgBarnameh.Name = "pnlgBarnameh"
-        Me.pnlgBarnameh.Size = New System.Drawing.Size(1446, 279)
+        Me.pnlgBarnameh.Size = New System.Drawing.Size(1360, 279)
         Me.pnlgBarnameh.TabIndex = 1
         '
         'btnErsalBeDP
@@ -1554,7 +1554,7 @@ Friend Class FrmSanad
         Me.btnErsalBeDP.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnErsalBeDP.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.btnErsalBeDP.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.btnErsalBeDP.Location = New System.Drawing.Point(870, 288)
+        Me.btnErsalBeDP.Location = New System.Drawing.Point(784, 288)
         Me.btnErsalBeDP.Name = "btnErsalBeDP"
         Me.btnErsalBeDP.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.btnErsalBeDP.Size = New System.Drawing.Size(77, 34)
@@ -1569,7 +1569,7 @@ Friend Class FrmSanad
         Me.TabDarkhast.Controls.Add(Me.pnlC2)
         Me.TabDarkhast.Location = New System.Drawing.Point(4, 24)
         Me.TabDarkhast.Name = "TabDarkhast"
-        Me.TabDarkhast.Size = New System.Drawing.Size(1457, 327)
+        Me.TabDarkhast.Size = New System.Drawing.Size(1371, 327)
         Me.TabDarkhast.TabIndex = 3
         Me.TabDarkhast.Text = "درخواست"
         Me.TabDarkhast.UseVisualStyleBackColor = True
@@ -1599,7 +1599,7 @@ Friend Class FrmSanad
         Me.pnlG2.Location = New System.Drawing.Point(4, 6)
         Me.pnlG2.Name = "pnlG2"
         Me.pnlG2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.pnlG2.Size = New System.Drawing.Size(1448, 273)
+        Me.pnlG2.Size = New System.Drawing.Size(1362, 273)
         Me.pnlG2.TabIndex = 14
         '
         'pnlC2
@@ -1609,7 +1609,7 @@ Friend Class FrmSanad
         Me.pnlC2.Cursor = System.Windows.Forms.Cursors.Default
         Me.pnlC2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.pnlC2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.pnlC2.Location = New System.Drawing.Point(1068, 285)
+        Me.pnlC2.Location = New System.Drawing.Point(982, 285)
         Me.pnlC2.Name = "pnlC2"
         Me.pnlC2.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.pnlC2.Size = New System.Drawing.Size(384, 37)
@@ -1622,7 +1622,7 @@ Friend Class FrmSanad
         Me.TabChideman.Controls.Add(Me.pnlC3)
         Me.TabChideman.Location = New System.Drawing.Point(4, 24)
         Me.TabChideman.Name = "TabChideman"
-        Me.TabChideman.Size = New System.Drawing.Size(1457, 327)
+        Me.TabChideman.Size = New System.Drawing.Size(1371, 327)
         Me.TabChideman.TabIndex = 4
         Me.TabChideman.Text = "چیدمان"
         Me.TabChideman.UseVisualStyleBackColor = True
@@ -1652,7 +1652,7 @@ Friend Class FrmSanad
         Me.pnlG3.Location = New System.Drawing.Point(4, 5)
         Me.pnlG3.Name = "pnlG3"
         Me.pnlG3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.pnlG3.Size = New System.Drawing.Size(1448, 274)
+        Me.pnlG3.Size = New System.Drawing.Size(1362, 274)
         Me.pnlG3.TabIndex = 17
         '
         'pnlC3
@@ -1662,7 +1662,7 @@ Friend Class FrmSanad
         Me.pnlC3.Cursor = System.Windows.Forms.Cursors.Default
         Me.pnlC3.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.pnlC3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.pnlC3.Location = New System.Drawing.Point(1068, 284)
+        Me.pnlC3.Location = New System.Drawing.Point(982, 284)
         Me.pnlC3.Name = "pnlC3"
         Me.pnlC3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.pnlC3.Size = New System.Drawing.Size(384, 37)
@@ -1675,7 +1675,7 @@ Friend Class FrmSanad
         Me.TabDaftar.Controls.Add(Me.PnlCDaftar)
         Me.TabDaftar.Location = New System.Drawing.Point(4, 24)
         Me.TabDaftar.Name = "TabDaftar"
-        Me.TabDaftar.Size = New System.Drawing.Size(1457, 327)
+        Me.TabDaftar.Size = New System.Drawing.Size(1371, 327)
         Me.TabDaftar.TabIndex = 5
         Me.TabDaftar.Text = "دفتر فروش"
         Me.TabDaftar.UseVisualStyleBackColor = True
@@ -1705,7 +1705,7 @@ Friend Class FrmSanad
         Me.PnlGdaftar.Location = New System.Drawing.Point(4, 5)
         Me.PnlGdaftar.Name = "PnlGdaftar"
         Me.PnlGdaftar.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.PnlGdaftar.Size = New System.Drawing.Size(1448, 274)
+        Me.PnlGdaftar.Size = New System.Drawing.Size(1362, 274)
         Me.PnlGdaftar.TabIndex = 20
         '
         'PnlCDaftar
@@ -1715,7 +1715,7 @@ Friend Class FrmSanad
         Me.PnlCDaftar.Cursor = System.Windows.Forms.Cursors.Default
         Me.PnlCDaftar.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.PnlCDaftar.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.PnlCDaftar.Location = New System.Drawing.Point(1068, 284)
+        Me.PnlCDaftar.Location = New System.Drawing.Point(982, 284)
         Me.PnlCDaftar.Name = "PnlCDaftar"
         Me.PnlCDaftar.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.PnlCDaftar.Size = New System.Drawing.Size(384, 37)
@@ -1727,7 +1727,7 @@ Friend Class FrmSanad
         Me.TabProductCatalogue.Location = New System.Drawing.Point(4, 24)
         Me.TabProductCatalogue.Name = "TabProductCatalogue"
         Me.TabProductCatalogue.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabProductCatalogue.Size = New System.Drawing.Size(1457, 327)
+        Me.TabProductCatalogue.Size = New System.Drawing.Size(1371, 327)
         Me.TabProductCatalogue.TabIndex = 6
         Me.TabProductCatalogue.Text = "ثبت های بارکدخوان"
         Me.TabProductCatalogue.UseVisualStyleBackColor = True
@@ -1742,7 +1742,7 @@ Friend Class FrmSanad
         Me.PnlGProductCatalogue.Location = New System.Drawing.Point(3, 3)
         Me.PnlGProductCatalogue.Name = "PnlGProductCatalogue"
         Me.PnlGProductCatalogue.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.PnlGProductCatalogue.Size = New System.Drawing.Size(1451, 321)
+        Me.PnlGProductCatalogue.Size = New System.Drawing.Size(1365, 321)
         Me.PnlGProductCatalogue.TabIndex = 21
         '
         'TabSanadHaFactor
@@ -1751,7 +1751,7 @@ Friend Class FrmSanad
         Me.TabSanadHaFactor.Location = New System.Drawing.Point(4, 24)
         Me.TabSanadHaFactor.Name = "TabSanadHaFactor"
         Me.TabSanadHaFactor.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabSanadHaFactor.Size = New System.Drawing.Size(1457, 327)
+        Me.TabSanadHaFactor.Size = New System.Drawing.Size(1371, 327)
         Me.TabSanadHaFactor.TabIndex = 7
         Me.TabSanadHaFactor.Text = "ردیف فاکتور"
         Me.TabSanadHaFactor.UseVisualStyleBackColor = True
@@ -1766,7 +1766,7 @@ Friend Class FrmSanad
         Me.PnlGSanadHaFactor.Location = New System.Drawing.Point(3, 3)
         Me.PnlGSanadHaFactor.Name = "PnlGSanadHaFactor"
         Me.PnlGSanadHaFactor.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.PnlGSanadHaFactor.Size = New System.Drawing.Size(1451, 321)
+        Me.PnlGSanadHaFactor.Size = New System.Drawing.Size(1365, 321)
         Me.PnlGSanadHaFactor.TabIndex = 22
         '
         'tmrF8
@@ -7995,7 +7995,33 @@ Friend Class FrmSanad
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
         End With
     End Sub
-    ''ghasemi
+
+
+    ''Bagheri (HB) 14031009 _درج طرف حساب پس از انتخاب درخواست فروش
+    Private Sub DcbForooshDarkhast_Validated(sender As Object, e As EventArgs) Handles DcbForooshDarkhast.Validated
+        Dim vRezSN1 As Decimal
+
+        vRezSN1 = Val(DVabSanad.Fields("RezSN1").Value)
+
+        Dim vResult As DataView
+
+        Try
+            vResult = cn.ExecuteQuery("Select foMoshtari.TafsiliSn As TafsiliSN, maTafsili.TafsiliNO + ' _ ' + maTafsili.TafsiliDS  As TafsiliDS " &
+                                      " From Fodarkhast " &
+                                      " Join foMoshtariInfo On foMoshtariInfo.MoshtariInfoSN = Fodarkhast.MoshtariInfoSN " &
+                                      " Join foMoshtari On foMoshtariInfo.MoshtariSN = foMoshtari.MoshtariSN " &
+                                      " Join maTafsili On maTafsili.TafsiliSN = foMoshtari.TafsiliSN " &
+                                      " Where Fodarkhast.DarkhastSN = " & vRezSN1)
+
+            DVabSanad.Fields("TafsiliSN").Value = vResult.Item(0)("TafsiliSN")
+
+        Catch ex As Exception
+            MsgBox("اطلاعات مشتري قابل دسترسي نمي باشد")
+        End Try
+
+    End Sub
+
+
 
 
     'کنترل اینکه تراکنش هايي که در بارنامه منجر به ارسال بارنامه به شعب ديگر مي شود
