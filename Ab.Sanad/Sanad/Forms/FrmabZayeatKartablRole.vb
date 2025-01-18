@@ -127,6 +127,10 @@
 
     Private WithEvents DvM As CDataView
     Private WithEvents dcbUser As NetSql.Components.DataCombo
+    Private WithEvents dcbVahedeTejari As NetSql.Components.DataCombo
+    Private WithEvents dcbZayeatGardeshState As NetSql.Components.DataCombo
+
+
 
     Private Sub FrmabZayeatKartablRole_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -138,11 +142,15 @@
             .TableName = "abZayeatGardeshRole"
             .AddJoin(.TableName, EnumTableJoin.tjLeftJoin, "abVw_User", "UserId", "UserId")
             .AddJoin(.TableName, EnumTableJoin.tjLeftJoin, "abVw_ZayeatGardeshStateType", "ZayeatGardeshStateSN", "ZayeatGardeshStateSN")
-
+            .AddJoin(.TableName, EnumTableJoin.tjLeftJoin, "paVahedeTejari", "vahedetejariSn", "VahedeTejariSn")
             .AccessRight = EnumAccessRight.arAll
             .EditInGrid = True
             .SQLWhere = "ZayeatGardeshStateNo<>0 And Isnull(IsFinal,0)<>1 And isnull(IsActive,0)=1"
+            .AutoFetchCurrentRow = True
+            '.InsertSPName = "abZayeatGardeshRole_Insert_2"
+
             With .Fields
+
                 With .Add("ZayeatGardeshRoleSN", , gSNFieldOption)
                     .DefaultValue = gSM.Identifier
                 End With
@@ -151,19 +159,27 @@
                     .DefaultValue = 1
                     .Caption = "شماره"
                 End With
-                With .Add("VahedeTejariSN", "textbox", EnumFieldOptions.foHidden)
-                    .DefaultValue = gVahedeTejariSN
+                'With .Add("VahedeTejariSN", "textbox", EnumFieldOptions.foHidden)
+                '    .DefaultValue = gVahedeTejariSN
+                'End With
+                With .Add("vahedeTejariSn-> vahedeTejarids as vahedeTejarisn", "DataCombo", EnumFieldOptions.foDefault)
+                    .ComboLateBinding = True
+                    .Caption = "واحد تجاری"
+                    .ComboWhereCondition = "VahedeTejariStatus = 1 and (PedarVahedeTejariSN = 9.935 OR VahedeTejariSN = 9.935)"
+                    dcbVahedeTejari = .Component
                 End With
 
                 With .Add("UserId->UserCompany  As UserID", "DataCombo", EnumFieldOptions.foDefault)
                     .ComboLateBinding = True
                     dcbUser = .Component
                     .Caption = "کد کاربری"
+                    .RefreshCombo()
                 End With
                 With .Add("ZayeatGardeshStateSN->abVw_ZayeatGardeshStateType.{ZayeatGardeshStateDS+'('+StateTypeDS+')'} As ZayeatGardeshStateSN", "DataCombo")
                     .Caption = "سطح دسترسی(نقش)"
                     .ComboLateBinding = True
-                    .ComboWhereCondition = "isnull(IsActive,0)=1 And ZayeatGardeshStateNo<>0 And Isnull(IsFinal,0)<>1 And isnull(IsAccessOfShobe,0)=" + If(gVahedeTejariSN = 9.935, "0", "1")
+                    .ComboWhereCondition = "isnull(IsActive,0)=1 And ZayeatGardeshStateNo<>0 And Isnull(IsFinal,0)<>1 "
+                    dcbZayeatGardeshState = .Component
                     .RefreshCombo()
                 End With
                 .Add("Res0", "TextBox", EnumFieldOptions.foHidden)
@@ -182,33 +198,46 @@
                 .Add("RecChkSum", "TextBox", EnumFieldOptions.foHidden)
 
             End With
-            End With
+        End With
         DvM.Refresh()
 
     End Sub
 
     Private Sub dcbUser_GotFocus(sender As Object, e As EventArgs) Handles dcbUser.GotFocus
-        If gVahedeTejariSN <> 9.935 Then
-
-            DvM.Fields("UserId").ComboWhereCondition = "UserId In ( select UserID " &
-                            "from Users join Company  on Company.CompanyKeyID=users.DefaultCompanyKeyID " &
-                            "join paVahedeTejari pv on pv.CompanyID=Company.CompanyID " &
-                            "where Users.InActive=0 And (" & If(gSM.IsProgrammer Or gSM.IsAppSSAdmin, "IsProgrammer =1 Or IsAppSSAdmin=1 Or", "") & "  VahedeTejariSN=" & gVahedeTejariSN.ToString & "))"
+        If Not String.IsNullOrEmpty(DvM.Fields("VahedeTejariSn").Value.ToString()) AndAlso CDec(DvM.Fields("VahedeTejariSn").Value) = 9.935 Then
+            DvM.Fields("UserId").ComboWhereCondition = "UserId in (select UserId from Users
+                                                    join Company on Company.CompanyKeyID=users.DefaultCompanyKeyID where vahedeTejariSn  = 9.935)"
             DvM.Fields("UserId").RefreshCombo()
 
         Else
-
-            DvM.Fields("UserId").ComboWhereCondition = "UserId In ( select UserID " &
-                            "from Users join Company  on Company.CompanyKeyID=users.DefaultCompanyKeyID " &
-                            "join paVahedeTejari pv on pv.CompanyID=Company.CompanyID " &
-                            "where Users.InActive=0 and (" & If(gSM.IsProgrammer Or gSM.IsAppSSAdmin, "IsProgrammer =1 Or IsAppSSAdmin=1 Or", "") & " VahedeTejariSN IN (9.935,44.935)))"
+            DvM.Fields("UserId").ComboWhereCondition = "UserId in (select UserId from Users
+                                                    join Company on Company.CompanyKeyID=users.DefaultCompanyKeyID where vahedeTejariSn = " &
+                                                    If(DvM.Fields("VahedeTejariSn").Value.ToString() = "", "1.2635", DvM.Fields("VahedeTejariSn").Value.ToString()) & " ) "
             DvM.Fields("UserId").RefreshCombo()
-
         End If
     End Sub
 
+    Private Sub dcbZayeatGardeshState_GotFocus(sender As Object, e As EventArgs) Handles dcbZayeatGardeshState.GotFocus
+        'If gVahedeTejariSN <> 9.935 Then
+
+        If (Not String.IsNullOrEmpty(DvM.Fields("VahedeTejariSn").Value.ToString())) AndAlso CDec(DvM.Fields("VahedeTejariSn").Value) <> 9.935 Then
+            DvM.Fields("ZayeatGardeshStateSN").ComboWhereCondition = DvM.Fields("ZayeatGardeshStateSN").ComboWhereCondition + " And isnull(IsAccessOfShobe,0) = 1"
+            DvM.Fields("ZayeatGardeshStateSN").RefreshCombo()
+        Else
+            DvM.Fields("ZayeatGardeshStateSN").ComboWhereCondition = "isnull(IsActive,0)=1 And ZayeatGardeshStateNo<>0 And Isnull(IsFinal,0)<>1 "
+            DvM.Fields("ZayeatGardeshStateSN").RefreshCombo()
+        End If
+
+    End Sub
+
     Private Sub DvM_CommandClick(aCommand As EnumCommands, ByRef aCancel As Boolean) Handles DvM.CommandClick
+
         If aCommand = EnumCommands.cmSave Then
+
+            If DvM.Fields("UserId").Value Is Nothing OrElse String.IsNullOrWhiteSpace(DvM.Fields("UserId").Value.ToString()) Then
+                MsgBox("کاربر انتخاب نشده است ")
+                Exit Sub
+            End If
             Dim Dv As DataView = cn.ExecuteQuery("Select * from [abZayeatGardeshRole] Where  UserId=" & DvM.Fields("UserId").Value.ToString)
             Dv.RowFilter = "ZayeatGardeshStateSN=" & DvM.Fields("ZayeatGardeshStateSN").Value.ToString
             If Dv.Count > 0 Then
@@ -222,6 +251,7 @@
                     aCancel = True
                 End If
             End If
+
         End If
     End Sub
 
@@ -232,5 +262,12 @@
     Private Sub DvM_AfterSPExecute(aSPKind As EnumSPKind, aCommand As Object) Handles DvM.AfterSPExecute
 
     End Sub
+
+    ' برای بودن تابع در سیستم انبار برای مواقع لزوم
+    'Public Function MaxNoInTable(ByVal TableName As String, ColumnName As String, Optional ByVal WhereCondition As String = "") As Integer
+    '    Dim Where As String = If(WhereCondition Is Nothing Or WhereCondition = "", "", "Where " + WhereCondition)
+    '    Dim dv As DataView = cn.ExecuteQuery("Select Isnull(Max(Cast (" & ColumnName & " as bigint)),0) From " & TableName & " " & Where )
+    '    MaxNoInTable = CInt(dv(0)(0))
+    'End Function
 
 End Class
