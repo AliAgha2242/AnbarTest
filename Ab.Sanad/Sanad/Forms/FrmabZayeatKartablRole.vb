@@ -126,7 +126,6 @@
     End Sub
 
     Private WithEvents DvM As CDataView
-    Private WithEvents dcbUser As NetSql.Components.DataCombo
     Private WithEvents dcbVahedeTejari As NetSql.Components.DataCombo
     Private WithEvents dcbZayeatGardeshState As NetSql.Components.DataCombo
 
@@ -147,7 +146,6 @@
             .EditInGrid = True
             .SQLWhere = "ZayeatGardeshStateNo<>0 And Isnull(IsFinal,0)<>1 And isnull(IsActive,0)=1"
             .AutoFetchCurrentRow = True
-            '.InsertSPName = "abZayeatGardeshRole_Insert_2"
 
             With .Fields
 
@@ -171,8 +169,8 @@
 
                 With .Add("UserId->UserCompany  As UserID", "DataCombo", EnumFieldOptions.foDefault)
                     .ComboLateBinding = True
-                    dcbUser = .Component
                     .Caption = "کد کاربری"
+                    .ComboWhereCondition = "InActive = 0"
                     .RefreshCombo()
                 End With
                 With .Add("ZayeatGardeshStateSN->abVw_ZayeatGardeshStateType.{ZayeatGardeshStateDS+'('+StateTypeDS+')'} As ZayeatGardeshStateSN", "DataCombo")
@@ -203,22 +201,8 @@
 
     End Sub
 
-    Private Sub dcbUser_GotFocus(sender As Object, e As EventArgs) Handles dcbUser.GotFocus
-        If Not String.IsNullOrEmpty(DvM.Fields("VahedeTejariSn").Value.ToString()) AndAlso CDec(DvM.Fields("VahedeTejariSn").Value) = 9.935 Then
-            DvM.Fields("UserId").ComboWhereCondition = "UserId in (select UserId from Users
-                                                    join Company on Company.CompanyKeyID=users.DefaultCompanyKeyID where vahedeTejariSn  = 9.935)"
-            DvM.Fields("UserId").RefreshCombo()
-
-        Else
-            DvM.Fields("UserId").ComboWhereCondition = "UserId in (select UserId from Users
-                                                    join Company on Company.CompanyKeyID=users.DefaultCompanyKeyID where vahedeTejariSn = " &
-                                                    If(DvM.Fields("VahedeTejariSn").Value.ToString() = "", "1.2635", DvM.Fields("VahedeTejariSn").Value.ToString()) & " ) "
-            DvM.Fields("UserId").RefreshCombo()
-        End If
-    End Sub
 
     Private Sub dcbZayeatGardeshState_GotFocus(sender As Object, e As EventArgs) Handles dcbZayeatGardeshState.GotFocus
-        'If gVahedeTejariSN <> 9.935 Then
 
         If (Not String.IsNullOrEmpty(DvM.Fields("VahedeTejariSn").Value.ToString())) AndAlso CDec(DvM.Fields("VahedeTejariSn").Value) <> 9.935 Then
             DvM.Fields("ZayeatGardeshStateSN").ComboWhereCondition = DvM.Fields("ZayeatGardeshStateSN").ComboWhereCondition + " And isnull(IsAccessOfShobe,0) = 1"
