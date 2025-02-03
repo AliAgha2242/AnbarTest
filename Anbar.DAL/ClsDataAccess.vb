@@ -1,5 +1,4 @@
-﻿Imports System.Data.Metadata
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
 
 Public Interface IClsDataAccess
 
@@ -1818,7 +1817,11 @@ Implements IClsDataAccess.GetGozareshKardexKalaphiziki
         Try
             dsdr = GetLastProductCatalogue_BIS(Cn, ProductCatalogueSN, ProductCatalogueKalaIRcSN, UserName, HostName)
         Catch ex As System.Exception
-            Throw New System.Exception("خطا در ساخت دیتاست GBID " + vbCrLf + ex.ToString)
+            Try
+                dsdr = GetLastProductCatalogue_STD(Cn, ProductCatalogueSN, ProductCatalogueKalaIRcSN, UserName, HostName)
+            Catch exm As Exception
+                Throw New System.Exception("خطا در ساخت دیتاست STD " + vbCrLf + exm.ToString)
+            End Try
         End Try
 
         If dsdr IsNot Nothing Then

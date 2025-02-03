@@ -866,12 +866,14 @@ Public Class FrmabSanadBarcodeReader
                         Catch ex As Exception
                             CSystem.MsgBox(ex.Message, MsgBoxStyle.Critical, "")
                         End Try
+                    Else
+                        Try
+                            abRule.GetLastProductCatalogue(cn, gSM.UserID_Name, System.Windows.Forms.SystemInformation.ComputerName)
+                        Catch ex As Exception
+                            CSystem.MsgBox("خطا در دریافت اطلاعات از سرور مرکزی" + vbNewLine + ex.Message, MsgBoxStyle.Critical, "")
+                        End Try
                     End If
-                    Try
-                        abRule.GetLastProductCatalogue(cn, gSM.UserID_Name, System.Windows.Forms.SystemInformation.ComputerName)
-                    Catch ex As Exception
-                        CSystem.MsgBox("خطا در دریافت اطلاعات از سرور مرکزی" + vbNewLine + ex.Message, MsgBoxStyle.Critical, "")
-                    End Try
+
                 End If
 
                 wfrm.Label3.Text = "...سیستم در حال بروزرسانی آخرین اطلاعات می باشد..."
