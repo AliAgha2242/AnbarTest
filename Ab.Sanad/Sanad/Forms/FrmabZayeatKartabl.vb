@@ -405,7 +405,7 @@ Public Class FrmabZayeatKartabl
     Dim DtDetail As DataView
     Private Sub FrmabZayeatKartabl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Dim Dv As DataView = cn.ExecuteQuery("Select * from abVw_ZayeatGardeshRole  Where UserId=" & gSM.UserID.ToString)
+        Dim Dv As DataView = cn.ExecuteQuery("Select * from abVw_ZayeatGardeshRole  Where VahedeTejariSN=" & gVahedeTejariSN.ToString & " And UserId=" & gSM.UserID.ToString)
 
         If Dv.Count = 0 Then
             CSystem.MsgBox(" دسترسی برای شما قعال نیست.با پشتیبان سیستم تماس بگیرید", MsgBoxStyle.Exclamation, "")
