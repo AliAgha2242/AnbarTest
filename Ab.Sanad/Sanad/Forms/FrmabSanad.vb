@@ -24,6 +24,7 @@ Imports System.Net
 
 
 
+
 Friend Class FrmSanad
     Inherits Minoo.Base.FTBaseForm
 
@@ -2043,6 +2044,7 @@ Friend Class FrmSanad
 #Region "Upgrade Support "
     Private Shared m_vb6FormDefInstance() As FrmSanad
     Private Shared m_InitializingDefInstance As Boolean
+
     Public Shared Property DefInstance(ByVal aNoeTarakoneshSN As EnumNoeTarakoneshSN) As FrmSanad
         Get
             Dim tmp As FrmSanad = Nothing
@@ -2142,6 +2144,7 @@ Friend Class FrmSanad
     Public vVisibleVazneBaskool As Boolean
     Public vVisibleShomarehSefaresh As Boolean
     Public dvTarakonesh, dvTarakoneshGorooh, dvTarakoneshGorooh88, dvTarakoneshGorooh93, dvKalaUseUID As New DataView
+    Public dvTarakoneshGorooh95 As New DataView 'Tavakoli 14031129 جهت داینامیک سازی امکان حذف اسناد ماشینی ولی با تراکنش های خاص
 
     Private gPrintHavaleh As Integer = 0
     Private gTaminkonandehOzvegoroohForHamleMostaghim As String ' By Yekta 910431 - Add ---------- change by yekta 920603
@@ -3906,8 +3909,12 @@ Friend Class FrmSanad
         End If
 
         If (aCommand = EnumCommands.cmDelete) Then
+            'Tavakoli 14031129 -------------------------------
+            dvTarakoneshGorooh95 = cn.ExecuteQuery("Select TarakoneshSN from abTarakoneshGoroohHa Where TarakoneshGoroohSN IN (95)")
             With DVabSanad
-                If Val(.Fields("NoeSanadID").Value) = 2 AndAlso Val(.Fields("BarcodeReaderSanad").Value) = 0 Then
+                dvTarakoneshGorooh95.RowFilter = "Tarakoneshsn = " & Val(.Fields("TarakoneshSN").Value)
+                If Val(.Fields("NoeSanadID").Value) = 2 AndAlso Val(.Fields("BarcodeReaderSanad").Value) = 0 _
+                    AndAlso dvTarakoneshGorooh95.Table.Rows(0)(0) Is Nothing Then
                     aCancel = True
                     vErrMsg = "سند انبار از نوع ماشيني را نمي توان تغيير داد"
                     NetSql.Common.CSystem.MsgBox(vErrMsg, MsgBoxStyle.OkOnly + MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.MsgBoxRight, Me.Text)
@@ -5114,6 +5121,7 @@ Friend Class FrmSanad
 #End Region
 
 #Region "Utilities"
+
 
     Private Sub MakeFilter(ByRef aMinDate As String, ByRef aMaxDate As String)
         ' با توجه به فيلتر فرم شرط ديتا ويو بروز رساني ميگردد
@@ -7126,7 +7134,6 @@ Friend Class FrmSanad
         mTarakoneshSN = NoeTarakoneshSN
         MinFilterDateCtrl = New NetSql.Components.CDateCtrl(tp)
         MinFilterDateCtrl.TextBox = txtMinDate
-
 
         If (NoeAccessRight = "mnuResidDarAnbarQC") Then
             Dim dv As DataView = cn.ExecuteQuery("Select  Top (1) ISnull(QCPairAnbarSN,0) QCPairAnbarSN from abAnbar Where AnbarSN =" & gAnbarSN)
