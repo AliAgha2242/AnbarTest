@@ -48,27 +48,78 @@ Friend Class FrmTarakoneshGoroohTafsili
 
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip (Me.components)
+        Me.components = New System.ComponentModel.Container()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Tab2.SuspendLayout()
+        Me.Tabp2.SuspendLayout()
+        Me.Tab1.SuspendLayout()
+        Me.Tabp1.SuspendLayout()
+        Me.SuspendLayout()
         '
-        Me.Tabp1.Text = "تراكنش انبار"
+        'Tab2
+        '
+        Me.Tab2.Location = New System.Drawing.Point(0, 294)
+        Me.Tab2.Size = New System.Drawing.Size(895, 252)
+        '
+        'Tabp2
+        '
+        Me.Tabp2.Location = New System.Drawing.Point(4, 22)
+        Me.Tabp2.Size = New System.Drawing.Size(887, 226)
         Me.Tabp2.Text = "گروه تفصيلي"
-
+        '
+        'pnlN2
+        '
+        Me.pnlN2.Location = New System.Drawing.Point(0, 189)
+        Me.pnlN2.Size = New System.Drawing.Size(463, 35)
+        '
+        'pnlC2
+        '
+        Me.pnlC2.Location = New System.Drawing.Point(467, 189)
+        '
+        'pnlG2
+        '
+        Me.pnlG2.Size = New System.Drawing.Size(887, 188)
+        '
+        'Tab1
+        '
+        Me.Tab1.Size = New System.Drawing.Size(895, 289)
+        '
+        'Tabp1
+        '
+        Me.Tabp1.Location = New System.Drawing.Point(4, 22)
+        Me.Tabp1.Size = New System.Drawing.Size(887, 263)
+        Me.Tabp1.Text = "تراكنش انبار"
+        '
+        'pnlN1
+        '
+        Me.pnlN1.Location = New System.Drawing.Point(0, 226)
+        Me.pnlN1.Size = New System.Drawing.Size(463, 35)
+        '
+        'pnlC1
+        '
+        Me.pnlC1.Location = New System.Drawing.Point(467, 226)
+        '
+        'pnlG1
+        '
+        Me.pnlG1.Size = New System.Drawing.Size(887, 225)
+        '
         'FrmTarakoneshGoroohTafsili
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size (5, 14)
+        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 14)
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size (895, 546)
+        Me.ClientSize = New System.Drawing.Size(895, 546)
         Me.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Font = _
-            New System.Drawing.Font ("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, _
-                                     System.Drawing.GraphicsUnit.Point, CType (178, Byte))
-        Me.KeyPreview = True
-        Me.Location = New System.Drawing.Point (4, 30)
+        Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
+        Me.Location = New System.Drawing.Point(4, 30)
         Me.Name = "FrmTarakoneshGoroohTafsili"
-        Me.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ارتباط تراكنش انبار  با گروه هاي تفصيلي"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.Tab2.ResumeLayout(False)
+        Me.Tabp2.ResumeLayout(False)
+        Me.Tab1.ResumeLayout(False)
+        Me.Tabp1.ResumeLayout(False)
+        Me.ResumeLayout(False)
 
     End Sub
 
