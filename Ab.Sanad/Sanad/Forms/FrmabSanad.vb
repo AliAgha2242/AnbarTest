@@ -3932,7 +3932,7 @@ Friend Class FrmSanad
             If (TarakoneshSN = EnumTarakoneshSN.RESIDE_38_MARJOOEI_AZ_FOROOSH Or TarakoneshSN = EnumTarakoneshSN.RESIDE_39_MARJOOEI_AZ_TOZIE) Then
                 If Val(DVabSanad.Fields("TafsiliSN2").Value) <> 0 Then
                     vTafsiliSN2 = Val(DVabSanad.Fields("TafsiliSN2").Value)
-
+                    Dim moshtariSN As Decimal?
                     Try
                         DV = cn.ExecuteQuery("	Select Distinct foMoshtari.TafsiliSn AS TafsiliSN, maTafsili.TafsiliNO + ' _ ' + maTafsili.TafsiliDS  AS TafsiliDS " &
                           " FROM foFactor with (nolock)" &
@@ -3941,9 +3941,18 @@ Friend Class FrmSanad
                           " join maTafsili with (nolock) ON maTafsili.TafsiliSN = foMoshtari.TafsiliSN " &
                           " WHERE FactorSN = " & vTafsiliSN2)
 
+                        moshtariSN = $"SELECT MoshtariSN FROM foMoshtariInfo WHERE MoshtariInfoSN  =
+                                        (SELECT MoshtariInfoSN FROM foFactor WHERE FactorSN = {vTafsiliSN2})"
+
                         DVabSanad.Fields("TafsiliSN").Value = DV.Item(0)("TafsiliSN")
                     Catch ex As Exception
-                        MsgBox("اطلاعات مشتري قابل دسترسي نمي باشد")
+                        If moshtariSN Is Nothing Then
+                            ''فیلد مشتری در فاکتور خالی است و یا در جدول FOMOSHTARIINFO وجود ندارد
+                            MsgBox($"اطلاعات مشتری در فاکتور با شماره سریال {vTafsiliSN2} یافت نشد")
+                        Else
+                            ''مشتری یافت شده ولی فیلد تفصیلی آن خالی است و یا در جدول ماتفصیلی وجود ندارد
+                            MsgBox($"اطلاعات مشتری با شماره سریال {moshtariSN} در فاکتور به شماره سریال {vTafsiliSN2} به طور صحیح یافت نشد")
+                        End If
                     End Try
                 End If
 
