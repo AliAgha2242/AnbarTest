@@ -256,7 +256,7 @@ Public Class FrmAccessControl
             AppParamByAccess += ",262.935"
         End If
         If gSM.ActionEnabled("AnbarAccessControlMali") Then
-            AppParamByAccess += ",142.935,97.935,195.935,264.935,277.935,287.935"
+            AppParamByAccess += ",142.935,97.935,195.935,264.935,277.935,287.935,288.935"
         End If
 
 
