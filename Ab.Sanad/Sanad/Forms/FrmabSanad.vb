@@ -3723,17 +3723,27 @@ Friend Class FrmSanad
             vTafsiliSN2 = Val(DVabSanad.Fields("TafsiliSN2").Value)
 
             Try
-                vResult = cn.ExecuteQuery("	Select foMoshtari.TafsiliSn AS TafsiliSN, maTafsili.TafsiliNO + ' _ ' + maTafsili.TafsiliDS  AS TafsiliDS " &
+                vResult = cn.ExecuteQuery("	Select foMoshtari.MoshtariSN,foMoshtariInfo.MoshtariInfoSN,foMoshtari.TafsiliSn AS TafsiliSN " &
                   " FROM foFactor " &
-                  " join foMoshtariInfo ON foMoshtariInfo.MoshtariInfoSN = foFactor.MoshtariInfoSN " &
-                  " join foMoshtari ON foMoshtariInfo.MoshtariSN = foMoshtari.MoshtariSN " &
-                  " join maTafsili ON maTafsili.TafsiliSN = foMoshtari.TafsiliSN " &
+                  " left join foMoshtariInfo ON foMoshtariInfo.MoshtariInfoSN = foFactor.MoshtariInfoSN " &
+                  " left join foMoshtari ON foMoshtariInfo.MoshtariSN = foMoshtari.MoshtariSN " &
                   " WHERE FactorSN = " & vTafsiliSN2)
 
+                If vResult.Count = 0 Then
+                    MsgBox("اطلاعات سریال فاکتور " + vTafsiliSN2.ToString + " یافت نشد")
+                ElseIf vResult.Item(0)("MoshtariInfoSN") Is Nothing OrElse vResult.Item(0)("MoshtariInfoSN") Is DBNull.Value Then
+                    MsgBox("اطلاعات foMoshtariInfo.MoshtariInfoSN سریال فاکتور " + vTafsiliSN2.ToString + " یافت نشد")
+                ElseIf vResult.Item(0)("MoshtariSN") Is Nothing OrElse vResult.Item(0)("MoshtariSN") Is DBNull.Value Then
+                    MsgBox("اطلاعات foMoshtari.MoshtariSN سریال فاکتور " + vTafsiliSN2.ToString + " یافت نشد")
+                ElseIf vResult.Item(0)("TafsiliSn") Is Nothing OrElse vResult.Item(0)("TafsiliSn") Is DBNull.Value Then
+                    MsgBox("اطلاعات foMoshtari.TafsiliSN سریال فاکتور " + vTafsiliSN2.ToString + " یافت نشد")
+                End If
                 DVabSanad.Fields("TafsiliSN").Value = vResult.Item(0)("TafsiliSN")
 
             Catch ex As Exception
-                MsgBox("اطلاعات مشتري قابل دسترسي نمي باشد")
+                If vResult Is Nothing Then
+                    MsgBox(" خطا در بازیابی طلاعات سریال فاکتور " + vTafsiliSN2.ToString)
+                End If
             End Try
 
         ElseIf TarakoneshSN = EnumTarakoneshSN.HAVALEH_BARGASHTE_KALAE_AMANI AndAlso Val(DVabSanad.Fields("MarjaSanadSN").Value) <> 0 Then
@@ -3929,36 +3939,37 @@ Friend Class FrmSanad
          aCommand = EnumCommands.cmFilter) Then
 
 
-            If (TarakoneshSN = EnumTarakoneshSN.RESIDE_38_MARJOOEI_AZ_FOROOSH Or TarakoneshSN = EnumTarakoneshSN.RESIDE_39_MARJOOEI_AZ_TOZIE) Then
-                If Val(DVabSanad.Fields("TafsiliSN2").Value) <> 0 Then
-                    vTafsiliSN2 = Val(DVabSanad.Fields("TafsiliSN2").Value)
-                    Dim moshtariSN As Decimal?
-                    Try
-                        DV = cn.ExecuteQuery("	Select Distinct foMoshtari.TafsiliSn AS TafsiliSN, maTafsili.TafsiliNO + ' _ ' + maTafsili.TafsiliDS  AS TafsiliDS " &
-                          " FROM foFactor with (nolock)" &
-                          " join foMoshtariInfo with (nolock) ON foMoshtariInfo.MoshtariInfoSN = foFactor.MoshtariInfoSN " &
-                          " join foMoshtari with (nolock) ON foMoshtariInfo.MoshtariSN = foMoshtari.MoshtariSN " &
-                          " join maTafsili with (nolock) ON maTafsili.TafsiliSN = foMoshtari.TafsiliSN " &
-                          " WHERE FactorSN = " & vTafsiliSN2)
 
-                        moshtariSN = $"SELECT MoshtariSN FROM foMoshtariInfo WHERE MoshtariInfoSN  =
-                                        (SELECT MoshtariInfoSN FROM foFactor WHERE FactorSN = {vTafsiliSN2})"
+            If (TarakoneshSN = EnumTarakoneshSN.RESIDE_38_MARJOOEI_AZ_FOROOSH OrElse TarakoneshSN = EnumTarakoneshSN.RESIDE_39_MARJOOEI_AZ_TOZIE) AndAlso
+          Val(DVabSanad.Fields("TafsiliSN2").Value) <> 0 AndAlso aCommand = EnumCommands.cmSave Then
 
-                        DVabSanad.Fields("TafsiliSN").Value = DV.Item(0)("TafsiliSN")
-                    Catch ex As Exception
-                        If moshtariSN Is Nothing Then
-                            ''فیلد مشتری در فاکتور خالی است و یا در جدول FOMOSHTARIINFO وجود ندارد
-                            MsgBox($"اطلاعات مشتری در فاکتور با شماره سریال {vTafsiliSN2} یافت نشد")
-                        Else
-                            ''مشتری یافت شده ولی فیلد تفصیلی آن خالی است و یا در جدول ماتفصیلی وجود ندارد
-                            MsgBox($"اطلاعات مشتری با شماره سریال {moshtariSN} در فاکتور به شماره سریال {vTafsiliSN2} به طور صحیح یافت نشد")
-                        End If
-                    End Try
-                End If
+                vTafsiliSN2 = Val(DVabSanad.Fields("TafsiliSN2").Value)
+                Dim DVFactor As DataView
+                Try
+                    DVFactor = cn.ExecuteQuery("	Select foMoshtari.MoshtariSN,foMoshtariInfo.MoshtariInfoSN,foMoshtari.TafsiliSn AS TafsiliSN " &
+                 " FROM foFactor " &
+                 " left join foMoshtariInfo ON foMoshtariInfo.MoshtariInfoSN = foFactor.MoshtariInfoSN " &
+                 " left join foMoshtari ON foMoshtariInfo.MoshtariSN = foMoshtari.MoshtariSN " &
+                 " WHERE FactorSN = " & vTafsiliSN2)
 
+                    If DVFactor.Count = 0 Then
+                        MsgBox("اطلاعات سریال فاکتور " + vTafsiliSN2.ToString + " یافت نشد")
+                    ElseIf DVFactor.Item(0)("MoshtariInfoSN") Is Nothing OrElse DVFactor.Item(0)("MoshtariInfoSN") Is DBNull.Value Then
+                        MsgBox("اطلاعات foMoshtariInfo.MoshtariInfoSN سریال فاکتور " + vTafsiliSN2.ToString + " یافت نشد")
+                    ElseIf DVFactor.Item(0)("MoshtariSN") Is Nothing OrElse DVFactor.Item(0)("MoshtariSN") Is DBNull.Value Then
+                        MsgBox("اطلاعات foMoshtari.MoshtariSN سریال فاکتور " + vTafsiliSN2.ToString + " یافت نشد")
+                    ElseIf DVFactor.Item(0)("TafsiliSn") Is Nothing OrElse DVFactor.Item(0)("TafsiliSn") Is DBNull.Value Then
+                        MsgBox("اطلاعات foMoshtari.TafsiliSN سریال فاکتور " + vTafsiliSN2.ToString + " یافت نشد")
+                    End If
+                    DVabSanad.Fields("TafsiliSN").Value = DVFactor.Item(0)("TafsiliSN")
+
+                Catch ex As Exception
+                    If DVFactor Is Nothing Then
+                        MsgBox(" خطا در بازیابی طلاعات سریال فاکتور " + vTafsiliSN2.ToString)
+                    End If
+                End Try
 
             End If
-
             'If aCommand = EnumCommands.cmSave AndAlso TarakoneshSN = EnumTarakoneshSN.RESIDE_11_HAMLE_MOSTAGHIM Then
             '    If CSystem.MsgBox("توجه داشته باشید در صورتی که سند مربوطه <حمل مستقیم به مشتری> می باشد کد مشتری می بایست در بخش طرف حساب2 درج گردد" + vbNewLine + "آیا مایل به ادامه عملیات ذخیره سازی هستید؟", MsgBoxStyle.YesNo, "حمل مستقیم") = MsgBoxResult.No Then
             '        aCancel = True
