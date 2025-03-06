@@ -25,19 +25,19 @@ Public Class FrmFilterAsnadAnbar
         'Add any initialization after the InitializeComponent() call
         ' For FrmFilterAsnadAnbar
         Dim vSql As String
-        dclFDate = New NetSql.Components.CDateCtrl (tp)
+        dclFDate = New NetSql.Components.CDateCtrl(tp)
         dclFDate.TextBox = txtFromSanadDate
-        dclTDate = New NetSql.Components.CDateCtrl (tp)
+        dclTDate = New NetSql.Components.CDateCtrl(tp)
         dclTDate.TextBox = txtToSanadDate
 
         '//By Izadpanah-851208
-        dclFSDate = New NetSql.Components.CDateCtrl (tp)
+        dclFSDate = New NetSql.Components.CDateCtrl(tp)
         dclFSDate.TextBox = txtFromSabtDate
-        dclTSDate = New NetSql.Components.CDateCtrl (tp)
+        dclTSDate = New NetSql.Components.CDateCtrl(tp)
         dclTSDate.TextBox = txtToSabtDate
         '//By Izadpanah-851208
 
-        If Trim (gHesabdariSalFDate) <> "" And Trim (gHesabdariSalTDate) <> "" Then
+        If Trim(gHesabdariSalFDate) <> "" And Trim(gHesabdariSalTDate) <> "" Then
             dclFDate.Value = gHesabdariSalFDate
             dclTDate.Value = gHesabdariSalTDate
 
@@ -52,9 +52,9 @@ Public Class FrmFilterAsnadAnbar
                                                                                                      .enmDateFormat.
                                                                                                      Normal), 4) &
                              "0101"
-            dclTDate.Value = Minoo.Functions.FTDBCommonFunctions.Get_Date_Server_Jalali ( _
-                                                                                         cn, _
-                                                                                         Functions.FTDBCommonFunctions. _
+            dclTDate.Value = Minoo.Functions.FTDBCommonFunctions.Get_Date_Server_Jalali(
+                                                                                         cn,
+                                                                                         Functions.FTDBCommonFunctions.
                                                                                             enmDateFormat.Normal)
 
             'dclFSDate.Value = VB.Left(Minoo.Functions.FTDBCommonFunctions.Get_Date_Server_Jalali( _
@@ -65,10 +65,10 @@ Public Class FrmFilterAsnadAnbar
         End If
 
         ' تنظيم ديتاويو ابزار با جدول مربوطه و فيلدهاي آن به همراه شروط احتمالي
-        '           DvKala
-        DvKala = New CDataView (cn)
+        'DvKala
+        DvKala = New CDataView(cn)
         With DvKala
-            .Init (pnlGridKalaSN, , pnlCmdKalaSN, pnlNKalaSN, EnumButtonOptions.boCmdFilter _
+            .Init(pnlGridKalaSN, , pnlCmdKalaSN, pnlNKalaSN, EnumButtonOptions.boCmdFilter _
                                                               Or EnumButtonOptions.boCmdFind)
             .AccessRight = EnumAccessRight.arView
             .TableName = "paKala"
@@ -79,8 +79,8 @@ Public Class FrmFilterAsnadAnbar
             vfgKala = .FlexGrid
             vfgKala.Editable = EditableSettings.flexEDKbdMouse
             If FilterNoeAnbarSN <> 0 Then
-                .SQLWhere = " paKala.KalaSN IN ( Select kalaSn  " & _
-                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " & _
+                .SQLWhere = " paKala.KalaSN IN ( Select kalaSn  " &
+                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " &
                             " Where NoeAnbarSN = " & CStr(FilterNoeAnbarSN) & " ) "
             Else
                 .SQLWhere = " paKala.KalaSN IN ( Select kalaSn From abSanadHa ) "
@@ -97,9 +97,50 @@ Public Class FrmFilterAsnadAnbar
                 End With
             End With
         End With
-        '           DvKala
-
-
+        'DvKala
+        'DvNoeKala
+        'Added By Nooshin Alipour in 14031206
+        vSql = " select NoeKalaSN, NoeKalaDs,NoeKalaNO from PaNoeKala"
+        DvNoeKala = New CDataView(cn)
+        With DvNoeKala
+            .Init(PnlGridNoeKala, , PnlCmdNoeKala, PnlNavNoeKala, EnumButtonOptions.boCmdFilter _
+                                                              Or EnumButtonOptions.boCmdFind)
+            .AccessRight = EnumAccessRight.arView
+            .TableName = "paNoeKala"
+            .Text = Me.Text
+            .EditInGrid = False
+            .NextRowAfterSave = False
+            .AutoFetchCurrentRow = False
+            vfgNoeKala = .FlexGrid
+            vfgNoeKala.Editable = EditableSettings.flexEDKbdMouse
+            .SQLOrderBy = "paNoeKala.NoeKalaNO "
+            .SQLWhere = " paNoeKala.NoeKalaSN IN ( Select NoekalaSN From paKala ) "
+            'If FilterNoeAnbarSN <> 0 Then
+            '    .SQLWhere = " paNoeKala.NoeKalaSN IN ( Select NoekalaSN  " &
+            '                " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " &
+            '                " INNER JOIN paKala ON paKala.KalaSN = abSanadHa.KalaSN  " &
+            '                " Where NoeAnbarSN = " & CStr(FilterNoeAnbarSN) & " ) "
+            'Else
+            '    .SQLWhere = " paNoeKala.NoeKalaSN IN ( Select NoekalaSN From paKala ) "
+            'End If
+            With .Fields
+                With .Add("NoeKalaSN", , gSNFieldOption)
+                End With
+                With .Add("{0} AS Selected", "CheckBox")
+                End With
+                With .Add("NoeKalaNO", "TextBox")
+                    .Caption = "کد نوع کالا"
+                End With
+                With .Add("NoeKalaDS", "TextBox")
+                    .Caption = "نام نوع کالا"
+                End With
+            End With
+            .Refresh()
+        End With
+        'NoeDvKala
+        'Added By Nooshin Alipour in 14031206
+        'DvNoeKala
+        'DvTaminKonandeh
         DvTaminKonandeh = New CDataView(cn)
         With DvTaminKonandeh
             .Init(PanelTamin, , PanelTaminCom, PanelTaminNav, EnumButtonOptions.boCmdFilter _
@@ -126,9 +167,9 @@ Public Class FrmFilterAsnadAnbar
                 End With
             End With
         End With
-
+        'DvTaminKonandeh
         ' تنظيم ديتاويو ابزار با جدول مربوطه و فيلدهاي آن به همراه شروط احتمالي
-        '           DvNoeZayeat
+        'DvNoeZayeat
         DvNoeZayeat = New CDataView(cn)
         With DvNoeZayeat
             .Init(pnlGridNoeZayeatSN, , pnlCmdNoeZayeatSN, pnlNNoeZayeatSN, EnumButtonOptions.boCmdFilter _
@@ -142,8 +183,8 @@ Public Class FrmFilterAsnadAnbar
             vfgNoeZayeat = .FlexGrid
             vfgNoeZayeat.Editable = EditableSettings.flexEDKbdMouse
             If FilterNoeAnbarSN <> 0 Then
-                .SQLWhere = " paNoeZayeat.NoeZayeatSN IN ( Select NoeZayeatSn  " & _
-                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " & _
+                .SQLWhere = " paNoeZayeat.NoeZayeatSN IN ( Select NoeZayeatSn  " &
+                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " &
                             " Where NoeAnbarSN = " & CStr(FilterNoeAnbarSN) & " ) "
             Else
                 .SQLWhere = " paNoeZayeat.NoeZayeatSN IN ( Select NoeZayeatSn From abSanadHa ) "
@@ -160,10 +201,9 @@ Public Class FrmFilterAsnadAnbar
                 End With
             End With
         End With
-        '           DvNoeZayeat
-
+        'DvNoeZayeat
         ' تنظيم ديتاويو ابزار با جدول مربوطه و فيلدهاي آن به همراه شروط احتمالي
-        '           DvNoeMarjooei
+        'DvNoeMarjooei
         DvNoeMarjooei = New CDataView(cn)
         With DvNoeMarjooei
             .Init(pnlGridNoeMarjooeiSN, , pnlCmdNoeMarjooeiSN, pnlNNoeMarjooeiSN, EnumButtonOptions.boCmdFilter _
@@ -177,8 +217,8 @@ Public Class FrmFilterAsnadAnbar
             vfgNoeMarjooei = .FlexGrid
             vfgNoeMarjooei.Editable = EditableSettings.flexEDKbdMouse
             If FilterNoeAnbarSN <> 0 Then
-                .SQLWhere = " paNoeMarjooei.NoeMarjooeiSN IN ( Select NoeMarjooeiSn  " & _
-                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " & _
+                .SQLWhere = " paNoeMarjooei.NoeMarjooeiSN IN ( Select NoeMarjooeiSn  " &
+                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " &
                             " Where NoeAnbarSN = " & CStr(FilterNoeAnbarSN) & " ) "
             Else
                 .SQLWhere = " paNoeMarjooei.NoeMarjooeiSN IN ( Select NoeMarjooeiSn From abSanadHa ) "
@@ -195,13 +235,12 @@ Public Class FrmFilterAsnadAnbar
                 End With
             End With
         End With
-        '           DvNoeMarjooei
-
+        'DvNoeMarjooei
         ' تنظيم ديتاويو ابزار با جدول مربوطه و فيلدهاي آن به همراه شروط احتمالي
-        '           DvKalaStatusAmval
+        'DvKalaStatusAmval
         DvKalaStatusAmval = New CDataView(cn)
         With DvKalaStatusAmval
-            .Init(pnlGridKalaStatusAmvalSN, , pnlCmdKalaStatusAmvalSN, pnlNKalaStatusAmvalSN, _
+            .Init(pnlGridKalaStatusAmvalSN, , pnlCmdKalaStatusAmvalSN, pnlNKalaStatusAmvalSN,
                    EnumButtonOptions.boCmdFilter _
                    Or EnumButtonOptions.boCmdFind)
             .AccessRight = EnumAccessRight.arView
@@ -213,12 +252,12 @@ Public Class FrmFilterAsnadAnbar
             vfgKalaStatusAmval = .FlexGrid
             vfgKalaStatusAmval.Editable = EditableSettings.flexEDKbdMouse
             If FilterNoeAnbarSN <> 0 Then
-                .SQLWhere = " paKalaStatusAmval.KalaStatusAmvalSN IN ( Select KalaStatusAmvalSn  " & _
-                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " & _
-                            "      INNER JOIN paKala ON abSanadHa.KalaSN = paKala.KalaSN  " & _
+                .SQLWhere = " paKalaStatusAmval.KalaStatusAmvalSN IN ( Select KalaStatusAmvalSn  " &
+                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " &
+                            "      INNER JOIN paKala ON abSanadHa.KalaSN = paKala.KalaSN  " &
                             " Where NoeAnbarSN = " & CStr(FilterNoeAnbarSN) & " ) "
             Else
-                .SQLWhere = " paKalaStatusAmval.KalaStatusAmvalSN IN ( Select KalaStatusAmvalSn From abSanadHa  " & _
+                .SQLWhere = " paKalaStatusAmval.KalaStatusAmvalSN IN ( Select KalaStatusAmvalSn From abSanadHa  " &
                             "      INNER JOIN paKala ON abSanadHa.KalaSN = paKala.KalaSN ) "
             End If
             .SQLOrderBy = " paKalaStatusAmval.KalaStatusAmvalDS "
@@ -231,12 +270,11 @@ Public Class FrmFilterAsnadAnbar
                 End With
             End With
         End With
-        '           DvKalaStatusAmval
-
+        'DvKalaStatusAmval
         ' تنظيم ديتاويو ابزار با جدول مربوطه و فيلدهاي آن به همراه شروط احتمالي
-        '           DvTafsili
-        vSql = " SELECT TOP 100 Percent TafsiliSN, CONVERT(BIGINT,TafsiliNO) AS TafsiliNO " & _
-               " ,  TafsiliNO  + ' - ' + TafsiliDS AS TafsiliDS From maTafsili " & _
+        'DvTafsili
+        vSql = " SELECT TOP 100 Percent TafsiliSN, CONVERT(BIGINT,TafsiliNO) AS TafsiliNO " &
+               " ,  TafsiliNO  + ' - ' + TafsiliDS AS TafsiliDS From maTafsili " &
                " Where TafsiliSN IN ( Select TafsiliSN From abSanad where TafsiliSN IS NOT NULL ) "
         DvTafsili = New CDataView(cn)
         With DvTafsili
@@ -264,10 +302,7 @@ Public Class FrmFilterAsnadAnbar
             End With
             ' .Refresh()
         End With
-        '           DvTafsili
-
-
-
+        'DvTafsili
         'DvTaghazaKonandeh
         vSql = " select ChartSazemaniSN, ChartSazemaniNoDs from PaVWChartSazemani "
         DvTaghazaKonandeh = New CDataView(cn)
@@ -295,9 +330,6 @@ Public Class FrmFilterAsnadAnbar
             ' .Refresh()
         End With
         'DvTaghazaKonandeh
-
-
-
         ' تنظيم ديتاويو ابزار با جدول مربوطه و فيلدهاي آن به همراه شروط احتمالي
         '           DvTarakonesh
         DvTarakonesh = New CDataView(cn)
@@ -325,9 +357,7 @@ Public Class FrmFilterAsnadAnbar
                 End With
             End With
         End With
-        '           DvTarakonesh
-
-
+        'DvTarakonesh
         DvAnbarTree = New CDataView(cn)
         With DvAnbarTree
             .Init(PicG, , PicC, PicN, EnumButtonOptions.boCmdExit Or EnumButtonOptions.boCmdPrint _
@@ -362,17 +392,14 @@ Public Class FrmFilterAsnadAnbar
                 .Add("{dbo.abFn_GetTreeAnbarSortField(AnbarSN)} as SortField", , EnumFieldOptions.foHidden)
             End With
         End With
-        pKala_GoroohBandi = _
+        pKala_GoroohBandi =
             New Minoo.Applications.Paye.GoroohBandi(tp, cn, gSM, gSNFieldOption, gVahedeTejariSN, gVahedeTejariDs)
-        pTarakoneshGoroohBandi = _
+        pTarakoneshGoroohBandi =
             New Minoo.Applications.Paye.GoroohBandi(tp, cn, gSM, gSNFieldOption, gVahedeTejariSN, gVahedeTejariDs)
-
-
         ' For FrmFilterAsnadAnbar
         ' تنظيم پيش فرض خصوصيات
         SetProperty()
         ' تنظيم پيش فرض خصوصيات
-
     End Sub
 
     'Form overrides dispose to clean up the component list.
@@ -572,12 +599,23 @@ Public Class FrmFilterAsnadAnbar
     Public WithEvents PanelTamin As Panel
     Public WithEvents PanelTaminCom As Panel
     Public WithEvents tmrResort As System.Windows.Forms.Timer
+    'Added By Nooshin Alipour in 14031206
+    Friend WithEvents CmbNoeKala As cmpCheckedComboBox
+    Private WithEvents TabPNoeKala As System.Windows.Forms.TabPage
+    Public WithEvents GrpBoxNoeKala As System.Windows.Forms.GroupBox
+    Public WithEvents PnlGridNoeKala As System.Windows.Forms.Panel
+    Public WithEvents PnlNavNoeKala As System.Windows.Forms.Panel
+    Public WithEvents PnlCmdNoeKala As System.Windows.Forms.Panel
+    Public WithEvents btnSelectAll_NoeKala As System.Windows.Forms.Button
+    Public WithEvents btnDeselectAll_NoeKala As System.Windows.Forms.Button
+    'Public WithEvents btnRefresh_NoeKala As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim CmbMahiateKala_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmFilterAsnadAnbar))
         Dim CmbNoeMahsool_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim CmbNoeAnbar_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Dim CmbNoeKala_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.FtTabFilterSanad = New Minoo.Controls.FTTabControl()
         Me.TabPKalaSN = New System.Windows.Forms.TabPage()
         Me.btnSelectAll_KalaSN = New System.Windows.Forms.Button()
@@ -758,6 +796,16 @@ Public Class FrmFilterAsnadAnbar
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.tmrResort = New System.Windows.Forms.Timer(Me.components)
+        'Added By Nooshin Alipour in 14031206
+        Me.CmbNoeKala = New cmpCheckedComboBox(Me.components)
+        Me.TabPNoeKala = New System.Windows.Forms.TabPage()
+        Me.GrpBoxNoeKala = New System.Windows.Forms.GroupBox()
+        Me.PnlGridNoeKala = New System.Windows.Forms.Panel()
+        Me.PnlNavNoeKala = New System.Windows.Forms.Panel()
+        Me.PnlCmdNoeKala = New System.Windows.Forms.Panel()
+        Me.btnDeselectAll_NoeKala = New System.Windows.Forms.Button()
+        Me.btnSelectAll_NoeKala = New System.Windows.Forms.Button()
+        'Me.btnRefresh_NoeKala = New System.Windows.Forms.Button()
         Me.FtTabFilterSanad.SuspendLayout()
         Me.TabPKalaSN.SuspendLayout()
         Me.grpboxKalaSN.SuspendLayout()
@@ -804,6 +852,8 @@ Public Class FrmFilterAsnadAnbar
         Me.TabTaghazaKonandeh.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.TabPNoeKala.SuspendLayout()
+        Me.GrpBoxNoeKala.SuspendLayout()
         Me.SuspendLayout()
         '
         'FtTabFilterSanad
@@ -835,6 +885,7 @@ Public Class FrmFilterAsnadAnbar
         Me.FtTabFilterSanad.Controls.Add(Me.TabPNoeZayeatSN)
         Me.FtTabFilterSanad.Controls.Add(Me.TabMashinNo)
         Me.FtTabFilterSanad.Controls.Add(Me.TabTaghazaKonandeh)
+        Me.FtTabFilterSanad.Controls.Add(Me.TabPNoeKala)
         Me.FtTabFilterSanad.HotTrack = True
         Me.FtTabFilterSanad.ItemSize = New System.Drawing.Size(84, 25)
         Me.FtTabFilterSanad.Location = New System.Drawing.Point(0, 0)
@@ -3278,6 +3329,158 @@ Public Class FrmFilterAsnadAnbar
         '
         Me.tmrResort.Interval = 1
         '
+        '
+        'Label11
+        '
+        Me.Label11.BackColor = System.Drawing.SystemColors.Control
+        Me.Label11.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Label11.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.Label11.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
+        Me.Label11.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label11.Location = New System.Drawing.Point(402, 7)
+        Me.Label11.Name = "Label11"
+        Me.Label11.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.Label11.Size = New System.Drawing.Size(78, 16)
+        Me.Label11.TabIndex = 27
+        Me.Label11.Text = "شماره رهگيري"
+        Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'TabPNoeKala
+        '
+        Me.TabPNoeKala.Controls.Add(Me.GrpBoxNoeKala)
+        Me.TabPNoeKala.Controls.Add(Me.CmbNoeKala)
+        Me.TabPNoeKala.Location = New System.Drawing.Point(4, 79)
+        Me.TabPNoeKala.Name = "TabPNoeKala"
+        Me.TabPNoeKala.Size = New System.Drawing.Size(663, 311)
+        Me.TabPNoeKala.TabIndex = 16
+        Me.TabPNoeKala.Text = "نوع کالا"
+        '
+        'GrpBoxNoeKala
+        '
+        Me.GrpBoxNoeKala.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GrpBoxNoeKala.BackColor = System.Drawing.SystemColors.Control
+        Me.GrpBoxNoeKala.Controls.Add(Me.btnDeselectAll_NoeKala)
+        Me.GrpBoxNoeKala.Controls.Add(Me.btnSelectAll_NoeKala)
+        'Me.GrpBoxNoeKala.Controls.Add(Me.btnRefresh_NoeKala)
+        Me.GrpBoxNoeKala.Controls.Add(Me.PnlNavNoeKala)
+        Me.GrpBoxNoeKala.Controls.Add(Me.PnlGridNoeKala)
+        Me.GrpBoxNoeKala.Controls.Add(Me.PnlCmdNoeKala)
+        Me.GrpBoxNoeKala.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GrpBoxNoeKala.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.GrpBoxNoeKala.Location = New System.Drawing.Point(1, 0)
+        Me.GrpBoxNoeKala.Name = "GrpBoxNoeKala"
+        Me.GrpBoxNoeKala.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.GrpBoxNoeKala.Size = New System.Drawing.Size(659, 271)
+        Me.GrpBoxNoeKala.TabIndex = 1
+        Me.GrpBoxNoeKala.TabStop = False
+        Me.GrpBoxNoeKala.Text = "نوع کالاها"
+        '
+        'btnSelectAll_NoeKala
+        '
+        Me.btnSelectAll_NoeKala.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSelectAll_NoeKala.BackColor = System.Drawing.SystemColors.Control
+        Me.btnSelectAll_NoeKala.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnSelectAll_NoeKala.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnSelectAll_NoeKala.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSelectAll_NoeKala.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnSelectAll_NoeKala.Location = New System.Drawing.Point(330, 238)
+        Me.btnSelectAll_NoeKala.Name = "btnSelectAll_NoeKala"
+        Me.btnSelectAll_NoeKala.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.btnSelectAll_NoeKala.Size = New System.Drawing.Size(41, 29)
+        Me.btnSelectAll_NoeKala.TabIndex = 6
+        Me.btnSelectAll_NoeKala.Text = "همه"
+        Me.btnSelectAll_NoeKala.UseVisualStyleBackColor = False
+        '
+        'btnDeselectAll_NoeKala
+        '
+        Me.btnDeselectAll_NoeKala.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnDeselectAll_NoeKala.BackColor = System.Drawing.SystemColors.Control
+        Me.btnDeselectAll_NoeKala.Cursor = System.Windows.Forms.Cursors.Default
+        Me.btnDeselectAll_NoeKala.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnDeselectAll_NoeKala.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDeselectAll_NoeKala.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnDeselectAll_NoeKala.Location = New System.Drawing.Point(286, 238)
+        Me.btnDeselectAll_NoeKala.Name = "btnDeselectAll_NoeKala"
+        Me.btnDeselectAll_NoeKala.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.btnDeselectAll_NoeKala.Size = New System.Drawing.Size(41, 29)
+        Me.btnDeselectAll_NoeKala.TabIndex = 5
+        Me.btnDeselectAll_NoeKala.Text = "هيچ "
+        Me.btnDeselectAll_NoeKala.UseVisualStyleBackColor = False
+        '
+        'PnlNavNoeKala
+        '
+        Me.PnlNavNoeKala.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PnlNavNoeKala.BackColor = System.Drawing.SystemColors.Control
+        Me.PnlNavNoeKala.Cursor = System.Windows.Forms.Cursors.Default
+        Me.PnlNavNoeKala.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PnlNavNoeKala.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.PnlNavNoeKala.Location = New System.Drawing.Point(4, 238)
+        Me.PnlNavNoeKala.Name = "PnlNavNoeKala"
+        Me.PnlNavNoeKala.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.PnlNavNoeKala.Size = New System.Drawing.Size(275, 29)
+        Me.PnlNavNoeKala.TabIndex = 3
+        '
+        'PnlGridNoeKala
+        '
+        Me.PnlGridNoeKala.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PnlGridNoeKala.BackColor = System.Drawing.SystemColors.Control
+        Me.PnlGridNoeKala.Cursor = System.Windows.Forms.Cursors.Default
+        Me.PnlGridNoeKala.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PnlGridNoeKala.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.PnlGridNoeKala.Location = New System.Drawing.Point(2, 18)
+        Me.PnlGridNoeKala.Name = "PnlGridNoeKala"
+        Me.PnlGridNoeKala.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.PnlGridNoeKala.Size = New System.Drawing.Size(653, 215)
+        Me.PnlGridNoeKala.TabIndex = 2
+        '
+        'PnlCmdNoeKala
+        '
+        Me.PnlCmdNoeKala.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PnlCmdNoeKala.BackColor = System.Drawing.SystemColors.Control
+        Me.PnlCmdNoeKala.Cursor = System.Windows.Forms.Cursors.Default
+        Me.PnlCmdNoeKala.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
+        Me.PnlCmdNoeKala.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.PnlCmdNoeKala.Location = New System.Drawing.Point(375, 239)
+        Me.PnlCmdNoeKala.Name = "PnlCmdNoeKala"
+        Me.PnlCmdNoeKala.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.PnlCmdNoeKala.Size = New System.Drawing.Size(273, 29)
+        Me.PnlCmdNoeKala.TabIndex = 1
+        Me.PnlCmdNoeKala.TabStop = True
+        '
+        'btnRefresh_NoeKala
+        '
+        'Me.btnRefresh_NoeKala.BackColor = System.Drawing.SystemColors.Control
+        'Me.btnRefresh_NoeKala.Cursor = System.Windows.Forms.Cursors.Default
+        'Me.btnRefresh_NoeKala.FlatStyle = System.Windows.Forms.FlatStyle.System
+        'Me.btnRefresh_NoeKala.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        'Me.btnRefresh_NoeKala.ForeColor = System.Drawing.SystemColors.ControlText
+        'Me.btnRefresh_NoeKala.Location = New System.Drawing.Point(344, 6)
+        'Me.btnRefresh_NoeKala.Name = "btnRefresh_NoeKala"
+        'Me.btnRefresh_NoeKala.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        'Me.btnRefresh_NoeKala.Size = New System.Drawing.Size(49, 24)
+        'Me.btnRefresh_NoeKala.TabIndex = 44
+        'Me.btnRefresh_NoeKala.Text = "بازخواني"
+        'Me.btnRefresh_NoeKala.UseVisualStyleBackColor = False
+        '
+        'CmbNoeKala
+        '
+        Me.CmbNoeKala.BackColor = System.Drawing.Color.White
+        CmbNoeKala_DesignTimeLayout.LayoutString = resources.GetString("CmbNoeKala_DesignTimeLayout.LayoutString")
+        Me.CmbNoeKala.DesignTimeLayout = CmbNoeKala_DesignTimeLayout
+        Me.CmbNoeKala.LateBinding = True
+        Me.CmbNoeKala.LateBindingTop = "100"
+        Me.CmbNoeKala.Location = New System.Drawing.Point(60, 31)
+        Me.CmbNoeKala.Name = "CmbNoeKala"
+        Me.CmbNoeKala.SaveSettings = False
+        Me.CmbNoeKala.Size = New System.Drawing.Size(187, 20)
+        Me.CmbNoeKala.TabIndex = 41
+        Me.CmbNoeKala.ValuesDataMember = Nothing
+        '
         'FrmFilterAsnadAnbar
         '
         Me.AcceptButton = Me.btnFilterOK
@@ -3350,8 +3553,10 @@ Public Class FrmFilterAsnadAnbar
         Me.TabTaghazaKonandeh.ResumeLayout(False)
         Me.GroupBox6.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
+        Me.TabPNoeKala.ResumeLayout(False)
+        Me.GrpBoxNoeKala.ResumeLayout(False)
+        Me.GrpBoxNoeKala.PerformLayout()
         Me.ResumeLayout(False)
-
     End Sub
 
 #End Region
@@ -3437,6 +3642,11 @@ Public Class FrmFilterAsnadAnbar
     Public WithEvents DvTaminKonandeh As CDataView
     Private WithEvents vfgTaminKonandeh As AxVSFlexGrid
 
+    'Added By Nooshin Alipour in 14031206
+    'يك ديتا ويو از نوع ابزار جهت نمايش  کالا ها تعريف شده است
+    Public WithEvents DvNoeKala As CDataView
+    'يك گريد تعريف مي شود كه بتوان با مطابقت با ديتاويو ابزار از رويدادهاي آن براي عمليات خاص مورد انجام استفاده كرد
+    Private WithEvents vfgNoeKala As AxVSFlexGrid
     Public Property Selected() As String
         Get
             Selected = mSelected
@@ -3455,19 +3665,16 @@ Public Class FrmFilterAsnadAnbar
         Handles btnFilterCancel.Click
         Me.Hide()
     End Sub
-
     Private Sub btnFilterOK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFilterOK.Click
         ' با توجه به اطلاعات کاربر که در فيلترهاي مختلف ثبت کرده است خصوصيات فرم فيلتر پر مي گردد
         SetProperty()
         Me.DialogResult = Windows.Forms.DialogResult.OK
         Me.Hide()
     End Sub
-
     Private Sub FrmFilterAsnadAnbar_Closing(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) _
         Handles MyBase.Closing
         Me.Hide()
     End Sub
-
     Private Sub FrmFilterAsnadAnbar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) _
         Handles MyBase.Load
         If Not pIsLoad Then
@@ -3516,7 +3723,6 @@ Public Class FrmFilterAsnadAnbar
             Else
                 txtFromSanadDate.Enabled = EnableFromSanadDate
             End If
-
             '//By Izadpanah -851208
             If Not VisibleSabtDate Then
                 Me.FtTabFilterSanad.Controls.Remove(Me.TabpSabtDate)
@@ -3558,9 +3764,10 @@ Public Class FrmFilterAsnadAnbar
             If Not VisibleDarjKalaPhizikiFor Then
                 Me.FtTabFilterSanad.Controls.Remove(Me.tabpDarjKalaPhizikiFor)
             End If
-
+            If Not VisibleNoeKala Then
+                Me.FtTabFilterSanad.Controls.Remove(Me.TabPNoeKala)
+            End If
             ' Visible
-
             '' Checked
             chkSanadStatus_1.Checked = CheckedSanadStatus_1
             chkSanadStatus_4.Checked = CheckedSanadStatus_4
@@ -3590,8 +3797,6 @@ Public Class FrmFilterAsnadAnbar
                 .Bind(cn, "Select NoemahsoolSN,NoemahsoolDS from Panoemahsool union select 1.001 As NoemahsoolSN,'نا معلوم' As NoemahsoolDS", "NoemahsoolSN", "NoemahsoolDS")
                 .BoundText = "0.000"
             End With
-
-
             '--------------- add by yekta 921205
             With CmbMahiateKala
                 .ShowSelectAll = True
@@ -3599,8 +3804,6 @@ Public Class FrmFilterAsnadAnbar
                 .BoundText = "0.000"
             End With
             '--------------- add by yekta 921205
-
-
             '--------------- add by yekta 930217
             With CmbNoeAnbar
                 .ShowSelectAll = True
@@ -3608,7 +3811,13 @@ Public Class FrmFilterAsnadAnbar
                 .BoundText = "0.000"
             End With
             '--------------- add by yekta 930217
-
+            'Added By Nooshin Alipour in 14031206
+            With CmbNoeKala
+                .ShowSelectAll = True
+                .Bind(cn, "Select NoeKalaSN,NoeKalaDS from PaNoeKala union select 1.001 As NoeKalaSN,'نا معلوم' As NoeKalaDS", "NoeKalaSN", "NoeKalaDS")
+                .BoundText = "0.000"
+            End With
+            'Added By Nooshin Alipour in 14031206
             pIsLoad = True
         End If
     End Sub
@@ -3669,31 +3878,31 @@ Public Class FrmFilterAsnadAnbar
             Dim vSql As String
             If mAnbarGardaniSN <> Value Then
                 ' تهيه سلکت براي مقدار دهي کامبو
-                vSql = " SELECT ShomareshSN , ISNULL(ShomareshNO,'') + ' - ' + ShomareshDS AS ShomareshDS " & _
+                vSql = " SELECT ShomareshSN , ISNULL(ShomareshNO,'') + ' - ' + ShomareshDS AS ShomareshDS " &
                        " FROM abShomaresh WHERE  AnbarGardaniSN =  " + CStr(Value)
                 '               " FROM abShomaresh WHERE  ShomareshStatus = 1 AND AnbarGardaniSN =  " + CStr(Value)
                 ' با توجه به سلکت و کامبو مورد نظر اطلاعات در کامبو پر ميشود
                 dcbabShomareshMoghayer.Bind(cn, vSql, "ShomareshSN", "ShomareshDS")
                 ' تهيه سلکت براي مقدار دهي کامبو
-                vSql = " SELECT ShomareshSN , ISNULL(ShomareshNO,'') + ' - ' + ShomareshDS AS ShomareshDS " & _
+                vSql = " SELECT ShomareshSN , ISNULL(ShomareshNO,'') + ' - ' + ShomareshDS AS ShomareshDS " &
                        " FROM abShomaresh WHERE  AnbarGardaniSN =  " + CStr(Value)
                 '               " FROM abShomaresh WHERE  ShomareshStatus = 1 AND AnbarGardaniSN =  " + CStr(Value)
                 ' با توجه به سلکت و کامبو مورد نظر اطلاعات در کامبو پر ميشود
                 dcbFabShomareshLast.Bind(cn, vSql, "ShomareshSN", "ShomareshDS")
                 ' تهيه سلکت براي مقدار دهي کامبو
-                vSql = " SELECT ShomareshSN , ISNULL(ShomareshNO,'') + ' - ' + ShomareshDS AS ShomareshDS " & _
+                vSql = " SELECT ShomareshSN , ISNULL(ShomareshNO,'') + ' - ' + ShomareshDS AS ShomareshDS " &
                        " FROM abShomaresh WHERE  AnbarGardaniSN =  " + CStr(Value)
                 '               " FROM abShomaresh WHERE  ShomareshStatus = 1 AND AnbarGardaniSN =  " + CStr(Value)
                 ' با توجه به سلکت و کامبو مورد نظر اطلاعات در کامبو پر ميشود
                 dcbTabShomareshLast.Bind(cn, vSql, "ShomareshSN", "ShomareshDS")
                 ' تهيه سلکت براي مقدار دهي کامبو
-                vSql = " SELECT ShomareshSN , ISNULL(ShomareshNO,'') + ' - ' + ShomareshDS AS ShomareshDS " & _
+                vSql = " SELECT ShomareshSN , ISNULL(ShomareshNO,'') + ' - ' + ShomareshDS AS ShomareshDS " &
                        " FROM abShomaresh WHERE  AnbarGardaniSN =  " + CStr(Value)
                 '               " FROM abShomaresh WHERE  ShomareshStatus = 1 AND AnbarGardaniSN =  " + CStr(Value)
                 ' با توجه به سلکت و کامبو مورد نظر اطلاعات در کامبو پر ميشود
                 dbcCopyFShomareshSN.Bind(cn, vSql, "ShomareshSN", "ShomareshDS")
                 ' تهيه سلکت براي مقدار دهي کامبو
-                vSql = " SELECT ShomareshSN , ISNULL(ShomareshNO,'') + ' - ' + ShomareshDS AS ShomareshDS " & _
+                vSql = " SELECT ShomareshSN , ISNULL(ShomareshNO,'') + ' - ' + ShomareshDS AS ShomareshDS " &
                        " FROM abShomaresh WHERE  AnbarGardaniSN =  " + CStr(Value)
                 '               " FROM abShomaresh WHERE  ShomareshStatus = 1 AND AnbarGardaniSN =  " + CStr(Value)
                 ' با توجه به سلکت و کامبو مورد نظر اطلاعات در کامبو پر ميشود
@@ -3869,8 +4078,8 @@ Public Class FrmFilterAsnadAnbar
     Public SelectedKalaMandehDar As String
     Public SelectedKalaGardeshAll As String
     'Public EnableKalaGardeshDar As Boolean
-    '  Public EnableKalaMandehDar As Boolean
-    '  Public EnableKalaGardeshAll As Boolean
+    'Public EnableKalaMandehDar As Boolean
+    'Public EnableKalaGardeshAll As Boolean
     Public WhereConditionColumnKalaWhere As String
     Public WhereConditionKalaWhere As String
 
@@ -3893,6 +4102,12 @@ Public Class FrmFilterAsnadAnbar
     ' آيا اين سريرگ نمايش داده شود ؟-ByIzadpanah-870208
     Public WhereConditionColumnAnbar As String
     Public SelectedAnbarSN As String
+    'Added By Nooshin Alipour in 14031206
+    Public VisibleNoeKala As Boolean
+    Public WhereConditionColumnNoeKala As String
+    Public SelectedNoeKala As String
+    Public WhereConditionNoeKala As String
+    'Added By Nooshin Alipour in 14031206
 
 #End Region
 
@@ -3958,14 +4173,14 @@ Public Class FrmFilterAsnadAnbar
 
         If Trim(SelectedToSanadDate) <> "" And Trim(SelectedFromSanadDate) <> "" _
            And Trim(WhereConditionColumnSanadDate) <> "" Then
-            WhereConditionSanadDate = WhereConditionColumnSanadDate & " BETWEEN  '" & SelectedFromSanadDate & "'" & _
+            WhereConditionSanadDate = WhereConditionColumnSanadDate & " BETWEEN  '" & SelectedFromSanadDate & "'" &
                                       "  AND '" & SelectedToSanadDate & "'"
         End If
 
         '//By Izadpanah-851208
         If Trim(SelectedToSabtDate) <> "" And Trim(SelectedFromSabtDate) <> "" _
            And Trim(WhereConditionColumnSabtDate) <> "" Then
-            WhereConditionSabtDate = WhereConditionColumnSabtDate & " BETWEEN  '" & SelectedFromSabtDate & "'" & _
+            WhereConditionSabtDate = WhereConditionColumnSabtDate & " BETWEEN  '" & SelectedFromSabtDate & "'" &
                                      "  AND '" & SelectedToSabtDate & "'"
         Else
             WhereConditionSabtDate = ""
@@ -3973,7 +4188,7 @@ Public Class FrmFilterAsnadAnbar
         '//By Izadpanah-851208
 
         WhereConditionKalaSN = ""
-        SelectedKalaSN = _
+        SelectedKalaSN =
             Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgKala, "KalaSN", "Selected")
         If Len(Trim(SelectedKalaSN)) > 8000 Then
             NetSql.Common.CSystem.MsgBox(
@@ -3993,16 +4208,16 @@ Public Class FrmFilterAsnadAnbar
         End If
 
         WhereConditionNoeZayeatSN = ""
-        SelectedNoeZayeatSN = _
-            Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgNoeZayeat, "NoeZayeatSN", _
+        SelectedNoeZayeatSN =
+            Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgNoeZayeat, "NoeZayeatSN",
                                                                                    "Selected")
         If Trim(SelectedNoeZayeatSN) <> "" And Trim(WhereConditionColumnNoeZayeatSN) <> "" Then
             WhereConditionNoeZayeatSN = WhereConditionColumnNoeZayeatSN & " IN ( " + SelectedNoeZayeatSN + " ) "
         End If
 
         WhereConditionNoeMarjooeiSN = ""
-        SelectedNoeMarjooeiSN = _
-            Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgNoeMarjooei, "NoeMarjooeiSN", _
+        SelectedNoeMarjooeiSN =
+            Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgNoeMarjooei, "NoeMarjooeiSN",
                                                                                    "Selected")
         If Trim(SelectedNoeMarjooeiSN) <> "" And Trim(WhereConditionColumnNoeMarjooeiSN) <> "" Then
             WhereConditionNoeMarjooeiSN = WhereConditionColumnNoeMarjooeiSN & " IN ( " + SelectedNoeMarjooeiSN + " ) "
@@ -4017,11 +4232,11 @@ Public Class FrmFilterAsnadAnbar
         End If
 
         WhereConditionKalaStatusAmvalSN = ""
-        SelectedKalaStatusAmvalSN = _
-            Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgKalaStatusAmval, _
+        SelectedKalaStatusAmvalSN =
+            Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgKalaStatusAmval,
                                                                                    "KalaStatusAmvalSN", "Selected")
         If Trim(SelectedKalaStatusAmvalSN) <> "" And Trim(WhereConditionColumnKalaStatusAmvalSN) <> "" Then
-            WhereConditionKalaStatusAmvalSN = WhereConditionColumnKalaStatusAmvalSN & _
+            WhereConditionKalaStatusAmvalSN = WhereConditionColumnKalaStatusAmvalSN &
                                               " IN ( " + SelectedKalaStatusAmvalSN + " ) "
         End If
 
@@ -4038,8 +4253,8 @@ Public Class FrmFilterAsnadAnbar
         If chkMahaleChideman.Checked = True Then SelectedMahaleChideman = 1
 
         WhereConditionTarakoneshSN = ""
-        SelectedTarakoneshSN = _
-            Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgTarakonesh, "TarakoneshSN", _
+        SelectedTarakoneshSN =
+            Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgTarakonesh, "TarakoneshSN",
                                                                                    "Selected")
         If Trim(SelectedTarakoneshSN) <> "" And Trim(WhereConditionColumnTarakoneshSN) <> "" Then
             WhereConditionTarakoneshSN = WhereConditionColumnTarakoneshSN & " IN ( " + SelectedTarakoneshSN + " ) "
@@ -4050,14 +4265,14 @@ Public Class FrmFilterAsnadAnbar
         WhereConditionTarakonesh = ""
 
         WhereConditionTafsiliSN = ""
-        SelectedTafsiliSN = _
+        SelectedTafsiliSN =
             Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgTafsili, "TafsiliSN", "Selected")
         If Trim(SelectedTafsiliSN) <> "" And Trim(WhereConditionColumnTafsiliSN) <> "" Then
             WhereConditionTafsiliSN = WhereConditionColumnTafsiliSN & " IN ( " + SelectedTafsiliSN + " ) "
         End If
 
         WhereConditionTaghazaKonandeh = ""
-        SelectedTaghazaKonandeh = _
+        SelectedTaghazaKonandeh =
             Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgTaghazaKonandeh, "ChartSazemaniSN", "Selected")
         If Trim(SelectedTaghazaKonandeh) <> "" And Trim(WhereConditionColumnTaghazaKonandeh) <> "" Then
             WhereConditionTaghazaKonandeh = WhereConditionColumnTaghazaKonandeh & " IN ( " + SelectedTaghazaKonandeh + " ) "
@@ -4078,8 +4293,8 @@ Public Class FrmFilterAsnadAnbar
         SelectedToSanadNo = Trim(txtToSanadNO.Text)
         If Trim(SelectedFromSanadNo) <> "" And Trim(SelectedToSanadNo) <> "" _
            And Trim(WhereConditionColumnSanadNO) <> "" Then
-            WhereConditionSanadNO = WhereConditionColumnSanadNO & _
-                                    " BETWEEN  '" & SelectedFromSanadNo & "'" & _
+            WhereConditionSanadNO = WhereConditionColumnSanadNO &
+                                    " BETWEEN  '" & SelectedFromSanadNo & "'" &
                                     "  AND '" & SelectedToSanadNo & "'"
         End If
 
@@ -4088,8 +4303,8 @@ Public Class FrmFilterAsnadAnbar
         SelectedToShomarehSefaresh = Trim(txtToShomarehSefaresh.Text)
         If Trim(SelectedFromShomarehSefaresh) <> "" And Trim(SelectedToShomarehSefaresh) <> "" _
            And Trim(WhereConditionColumnShomarehSefaresh) <> "" Then
-            WhereConditionShomarehSefaresh = WhereConditionColumnShomarehSefaresh & _
-                                             " BETWEEN  '" & SelectedFromShomarehSefaresh & "'" & _
+            WhereConditionShomarehSefaresh = WhereConditionColumnShomarehSefaresh &
+                                             " BETWEEN  '" & SelectedFromShomarehSefaresh & "'" &
                                              "  AND '" & SelectedToShomarehSefaresh & "'"
         End If
 
@@ -4099,8 +4314,8 @@ Public Class FrmFilterAsnadAnbar
         SelectedToShomarehRahgiri = Trim(txtToShomarehRahgiri.Text)
         If Trim(SelectedFromShomarehRahgiri) <> "" And Trim(SelectedToShomarehRahgiri) <> "" _
            And Trim(WhereConditionColumnShomarehRahgiri) <> "" Then
-            WhereConditionShomarehRahgiri = WhereConditionColumnShomarehRahgiri & _
-                                            " BETWEEN  '" & SelectedFromShomarehRahgiri & "'" & _
+            WhereConditionShomarehRahgiri = WhereConditionColumnShomarehRahgiri &
+                                            " BETWEEN  '" & SelectedFromShomarehRahgiri & "'" &
                                             "  AND '" & SelectedToShomarehRahgiri & "'"
         End If
 
@@ -4108,10 +4323,17 @@ Public Class FrmFilterAsnadAnbar
         WhereConditionTozih = ""
         SelectedTozih = Trim(txtTozih.Text)
         If Trim(SelectedTozih) <> "" And Trim(WhereConditionColumnTozih) <> "" Then
-            WhereConditionTozih = WhereConditionColumnTozih & _
+            WhereConditionTozih = WhereConditionColumnTozih &
                                   " LIKE '%" & SelectedTozih & "%'"
         End If
-
+        'Added By Nooshin Alipour in 14031206
+        WhereConditionNoeKala = ""
+        SelectedNoeKala =
+            Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgNoeKala, "NoeKalaSN", "Selected")
+        If Trim(SelectedNoeKala) <> "" And Trim(WhereConditionColumnNoeKala) <> "" Then
+            WhereConditionNoeKala = WhereConditionColumnNoeKala & " IN ( " + SelectedNoeKala + " ) "
+        End If
+        'Added By Nooshin Alipour in 14031206
         SelectedNoeTarakoneshKala = ""
         If chkNoeTarakoneshKalaNO0.CheckState = 1 Then SelectedNoeTarakoneshKala = SelectedNoeTarakoneshKala & ", 6"
         If chkNoeTarakoneshKalaNO1.CheckState = 1 Then SelectedNoeTarakoneshKala = SelectedNoeTarakoneshKala & ", 1"
@@ -4221,10 +4443,10 @@ Public Class FrmFilterAsnadAnbar
         SelectedToShomarehMashin = Trim(txtToShomarehMashin.Text)
 
         If _
-            Trim(SelectedFromShomarehMashin) <> "" And Trim(SelectedToShomarehMashin) <> "" And _
+            Trim(SelectedFromShomarehMashin) <> "" And Trim(SelectedToShomarehMashin) <> "" And
             Trim(WhereConditionColumnShomarehMashin) <> "" Then
-            WhereConditionShomarehMashin = WhereConditionColumnShomarehMashin & _
-                                           " BETWEEN  '" & SelectedFromShomarehMashin & "'" & _
+            WhereConditionShomarehMashin = WhereConditionColumnShomarehMashin &
+                                           " BETWEEN  '" & SelectedFromShomarehMashin & "'" &
                                            " AND  '" & SelectedToShomarehMashin & "'"
         End If
 
@@ -4232,15 +4454,15 @@ Public Class FrmFilterAsnadAnbar
         SelectedFromShomarehBarnameh = Trim(txtFromShomarehBarnameh.Text)
         SelectedToShomarehBarnameh = Trim(txtToShomarehBarnameh.Text)
         If _
-            Trim(SelectedFromShomarehBarnameh) <> "" And Trim(SelectedToShomarehBarnameh) <> "" And _
+            Trim(SelectedFromShomarehBarnameh) <> "" And Trim(SelectedToShomarehBarnameh) <> "" And
             Trim(WhereConditionColumnShomarehBarnameh) <> "" Then
-            WhereConditionShomarehBarnameh = WhereConditionColumnShomarehBarnameh & _
-                                             "BETWEEN '" & SelectedFromShomarehBarnameh & "'" & _
+            WhereConditionShomarehBarnameh = WhereConditionColumnShomarehBarnameh &
+                                             "BETWEEN '" & SelectedFromShomarehBarnameh & "'" &
                                              "AND '" & SelectedToShomarehBarnameh & "'"
         End If
         '//BY Izadpanah -870208 -Filter shomareh mashin va barnameh
 
-        mSelected = _
+        mSelected =
             Minoo.Functions.FTFlexFunctions.MultiSelectGetSelectedToStrByCheckBox(vfgTree, "AnbarSN", "Selected")
         If mSelected <> "" Then
             gAnbarSelected = Selected
@@ -4300,16 +4522,16 @@ Public Class FrmFilterAsnadAnbar
         End With
     End Sub
 
-    Private Sub vfgTafsili_AfterEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgTafsili_AfterEdit(ByVal eventSender As System.Object,
                                       ByVal e As C1.Win.C1FlexGrid.RowColEventArgs) _
         Handles vfgTafsili.AfterEdit
         If e.Row < vfgTafsili.FixedRows Then Exit Sub
         If e.Col <> vfgTafsili.get_ColIndex("Selected") Then Exit Sub
-        SelectSubTafsili(e.Row, _
+        SelectSubTafsili(e.Row,
                           vfgTafsili.GetCellCheck(e.Row, vfgTafsili.get_ColIndex("Selected")))
     End Sub
 
-    Private Sub vfgTafsili_BeforeEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgTafsili_BeforeEdit(ByVal eventSender As System.Object,
                                        ByVal e As C1.Win.C1FlexGrid.RowColEventArgs) _
         Handles vfgTafsili.BeforeEdit
         If e.Row < vfgTafsili.FixedRows Then e.Cancel = True : Exit Sub
@@ -4361,21 +4583,81 @@ Public Class FrmFilterAsnadAnbar
             Next i
         End With
     End Sub
-
-    Private Sub vfgKala_AfterEdit(ByVal eventSender As System.Object, _
+    'Added By Nooshin Alipour in 14031206
+    'Added By Nooshin Alipour in 14031206
+    Private Sub vfgKala_AfterEdit(ByVal eventSender As System.Object,
                                    ByVal e As C1.Win.C1FlexGrid.RowColEventArgs) _
         Handles vfgKala.AfterEdit
         If e.Row < vfgKala.FixedRows Then Exit Sub
         If e.Col <> vfgKala.get_ColIndex("Selected") Then Exit Sub
         SelectSubKala(e.Row, vfgKala.GetCellCheck(e.Row, vfgKala.get_ColIndex("Selected")))
     End Sub
-
+    'Added By Nooshin Alipour in 14031206
+    'Added By Nooshin Alipour in 14031206
     Private Sub vfgKala_BeforeEdit(ByVal eventSender As System.Object,
                                     ByVal eventArgs As RowColEventArgs) _
         Handles vfgKala.BeforeEdit
         If eventArgs.Row < vfgKala.FixedRows Then eventArgs.Cancel = True : Exit Sub
         If eventArgs.Col <> vfgKala.get_ColIndex("Selected") Then eventArgs.Cancel = True : Exit Sub
     End Sub
+    'Added By Nooshin Alipour in 14031206
+    'Added By Nooshin Alipour in 14031206
+    Private Sub btnSelectAllNoeKala_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles btnSelectAll.Click
+        Dim i As Short
+        With DvNoeKala.FlexGrid
+            For i = .FixedRows To .Rows - 1
+                .SetCellCheck(i, .get_ColIndex("Selected"), CheckEnum.Checked)
+            Next i
+        End With
+
+    End Sub
+    'Added By Nooshin Alipour in 14031206
+    'Added By Nooshin Alipour in 14031206
+    Private Sub btnDeselectAllNoeKala_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles btnDeselectAll.Click
+        Dim i As Short
+        With DvNoeKala.FlexGrid
+            For i = .FixedRows To .Rows - 1
+                .SetCellCheck(i, .get_ColIndex("Selected"), CheckEnum.Unchecked)
+            Next i
+        End With
+    End Sub
+    'Added By Nooshin Alipour in 14031206
+    'Added By Nooshin Alipour in 14031206
+    Private Sub vfgNoeKala_AfterEdit(ByVal eventSender As System.Object,
+                                      ByVal e As C1.Win.C1FlexGrid.RowColEventArgs) _
+        Handles vfgNoeKala.AfterEdit
+        If e.Row < vfgNoeKala.FixedRows Then Exit Sub
+        If e.Col <> vfgNoeKala.get_ColIndex("Selected") Then Exit Sub
+        SelectSubNoeKala(e.Row,
+                          vfgNoeKala.GetCellCheck(e.Row, vfgNoeKala.get_ColIndex("Selected")))
+    End Sub
+    'Added By Nooshin Alipour in 14031206
+    'Added By Nooshin Alipour in 14031206
+    Private Sub vfgNoeKala_BeforeEdit(ByVal eventSender As System.Object,
+                                       ByVal e As C1.Win.C1FlexGrid.RowColEventArgs) _
+        Handles vfgNoeKala.BeforeEdit
+        If e.Row < vfgNoeKala.FixedRows Then e.Cancel = True : Exit Sub
+        If e.Col <> vfgNoeKala.get_ColIndex("Selected") Then e.Cancel = True : Exit Sub
+    End Sub
+    'Added By Nooshin Alipour in 14031206
+    'Added By Nooshin Alipour in 14031206
+    Private Sub SelectSubNoeKala(ByVal arow As Integer, ByVal aSelect As Boolean)
+        Dim vFirstChildrow As Integer
+        Dim vLastChildrow As Integer
+        Dim i As Integer
+
+        vFirstChildrow = vfgNoeKala.GetNodeRow(arow, NodeTypeEnum.FirstChild)
+        vLastChildrow = vfgNoeKala.GetNodeRow(arow, NodeTypeEnum.LastChild)
+
+        If vFirstChildrow = -1 Or vLastChildrow = -1 Then Exit Sub
+
+        For i = vFirstChildrow To vLastChildrow
+            vfgNoeKala.SetCellCheck(i, vfgNoeKala.get_ColIndex("Selected"), aSelect)
+        Next
+    End Sub
+    'Added By Nooshin Alipour in 14031206
 
     Private Sub vfgTaminKonandeh_AfterEdit(ByVal eventSender As System.Object,
                                    ByVal e As C1.Win.C1FlexGrid.RowColEventArgs) _
@@ -4392,16 +4674,16 @@ Public Class FrmFilterAsnadAnbar
         If eventArgs.Col <> vfgTaminKonandeh.get_ColIndex("Selected") Then eventArgs.Cancel = True : Exit Sub
     End Sub
 
-    Private Sub vfgTarakonesh_AfterEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgTarakonesh_AfterEdit(ByVal eventSender As System.Object,
                                          ByVal eventArgs As RowColEventArgs) _
         Handles vfgTarakonesh.AfterEdit
         If eventArgs.Row < vfgTarakonesh.FixedRows Then Exit Sub
         If eventArgs.Col <> vfgTarakonesh.get_ColIndex("Selected") Then Exit Sub
-        SelectSubTarakonesh(eventArgs.Row, _
+        SelectSubTarakonesh(eventArgs.Row,
                        vfgTarakonesh.GetCellCheck(eventArgs.Row, vfgTarakonesh.get_ColIndex("Selected")))
     End Sub
 
-    Private Sub vfgTarakonesh_BeforeEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgTarakonesh_BeforeEdit(ByVal eventSender As System.Object,
                                           ByVal eventArgs As RowColEventArgs) _
         Handles vfgTarakonesh.BeforeEdit
         If eventArgs.Row < vfgTarakonesh.FixedRows Then eventArgs.Cancel = True : Exit Sub
@@ -4510,6 +4792,10 @@ Public Class FrmFilterAsnadAnbar
                 If Not DvTafsili.Refreshed Then
                     DvTafsili.Refresh()
                 End If
+            Case "TABPNOEKALA"
+                If Not DvNoeKala.Refreshed Then
+                    DvNoeKala.Refresh()
+                End If
             Case "TABTAGHAZAKONANDEH"
                 If Not DvTaghazaKonandeh.Refreshed Then
                     DvTaghazaKonandeh.Refresh()
@@ -4526,10 +4812,10 @@ Public Class FrmFilterAsnadAnbar
                 If (Not DvKala.Refreshed) Or mPervFilterNoeAnbarSN <> mFilterNoeAnbarSN Then
                     mPervFilterNoeAnbarSN = mFilterNoeAnbarSN
                     With DvKala
-                        .SQLWhere = " paKala.KalaSN IN ( " & _
-                                    " Select kalaSn  " & _
-                                    " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " & _
-                                    " Where abSanad.MoaserDate BETWEEN '" & gHesabdariSalFDate & "' AND '" & _
+                        .SQLWhere = " paKala.KalaSN IN ( " &
+                                    " Select kalaSn  " &
+                                    " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " &
+                                    " Where abSanad.MoaserDate BETWEEN '" & gHesabdariSalFDate & "' AND '" &
                                     gHesabdariSalTDate & "'"
                         If FilterNoeAnbarSN <> 0 Then
                             .SQLWhere = .SQLWhere & " AND NoeAnbarSN = " & CStr(FilterNoeAnbarSN)
@@ -4555,8 +4841,8 @@ Public Class FrmFilterAsnadAnbar
                     mPervFilterNoeAnbarSN = mFilterNoeAnbarSN
                     With DvNoeZayeat
                         If FilterNoeAnbarSN <> 0 Then
-                            .SQLWhere = " paNoeZayeat.NoeZayeatSN IN ( Select NoeZayeatSn  " & _
-                                        " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " & _
+                            .SQLWhere = " paNoeZayeat.NoeZayeatSN IN ( Select NoeZayeatSn  " &
+                                        " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " &
                                         " Where NoeAnbarSN = " & CStr(FilterNoeAnbarSN) & " ) "
                         Else
                             .SQLWhere = " paNoeZayeat.NoeZayeatSN IN ( Select NoeZayeatSn From abSanadHa ) "
@@ -4569,8 +4855,8 @@ Public Class FrmFilterAsnadAnbar
                     mPervFilterNoeAnbarSN = mFilterNoeAnbarSN
                     With DvNoeMarjooei
                         If FilterNoeAnbarSN <> 0 Then
-                            .SQLWhere = " paNoeMarjooei.NoeMarjooeiSN IN ( Select NoeMarjooeiSn  " & _
-                                        " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " & _
+                            .SQLWhere = " paNoeMarjooei.NoeMarjooeiSN IN ( Select NoeMarjooeiSn  " &
+                                        " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " &
                                         " Where NoeAnbarSN = " & CStr(FilterNoeAnbarSN) & " ) "
                         Else
                             .SQLWhere = " paNoeMarjooei.NoeMarjooeiSN IN ( Select NoeMarjooeiSn From abSanadHa ) "
@@ -4583,13 +4869,13 @@ Public Class FrmFilterAsnadAnbar
                     mPervFilterNoeAnbarSN = mFilterNoeAnbarSN
                     With DvKalaStatusAmval
                         If FilterNoeAnbarSN <> 0 Then
-                            .SQLWhere = " paKalaStatusAmval.KalaStatusAmvalSN IN ( Select AmvalStatus   " & _
-                                        " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " & _
-                                        "      INNER JOIN paKala ON abSanadHa.KalaSN = paKala.KalaSN  " & _
+                            .SQLWhere = " paKalaStatusAmval.KalaStatusAmvalSN IN ( Select AmvalStatus   " &
+                                        " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " &
+                                        "      INNER JOIN paKala ON abSanadHa.KalaSN = paKala.KalaSN  " &
                                         " Where NoeAnbarSN = " & CStr(FilterNoeAnbarSN) & " ) "
                         Else
-                            .SQLWhere = _
-                                " paKalaStatusAmval.KalaStatusAmvalSN IN ( Select AmvalStatus  From abSanadHa  " & _
+                            .SQLWhere =
+                                " paKalaStatusAmval.KalaStatusAmvalSN IN ( Select AmvalStatus  From abSanadHa  " &
                                 "      INNER JOIN paKala ON abSanadHa.KalaSN = paKala.KalaSN ) "
                         End If
                         .Refresh()
@@ -4653,11 +4939,11 @@ Public Class FrmFilterAsnadAnbar
             '-----------add by yekta 921205
 
             With DvKala
-                .SQLWhere = " paKala.KalaSN IN ( " & _
-                            " Select kalaSn  " & _
-                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " & _
-                            " Where abSanad.MoaserDate BETWEEN '" & gHesabdariSalFDate & "' AND '" & gHesabdariSalTDate & _
-                            "'" & _
+                .SQLWhere = " paKala.KalaSN IN ( " &
+                            " Select kalaSn  " &
+                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " &
+                            " Where abSanad.MoaserDate BETWEEN '" & gHesabdariSalFDate & "' AND '" & gHesabdariSalTDate &
+                            "'" &
                             " AND abSanad.AnbarSN in( " & gAnbarSelected.ToString & ")"
 
                 .SQLWhere = .SQLWhere & " AND ('" & _SelText & "'='' OR ISNULL(Pakala.NoeMahsoolSN,1.001) in ( SELECT CAST(col1 AS DECIMAL(18,3)) FROM StrToTable('" & _SelText & "')))"
@@ -4705,8 +4991,8 @@ Public Class FrmFilterAsnadAnbar
             '-----------add by yekta 921205
 
             With DvKala
-                .SQLWhere = " paKala.KalaSN IN ( Select kalaSn  " & _
-                            " From abAnbarKala " & _
+                .SQLWhere = " paKala.KalaSN IN ( Select kalaSn  " &
+                            " From abAnbarKala " &
                             " Where  AnbarSN IN ( " & gAnbarSelected.ToString & "  )  "
 
                 .SQLWhere = .SQLWhere & " AND ('" & _SelText & "'='' OR ISNULL(Pakala.NoeMahsoolSN,1.001) in ( SELECT CAST(col1 AS DECIMAL(18,3)) FROM StrToTable('" & _SelText & "')))"
@@ -4750,8 +5036,8 @@ Public Class FrmFilterAsnadAnbar
             '-----------add by yekta 921205
 
             With DvKala
-                .SQLWhere = " paKala.KalaSN IN ( Select kalaSn  " & _
-                            " From abAnbarKala " & _
+                .SQLWhere = " paKala.KalaSN IN ( Select kalaSn  " &
+                            " From abAnbarKala " &
                             " Where  AnbarSN IN ( " & gAnbarSelected.ToString & "  )  "
 
                 .SQLWhere = .SQLWhere & " AND ('" & _SelText & "'='' OR ISNULL(Pakala.NoeMahsoolSN,1.001) in ( SELECT CAST(col1 AS DECIMAL(18,3)) FROM StrToTable('" & _SelText & "')))"
@@ -4767,11 +5053,11 @@ Public Class FrmFilterAsnadAnbar
 
                 .SQLWhere = .SQLWhere & " AND "
 
-                .SQLWhere = .SQLWhere & " paKala.KalaSN Not IN ( " & _
-                            " Select kalaSn  " & _
-                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " & _
-                            " Where abSanad.MoaserDate BETWEEN '" & gHesabdariSalFDate & "' AND '" & gHesabdariSalTDate & _
-                            "'" & _
+                .SQLWhere = .SQLWhere & " paKala.KalaSN Not IN ( " &
+                            " Select kalaSn  " &
+                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " &
+                            " Where abSanad.MoaserDate BETWEEN '" & gHesabdariSalFDate & "' AND '" & gHesabdariSalTDate &
+                            "'" &
                             " AND abSanad.AnbarSN = " & gAnbarSN
                 If Not chkAvalDoreh.Checked Then
                     .SQLWhere = .SQLWhere & " AND abSanad.TarakoneshSn <> 44 "
@@ -4813,12 +5099,12 @@ Public Class FrmFilterAsnadAnbar
             '-----------add by yekta 921205
 
             With DvKala
-                .SQLWhere = " paKala.KalaSN IN ( " & _
-                            " Select kalaSn  " & _
-                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " & _
-                            " Where abSanad.MoaserDate BETWEEN '" & gHesabdariSalFDate & "' AND '" & gHesabdariSalTDate & _
-                            "'" & _
-                            " AND abSanad.SanadStatus = 8 " & _
+                .SQLWhere = " paKala.KalaSN IN ( " &
+                            " Select kalaSn  " &
+                            " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN  " &
+                            " Where abSanad.MoaserDate BETWEEN '" & gHesabdariSalFDate & "' AND '" & gHesabdariSalTDate &
+                            "'" &
+                            " AND abSanad.SanadStatus = 8 " &
                             " AND abSanad.AnbarSN = " & gAnbarSN
 
                 .SQLWhere = .SQLWhere & " AND ('" & _SelText & "'='' OR ISNULL(Pakala.NoeMahsoolSN,1.001) in ( SELECT CAST(col1 AS DECIMAL(18,3)) FROM StrToTable('" & _SelText & "')))"
@@ -4829,7 +5115,7 @@ Public Class FrmFilterAsnadAnbar
                 If FilterNoeAnbarSN <> 0 Then
                     .SQLWhere = .SQLWhere & " AND NoeAnbarSN = " & CStr(FilterNoeAnbarSN)
                 End If
-                .SQLWhere = .SQLWhere & " GROUP BY KalaSN " & _
+                .SQLWhere = .SQLWhere & " GROUP BY KalaSN " &
                             " HAVING SUM(ISNULL(abSanadHa.MeghdareVaredeh,0)) - SUM(ISNULL(abSanadHa.MeghdareSadereh,0)) > 0 )"
                 .SQLOrderBy = " paKala.KalaNO "
                 .Refresh()
@@ -4873,11 +5159,11 @@ Public Class FrmFilterAsnadAnbar
                 .SQLWhere = ""
 
                 If SelectedVaredehCount <> "" And Val(SelectedVaredehCount) >= 1 Then
-                    .SQLWhere = " paKala.KalaSN IN ( " & _
-                                " Select kalaSn  " & _
-                                " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN join abTarakonesh on abSanad.TarakoneshSN = abTarakonesh.TarakoneshSN  " & _
-                                " Where abSanad.MoaserDate BETWEEN '" & gHesabdariSalFDate & "' AND '" & _
-                                gHesabdariSalTDate & "'" & _
+                    .SQLWhere = " paKala.KalaSN IN ( " &
+                                " Select kalaSn  " &
+                                " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN join abTarakonesh on abSanad.TarakoneshSN = abTarakonesh.TarakoneshSN  " &
+                                " Where abSanad.MoaserDate BETWEEN '" & gHesabdariSalFDate & "' AND '" &
+                                gHesabdariSalTDate & "'" &
                                 " AND abSanad.AnbarSN = " & gAnbarSN
 
                     .SQLWhere = .SQLWhere & " AND ('" & _SelText & "'='' OR ISNULL(Pakala.NoeMahsoolSN,1.001) in ( SELECT CAST(col1 AS DECIMAL(18,3)) FROM StrToTable('" & _SelText & "')))"
@@ -4891,7 +5177,7 @@ Public Class FrmFilterAsnadAnbar
                     If FilterNoeAnbarSN <> 0 Then
                         .SQLWhere = .SQLWhere & " AND NoeAnbarSN = " & CStr(FilterNoeAnbarSN)
                     End If
-                    .SQLWhere = .SQLWhere & " GROUP BY KalaSN, abTarakonesh.Input " & _
+                    .SQLWhere = .SQLWhere & " GROUP BY KalaSN, abTarakonesh.Input " &
                                 " HAVING abTarakonesh.Input = 1 AND Count(*) >= " & SelectedVaredehCount & " )"
                 End If
 
@@ -4901,11 +5187,11 @@ Public Class FrmFilterAsnadAnbar
                         .SQLWhere = .SQLWhere & " AND "
                     End If
 
-                    .SQLWhere = .SQLWhere & " paKala.KalaSN IN ( " & _
-                                " Select kalaSn  " & _
-                                " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN join abTarakonesh on abSanad.TarakoneshSN = abTarakonesh.TarakoneshSN  " & _
-                                " Where abSanad.MoaserDate BETWEEN '" & gHesabdariSalFDate & "' AND '" & _
-                                gHesabdariSalTDate & "'" & _
+                    .SQLWhere = .SQLWhere & " paKala.KalaSN IN ( " &
+                                " Select kalaSn  " &
+                                " From abSanad INNER JOIN abSanadHa ON abSanadHa.SanadSN = abSanad.SanadSN join abTarakonesh on abSanad.TarakoneshSN = abTarakonesh.TarakoneshSN  " &
+                                " Where abSanad.MoaserDate BETWEEN '" & gHesabdariSalFDate & "' AND '" &
+                                gHesabdariSalTDate & "'" &
                                 " AND abSanad.AnbarSN = " & gAnbarSN
 
                     .SQLWhere = .SQLWhere & " AND ('" & _SelText & "'='' OR ISNULL(Pakala.NoeMahsoolSN,1.001) in ( SELECT CAST(col1 AS DECIMAL(18,3)) FROM StrToTable('" & _SelText & "')))"
@@ -4913,7 +5199,7 @@ Public Class FrmFilterAsnadAnbar
                     If FilterNoeAnbarSN <> 0 Then
                         .SQLWhere = .SQLWhere & " AND NoeAnbarSN = " & CStr(FilterNoeAnbarSN)
                     End If
-                    .SQLWhere = .SQLWhere & " GROUP BY KalaSN, abTarakonesh.[OutPut] " & _
+                    .SQLWhere = .SQLWhere & " GROUP BY KalaSN, abTarakonesh.[OutPut] " &
                                 " HAVING abTarakonesh.[OutPut] = 1 AND Count(*) >= " & SelectedSaderehCount & " )"
                 End If
 
@@ -4947,16 +5233,16 @@ Public Class FrmFilterAsnadAnbar
         End With
     End Sub
 
-    Private Sub vfgNoeZayeat_AfterEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgNoeZayeat_AfterEdit(ByVal eventSender As System.Object,
                                         ByVal eventArgs As RowColEventArgs) _
         Handles vfgNoeZayeat.AfterEdit
         If eventArgs.Row < vfgNoeZayeat.FixedRows Then Exit Sub
         If eventArgs.Col <> vfgNoeZayeat.get_ColIndex("Selected") Then Exit Sub
-        SelectSubNoeZayeat(eventArgs.Row, _
+        SelectSubNoeZayeat(eventArgs.Row,
                             vfgNoeZayeat.GetCellCheck(eventArgs.Row, vfgNoeZayeat.get_ColIndex("Selected")))
     End Sub
 
-    Private Sub vfgNoeZayeat_BeforeEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgNoeZayeat_BeforeEdit(ByVal eventSender As System.Object,
                                          ByVal eventArgs As RowColEventArgs) _
         Handles vfgNoeZayeat.BeforeEdit
         If eventArgs.Row < vfgNoeZayeat.FixedRows Then eventArgs.Cancel = True : Exit Sub
@@ -5000,16 +5286,16 @@ Public Class FrmFilterAsnadAnbar
 
     End Sub
 
-    Private Sub vfgNoeMarjooei_AfterEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgNoeMarjooei_AfterEdit(ByVal eventSender As System.Object,
                                           ByVal eventArgs As RowColEventArgs) _
         Handles vfgNoeMarjooei.AfterEdit
         If eventArgs.Row < vfgNoeMarjooei.FixedRows Then Exit Sub
         If eventArgs.Col <> vfgNoeMarjooei.get_ColIndex("Selected") Then Exit Sub
-        SelectSubNoeMarjooei(eventArgs.Row, _
+        SelectSubNoeMarjooei(eventArgs.Row,
                               vfgNoeMarjooei.GetCellCheck(eventArgs.Row, vfgNoeMarjooei.get_ColIndex("Selected")))
     End Sub
 
-    Private Sub vfgNoeMarjooei_BeforeEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgNoeMarjooei_BeforeEdit(ByVal eventSender As System.Object,
                                            ByVal eventArgs As RowColEventArgs) _
         Handles vfgNoeMarjooei.BeforeEdit
         If eventArgs.Row < vfgNoeMarjooei.FixedRows Then eventArgs.Cancel = True : Exit Sub
@@ -5038,17 +5324,17 @@ Public Class FrmFilterAsnadAnbar
 
     End Sub
 
-    Private Sub vfgKalaStatusAmval_AfterEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgKalaStatusAmval_AfterEdit(ByVal eventSender As System.Object,
                                               ByVal eventArgs As RowColEventArgs) _
         Handles vfgKalaStatusAmval.AfterEdit
         If eventArgs.Row < vfgKalaStatusAmval.FixedRows Then Exit Sub
         If eventArgs.Col <> vfgKalaStatusAmval.get_ColIndex("Selected") Then Exit Sub
-        SelectSubKalaStatusAmval(eventArgs.Row, _
-                                  vfgKalaStatusAmval.GetCellCheck(eventArgs.Row, _
+        SelectSubKalaStatusAmval(eventArgs.Row,
+                                  vfgKalaStatusAmval.GetCellCheck(eventArgs.Row,
                                                                       vfgKalaStatusAmval.get_ColIndex("Selected")))
     End Sub
 
-    Private Sub vfgKalaStatusAmval_BeforeEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgKalaStatusAmval_BeforeEdit(ByVal eventSender As System.Object,
                                                ByVal eventArgs As RowColEventArgs) _
         Handles vfgKalaStatusAmval.BeforeEdit
         If eventArgs.Row < vfgKalaStatusAmval.FixedRows Then eventArgs.Cancel = True : Exit Sub
@@ -5142,7 +5428,7 @@ Public Class FrmFilterAsnadAnbar
     '                                                                            , "SortField", "level", True)
     'End Sub
 
-    Private Sub vfgTree_AfterEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgTree_AfterEdit(ByVal eventSender As System.Object,
                                    ByVal eventArgs As RowColEventArgs) _
         Handles vfgTree.AfterEdit
         If eventArgs.Row < vfgTree.FixedRows Then Exit Sub
@@ -5150,7 +5436,7 @@ Public Class FrmFilterAsnadAnbar
         SelectSubTree(eventArgs.Row, vfgTree.GetCellCheck(eventArgs.Row, vfgTree.get_ColIndex("Selected")))
     End Sub
 
-    Private Sub vfgTree_BeforeEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgTree_BeforeEdit(ByVal eventSender As System.Object,
                                     ByVal eventArgs As RowColEventArgs) _
         Handles vfgTree.BeforeEdit
         If eventArgs.Row < vfgTree.FixedRows Then eventArgs.Cancel = True : Exit Sub
@@ -5199,16 +5485,16 @@ Public Class FrmFilterAsnadAnbar
         End With
     End Sub
 
-    Private Sub vfgTaghazaKonandeh_AfterEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgTaghazaKonandeh_AfterEdit(ByVal eventSender As System.Object,
                                   ByVal e As C1.Win.C1FlexGrid.RowColEventArgs) _
     Handles vfgTaghazaKonandeh.AfterEdit
         If e.Row < vfgTaghazaKonandeh.FixedRows Then Exit Sub
         If e.Col <> vfgTaghazaKonandeh.get_ColIndex("Selected") Then Exit Sub
-        SelectSubTaghazaKonandeh(e.Row, _
+        SelectSubTaghazaKonandeh(e.Row,
                           vfgTaghazaKonandeh.GetCellCheck(e.Row, vfgTaghazaKonandeh.get_ColIndex("Selected")))
     End Sub
 
-    Private Sub vfgTaghazaKonandeh_BeforeEdit(ByVal eventSender As System.Object, _
+    Private Sub vfgTaghazaKonandeh_BeforeEdit(ByVal eventSender As System.Object,
                                        ByVal e As C1.Win.C1FlexGrid.RowColEventArgs) _
         Handles vfgTaghazaKonandeh.BeforeEdit
         If e.Row < vfgTaghazaKonandeh.FixedRows Then e.Cancel = True : Exit Sub

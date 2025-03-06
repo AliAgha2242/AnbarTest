@@ -29,17 +29,14 @@ Public Class FrmMoroorTafsili
         End If
         MyBase.Dispose(disposing)
     End Sub
-
     'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
-
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
     Friend WithEvents btnFilterAsnadAnbar As System.Windows.Forms.Button
     Friend WithEvents txtTimeReport As System.Windows.Forms.TextBox
     Friend WithEvents btnShowRialiColumn As System.Windows.Forms.Button
-
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim GridEX1_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
@@ -106,6 +103,9 @@ Public Class FrmMoroorTafsili
         'btnChart
         '
         Me.btnChart.Location = New System.Drawing.Point(281, 33)
+        '
+        'btnSettingList
+        '
         '
         'pnlDownJanus
         '
@@ -176,16 +176,13 @@ Public Class FrmMoroorTafsili
         Set(ByVal Value As FrmMoroorTafsili)
             m_vb6FormDefInstance = Value
         End Set
-
     End Property
 
 #End Region
-
 #Region "Private Variable"
     Public VFilterAsnadAnbar As New Minoo.Applications.Anbar.Common.FrmFilterAsnadAnbar
     Dim _Mode As Int16
 #End Region
-
     Public Property Mode() As Int16
         Get
             Mode = _Mode
@@ -194,7 +191,6 @@ Public Class FrmMoroorTafsili
             _Mode = Value
         End Set
     End Property
-
     Private Sub FrmTafsiliRialiA_Load(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) _
         Handles MyBase.Load
         ''Me.Location = New System.Drawing.Size(New System.Drawing.Point(10, 10))
@@ -222,22 +218,17 @@ Public Class FrmMoroorTafsili
             .WhereConditionColumnTafsiliSN = " abSanad.TafsiliSN "
             .WhereConditionColumnKalaSN = " abSanadHa.KalaSN "
             .WhereConditionColumnGoroohBandiKala = " abSanadHa.KalaSN "
+            .WhereConditionColumnNoeKala = "PaNoeKala.NoeKalaSN"
             .WhereConditionColumnShomarehBarnameh = " abSanad.ShomarehBarnameh "
             .WhereConditionColumnShomarehMashin = " abSanad.Shomarehmashin "
             .SetProperty()
         End With
-
-
     End Sub
-
     Private Sub btnbtnViewReport_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) _
         Handles btnViewReport.Click
-
-
         txtTimeReport.Text = ""
         Dim _st As TimeSpan = Now.TimeOfDay
         txtTimeReport.Refresh()
-
         ' 	بعد از استفاده از فيلتر گزارش حال مقادير فيلتر بدست مي آيد 
         ' 		گزارش تهيه ميشود و به رويت کاربر ميرسد 
         'Dim vSql, vMainSql As String
@@ -246,18 +237,16 @@ Public Class FrmMoroorTafsili
         'Dim vGroupSql As String
         'Dim vOrderSql As String
         Dim WaitFrm As New Anbar.Common.Frmwait
-
         Try
             WaitFrm.Show()
             WaitFrm.Refresh()
-
             Dim vFromDate As Object
             Dim vToDate As Object
-
             Dim vErrMsg As String
             Dim strAnbars As String ', strNoeAnbars
             Dim strTarakoneshs As String
             Dim vStrKalaSN, vStrFilterSelectedGoroohSN As String
+            Dim VStrNoeKalaSN As String
             Dim vSanadStatus As String
             Dim vNoeTarakoneshKalaNO As String
             Dim vGoroohBandiTarakonesh As String
@@ -283,7 +272,6 @@ Public Class FrmMoroorTafsili
             Dim vIsMahaleChideman As Short
             Dim vFromSabtDate As Object
             Dim vToSabtDate As Object
-
             ' کنترل فيلدهاي اجباري مورد نياز گزارش   + لحاظ کردن مقادير فيلتر انبار در پارامترهاي اين گزارش
             If Trim(VFilterAsnadAnbar.SelectedFromSanadDate) <> "" Then
                 vFromDate = Trim(VFilterAsnadAnbar.SelectedFromSanadDate)
@@ -301,7 +289,6 @@ Public Class FrmMoroorTafsili
             Else
                 strAnbars = CStr(gAnbarSN)
             End If
-
             ' اگر خطايي در فيلتر گزارش نيست مي توان گزارش را اجرا کرد
             If vErrMsg = "" Then
                 If Trim(gAnbarSelected) <> "" Then
@@ -393,18 +380,18 @@ Public Class FrmMoroorTafsili
                 If Trim(VFilterAsnadAnbar.SelectedToSabtDate) <> "" Then
                     vToSabtDate = Trim(VFilterAsnadAnbar.SelectedToSabtDate)
                 End If
-
                 ''Add By Dehghani 14000220
                 If Trim(VFilterAsnadAnbar.SelectedTaminKonandehSN) <> "" Then
                     vStrFilterSelectedTaminKonandehSN = VFilterAsnadAnbar.SelectedTaminKonandehSN
                 End If
-
+                ''Added By Alipour Nooshin 14031206
+                If Trim(VFilterAsnadAnbar.SelectedNoeKala) <> "" Then
+                    VStrNoeKalaSN = VFilterAsnadAnbar.SelectedNoeKala
+                End If
                 Me.Cursor = Cursors.WaitCursor
-
                 'add by ghasemi 14010425
                 Dim CApp1 As Configuration.CAppSetting = New Configuration.CAppSetting(gVahedeTejariSN, gSM.ApplicationID)
                 Dim gNamayeshMasahat As Boolean = If(CApp1.GetAppConfig("gNamayeshMasahat") Is System.DBNull.Value, False, True)
-
                 GridEX1.RootTable.Columns("Masahat").Visible = False
                 If (gNamayeshMasahat = True) Then
                     If Not GridEX1.RootTable.Columns("Masahat") Is Nothing Then
@@ -440,25 +427,26 @@ Public Class FrmMoroorTafsili
                 '                                 ",'" & vIsMahaleChideman & "', '" & vStrFilterSelectedNoeZayeatSN & "'" &
                 '                                 ",'" & vStrFilterSelectedNoeMarjooeiSN & "', '" & vFromSabtDate & "','" & vToSabtDate & "', '" & vStrFilterSelectedTaminKonandehSN & "'")
 
-                GridEX1.DataSource = cn.SPQuery("_abSpr_MoroorTafsili", gVahedeTejariSN, strAnbars _
-                                                 , vFromDate, vToDate, vStrKalaSN, vSanadStatus _
-                                                 , vNoeTarakoneshKalaNO, strTarakoneshs, vStrFilterSelectedGoroohSN,
-                                                 vGoroohBandiTarakonesh _
-                                                 , vFromShomarehSefaresh, vToShomarehSefaresh, vtozih, vFromSanadNo,
-                                                 vToSanadNo, vTafsiliSN, vFromShomarehMashin, vToShomarehMashin,
-                                                 vFromShomarehBarnameh, vToShomarehBarnameh _
-                                                 , vFromShomarehRahgiri, vToShomarehRahgiri, vStrFilterSelectedChidemanSN,
-                                                 vIsMahaleChideman, vStrFilterSelectedNoeZayeatSN,
-                                                 vStrFilterSelectedNoeMarjooeiSN, vFromSabtDate, vToSabtDate, vStrFilterSelectedTaminKonandehSN)
+                GridEX1.DataSource = cn.SPQuery("_abSpr_MoroorTafsili2", gVahedeTejariSN, strAnbars _
+                                             , vFromDate, vToDate, vStrKalaSN, vSanadStatus _
+                                             , vNoeTarakoneshKalaNO, strTarakoneshs, vStrFilterSelectedGoroohSN,
+                                             vGoroohBandiTarakonesh _
+                                             , vFromShomarehSefaresh, vToShomarehSefaresh, vtozih, vFromSanadNo,
+                                             vToSanadNo, vTafsiliSN, vFromShomarehMashin, vToShomarehMashin,
+                                             vFromShomarehBarnameh, vToShomarehBarnameh _
+                                             , vFromShomarehRahgiri, vToShomarehRahgiri, vStrFilterSelectedChidemanSN,
+                                             vIsMahaleChideman, vStrFilterSelectedNoeZayeatSN,
+                                             vStrFilterSelectedNoeMarjooeiSN, vFromSabtDate, vToSabtDate, vStrFilterSelectedTaminKonandehSN, VStrNoeKalaSN)
 
 
                 RefreshDataSet()
+                'GridEX1.RetrieveStructure()
                 Me.Cursor = Cursors.Default
 
             Else
                 NetSql.Common.CSystem.MsgBox(vErrMsg,
-                           MsgBoxStyle.Critical Or MsgBoxStyle.MsgBoxRtlReading Or MsgBoxStyle.OkOnly Or
-                           MsgBoxStyle.MsgBoxRight, Me.Text)
+                       MsgBoxStyle.Critical Or MsgBoxStyle.MsgBoxRtlReading Or MsgBoxStyle.OkOnly Or
+                       MsgBoxStyle.MsgBoxRight, Me.Text)
             End If
 
             Dim _et As TimeSpan = Now.TimeOfDay
@@ -472,8 +460,6 @@ Public Class FrmMoroorTafsili
             Me.Cursor = Cursors.Default
 
         End Try
-
-
     End Sub
 
     Private Sub setColumnProperties()
@@ -666,6 +652,15 @@ Public Class FrmMoroorTafsili
             GridEX1.RootTable.Columns("SanadMaliVagheeStatus").ColumnType = Janus.Windows.GridEX.ColumnType.CheckBox
         End If
 
+        Dim gNamayeshNoeKala As Boolean = False
+        gNamayeshNoeKala = If(CApp1.GetAppConfig("vfgNoeKala") Is System.DBNull.Value, False, True)
+        If gNamayeshNoeKala Then
+            With GridEX1.RootTable.Columns()
+                With .Add("NoeKalaDS", Janus.Windows.GridEX.ColumnType.Text)
+                    .Caption = "نوع کالا"
+                End With
+            End With
+        End If
     End Sub
 
     Private Sub btnFilter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
@@ -694,6 +689,7 @@ Public Class FrmMoroorTafsili
             .VisibleShomarehRahgiri = True
             .VisibleSabtDate = True
             .VisibleTaminKonandeh = True
+            .VisibleNoeKala = True
             '//By Izadpanah-851208
             .EnableFromSabtDate = True
             .ShowDialog(Me)
@@ -711,17 +707,20 @@ Public Class FrmMoroorTafsili
         GridEX1.RootTable.Columns("NerkhFaktor").Visible = True
         GridEX1.RootTable.Columns("GheymateTadarokatVaredeh").Visible = True
         GridEX1.RootTable.Columns("GheymateTadarokatSadereh").Visible = True
+        GridEX1.RootTable.Columns("").Visible = True
 
     End Sub
 
     Private Sub GridEX1_DoubleClick(sender As Object, e As EventArgs) Handles GridEX1.DoubleClick
-
         Dim sanadDate As String
         Dim taraKoneshSN As String
         Dim _Row As Janus.Windows.GridEX.GridEXRow
         _Row = GridEX1.CurrentRow
         sanadDate = _Row.Cells("MahiatKalaDS").Value
         taraKoneshSN = _Row.Cells("MahiatKalaDS").Value
+    End Sub
+
+    Private Sub btnSettingList_ChangeUICues(sender As Object, e As UICuesEventArgs) Handles btnSettingList.ChangeUICues
 
     End Sub
 End Class
