@@ -427,7 +427,7 @@ Public Class FrmMoroorTafsili
                 '                                 ",'" & vIsMahaleChideman & "', '" & vStrFilterSelectedNoeZayeatSN & "'" &
                 '                                 ",'" & vStrFilterSelectedNoeMarjooeiSN & "', '" & vFromSabtDate & "','" & vToSabtDate & "', '" & vStrFilterSelectedTaminKonandehSN & "'")
 
-                GridEX1.DataSource = cn.SPQuery("_abSpr_MoroorTafsili2", gVahedeTejariSN, strAnbars _
+                GridEX1.DataSource = cn.SPQuery("_abSpr_MoroorTafsili", gVahedeTejariSN, strAnbars _
                                              , vFromDate, vToDate, vStrKalaSN, vSanadStatus _
                                              , vNoeTarakoneshKalaNO, strTarakoneshs, vStrFilterSelectedGoroohSN,
                                              vGoroohBandiTarakonesh _
@@ -436,7 +436,7 @@ Public Class FrmMoroorTafsili
                                              vFromShomarehBarnameh, vToShomarehBarnameh _
                                              , vFromShomarehRahgiri, vToShomarehRahgiri, vStrFilterSelectedChidemanSN,
                                              vIsMahaleChideman, vStrFilterSelectedNoeZayeatSN,
-                                             vStrFilterSelectedNoeMarjooeiSN, vFromSabtDate, vToSabtDate, vStrFilterSelectedTaminKonandehSN, VStrNoeKalaSN)
+                                             vStrFilterSelectedNoeMarjooeiSN, vFromSabtDate, vToSabtDate, vStrFilterSelectedTaminKonandehSN)
 
 
                 RefreshDataSet()
