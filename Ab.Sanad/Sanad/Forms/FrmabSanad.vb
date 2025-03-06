@@ -3970,33 +3970,7 @@ Friend Class FrmSanad
                 End Try
 
             End If
-            'If aCommand = EnumCommands.cmSave AndAlso TarakoneshSN = EnumTarakoneshSN.RESIDE_11_HAMLE_MOSTAGHIM Then
-            '    If CSystem.MsgBox("توجه داشته باشید در صورتی که سند مربوطه <حمل مستقیم به مشتری> می باشد کد مشتری می بایست در بخش طرف حساب2 درج گردد" + vbNewLine + "آیا مایل به ادامه عملیات ذخیره سازی هستید؟", MsgBoxStyle.YesNo, "حمل مستقیم") = MsgBoxResult.No Then
-            '        aCancel = True
-            '        Exit Sub
-            '    End If
 
-            'End If
-
-            'If TarakoneshSN = EnumTarakoneshSN.RESIDE_39_MARJOOEI_AZ_TOZIE And _
-            '  Val(DVabSanad.Fields("ShomarehSefaresh").Value) <> 0 Then
-            '  vShomarehSefaresh = Val(DVabSanad.Fields("ShomarehSefaresh").Value)
-
-            '  Try
-            '    DV = cn.ExecuteQuery("	Select Distinct foMoshtari.TafsiliSn AS TafsiliSN, maTafsili.TafsiliNO + ' _ ' + maTafsili.TafsiliDS  AS TafsiliDS " & _
-            '                              " FROM toVw_toBargeMarjooei " & _
-            '                              " join foFactor ON toVw_toBargeMarjooei.FactorSN = foFactor.FactorSN  " & _
-            '                              " join foMoshtariInfo ON foMoshtariInfo.MoshtariInfoSN = foFactor.MoshtariInfoSN " & _
-            '                              " join foMoshtari ON foMoshtariInfo.MoshtariSN = foMoshtari.MoshtariSN " & _
-            '                              " join maTafsili ON maTafsili.TafsiliSN = foMoshtari.TafsiliSN " & _
-            '                              " Where BargeMarjooeiStatus = 8  " & _
-            '                              "	AND BargeMarjooeiNo is not null  " & _
-            '                              "	AND BargeMarjooeiNo = " & vShomarehSefaresh)
-            '    DVabSanad.Fields("TafsiliSN").Value = DV.Item(0)("TafsiliSN")
-            '  Catch ex As Exception
-            '    MsgBox("اطلاعات مشتري قابل دسترسي نمي باشد")
-            '  End Try
-            'End If
         End If
 
         If aCommand = EnumCommands.cmPrint Then
