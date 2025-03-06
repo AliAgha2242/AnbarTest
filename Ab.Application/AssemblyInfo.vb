@@ -33,9 +33,9 @@ Imports System.Runtime.InteropServices
 ' 2.8.0 تغییر در فرم انتخاب درخواست در ثبت رسید 
 
 
-<Assembly: AssemblyVersion("10.10.153")>
+<Assembly: AssemblyVersion("10.10.154")>
 
-
+'10.10.154  fix problem Tavakoli
 '10.9.3 14010724 Dehghani-   تغییرات کارتابل ضایعات
 '10.9.1 14010716 Dehghani-   ماژول بارکدخوان
 '10.8.1 14010412 Dehghani-   ماژول بارکدخوان
