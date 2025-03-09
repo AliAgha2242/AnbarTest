@@ -707,7 +707,7 @@ Public Class FrmMoroorTafsili
         GridEX1.RootTable.Columns("NerkhFaktor").Visible = True
         GridEX1.RootTable.Columns("GheymateTadarokatVaredeh").Visible = True
         GridEX1.RootTable.Columns("GheymateTadarokatSadereh").Visible = True
-        GridEX1.RootTable.Columns("").Visible = True
+        'GridEX1.RootTable.Columns("").Visible = True
 
     End Sub
 
@@ -720,7 +720,7 @@ Public Class FrmMoroorTafsili
         taraKoneshSN = _Row.Cells("MahiatKalaDS").Value
     End Sub
 
-    Private Sub btnSettingList_ChangeUICues(sender As Object, e As UICuesEventArgs) Handles btnSettingList.ChangeUICues
+    'Private Sub btnSettingList_ChangeUICues(sender As Object, e As UICuesEventArgs) Handles btnSettingList.ChangeUICues
 
-    End Sub
+    'End Sub
 End Class
