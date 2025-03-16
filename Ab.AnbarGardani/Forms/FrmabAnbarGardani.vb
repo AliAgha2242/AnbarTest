@@ -3198,7 +3198,7 @@ Friend Class FrmabAnbarGardani
                 Exit Sub
             End If
 
-
+            'SaveKalaInExcel Fixes
             vErrWithDataTableKala = BRL.ExistKalaInasnadButNotInabAnbarKala(gAnbarSN, gHesabdariSalFDate, gHesabdariSalTDate, cn)
             If vErrWithDataTableKala.Item1 <> "" Then
                 NetSql.Common.CSystem.MsgBox("کالاهای" + vErrWithDataTableKala.Item1 + vbCrLf + "درسال جاری انبار گردش دارند ولی در لیست کالاهای انبار ثبت نشده اند",
