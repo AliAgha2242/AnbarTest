@@ -3183,6 +3183,7 @@ Friend Class FrmabAnbarGardani
 
             Dim vli_NewVaziat As Short
             Dim vErrMsg As String = ""
+            Dim vErrWithDataTableKala As (String, DataTable)
             If Val(DVabAnbarGardani.Fields("AnbarGardaniStatus").Value) = 1 Then
                 vli_NewVaziat = 4
             Else
@@ -3197,12 +3198,29 @@ Friend Class FrmabAnbarGardani
                 Exit Sub
             End If
 
-
-            vErrMsg = BRL.ExistKalaInasnadButNotInabAnbarKala(gAnbarSN, gHesabdariSalFDate, gHesabdariSalTDate, cn)
-            If vErrMsg <> "" Then
-                NetSql.Common.CSystem.MsgBox("کالای" + vErrMsg + vbCrLf + "درسال جاری انبار گردش دارد ولی در لیست کالاهای انبار ثبت نشده است",
+            'SaveKalaInExcel Fixes
+            vErrWithDataTableKala = BRL.ExistKalaInasnadButNotInabAnbarKala(gAnbarSN, gHesabdariSalFDate, gHesabdariSalTDate, cn)
+            If vErrWithDataTableKala.Item1 <> "" Then
+                NetSql.Common.CSystem.MsgBox("کالاهای" + vErrWithDataTableKala.Item1 + vbCrLf + "درسال جاری انبار گردش دارند ولی در لیست کالاهای انبار ثبت نشده اند",
                            MsgBoxStyle.OkOnly + IIf(vli_NewVaziat <> 1, MsgBoxStyle.Critical, MsgBoxStyle.Exclamation) +
                            MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.MsgBoxRight, Me.Text)
+
+                If vErrWithDataTableKala.Item2 IsNot Nothing Then
+                    If NetSql.Common.CSystem.MsgBox("تعداد کالاها بیشتر از 10 عدد میباشد آیا مایل به ذخیره سازی هستید ؟",
+                           MsgBoxStyle.Question + MsgBoxStyle.YesNo _
+                           + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.MsgBoxRight _
+                           , Me.Text) = MsgBoxResult.Yes Then
+                        Dim SelectFolder = New FolderBrowserDialog()
+                        SelectFolder.Description = "یک پوشه را انتخاب کنید"
+                        SelectFolder.RootFolder = Environment.SpecialFolder.Desktop
+                        SelectFolder.ShowNewFolderButton = True
+
+                        If SelectFolder.ShowDialog() = DialogResult.OK Then
+                            Dim selectedFolderPath As String = SelectFolder.SelectedPath
+                            BRL.SaveKalaThatsNotInAnbarKala(vErrWithDataTableKala.Item2, selectedFolderPath)
+                        End If
+                    End If
+                End If
                 Exit Sub
             End If
 
@@ -3526,7 +3544,6 @@ Friend Class FrmabAnbarGardani
                 .FetchCurRecord()
                 .AutoFetchCurrentRow = False
             End With
-
         End If
         System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
 
