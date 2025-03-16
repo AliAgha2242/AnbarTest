@@ -88,10 +88,6 @@ Public Class ClsDataAccessRule
             Throw New System.Exception(ex.Message)
         End Try
     End Function
-    Public Function SaveKalaThatsNotInAnbarKala(ByVal Table As DataTable)
-        Return _ClsDataAccess.GetExcelKalaNotInAnbar(Table)
-    End Function
-
     Public Function GetMojoodiWithEnghezaDate(VahedeTejariSN As Decimal, vVahedeTejariSN As String, TaminKonandehSN As String, NoeTaminKonandehSN As String, KalaSN As String, NoeMahsoolSN As String, _IsRooz As Integer, _TRooz As Integer, TaEnghezaDate As String, ByVal cn As NetSql.DB.CConnection, ByVal tp As NetSql.Common.CSystem) As DataView
         Try
             Return _ClsDataAccess.GetMojoodiWithEnghezaDate(VahedeTejariSN, vVahedeTejariSN, TaminKonandehSN, NoeTaminKonandehSN, KalaSN, NoeMahsoolSN, _IsRooz, _TRooz, TaEnghezaDate, cn, tp)

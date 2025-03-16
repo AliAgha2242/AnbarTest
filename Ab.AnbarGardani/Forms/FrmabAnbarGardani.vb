@@ -2763,6 +2763,15 @@ Friend Class FrmabAnbarGardani
         Return _ErrMsg
 
     End Function
+    '' Made by AliAsghar Tavakoli
+    Function GetExcelKalaNotInAnbar(ByVal table As DataTable)
+        Try
+            Dim _SharedItems As New Minoo.Applications.ProductionPlanning.Common.SharedItems
+            _SharedItems.ExcellExport("کالاهای گردش دار ", table)
+        Catch ex As Exception
+            NetSql.Common.CSystem.MsgBox("اشکالی در ساخت فایل اکسل به وجود آمده است.", MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.Exclamation, "خطا")
+        End Try
+    End Function
 
 #End Region
 
@@ -3218,7 +3227,7 @@ Friend Class FrmabAnbarGardani
                            + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.MsgBoxRight _
                            , Me.Text) = MsgBoxResult.Yes Then
                         vDataTableKalaNotInAnbarKala.Columns(0).ColumnName = "نام کالا"
-                        BRL.SaveKalaThatsNotInAnbarKala(vDataTableKalaNotInAnbarKala)
+                        GetExcelKalaNotInAnbar(vDataTableKalaNotInAnbarKala)
                     End If
                 End If
                 Exit Sub
