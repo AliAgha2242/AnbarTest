@@ -489,7 +489,7 @@ Public Class ClsDataAccess : Implements IClsDataAccess
         Dim Cmnd As New SqlCommand
         Dim ds As New DataSet
         Try
-            Dim _Cstr As String = "Select Top 1 Cast(KalaNo As VArchar(1000))+'.'+ KalaDS KalaDS from absanad " &
+            Dim _Cstr As String = "Select Top 10 Cast(KalaNo As VArchar(1000))+'.'+ KalaDS KalaDS from absanad " &
             " Inner join absanadha on absanad.sanadsn=abSanadHa.SanadSN " &
             " Inner join Pakala on absanadha.KalaSN=Pakala.KalaSN " &
             " Left join abAnbarKala  on (absanadha.KalaSN=abAnbarKala.KalaSN And absanad.AnbarSN=abAnbarKala.AnbarSN) " &
