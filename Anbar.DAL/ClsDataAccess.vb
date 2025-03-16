@@ -13,7 +13,7 @@ Public Interface IClsDataAccess
     Sub InsertDarkhastKaladetail(DarkhastSN As Decimal, AnbarSN As Decimal, Ds As DataSet, cn As NetSql.DB.CConnection, UserID_Name As String)
     Function GetMojoodikalaphiziki(ByVal VahedetejariSn As Decimal, ByVal AnbarSn As Decimal, ByVal KalaSn As Decimal, ByVal fdate As String, ByVal tdate As String, cn As NetSql.DB.CConnection) As DataView
     Function IsTarakoneshInTarakoneshGorooh(ByVal _TarakoneshGorooh As Int16, ByVal _TarakoneshSN As Int16, cn As NetSql.DB.CConnection) As Boolean
-    Function ExistKalaInasnadButNotInabAnbarKala(ByVal AnbarSn As Decimal, ByVal FromDate As String, ByVal ToDate As String, cn As NetSql.DB.CConnection) As (String, DataTable)
+    Function ExistKalaInasnadButNotInabAnbarKala(ByVal AnbarSn As Decimal, ByVal FromDate As String, ByVal ToDate As String, cn As NetSql.DB.CConnection) As DataTable
     Function GetMojoodiWithEnghezaDate(VahedeTejariSN As Decimal, vVahedeTejariSN As String, TaminKonandehSN As String, NoeTaminKonandehSN As String, KalaSN As String, NoeMahsoolSN As String, _IsRooz As Integer, _TRooz As Integer, TaEnghezaDate As String, ByVal cn As NetSql.DB.CConnection, ByVal tp As NetSql.Common.CSystem) As DataView
     Function GetMojoodiWithEnghezaDate_Tarakonesh(VahedeTejariSN As Decimal, vVahedeTejariSN As String, TaminKonandehSN As String, NoeTaminKonandehSN As String, KalaSN As String, NoeMahsoolSN As String, _IsRooz As Integer, _TRooz As Integer, TaEnghezaDate As String, TarakoneshSN As String, ByVal cn As NetSql.DB.CConnection, ByVal tp As NetSql.Common.CSystem) As DataView
 
@@ -479,7 +479,7 @@ Public Class ClsDataAccess : Implements IClsDataAccess
 
 
     'Edited by AliAsghar Tavakoli
-    Public Function ExistKalaInasnadButNotInabAnbarKala(ByVal _AnbarSn As Decimal, ByVal _FromDate As String, ByVal _ToDate As String, cn As NetSql.DB.CConnection) As (String, DataTable) _
+    Public Function ExistKalaInasnadButNotInabAnbarKala(ByVal _AnbarSn As Decimal, ByVal _FromDate As String, ByVal _ToDate As String, cn As NetSql.DB.CConnection) As DataTable _
     Implements IClsDataAccess.ExistKalaInasnadButNotInabAnbarKala
         ''''' developed by ghafari 911102
         Dim mcn As New SqlClient.SqlConnection
@@ -504,20 +504,9 @@ Public Class ClsDataAccess : Implements IClsDataAccess
             sda.SelectCommand = Cmnd
             sda.Fill(ds)
             If ds.Tables(0).Rows.Count > 0 Then
-                Dim kaladss As String = ""
-                For index = 0 To ds.Tables(0).Rows.Count - 1
-                    If (index >= 10) Then
-                        Exit For
-                    End If
-                    kaladss = kaladss & vbCrLf & ds.Tables(0).Rows(index).Item("KalaDS").ToString
-                Next
-                If (ds.Tables(0).Rows.Count > 10) Then
-                    Return (kaladss, ds.Tables(0))
-                Else
-                    Return (kaladss, Nothing)
-                End If
+                Return ds.Tables(0)
             Else
-                Return ("", Nothing)
+                Return Nothing
             End If
 
         Catch ex As System.Exception
@@ -528,32 +517,12 @@ Public Class ClsDataAccess : Implements IClsDataAccess
 
     End Function
     '' Made by AliAsghar Tavakoli
-    Function GetExcelKalaNotInAnbar(ByVal table As DataTable, ByVal FolderPath As String)
+    Function GetExcelKalaNotInAnbar(ByVal table As DataTable)
         Try
-            Dim xlApp As New Excel.Application
-            Dim xlWorkbook As Excel.Workbook = xlApp.Workbooks.Add()
-            Dim xlWorksheet As Excel.Worksheet = CType(xlWorkbook.Sheets("sheet1"), Excel.Worksheet)
-
-            For index = 0 To table.Rows.Count - 1
-                xlWorksheet.Cells(index + 1, 1) = table.Rows(index)("KALADS")
-            Next
-            Dim path = FolderPath & "\" & "Kala.xlsx"
-            If (File.Exists(path)) Then
-                Dim rand As Random = New Random()
-                path = FolderPath & "\Kala_" & rand.Next(10, 1000) & ".xlsx"
-            End If
-            xlWorksheet.SaveAs(path)
-            xlWorkbook.Close()
-            xlApp.Quit()
-            xlApp.Application.Quit()
-            xlApp = Nothing
-            xlWorkbook = Nothing
-            xlWorksheet = Nothing
+            Dim _SharedItems As New Minoo.Applications.ProductionPlanning.Common.SharedItems
+            _SharedItems.ExcellExport("کالاهای گردش دار ", table)
         Catch ex As Exception
-            NetSql.Common.CSystem.MsgBox("اشکال در ذخیره فایل")
-        Finally
-            GC.Collect()
-            GC.WaitForPendingFinalizers()
+            NetSql.Common.CSystem.MsgBox("اشکالی در ساخت فایل اکسل به وجود آمده است.", MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.Exclamation, "خطا")
         End Try
 
 
