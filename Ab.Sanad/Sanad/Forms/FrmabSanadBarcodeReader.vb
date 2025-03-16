@@ -267,11 +267,11 @@ Public Class FrmabSanadBarcodeReader
         '
         Me.TxtFromDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtFromDate.IsDefault = True
-        Me.TxtFromDate.Location = New System.Drawing.Point(159, 18)
+        Me.TxtFromDate.Location = New System.Drawing.Point(159, 17)
         Me.TxtFromDate.Mask = "9900/90/90"
         Me.TxtFromDate.Name = "TxtFromDate"
         Me.TxtFromDate.SelectedDateTimeShamsi = "    /  /"
-        Me.TxtFromDate.Size = New System.Drawing.Size(95, 20)
+        Me.TxtFromDate.Size = New System.Drawing.Size(92, 20)
         Me.TxtFromDate.TabIndex = 176
         Me.TxtFromDate.Theme = FarsiLibrary.Win.Enums.ThemeTypes.Office2003
         '
@@ -761,8 +761,10 @@ Public Class FrmabSanadBarcodeReader
         Me.LinkExportExcelBarcodeTajmie.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold) 'HB_14030410
         Me.LinkExportExcelBarcodeMaster.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold) 'HB_14030410
 
+
         TxtToDate.Text = MiladiToShamsi(Today(), EnumDateFormat.dfFullYear)
         TxtFromDate.Text = TxtToDate.Text.Substring(0, 8) + "01"
+
 
         Dim Fdate, Tdate As String
         Fdate = TxtFromDate.Text.Replace("/", "")

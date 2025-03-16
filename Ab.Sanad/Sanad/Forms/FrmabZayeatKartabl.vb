@@ -420,6 +420,7 @@ Public Class FrmabZayeatKartabl
         TxtFromDate.Text = MiladiToShamsi(Today(), EnumDateFormat.dfFullYear).Substring(0, 4) + "0101"
         TxtToDate.Text = MiladiToShamsi(Today(), EnumDateFormat.dfFullYear)
 
+
         Dim Fdate, Tdate As String
         Fdate = TxtFromDate.Text.Replace("/", "")
         Tdate = TxtToDate.Text.Replace("/", "")
