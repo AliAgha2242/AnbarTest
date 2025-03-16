@@ -81,7 +81,7 @@ Public Class ClsDataAccessRule
         End Try
     End Function
 
-    Public Function ExistKalaInasnadButNotInabAnbarKala(ByVal _AnbarSn As Decimal, ByVal _FromDate As String, ByVal _ToDate As String, cn As NetSql.DB.CConnection) As String
+    Public Function ExistKalaInasnadButNotInabAnbarKala(ByVal _AnbarSn As Decimal, ByVal _FromDate As String, ByVal _ToDate As String, cn As NetSql.DB.CConnection) As (String, DataTable)
         Try
 
             Return _ClsDataAccess.ExistKalaInasnadButNotInabAnbarKala(_AnbarSn, _FromDate, _ToDate, cn)
@@ -89,6 +89,9 @@ Public Class ClsDataAccessRule
         Catch ex As System.Exception
             Throw New System.Exception(ex.Message)
         End Try
+    End Function
+    Public Function SaveKalaThatsNotInAnbarKala(ByVal Table As DataTable, ByVal FolderPath As String)
+        Return _ClsDataAccess.GetExcelKalaNotInAnbar(Table, FolderPath)
     End Function
 
     Public Function GetMojoodiWithEnghezaDate(VahedeTejariSN As Decimal, vVahedeTejariSN As String, TaminKonandehSN As String, NoeTaminKonandehSN As String, KalaSN As String, NoeMahsoolSN As String, _IsRooz As Integer, _TRooz As Integer, TaEnghezaDate As String, ByVal cn As NetSql.DB.CConnection, ByVal tp As NetSql.Common.CSystem) As DataView
