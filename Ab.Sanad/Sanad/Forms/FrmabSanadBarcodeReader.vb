@@ -761,8 +761,17 @@ Public Class FrmabSanadBarcodeReader
         Me.LinkExportExcelBarcodeTajmie.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold) 'HB_14030410
         Me.LinkExportExcelBarcodeMaster.Font = New System.Drawing.Font("Tahoma", 9.0!, FontStyle.Bold) 'HB_14030410
 
+        TxtToDate.FormatInfo = FarsiLibrary.Win.Enums.FormatInfoTypes.ShortDate
+        TxtFromDate.FormatInfo = FarsiLibrary.Win.Enums.FormatInfoTypes.ShortDate
+
+        'TxtToDate.SelectedDateTime = Date.Today
+        'TxtFromDate.SelectedDateTime = Date.Today
+
         TxtToDate.Text = MiladiToShamsi(Today(), EnumDateFormat.dfFullYear)
         TxtFromDate.Text = TxtToDate.Text.Substring(0, 8) + "01"
+
+
+
 
         Dim Fdate, Tdate As String
         Fdate = TxtFromDate.Text.Replace("/", "")
