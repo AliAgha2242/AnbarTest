@@ -34,7 +34,7 @@ Imports System.Runtime.InteropServices
 
 
 <Assembly: AssemblyVersion("10.10.158")>
-'10.10.158 for TaghirNerkhAvalDOreh And AddAccessToTheNewConfigForMaliAccess 
+'10.10.158 for TaghirNerkhAvalDOreh And AddAccessToTheNewConfigForMaliAccess --
 
 '10.10.154  fix problem Tavakoli
 '10.9.3 14010724 Dehghani-   تغییرات کارتابل ضایعات
