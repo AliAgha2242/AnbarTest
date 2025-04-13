@@ -2763,15 +2763,6 @@ Friend Class FrmabAnbarGardani
         Return _ErrMsg
 
     End Function
-    '' Made by AliAsghar Tavakoli
-    Function GetExcelKalaNotInAnbar(ByVal table As DataTable)
-        Try
-            Dim _SharedItems As New Minoo.Applications.ProductionPlanning.Common.SharedItems
-            _SharedItems.ExcellExport("کالاهای گردش دار ", table)
-        Catch ex As Exception
-            NetSql.Common.CSystem.MsgBox("اشکالی در ساخت فایل اکسل به وجود آمده است.", MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.Exclamation, "خطا")
-        End Try
-    End Function
 
 #End Region
 
@@ -3192,7 +3183,6 @@ Friend Class FrmabAnbarGardani
 
             Dim vli_NewVaziat As Short
             Dim vErrMsg As String = ""
-            Dim vDataTableKalaNotInAnbarKala As DataTable
             If Val(DVabAnbarGardani.Fields("AnbarGardaniStatus").Value) = 1 Then
                 vli_NewVaziat = 4
             Else
@@ -3206,30 +3196,13 @@ Friend Class FrmabAnbarGardani
                            , Me.Text) <> MsgBoxResult.Yes Then
                 Exit Sub
             End If
-            Dim i As Integer
-            'SaveKalaInExcel Fixes
-            vDataTableKalaNotInAnbarKala = BRL.ExistKalaInasnadButNotInabAnbarKala(gAnbarSN, gHesabdariSalFDate, gHesabdariSalTDate, cn)
-            If vDataTableKalaNotInAnbarKala IsNot Nothing Then
-                Dim kaladss As String = ""
-                For i = 0 To vDataTableKalaNotInAnbarKala.Rows.Count - 1
-                    If (i >= 10) Then
-                        Exit For
-                    End If
-                    kaladss = kaladss & vbCrLf & vDataTableKalaNotInAnbarKala.Rows(i).Item("KalaDS").ToString
-                Next
-                NetSql.Common.CSystem.MsgBox("کالاهای" + kaladss + vbCrLf + "درسال جاری انبار گردش دارند ولی در لیست کالاهای انبار ثبت نشده اند",
+
+
+            vErrMsg = BRL.ExistKalaInasnadButNotInabAnbarKala(gAnbarSN, gHesabdariSalFDate, gHesabdariSalTDate, cn)
+            If vErrMsg <> "" Then
+                NetSql.Common.CSystem.MsgBox("کالای" + vErrMsg + vbCrLf + "درسال جاری انبار گردش دارد ولی در لیست کالاهای انبار ثبت نشده است",
                            MsgBoxStyle.OkOnly + IIf(vli_NewVaziat <> 1, MsgBoxStyle.Critical, MsgBoxStyle.Exclamation) +
                            MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.MsgBoxRight, Me.Text)
-
-                If vDataTableKalaNotInAnbarKala.Rows.Count > 10 Then
-                    If NetSql.Common.CSystem.MsgBox("تعداد کالاها بیشتر از 10 عدد میباشد آیا مایل به ذخیره سازی هستید ؟",
-                           MsgBoxStyle.Question + MsgBoxStyle.YesNo _
-                           + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.MsgBoxRight _
-                           , Me.Text) = MsgBoxResult.Yes Then
-                        vDataTableKalaNotInAnbarKala.Columns(0).ColumnName = "نام کالا"
-                        GetExcelKalaNotInAnbar(vDataTableKalaNotInAnbarKala)
-                    End If
-                End If
                 Exit Sub
             End If
 
@@ -3553,6 +3526,7 @@ Friend Class FrmabAnbarGardani
                 .FetchCurRecord()
                 .AutoFetchCurrentRow = False
             End With
+
         End If
         System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
 

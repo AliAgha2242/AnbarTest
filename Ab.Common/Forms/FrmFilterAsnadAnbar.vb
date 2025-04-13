@@ -331,7 +331,7 @@ Public Class FrmFilterAsnadAnbar
         End With
         'DvTaghazaKonandeh
         ' تنظيم ديتاويو ابزار با جدول مربوطه و فيلدهاي آن به همراه شروط احتمالي
-        'DvTarakonesh
+        '           DvTarakonesh
         DvTarakonesh = New CDataView(cn)
         With DvTarakonesh
             .Init(pnlGridTarakoneshSN, , pnlCmdTarakoneshSN, pnlNTarakoneshSN, EnumButtonOptions.boCmdFilter _
@@ -414,6 +414,7 @@ Public Class FrmFilterAsnadAnbar
 
     'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
+
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.

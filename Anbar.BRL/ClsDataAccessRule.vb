@@ -81,13 +81,16 @@ Public Class ClsDataAccessRule
         End Try
     End Function
 
-    Public Function ExistKalaInasnadButNotInabAnbarKala(ByVal _AnbarSn As Decimal, ByVal _FromDate As String, ByVal _ToDate As String, cn As NetSql.DB.CConnection) As DataTable
+    Public Function ExistKalaInasnadButNotInabAnbarKala(ByVal _AnbarSn As Decimal, ByVal _FromDate As String, ByVal _ToDate As String, cn As NetSql.DB.CConnection) As String
         Try
+
             Return _ClsDataAccess.ExistKalaInasnadButNotInabAnbarKala(_AnbarSn, _FromDate, _ToDate, cn)
+
         Catch ex As System.Exception
             Throw New System.Exception(ex.Message)
         End Try
     End Function
+
     Public Function GetMojoodiWithEnghezaDate(VahedeTejariSN As Decimal, vVahedeTejariSN As String, TaminKonandehSN As String, NoeTaminKonandehSN As String, KalaSN As String, NoeMahsoolSN As String, _IsRooz As Integer, _TRooz As Integer, TaEnghezaDate As String, ByVal cn As NetSql.DB.CConnection, ByVal tp As NetSql.Common.CSystem) As DataView
         Try
             Return _ClsDataAccess.GetMojoodiWithEnghezaDate(VahedeTejariSN, vVahedeTejariSN, TaminKonandehSN, NoeTaminKonandehSN, KalaSN, NoeMahsoolSN, _IsRooz, _TRooz, TaEnghezaDate, cn, tp)
