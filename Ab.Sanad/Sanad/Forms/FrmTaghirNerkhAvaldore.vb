@@ -28,7 +28,6 @@ Public Class FrmTaghirNerkhAvaldore
 
     Private Shared m_vb6FormDefInstance As FrmTaghirNerkhAvaldore
     Private Shared m_InitializingDefInstance As Boolean
-
     Public Shared Property DefInstance() As FrmTaghirNerkhAvaldore
         Get
             If m_vb6FormDefInstance Is Nothing OrElse m_vb6FormDefInstance.IsDisposed Then
@@ -393,6 +392,7 @@ Public Class FrmTaghirNerkhAvaldore
             Exit Sub
         End Try
 
+
         For Each col As DataColumn In DS.Tables("Table1").Columns
             If col.ColumnName = "ShomarehRahgiri" And reportType = 1 Then
 
@@ -400,8 +400,6 @@ Public Class FrmTaghirNerkhAvaldore
                 Exit Sub
             End If
         Next
-
-
 
         Dim dstable As DataTable
         dstable = DS.Tables("Table1").Copy()
@@ -411,10 +409,22 @@ Public Class FrmTaghirNerkhAvaldore
                                                                                             " And sanaddate Between " & gHesabdariSalFDate & " And " & gHesabdariSalTDate)
 
 
+        If reportType = 2 Then
+            For Each item As DataRow In dstable.Rows
+                If String.IsNullOrWhiteSpace(item("ShomarehRahgiri").ToString()) Then
+                    CSystem.MsgBox("خطا در شماره رهگیری " + Environment.NewLine + "کاربر گرامی در صورت وجود کالاها با شماره رهگیری ستاره دار ، میبایست این کالا ها از فایل حذف و به صورت دستی ثبت شوند")
+                    Exit Sub
+                End If
+            Next
+        End If
+
+
         'برای جلوگیری از درج کالاهایکه در موجودی اول دوره وجود ندارند باید تفاوت ها پیدا و در صورت وجود گزارش شوند
 
         Dim kalaInMojodiAvalDoure As List(Of String) = dsKA.Cast(Of DataRowView)().Select(Function(row) row("kalaNo").ToString()).ToList()
         Dim KalaInExcelFile As List(Of String) = dstable.AsDataView().Cast(Of DataRowView)().Select(Function(row) row("kalaNo").ToString()).ToList()
+        KalaInExcelFile = KalaInExcelFile.Select(Function(kala) kala.Trim()).ToList()  'جهت وجود شماره کالاهایی با فاصله در دوطرف 
+
         Dim KalaThatsNotInAvaleDoureh As ArrayList = New ArrayList()
 
         For Each item As String In KalaInExcelFile
@@ -431,7 +441,6 @@ Public Class FrmTaghirNerkhAvaldore
         End If
 
         '-=-==-=-=-=-==-=--==-=-=-=-==-
-
 
 
         'بررسی اکسل و حذف رکوردهای با مقدار خالی
