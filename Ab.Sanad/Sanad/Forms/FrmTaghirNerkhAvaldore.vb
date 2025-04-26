@@ -11,6 +11,7 @@ Imports System.Globalization
 Imports System.Windows.Forms
 Imports System.Collections.Generic
 Imports Janus.Windows.GridEX
+Imports System.Linq
 
 Public Class FrmTaghirNerkhAvaldore
     Inherits System.Windows.Forms.Form
@@ -27,7 +28,6 @@ Public Class FrmTaghirNerkhAvaldore
 
     Private Shared m_vb6FormDefInstance As FrmTaghirNerkhAvaldore
     Private Shared m_InitializingDefInstance As Boolean
-
     Public Shared Property DefInstance() As FrmTaghirNerkhAvaldore
         Get
             If m_vb6FormDefInstance Is Nothing OrElse m_vb6FormDefInstance.IsDisposed Then
@@ -392,6 +392,7 @@ Public Class FrmTaghirNerkhAvaldore
             Exit Sub
         End Try
 
+
         For Each col As DataColumn In DS.Tables("Table1").Columns
             If col.ColumnName = "ShomarehRahgiri" And reportType = 1 Then
 
@@ -400,14 +401,47 @@ Public Class FrmTaghirNerkhAvaldore
             End If
         Next
 
-
-
         Dim dstable As DataTable
         dstable = DS.Tables("Table1").Copy()
 
         Dim dsKA As DataView = cn.ExecuteQuery("select KalaSN, KalaNo, kalads, KalaPhizikiSN, ShomarehRahgiri, Nerkh  from abVw_ChangeNerkhAvaldore where VahedeTejariSN = " + CStr(gVahedeTejariSN) &
                                                                                                          " And AnbarSN = " + CStr(gAnbarSN) &
-                                                                                                         " And sanaddate Between " & gHesabdariSalFDate & " And " & gHesabdariSalTDate)
+                                                                                            " And sanaddate Between " & gHesabdariSalFDate & " And " & gHesabdariSalTDate)
+
+
+        If reportType = 2 Then
+            For Each item As DataRow In dstable.Rows
+                If String.IsNullOrWhiteSpace(item("ShomarehRahgiri").ToString()) Then
+                    CSystem.MsgBox("خطا در شماره رهگیری " + Environment.NewLine + "کاربر گرامی در صورت وجود کالاها با شماره رهگیری ستاره دار ، میبایست این کالا ها از فایل حذف و به صورت دستی ثبت شوند")
+                    Exit Sub
+                End If
+            Next
+        End If
+
+
+        'برای جلوگیری از درج کالاهایکه در موجودی اول دوره وجود ندارند باید تفاوت ها پیدا و در صورت وجود گزارش شوند
+
+        Dim kalaInMojodiAvalDoure As List(Of String) = dsKA.Cast(Of DataRowView)().Select(Function(row) row("kalaNo").ToString()).ToList()
+        Dim KalaInExcelFile As List(Of String) = dstable.AsDataView().Cast(Of DataRowView)().Select(Function(row) row("kalaNo").ToString()).ToList()
+        KalaInExcelFile = KalaInExcelFile.Select(Function(kala) kala.Trim()).ToList()  'جهت وجود شماره کالاهایی با فاصله در دوطرف 
+
+        Dim KalaThatsNotInAvaleDoureh As ArrayList = New ArrayList()
+
+        For Each item As String In KalaInExcelFile
+            If (Not kalaInMojodiAvalDoure.Contains(item)) AndAlso item.Length > 0 Then
+                KalaThatsNotInAvaleDoureh.Add(item)
+            End If
+        Next
+
+
+        If KalaThatsNotInAvaleDoureh.Count >= 1 Then
+            Dim Message As String = "شماره کالاهای ذیل در سند موجودی اول دوره یافت نشد" + Environment.NewLine + Environment.NewLine + String.Join(",", KalaThatsNotInAvaleDoureh.ToArray())
+            CSystem.MsgBox(Message)
+            Exit Sub
+        End If
+
+        '-=-==-=-=-=-==-=--==-=-=-=-==-
+
 
         'بررسی اکسل و حذف رکوردهای با مقدار خالی
 
@@ -417,7 +451,6 @@ Public Class FrmTaghirNerkhAvaldore
         For i As Integer = 0 To dstable.Rows.Count - 1
             If dstable.Rows(i).IsNull(0) Then
                 dstable.Rows(i).Delete()
-
             Else
 
                 Dim r As DataRow = DS.Tables("Table1").NewRow
@@ -531,10 +564,14 @@ Public Class FrmTaghirNerkhAvaldore
             Dim DateFormat As String = EnumDateFormat.dfFullYear
 
             _row("SabtDate") = NetSql.Common.CShamsiDate.MiladiToShamsi(Today, DateFormat)
-            If IsDBNull(_row("ShomarehRahgiri")) Then
-                tp.MsgBox("خطا :  درج مقدار غیر عددی در ستون شماره رهگیری مجاز نمی باشد  ", MsgBoxStyle.Exclamation, "")
-                Exit Sub
-            End If
+
+            ' به دلیل تشخیص بی فایده بودن این کد  کامنت شد زیرا در خطوط کد بالاتر به طور حتم این ستون اضافه خواهد شد 
+
+            'If IsDBNull(_row("ShomarehRahgiri")) Then
+            '    tp.MsgBox("خطا :  درج مقدار غیر عددی در ستون شماره رهگیری مجاز نمی باشد  ", MsgBoxStyle.Exclamation, "")
+            '    Exit Sub
+            'End If
+
             If IsNumeric(_row("Nerkh")) Then
                 If CDec(_row("Nerkh")) <= 0 Then
                     tp.MsgBox("خطا :  درج مقدار غیر عددی و منفی یا صفر برای نرخ مجاز نمی باشد ", MsgBoxStyle.Exclamation, "")
@@ -607,7 +644,6 @@ Public Class FrmTaghirNerkhAvaldore
                 cn.CallSP("abSPC_SabtKalaphizikiINabKalaPhiziki_TaghirNerkhAvaldore", CStr(gVahedeTejariSN), CStr(gAnbarSN))
 
             End If
-
             cn.CommitTrans()
         Catch ex As Exception
             CSystem.MsgBox(ex.Message)

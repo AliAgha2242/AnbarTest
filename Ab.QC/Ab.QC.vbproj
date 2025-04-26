@@ -201,17 +201,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\98. Shared Libraries\NetSql2010\C1.Win.C1FlexGrid.Classic.4.dll</HintPath>
     </Reference>
-    <Reference Include="FarsiLibrary.Resources, Version=10.0.0.3, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NetSql2010\FarsiLibrary.Resources.dll</HintPath>
-    </Reference>
-    <Reference Include="FarsiLibrary.Utils, Version=14.3.1209.5, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NetSql2010\FarsiLibrary.Utils.dll</HintPath>
-    </Reference>
     <Reference Include="FarsiLibrary.Win, Version=14.3.1219.5, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\NetSql2010\FarsiLibrary.Win.dll</HintPath>
+      <HintPath>..\..\98. Shared Libraries\newDll\FarsiLibrary.Win.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Data.v3, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

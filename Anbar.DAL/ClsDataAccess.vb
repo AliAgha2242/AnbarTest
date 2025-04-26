@@ -1,8 +1,6 @@
 ﻿Imports System.Data.Metadata
 Imports System.Data.SqlClient
-Imports System.IO
-Imports System.Threading.Tasks
-Imports Excel = Microsoft.Office.Interop.Excel
+
 Public Interface IClsDataAccess
 
     Function GetGoroohTafsiliTarakonesh(_NoeAnbarSN As Integer, cn As NetSql.DB.CConnection, tp As NetSql.Common.CSystem) As DataView
@@ -13,7 +11,7 @@ Public Interface IClsDataAccess
     Sub InsertDarkhastKaladetail(DarkhastSN As Decimal, AnbarSN As Decimal, Ds As DataSet, cn As NetSql.DB.CConnection, UserID_Name As String)
     Function GetMojoodikalaphiziki(ByVal VahedetejariSn As Decimal, ByVal AnbarSn As Decimal, ByVal KalaSn As Decimal, ByVal fdate As String, ByVal tdate As String, cn As NetSql.DB.CConnection) As DataView
     Function IsTarakoneshInTarakoneshGorooh(ByVal _TarakoneshGorooh As Int16, ByVal _TarakoneshSN As Int16, cn As NetSql.DB.CConnection) As Boolean
-    Function ExistKalaInasnadButNotInabAnbarKala(ByVal AnbarSn As Decimal, ByVal FromDate As String, ByVal ToDate As String, cn As NetSql.DB.CConnection) As DataTable
+    Function ExistKalaInasnadButNotInabAnbarKala(ByVal AnbarSn As Decimal, ByVal FromDate As String, ByVal ToDate As String, cn As NetSql.DB.CConnection) As String
     Function GetMojoodiWithEnghezaDate(VahedeTejariSN As Decimal, vVahedeTejariSN As String, TaminKonandehSN As String, NoeTaminKonandehSN As String, KalaSN As String, NoeMahsoolSN As String, _IsRooz As Integer, _TRooz As Integer, TaEnghezaDate As String, ByVal cn As NetSql.DB.CConnection, ByVal tp As NetSql.Common.CSystem) As DataView
     Function GetMojoodiWithEnghezaDate_Tarakonesh(VahedeTejariSN As Decimal, vVahedeTejariSN As String, TaminKonandehSN As String, NoeTaminKonandehSN As String, KalaSN As String, NoeMahsoolSN As String, _IsRooz As Integer, _TRooz As Integer, TaEnghezaDate As String, TarakoneshSN As String, ByVal cn As NetSql.DB.CConnection, ByVal tp As NetSql.Common.CSystem) As DataView
 
@@ -477,9 +475,7 @@ Public Class ClsDataAccess : Implements IClsDataAccess
 
     End Function
 
-
-    'Edited by AliAsghar Tavakoli
-    Public Function ExistKalaInasnadButNotInabAnbarKala(ByVal _AnbarSn As Decimal, ByVal _FromDate As String, ByVal _ToDate As String, cn As NetSql.DB.CConnection) As DataTable _
+    Public Function ExistKalaInasnadButNotInabAnbarKala(ByVal _AnbarSn As Decimal, ByVal _FromDate As String, ByVal _ToDate As String, cn As NetSql.DB.CConnection) As String _
     Implements IClsDataAccess.ExistKalaInasnadButNotInabAnbarKala
         ''''' developed by ghafari 911102
         Dim mcn As New SqlClient.SqlConnection
@@ -493,20 +489,27 @@ Public Class ClsDataAccess : Implements IClsDataAccess
         Dim Cmnd As New SqlCommand
         Dim ds As New DataSet
         Try
+            Dim _Cstr As String = "Select Top 1 Cast(KalaNo As VArchar(1000))+'.'+ KalaDS KalaDS from absanad " &
+            " Inner join absanadha on absanad.sanadsn=abSanadHa.SanadSN " &
+            " Inner join Pakala on absanadha.KalaSN=Pakala.KalaSN " &
+            " Left join abAnbarKala  on (absanadha.KalaSN=abAnbarKala.KalaSN And absanad.AnbarSN=abAnbarKala.AnbarSN) " &
+            " Where " &
+            " absanad.AnbarSn=" & _AnbarSn & " And  " &
+            " (SanadDate between '" & _FromDate & "' And '" & _ToDate & "') And " &
+            " abAnbarKala.AnbarSN is null "
 
-            Cmnd.CommandText = "abSpc_GetKalaInAsnadButThatsNotInAnbarKala"
-            Cmnd.Parameters.AddWithValue("@Anbarsn", _AnbarSn)
-            Cmnd.Parameters.AddWithValue("@FromDate", _FromDate)
-            Cmnd.Parameters.AddWithValue("@ToDate", _ToDate)
-            Cmnd.CommandType = CommandType.StoredProcedure
+
+            Cmnd.CommandText = _Cstr
             Cmnd.Connection = mcn
+            Cmnd.CommandType = CommandType.Text
             Cmnd.CommandTimeout = mcn.ConnectionTimeout
             sda.SelectCommand = Cmnd
             sda.Fill(ds)
+
             If ds.Tables(0).Rows.Count > 0 Then
-                Return ds.Tables(0)
+                Return ds.Tables(0).Rows(0).Item("KalaDS").ToString
             Else
-                Return Nothing
+                Return ""
             End If
 
         Catch ex As System.Exception
@@ -514,17 +517,6 @@ Public Class ClsDataAccess : Implements IClsDataAccess
         Finally
             mcn.Close()
         End Try
-
-    End Function
-    '' Made by AliAsghar Tavakoli
-    Function GetExcelKalaNotInAnbar(ByVal table As DataTable)
-        Try
-            Dim _SharedItems As New Minoo.Applications.ProductionPlanning.Common.SharedItems
-            _SharedItems.ExcellExport("کالاهای گردش دار ", table)
-        Catch ex As Exception
-            NetSql.Common.CSystem.MsgBox("اشکالی در ساخت فایل اکسل به وجود آمده است.", MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.Exclamation, "خطا")
-        End Try
-
 
     End Function
 

@@ -72,10 +72,6 @@
       <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Applications.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Minoo.Applications.ProductionPlanning.Common, Version=10.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\98. Shared Libraries\newDll\Minoo.Applications.ProductionPlanning.Common.dll</HintPath>
-    </Reference>
     <Reference Include="Minoo.Applications.ProductionPlanning.MavadBari, Version=10.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\98. Shared Libraries\NetSql2010\Minoo.Applications.ProductionPlanning.MavadBari.dll</HintPath>
@@ -144,7 +140,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

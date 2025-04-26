@@ -426,8 +426,8 @@ Public Class FrmMoroorTafsili
                 '                                 ",'" & vFromShomarehRahgiri & "','" & vToShomarehRahgiri & "', '" & vStrFilterSelectedChidemanSN & "'" &
                 '                                 ",'" & vIsMahaleChideman & "', '" & vStrFilterSelectedNoeZayeatSN & "'" &
                 '                                 ",'" & vStrFilterSelectedNoeMarjooeiSN & "', '" & vFromSabtDate & "','" & vToSabtDate & "', '" & vStrFilterSelectedTaminKonandehSN & "'")
-                ''Added By Nooshin  Alipour
-                GridEX1.DataSource = cn.SPQuery("_abSpr_MoroorTafsili2", gVahedeTejariSN, strAnbars _
+
+                GridEX1.DataSource = cn.SPQuery("_abSpr_MoroorTafsili", gVahedeTejariSN, strAnbars _
                                              , vFromDate, vToDate, vStrKalaSN, vSanadStatus _
                                              , vNoeTarakoneshKalaNO, strTarakoneshs, vStrFilterSelectedGoroohSN,
                                              vGoroohBandiTarakonesh _
@@ -436,7 +436,7 @@ Public Class FrmMoroorTafsili
                                              vFromShomarehBarnameh, vToShomarehBarnameh _
                                              , vFromShomarehRahgiri, vToShomarehRahgiri, vStrFilterSelectedChidemanSN,
                                              vIsMahaleChideman, vStrFilterSelectedNoeZayeatSN,
-                                             vStrFilterSelectedNoeMarjooeiSN, vFromSabtDate, vToSabtDate, vStrFilterSelectedTaminKonandehSN, VStrNoeKalaSN)
+                                             vStrFilterSelectedNoeMarjooeiSN, vFromSabtDate, vToSabtDate, vStrFilterSelectedTaminKonandehSN)
 
 
                 RefreshDataSet()
@@ -652,15 +652,15 @@ Public Class FrmMoroorTafsili
             GridEX1.RootTable.Columns("SanadMaliVagheeStatus").ColumnType = Janus.Windows.GridEX.ColumnType.CheckBox
         End If
 
-        'Dim gNamayeshNoeKala As Boolean = False
-        'gNamayeshNoeKala = If(CApp1.GetAppConfig("vfgNoeKala") Is System.DBNull.Value, False, True)
-        'If gNamayeshNoeKala Then
-        '    With GridEX1.RootTable.Columns()
-        '        With .Add("NoeKalaDS", Janus.Windows.GridEX.ColumnType.Text)
-        '            .Caption = "نوع کالا"
-        '        End With
-        '    End With
-        'End If
+        Dim gNamayeshNoeKala As Boolean = False
+        gNamayeshNoeKala = If(CApp1.GetAppConfig("vfgNoeKala") Is System.DBNull.Value, False, True)
+        If gNamayeshNoeKala Then
+            With GridEX1.RootTable.Columns()
+                With .Add("NoeKalaDS", Janus.Windows.GridEX.ColumnType.Text)
+                    .Caption = "نوع کالا"
+                End With
+            End With
+        End If
     End Sub
 
     Private Sub btnFilter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _

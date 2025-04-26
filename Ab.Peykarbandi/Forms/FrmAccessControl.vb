@@ -5,6 +5,7 @@ Imports SubtotalPositionSettings = C1.Win.C1FlexGrid.SubtotalPositionEnum
 Imports SubtotalSettings = C1.Win.C1FlexGrid.AggregateEnum
 Imports NetSql.View
 Imports System.Data
+Imports System.Collections.Generic
 
 Public Class FrmAccessControl
     Inherits Minoo.Base.FTBaseForm
@@ -248,16 +249,49 @@ Public Class FrmAccessControl
 
     Private Sub FrmAccessControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Dim AppParamByAccess As String = "0"
+        Dim AppConfigsList As List(Of String) = New List(Of String)
+
         If gSM.ActionEnabled("AnbarAccessControlForooshGhaza") Then
-            AppParamByAccess += ",242.935"
+            AppConfigsList.Add("'AnbarAccessControlForooshGhaza'")
         End If
         If gSM.ActionEnabled("AnbarAccessControlForooshDaroo") Then
-            AppParamByAccess += ",262.935"
+            AppConfigsList.Add("'AnbarAccessControlForooshDaroo'")
         End If
         If gSM.ActionEnabled("AnbarAccessControlMali") Then
-            AppParamByAccess += ",142.935,97.935,195.935,264.935,277.935,287.935,288.935"
+            AppConfigsList.Add("'AnbarAccessControlMali'")
         End If
+        If AppConfigsList Is Nothing OrElse AppConfigsList.Count < 1 Then
+            NetSql.Common.CSystem.MsgBox("شما به این بخش دسترسی ندارید")
+            Exit Sub
+        End If
+
+        Dim AppConfigs As String = String.Join(",", AppConfigsList)
+        Dim AccessDataView As DataView = New DataView()
+        Try
+            Dim CommandText As String = "SELECT Configs FROM abVw_GetConfigWithAccess WHERE ACCESS IN ( " + AppConfigs + ")"
+            AccessDataView = cn.ExecuteQuery(CommandText)
+        Catch ex As Exception
+            NetSql.Common.CSystem.MsgBox("خطا در بارگزاری تنظیمات انبار")
+            Exit Sub
+        End Try
+
+        Dim AppParamByAccess As String = ""
+
+        If AccessDataView.Count > 1 Then
+            For i As Integer = 0 To AccessDataView.ToTable().Rows.Count - 1
+                If i = 0 Then
+                    AppParamByAccess += AccessDataView.ToTable().Rows(i)(0).ToString()
+                Else
+                    AppParamByAccess += String.Concat(",", AccessDataView.ToTable().Rows(i)(0).ToString())
+                End If
+            Next
+        Else
+            AppParamByAccess = AccessDataView.ToTable().Rows(0)(0).ToString
+        End If
+
+
+
+
 
 
         Try
