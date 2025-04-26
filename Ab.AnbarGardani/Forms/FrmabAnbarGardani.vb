@@ -2200,12 +2200,7 @@ Friend Class FrmabAnbarGardani
                 With .Add("AnbarGardaniDS", "TextBox")
                 End With
                 With .Add("StartDate", "TextBox", EnumFieldOptions.foDate)
-                    ' تهيه تاريخ از سرور
-                    .DefaultValue = Minoo.Functions.FTDBCommonFunctions.Get_Date_Server_Jalali(
-                                                                                                cn,
-                                                                                                Functions.
-                                                                                                   FTDBCommonFunctions.
-                                                                                                   enmDateFormat.Normal)
+                    .DefaultValue = gHesabdariSalFDate
                 End With
                 With .Add("EndDate", "TextBox", EnumFieldOptions.foDate)
                     .DefaultValue = gHesabdariSalTDate
