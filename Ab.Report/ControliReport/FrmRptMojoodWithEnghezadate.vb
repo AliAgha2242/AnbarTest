@@ -1,6 +1,9 @@
 ﻿Option Strict Off
 Option Explicit On
 
+Imports System.Globalization
+Imports System.Text.RegularExpressions
+Imports System.Threading
 Imports Anbar.BRL
 
 Friend Class FrmRptMojoodWithEnghezadate
@@ -306,6 +309,7 @@ Friend Class FrmRptMojoodWithEnghezadate
         'TxtTaEnghezaDate
         '
         Me.TxtTaEnghezaDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtTaEnghezaDate.FormatInfo = FarsiLibrary.Win.Enums.FormatInfoTypes.ShortDate
         Me.TxtTaEnghezaDate.Location = New System.Drawing.Point(3, 37)
         Me.TxtTaEnghezaDate.Mask = "9900/90/90"
         Me.TxtTaEnghezaDate.Name = "TxtTaEnghezaDate"
@@ -448,7 +452,7 @@ Friend Class FrmRptMojoodWithEnghezadate
         Me.CmbTarakonesh.ValuesDataMember = Nothing
         Me.CmbTarakonesh.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
-        'CmbSanadAnbar
+        'CmbAnbar
         '
         Me.CmbAnbar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         CmbAnbar_DesignTimeLayout.LayoutString = resources.GetString("CmbAnbar_DesignTimeLayout.LayoutString")
@@ -456,7 +460,7 @@ Friend Class FrmRptMojoodWithEnghezadate
         Me.CmbAnbar.LateBinding = True
         Me.CmbAnbar.LateBindingTop = "100"
         Me.CmbAnbar.Location = New System.Drawing.Point(727, 7)
-        Me.CmbAnbar.Name = "CmbSanadAnbar"
+        Me.CmbAnbar.Name = "CmbAnbar"
         Me.CmbAnbar.SaveSettings = False
         Me.CmbAnbar.ShowSelectAll = True
         Me.CmbAnbar.Size = New System.Drawing.Size(293, 21)
@@ -540,7 +544,7 @@ Friend Class FrmRptMojoodWithEnghezadate
         Me.TxtEnDate.Location = New System.Drawing.Point(859, 6)
         Me.TxtEnDate.MaxLength = 0
         Me.TxtEnDate.Name = "TxtEnDate"
-        Me.TxtEnDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.TxtEnDate.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.TxtEnDate.Size = New System.Drawing.Size(86, 21)
         Me.TxtEnDate.TabIndex = 25
         Me.TxtEnDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -922,10 +926,9 @@ Friend Class FrmRptMojoodWithEnghezadate
         dclFDate = New NetSql.Components.CDateCtrl(tp)
         dclFDate.TextBox = TxtFaDate
         dclFDate.DateFormat = NetSql.Common.CShamsiDate.EnumDateFormat.dfFullYear
-        TxtFaDate.Text = NetSql.Common.CShamsiDate.MiladiToShamsi(Now.Date, NetSql.Common.CShamsiDate.EnumDateFormat.dfFullYear) 'gFromDate
+        TxtFaDate.Text = NetSql.Common.CShamsiDate.MiladiToShamsi(Now.Date, NetSql.Common.CShamsiDate.EnumDateFormat.dfWithSlash) 'gFromDate
 
-        TxtEnDate.Text = ""
-        TxtFaDate.Text = ""
+        TxtEnDate.Text = Now.Date.ToString("yyyy/MM/dd")
 
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
         btnEslahEnghezaDate.Enabled = gSM.TableAccessRight("btnEslahEnghezaDate")
@@ -1161,12 +1164,12 @@ Friend Class FrmRptMojoodWithEnghezadate
             Catch ex As Exception
                 thisWaitFrm.Close()
                 Me.Cursor = Cursors.Default
-                Netsql.common.csystem.MsgBox("اشكالي در تهيه ي اين گزارش بوجود آمده است. ", MsgBoxStyle.Critical Or MsgBoxStyle.MsgBoxRtlReading Or MsgBoxStyle.OkOnly Or MsgBoxStyle.MsgBoxRight, Me.Text)
+                NetSql.Common.CSystem.MsgBox("اشكالي در تهيه ي اين گزارش بوجود آمده است. ", MsgBoxStyle.Critical Or MsgBoxStyle.MsgBoxRtlReading Or MsgBoxStyle.OkOnly Or MsgBoxStyle.MsgBoxRight, Me.Text)
             End Try
 
 
         Else
-            Netsql.common.csystem.MsgBox(vErrMsg, MsgBoxStyle.Critical Or MsgBoxStyle.MsgBoxRtlReading Or MsgBoxStyle.OkOnly Or MsgBoxStyle.MsgBoxRight, Me.Text)
+            NetSql.Common.CSystem.MsgBox(vErrMsg, MsgBoxStyle.Critical Or MsgBoxStyle.MsgBoxRtlReading Or MsgBoxStyle.OkOnly Or MsgBoxStyle.MsgBoxRight, Me.Text)
         End If
     End Sub
 
@@ -1175,14 +1178,14 @@ Friend Class FrmRptMojoodWithEnghezadate
             Dim _Anbar As Decimal = CDec(CmbNoeMahsool.Text)
             Dim _Tamin As Decimal = CDec(CmbTamin.Text)
             If _Anbar <> 0 Then
-                Dim _str As String = "SELECT DISTINCT TOP (100) PERCENT dbo.paKala.KalaSN," & _
-                " dbo.paKala.KalaNo + ' _ ' + dbo.paKala.KalaDs AS KalaNoDs" & _
-                " FROM         dbo.abAnbarKala RIGHT OUTER JOIN  " & _
-                " dbo.paKala ON dbo.abAnbarKala.KalaSN = dbo.paKala.KalaSN LEFT OUTER JOIN  " & _
-                " dbo.paKalaTamin ON dbo.paKala.KalaSN = dbo.paKalaTamin.KalaSN  " & _
-                " GROUP BY dbo.paKala.KalaSN, dbo.paKala.KalaNo + ' _ ' + dbo.paKala.KalaDs, " & _
-                " dbo.paKalaTamin.VahedeTejariSN, dbo.abAnbarKala.AnbarSN HAVINg" & _
-                " (dbo.paKalaTamin.VahedeTejariSN = " & _Tamin & " Or " & _Tamin & "=0)   " & _
+                Dim _str As String = "SELECT DISTINCT TOP (100) PERCENT dbo.paKala.KalaSN," &
+                " dbo.paKala.KalaNo + ' _ ' + dbo.paKala.KalaDs AS KalaNoDs" &
+                " FROM         dbo.abAnbarKala RIGHT OUTER JOIN  " &
+                " dbo.paKala ON dbo.abAnbarKala.KalaSN = dbo.paKala.KalaSN LEFT OUTER JOIN  " &
+                " dbo.paKalaTamin ON dbo.paKala.KalaSN = dbo.paKalaTamin.KalaSN  " &
+                " GROUP BY dbo.paKala.KalaSN, dbo.paKala.KalaNo + ' _ ' + dbo.paKala.KalaDs, " &
+                " dbo.paKalaTamin.VahedeTejariSN, dbo.abAnbarKala.AnbarSN HAVINg" &
+                " (dbo.paKalaTamin.VahedeTejariSN = " & _Tamin & " Or " & _Tamin & "=0)   " &
                 " ORDER BY KalaNoDs  "
 
                 'Cmbmhsul.Bind(cn, _str, "KalaSN", "KalaNODs").Sort = "KalaSN"
@@ -1224,7 +1227,7 @@ Friend Class FrmRptMojoodWithEnghezadate
         If _NoeVahedetejarisn = "" Or _NoeVahedetejarisn = "0.000" Or _NoeVahedetejarisn = "0" Then
             CmbTamin.Clear()
         Else
-            Dim _vtkSql As String = "select distinct pakalaTamin.VahedetejariSN TaminKonandehSN,VahedetejariDS TaminKonandehDS from pakalaTamin" & _
+            Dim _vtkSql As String = "select distinct pakalaTamin.VahedetejariSN TaminKonandehSN,VahedetejariDS TaminKonandehDS from pakalaTamin" &
             " inner join paVahedetejari on pakalaTamin.VahedetejariSN=paVahedetejari.VahedetejariSN Where NoeVahedetejariSN in (" & _NoeVahedetejarisn & ")"
             With CmbTamin
                 .Bind(cn, _vtkSql, "TaminKonandehSN", "TaminKonandehDS")
@@ -1305,17 +1308,18 @@ Handles btnEslahEnghezaDate.Click
             btnViewReport_Click(sender, e)
 
         Catch ex As Exception
-            Netsql.common.csystem.MsgBox(ex.Message)
+            NetSql.Common.CSystem.MsgBox(ex.Message)
 
         End Try
 
     End Sub
 
+
     Private Sub TxtFaDate_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) _
         Handles TxtFaDate.Validated
         Try
             If TxtFaDate.Text <> "____/__/__" Then
-                TxtEnDate.Text = NetSql.Common.CShamsiDate.ShamsiToMiladi(TxtFaDate.Text) 'gFromDate
+                TxtEnDate.Text = NetSql.Common.CShamsiDate.ShamsiToMiladi(TxtFaDate.Text).ToString("yyyy/MM/dd") 'gFromDate
                 TxtEnDate.BackColor = Color.White
             End If
         Catch ex As Exception
@@ -1327,9 +1331,10 @@ Handles btnEslahEnghezaDate.Click
 
     Private Sub TxtEnDate_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) _
         Handles TxtEnDate.Validated
+
         Try
             If Len(TxtEnDate.Text) = 10 Then
-                TxtFaDate.Text = NetSql.Common.CShamsiDate.MiladiToShamsi(TxtEnDate.Text, NetSql.Common.CShamsiDate.EnumDateFormat.dfFullYear) 'gFromDate
+                TxtFaDate.Text = NetSql.Common.CShamsiDate.MiladiToShamsi(TxtEnDate.Text, NetSql.Common.CShamsiDate.EnumDateFormat.dfWithSlash) 'gFromDate
                 TxtFaDate.BackColor = Color.White
             End If
         Catch ex As Exception
@@ -1345,10 +1350,17 @@ Handles btnEslahEnghezaDate.Click
     Private Sub GridEX1_SelectionChanged(sender As System.Object, e As System.EventArgs) Handles GridEX1.SelectionChanged
         Dim dgrow As Janus.Windows.GridEX.GridEXRow
         dgrow = GridEX1.GetRow()
-        TxtEnDate.Text = IIf(dgrow.Cells("EnghezaDateMiladi").Value Is System.DBNull.Value, "", dgrow.Cells("EnghezaDateMiladi").Value)
-        TxtFaDate.Text = IIf(dgrow.Cells("EnghezaDate").Value Is System.DBNull.Value, "", dgrow.Cells("EnghezaDate").Value)
+        TxtEnDate.Text = IIf(dgrow.Cells("EnghezaDateMiladi").Value Is System.DBNull.Value OrElse dgrow.Cells("EnghezaDateMiladi").Value = "", Now.Date.ToString("yyyy/MM/dd"), dgrow.Cells("EnghezaDateMiladi").Value)
+        TxtFaDate.Text = IIf(dgrow.Cells("EnghezaDate").Value Is System.DBNull.Value OrElse dgrow.Cells("EnghezaDateMiladi").Value = "", NetSql.Common.CShamsiDate.MiladiToShamsi(DateTime.Now.Date, EnumDateFormat.dfWithSlash), dgrow.Cells("EnghezaDate").Value)
         TxtBatchNO.Text = IIf(dgrow.Cells("BatchNO").Value Is System.DBNull.Value, "", dgrow.Cells("BatchNO").Value)
         dcbNoeTarakoneshKala.SelectedItem = IIf(dgrow.Cells("NoeTarakoneshKalaDS").Value Is System.DBNull.Value, "", dgrow.Cells("NoeTarakoneshKalaDS").Value)
+
+
+        If Not dgrow.Cells("EnghezaDateMiladi").Value Is System.DBNull.Value OrElse dgrow.Cells("EnghezaDateMiladi").Value = "" Then
+            TxtEnDate.Text = Regex.Replace(TxtEnDate.Text, "^(\d{2})/(\d{2})/(\d{4})$", "$3/$2/$1") 'برای تیدیل     04/11/2022 به 2022/11/04
+        End If
+
+
     End Sub
 
 
