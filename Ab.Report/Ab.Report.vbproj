@@ -395,6 +395,7 @@
     <Compile Include="Form\FrmAnbargardaniMoghayeratBeyneShomaresh.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FrmHotSale.vb" />
     <Compile Include="Form\FrmListMahsulateBarcodKhan.Designer.vb">
       <DependentUpon>FrmListMahsulateBarcodKhan.vb</DependentUpon>
     </Compile>
@@ -709,6 +710,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmAnbargardaniMoghayeratBeyneShomaresh.resx">
       <DependentUpon>FrmAnbargardaniMoghayeratBeyneShomaresh.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmHotSale.resx">
+      <DependentUpon>FrmHotSale.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmListMahsulateBarcodKhan.resx">
       <DependentUpon>FrmListMahsulateBarcodKhan.vb</DependentUpon>

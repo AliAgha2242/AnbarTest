@@ -466,7 +466,7 @@ Public Class FrmTaghirNerkhAvaldore
                 If reportType = 2 Then
                     DS.Tables("Table1").Rows.Add(r("KalaNo"), r("ShomarehRahgiri"), r("Nerkh"))
                 ElseIf reportType = 1 Then
-                    DS.Tables("Table1").Rows.Add(r("KalaNo"), r("Nerkh"))
+                    DS.Tables("Table1").Rows.Add("", r("KalaNo"), r("Nerkh"))
                 End If
             End If
         Next
@@ -571,12 +571,11 @@ Public Class FrmTaghirNerkhAvaldore
             '    tp.MsgBox("خطا :  درج مقدار غیر عددی در ستون شماره رهگیری مجاز نمی باشد  ", MsgBoxStyle.Exclamation, "")
             '    Exit Sub
             'End If
-
-            If IsNumeric(_row("Nerkh")) Then
-                If CDec(_row("Nerkh")) <= 0 Then
+            Dim nerkh As Decimal = 0
+            If Decimal.TryParse(_row("Nerkh").ToString(), nerkh) Then
+                If nerkh < 0 Then
                     tp.MsgBox("خطا :  درج مقدار غیر عددی و منفی یا صفر برای نرخ مجاز نمی باشد ", MsgBoxStyle.Exclamation, "")
                 End If
-
             Else
                 tp.MsgBox("خطا :  درج مقدار غیر عددی و منفی یا صفر برای نرخ مجاز نمی باشد ", MsgBoxStyle.Exclamation, "")
                 Exit Sub

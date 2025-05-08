@@ -183,6 +183,14 @@
             DBLog.WriteLOG("Form", 0, , .Name, .Text)
         End With
     End Sub
+    Public Shared Sub ShowRptHotSale(ByVal aMDIParent As Form)
+        With FrmRptHotSale.DefInstance
+            .MdiParent = aMDIParent
+            .Show()
+            .Activate()
+            DBLog.WriteLOG("Form", 0, , .Name, .Text)
+        End With
+    End Sub
 
     ''ghasemi 14021010
     Public Shared Sub ShowRptDarkhastRepair(ByVal aMDIParent As Form)
