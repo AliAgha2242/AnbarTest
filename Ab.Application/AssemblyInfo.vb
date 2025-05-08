@@ -33,7 +33,7 @@ Imports System.Runtime.InteropServices
 ' 2.8.0 تغییر در فرم انتخاب درخواست در ثبت رسید 
 
 
-<Assembly: AssemblyVersion("10.10.159")>
+<Assembly: AssemblyVersion("10.10.160")>
 '10.10.159 for TaghirVaBerozresaniEnghezadateKalaRahgiri
 '10.10.158 for TaghirNerkhAvalDOreh And AddAccessToTheNewConfigForMaliAccess --
 
