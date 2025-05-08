@@ -5810,6 +5810,11 @@ Friend Class FrmSanad
                         With .Add("{abvw_darkhast.MeghdareDarkhasti%paVw_VahedeSanjesh.TedadAjza} As MeghdareDarkhasti ", "TextBox", EnumFieldOptions.foHidden)
                             .Format = "#.###"
                         End With
+                    ElseIf NoeTarakoneshSN = EnumNoeTarakoneshSN.ntHAVALEHHA And Not IsTolidi Then
+                        With .Add("abSanadHa.MeghdareDarkhasti ", "TextBox", EnumFieldOptions.foDefault)
+                            .Format = "#.###"
+                            .ReadOnly = True
+                        End With
                     End If
                     With .Add("MeghdareVaredeh", "TextBox", EnumFieldOptions.foDefault)
                         .DigitGroupSymbol = ","
@@ -5821,6 +5826,11 @@ Friend Class FrmSanad
                         With .Add("{Convert(BIGINT, abvw_darkhast.MeghdareDarkhasti%paVw_VahedeSanjesh.TedadAjza)} As MeghdareDarkhasti", "TextBox", EnumFieldOptions.foHidden)
                             .MaxLength = 7
                             .DataType = "INT"
+                        End With
+                    ElseIf NoeTarakoneshSN = EnumNoeTarakoneshSN.ntHAVALEHHA And Not IsTolidi Then
+                        With .Add("abSanadHa.MeghdareDarkhasti ", "TextBox", EnumFieldOptions.foDefault)
+                            .Format = "#.###"
+                            .ReadOnly = True
                         End With
                     End If
                     With .Add("MeghdareVaredeh", "TextBox", EnumFieldOptions.foDefault)
@@ -6389,7 +6399,7 @@ Friend Class FrmSanad
                 With .Fields
                     .Add("SanadhaSN", , If(gSM.IsProgrammer, EnumFieldOptions.foDefault, EnumFieldOptions.foHidden))
                     .Add("FactorHaSN", , If(gSM.IsProgrammer, EnumFieldOptions.foDefault, EnumFieldOptions.foHidden))
-                    .Add("ErrorMessage", , EnumFieldOptions.foDefault).Caption = "خطا"
+                    '.Add("ErrorMessage", , EnumFieldOptions.foDefault).Caption = "خطا"
                     .Add("Tartib", , EnumFieldOptions.foDefault).Caption = "ترتیب"
                     .Add("KalaDS", , EnumFieldOptions.foDefault).Caption = "محصول"
                     .Add("ShomarehRahgiri", , EnumFieldOptions.foDefault).Caption = "رهگیری"
@@ -6571,10 +6581,11 @@ Friend Class FrmSanad
                     dvTarakonesh.RowFilter = "0=0"
                 End Try
                 'ToDo : Romove For More Run SPeed
-                If QuickActionOnAbSanadHa Then
+                If QuickActionOnAbSanadHa OrElse (NoeTarakoneshSN = EnumNoeTarakoneshSN.ntHAVALEHHA And Not IsTolidi) Then
                     Try
                         dvTarakonesh.RowFilter = "ObjectDS = 'abSanadHaMeghdareDarkhasti'"
                         .ColHidden(.ColIndex("MeghdareDarkhasti")) = Not CBool(dvTarakonesh(0)("Visible"))
+
                     Catch ex As Exception
                         NetSql.Common.CSystem.MsgBox("نمایش/فعال بودن ستون مقدار درخواستی مرتبط با تراکنش " & TarakoneshSN & " در " & gAnbarDS & "  تعریف نشده است." _
                                      + vbCr + "لطفا با پشتیبان سیستم تماس بگیرید.",
