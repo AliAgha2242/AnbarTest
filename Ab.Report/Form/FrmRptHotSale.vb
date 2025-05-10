@@ -4,6 +4,7 @@
 'Description:: گزارش ليست کاردکس انبار
 'System ::انبار
 
+Imports Janus.Windows.GridEX
 Imports VB = Microsoft.VisualBasic
 
 Public Class FrmRptHotSale
@@ -395,6 +396,7 @@ Public Class FrmRptHotSale
         dcbTafsili.Bind(cn, vSql, "tafsilisn", "tafsiliDs")
 
         setColumnProperties()
+
         RefreshDataSet()
 
 
@@ -464,6 +466,24 @@ Public Class FrmRptHotSale
             For i = 0 To GridEX1.RootTable.Columns.Count - 1
                 GridEX1.RootTable.Columns(i).AutoSize()
             Next
+
+            'grouping by 
+            GridEX1.RootTable.Groups.Clear()
+            If GridEX1.RootTable.Columns.Contains("sanadNO") Then
+                Dim group As New GridEXGroup(GridEX1.RootTable.Columns("SanadNO"))
+                GridEX1.RootTable.Groups.Add(group)
+                GridEX1.Refresh()
+            End If
+
+            'Tartib 
+            If GridEX1.RootTable.Columns.Contains("adad") AndAlso GridEX1.RootTable.Columns.Contains("karton") AndAlso GridEX1.RootTable.Columns.Contains("tedadKol") Then
+                Dim maxPosition As Integer = GridEX1.RootTable.Columns.Count - 1
+                GridEX1.RootTable.Columns("adad").Position = maxPosition
+                GridEX1.RootTable.Columns("karton").Position = maxPosition - 1
+                GridEX1.RootTable.Columns("tedadKol").Position = maxPosition - 2
+
+            End If
+
 
 
         Catch ex As Exception
