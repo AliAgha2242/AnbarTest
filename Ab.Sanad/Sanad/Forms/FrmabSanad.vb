@@ -5804,6 +5804,14 @@ Friend Class FrmSanad
                     End With
                 End If
                 .Add("Tartib", "TextBox", EnumFieldOptions.foHidden)
+
+
+
+
+
+
+
+
                 If NamayeshAshar Then
                     ''ToDO : Romove For More Run Speed
                     If QuickActionOnAbSanadHa Then
@@ -5815,6 +5823,18 @@ Friend Class FrmSanad
                             .Format = "#.###"
                             .ReadOnly = True
                         End With
+                        '=================================================================
+                        With .Add("{abSanadHa.MeghdareDarkhasti/paVw_VahedeSanjesh.TedadAjza} as absanadhaBoxout_Darkhasti", "TextBox", EnumFieldOptions.foDefault)
+                            .Format = "#.###"
+                            .ReadOnly = True
+                            .DefaultValue = 0
+                        End With
+                        With .Add("{abSanadHa.MeghdareDarkhasti%paVw_VahedeSanjesh.TedadAjza} as absanadhaCanout_Darkhasti", "TextBox", EnumFieldOptions.foDefault)
+                            .Format = "#.###"
+                            .ReadOnly = True
+                            .DefaultValue = 0
+                        End With
+                        '=======================================================
                     End If
                     With .Add("MeghdareVaredeh", "TextBox", EnumFieldOptions.foDefault)
                         .DigitGroupSymbol = ","
@@ -5827,17 +5847,53 @@ Friend Class FrmSanad
                             .MaxLength = 7
                             .DataType = "INT"
                         End With
+                        '==================================
+                        With .Add("{Convert(BigInt,abSanadHa.MeghdareDarkhasti/paVw_VahedeSanjesh.TedadAjza)} as absanadhaBoxout_Darkhasti", "TextBox", EnumFieldOptions.foHidden)
+                            .ReadOnly = True
+                            .DataType = "INT"
+                            .Caption = "مقدار درخواست کارتن"
+                            .DefaultValue = 0
+                        End With
+                        With .Add("{Convert(BigInt,abSanadHa.MeghdareDarkhasti%paVw_VahedeSanjesh.TedadAjza)} as absanadhaCanout_Darkhasti", "TextBox", EnumFieldOptions.foHidden)
+                            .ReadOnly = True
+                            .DataType = "INT"
+                            .Caption = "مقدار درخواست عدد"
+                            .DefaultValue = 0
+                        End With
+                        '===========================================
                     ElseIf NoeTarakoneshSN = EnumNoeTarakoneshSN.ntHAVALEHHA And Not IsTolidi Then
-                        With .Add("abSanadHa.MeghdareDarkhasti ", "TextBox", EnumFieldOptions.foDefault)
+                        With .Add("abSanadHa.MeghdareDarkhasti", "TextBox", EnumFieldOptions.foDefault)
                             .Format = "#.###"
                             .ReadOnly = True
                         End With
+                        With .Add("{Convert(BigInt,abSanadHa.MeghdareDarkhasti/paVw_VahedeSanjesh.TedadAjza)} as absanadhaBoxout_Darkhasti", "TextBox", EnumFieldOptions.foDefault)
+                            .ReadOnly = True
+                            .DataType = "INT"
+                            .Caption = "مقدار درخواست کارتن"
+                            .DefaultValue = 0
+                        End With
+                        With .Add("{Convert(BigInt,abSanadHa.MeghdareDarkhasti%paVw_VahedeSanjesh.TedadAjza)} as absanadhaCanout_Darkhasti", "TextBox", EnumFieldOptions.foDefault)
+                            .ReadOnly = True
+                            .DataType = "INT"
+                            .Caption = "مقدار درخواست عدد"
+                            .DefaultValue = 0
+                        End With
+
                     End If
                     With .Add("MeghdareVaredeh", "TextBox", EnumFieldOptions.foDefault)
                         .MaxLength = 12
                         .DataType = "INT"
                     End With
                 End If
+
+
+
+
+
+
+
+
+
 
                 With .Add("GheymateVaredeh", "TextBox", EnumFieldOptions.foHidden)
                     .MaxLength = 3
@@ -6382,7 +6438,6 @@ Friend Class FrmSanad
                     .Add("TransferToDbTime", , EnumFieldOptions.foDefault).Caption = "زمان انتقال ثبت بارکدخوان به سیستم انبار"
                     .Add("TransferToAnbarTime", , EnumFieldOptions.foDefault).Caption = "زمان ثبت رسید انبار"
                 End With
-
             End With
         Else
             sstChild.TabPages.Remove(TabProductCatalogue)
@@ -6584,7 +6639,17 @@ Friend Class FrmSanad
                 If QuickActionOnAbSanadHa OrElse (NoeTarakoneshSN = EnumNoeTarakoneshSN.ntHAVALEHHA And Not IsTolidi) Then
                     Try
                         dvTarakonesh.RowFilter = "ObjectDS = 'abSanadHaMeghdareDarkhasti'"
-                        .ColHidden(.ColIndex("MeghdareDarkhasti")) = Not CBool(dvTarakonesh(0)("Visible"))
+                        .ColHidden(.ColIndex("MeghdareDarkhasti")) = True 'Not CBool(dvTarakonesh(0)("Visible")) به علت وجود کارتن و عدد دیگه نیازی بع این نیست 
+
+                        'برای اینکه دیگه در جدول absanadObject و absanadObjectdetail کارتن و عدد رو درج نکنیم از همین مقدار درخواستی استفاده میکنیم 
+
+                        If CBool(dvTarakonesh(0)("Visible")) Then
+                            .ColHidden(.ColIndex("absanadhaCanout_Darkhasti")) = False
+                            .ColHidden(.ColIndex("absanadhaBoxout_Darkhasti")) = False
+                        Else
+                            .ColHidden(.ColIndex("absanadhaCanout_Darkhasti")) = True
+                            .ColHidden(.ColIndex("absanadhaBoxout_Darkhasti")) = True
+                        End If
 
                     Catch ex As Exception
                         NetSql.Common.CSystem.MsgBox("نمایش/فعال بودن ستون مقدار درخواستی مرتبط با تراکنش " & TarakoneshSN & " در " & gAnbarDS & "  تعریف نشده است." _
@@ -6593,7 +6658,59 @@ Friend Class FrmSanad
                     Finally
                         dvTarakonesh.RowFilter = "0=0"
                     End Try
+
+
+
+
+
+
+
+
+
+
+
+                    'baraye vaghti ke khastim do field absanadhaCanout_Darkhasti va absanadhaBoxout_Darkhasti ro be sorat mojaza dakhel form absanadha nbiarim 
+
+                    '==================================================================absanadCanOut_Darkhast
+                    'Try
+                    '    dvTarakonesh.RowFilter = "ObjectDS = 'absanadhaCanout_Darkhasti'"
+                    '    If dvTarakonesh.Count > 0 Then
+                    '        .ColHidden(.ColIndex("absanadhaCanout_Darkhasti")) = Not CBool(dvTarakonesh(0)("Visible"))
+                    '    Else
+                    '        .ColHidden(.ColIndex("absanadhaCanout_Darkhasti")) = True
+                    '    End If
+                    'Catch ex As Exception
+                    '    NetSql.Common.CSystem.MsgBox("نمایش/فعال بودن ستون مقدار درخواستی مرتبط با تراکنش " & TarakoneshSN & " در " & gAnbarDS & "  تعریف نشده است." _
+                    '                 + vbCr + "لطفا با پشتیبان سیستم تماس بگیرید.",
+                    '                 MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.Exclamation, "نمایش ستون مقدار درخواستی")
+                    'Finally
+                    '    dvTarakonesh.RowFilter = "0=0"
+                    'End Try
+                    ''==================================================================absanadBoxOut_Darkhast
+                    'Try
+                    '    dvTarakonesh.RowFilter = "ObjectDS = 'absanadhaBoxout_Darkhasti'"
+                    '    If dvTarakonesh.Count > 0 Then
+                    '        .ColHidden(.ColIndex("absanadhaBoxout_Darkhasti")) = Not CBool(dvTarakonesh(0)("Visible"))
+                    '    Else
+                    '        .ColHidden(.ColIndex("absanadhaBoxout_Darkhasti")) = True
+                    '    End If
+
+                    'Catch ex As Exception
+                    '    NetSql.Common.CSystem.MsgBox("نمایش/فعال بودن ستون مقدار درخواستی مرتبط با تراکنش " & TarakoneshSN & " در " & gAnbarDS & "  تعریف نشده است." _
+                    '                 + vbCr + "لطفا با پشتیبان سیستم تماس بگیرید.",
+                    '                 MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.Exclamation, "نمایش ستون مقدار درخواستی")
+                    'Finally
+                    '    dvTarakonesh.RowFilter = "0=0"
+
+                    'End Try
+
+                    ''.ColHidden(.ColIndex("absanadhaCanout_Darkhasti")) = False
+                    ''.ColHidden(.ColIndex("absanadhaBoxout_Darkhasti")) = False
                 End If
+
+
+
+
 
                 Try
                     dvTarakonesh.RowFilter = "ObjectDS = 'abSanadHaMeghdareVaredeh'"
