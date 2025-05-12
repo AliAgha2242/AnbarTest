@@ -6644,11 +6644,16 @@ Friend Class FrmSanad
                         'برای اینکه دیگه در جدول absanadObject و absanadObjectdetail کارتن و عدد رو درج نکنیم از همین مقدار درخواستی استفاده میکنیم 
 
                         If CBool(dvTarakonesh(0)("Visible")) Then
-                            .ColHidden(.ColIndex("absanadhaCanout_Darkhasti")) = False
-                            .ColHidden(.ColIndex("absanadhaBoxout_Darkhasti")) = False
+                            If .get_ColIndex("absanadhaCanout_Darkhasti") <> -1 AndAlso .get_ColIndex("absanadhaBoxout_Darkhasti") <> -1 Then
+                                .ColHidden(.ColIndex("absanadhaCanout_Darkhasti")) = False
+                                .ColHidden(.ColIndex("absanadhaBoxout_Darkhasti")) = False
+                            End If
+
                         Else
-                            .ColHidden(.ColIndex("absanadhaCanout_Darkhasti")) = True
-                            .ColHidden(.ColIndex("absanadhaBoxout_Darkhasti")) = True
+                            If .get_ColIndex("absanadhaCanout_Darkhasti") <> -1 AndAlso .get_ColIndex("absanadhaBoxout_Darkhasti") <> -1 Then
+                                .ColHidden(.ColIndex("absanadhaCanout_Darkhasti")) = True
+                                .ColHidden(.ColIndex("absanadhaBoxout_Darkhasti")) = True
+                            End If
                         End If
 
                     Catch ex As Exception
@@ -6658,54 +6663,6 @@ Friend Class FrmSanad
                     Finally
                         dvTarakonesh.RowFilter = "0=0"
                     End Try
-
-
-
-
-
-
-
-
-
-
-
-                    'baraye vaghti ke khastim do field absanadhaCanout_Darkhasti va absanadhaBoxout_Darkhasti ro be sorat mojaza dakhel form absanadha nbiarim 
-
-                    '==================================================================absanadCanOut_Darkhast
-                    'Try
-                    '    dvTarakonesh.RowFilter = "ObjectDS = 'absanadhaCanout_Darkhasti'"
-                    '    If dvTarakonesh.Count > 0 Then
-                    '        .ColHidden(.ColIndex("absanadhaCanout_Darkhasti")) = Not CBool(dvTarakonesh(0)("Visible"))
-                    '    Else
-                    '        .ColHidden(.ColIndex("absanadhaCanout_Darkhasti")) = True
-                    '    End If
-                    'Catch ex As Exception
-                    '    NetSql.Common.CSystem.MsgBox("نمایش/فعال بودن ستون مقدار درخواستی مرتبط با تراکنش " & TarakoneshSN & " در " & gAnbarDS & "  تعریف نشده است." _
-                    '                 + vbCr + "لطفا با پشتیبان سیستم تماس بگیرید.",
-                    '                 MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.Exclamation, "نمایش ستون مقدار درخواستی")
-                    'Finally
-                    '    dvTarakonesh.RowFilter = "0=0"
-                    'End Try
-                    ''==================================================================absanadBoxOut_Darkhast
-                    'Try
-                    '    dvTarakonesh.RowFilter = "ObjectDS = 'absanadhaBoxout_Darkhasti'"
-                    '    If dvTarakonesh.Count > 0 Then
-                    '        .ColHidden(.ColIndex("absanadhaBoxout_Darkhasti")) = Not CBool(dvTarakonesh(0)("Visible"))
-                    '    Else
-                    '        .ColHidden(.ColIndex("absanadhaBoxout_Darkhasti")) = True
-                    '    End If
-
-                    'Catch ex As Exception
-                    '    NetSql.Common.CSystem.MsgBox("نمایش/فعال بودن ستون مقدار درخواستی مرتبط با تراکنش " & TarakoneshSN & " در " & gAnbarDS & "  تعریف نشده است." _
-                    '                 + vbCr + "لطفا با پشتیبان سیستم تماس بگیرید.",
-                    '                 MsgBoxStyle.MsgBoxRtlReading + MsgBoxStyle.Exclamation, "نمایش ستون مقدار درخواستی")
-                    'Finally
-                    '    dvTarakonesh.RowFilter = "0=0"
-
-                    'End Try
-
-                    ''.ColHidden(.ColIndex("absanadhaCanout_Darkhasti")) = False
-                    ''.ColHidden(.ColIndex("absanadhaBoxout_Darkhasti")) = False
                 End If
 
 
