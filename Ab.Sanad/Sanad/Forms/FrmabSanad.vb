@@ -5818,6 +5818,18 @@ Friend Class FrmSanad
                         With .Add("{abvw_darkhast.MeghdareDarkhasti%paVw_VahedeSanjesh.TedadAjza} As MeghdareDarkhasti ", "TextBox", EnumFieldOptions.foHidden)
                             .Format = "#.###"
                         End With
+                        '=================================================================
+                        With .Add("{abSanadHa.MeghdareDarkhasti/paVw_VahedeSanjesh.TedadAjza} as absanadhaBoxout_Darkhasti", "TextBox", EnumFieldOptions.foDefault)
+                            .Format = "#.###"
+                            .ReadOnly = True
+                            .DefaultValue = 0
+                        End With
+                        With .Add("{abSanadHa.MeghdareDarkhasti%paVw_VahedeSanjesh.TedadAjza} as absanadhaCanout_Darkhasti", "TextBox", EnumFieldOptions.foDefault)
+                            .Format = "#.###"
+                            .ReadOnly = True
+                            .DefaultValue = 0
+                        End With
+                        '=======================================================
                     ElseIf NoeTarakoneshSN = EnumNoeTarakoneshSN.ntHAVALEHHA And Not IsTolidi Then
                         With .Add("abSanadHa.MeghdareDarkhasti ", "TextBox", EnumFieldOptions.foDefault)
                             .Format = "#.###"
