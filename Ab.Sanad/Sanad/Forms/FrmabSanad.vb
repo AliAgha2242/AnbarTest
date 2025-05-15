@@ -6482,6 +6482,9 @@ Friend Class FrmSanad
 
                 End With
 
+
+
+
             End With
         Else
             sstChild.TabPages.Remove(TabSanadHaFactor)
@@ -8172,35 +8175,48 @@ Friend Class FrmSanad
             End If
         End If
 
-        If ShowTabSanadHaFactor Then
+        If ShowTabSanadHaFactor AndAlso TarakoneshSN = EnumTarakoneshSN.HAVALEH_79_Ersal_Mahsool_Be_TozieKonandeh Then
             With DVabSanadHaFactor
                 .SQLWhere = "SanadHASN=0"
+                .SQLOrderBy = "CRow"
                 If IsNumeric(DVabSanadHa.FieldValue("SanadHASN")) Then
                     .SQLWhere = "SanadHASN=" & DVabSanadHa.FieldValue("SanadHASN").ToString
                 End If
                 .Refresh()
             End With
+
             If DVabSanadHaFactor.DataRows > 0 Then
                 With DVabSanadHaFactor
+                    .FlexGrid.Redraw = False
+                    Dim i As Integer
                     With .FlexGrid
-                        .Tree.Column = .ColIndex("TedadKol") - 1
-                        .SubtotalPosition = C1.Win.C1FlexGrid.SubtotalPositionEnum.BelowData
-                        With .Styles(C1.Win.C1FlexGrid.CellStyleEnum.Subtotal0)
-                            .DataType = GetType(Integer)
-                            .Format = "N0"
-                            .BackColor = Color.LightGoldenrodYellow
-                            .ForeColor = Color.Black
-                            .Font = New Font(DVabSanadHaFactor.FlexGrid.Font, FontStyle.Bold)
-                        End With
-                        .Subtotal(C1.Win.C1FlexGrid.AggregateEnum.Sum, -1, .ColIndex("TedadKol"), "N0", (System.Drawing.Color.LightYellow), , True, "جمع", 0, True)
-                        .Subtotal(C1.Win.C1FlexGrid.AggregateEnum.Sum, -1, .ColIndex("Karton"), "N0", (System.Drawing.Color.LightYellow), , True, "جمع", 0, True)
-                        .Subtotal(C1.Win.C1FlexGrid.AggregateEnum.Sum, -1, .ColIndex("Adad"), "N0", (System.Drawing.Color.LightYellow), , True, "جمع", 0, True)
+                        For i = 0 To .Cols - 1
+                            .Row = .Rows - 1
+                            .Col = i
+                            .CellBackColor = Color.LightYellow
+
+                        Next i
+
+                        .Row = .Rows - 1
+                        .Col = .Cols - 1
+                        .CellFontBold = True
+
+                        .Col = .Cols - 3
+                        .CellFontBold = True
+
+                        .Col = .Cols - 4
+                        .CellFontBold = True
+
+                        .Col = .Cols - 8
+                        .CellFontBold = True
                     End With
+
+                    .FlexGrid.Redraw = True
                 End With
             End If
+
+
         End If
-
-
 
         'BtnSabtUID.Enabled = True
 

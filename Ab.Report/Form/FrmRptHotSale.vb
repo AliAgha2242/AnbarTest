@@ -49,6 +49,8 @@ Public Class FrmRptHotSale
     'Friend WithEvents FraSanadStaus As System.Windows.Forms.GroupBox
     Friend WithEvents chkSanadStatus_1 As System.Windows.Forms.CheckBox
     Friend WithEvents chkSanadStatus_4 As System.Windows.Forms.CheckBox
+    Friend WithEvents ShowMandeh As CheckBox
+    Friend WithEvents ExpandAndCollaps As CheckBox
     Friend WithEvents chkSanadStatus_8 As System.Windows.Forms.CheckBox
 
     <System.Diagnostics.DebuggerStepThrough()>
@@ -67,6 +69,8 @@ Public Class FrmRptHotSale
         Me.chkSanadStatus_1 = New System.Windows.Forms.CheckBox()
         Me.chkSanadStatus_4 = New System.Windows.Forms.CheckBox()
         Me.chkSanadStatus_8 = New System.Windows.Forms.CheckBox()
+        Me.ShowMandeh = New System.Windows.Forms.CheckBox()
+        Me.ExpandAndCollaps = New System.Windows.Forms.CheckBox()
         Me.pnlF.SuspendLayout()
         Me.pnlGrid.SuspendLayout()
         Me.pnlCommand.SuspendLayout()
@@ -77,15 +81,19 @@ Public Class FrmRptHotSale
         '
         'pnlF
         '
+        Me.pnlF.Controls.Add(Me.ExpandAndCollaps)
+        Me.pnlF.Controls.Add(Me.ShowMandeh)
         Me.pnlF.Controls.Add(Me.FraSanadDate)
         Me.pnlF.Controls.Add(Me.dcbTafsili)
         Me.pnlF.Controls.Add(Me.Label5)
-        Me.pnlF.Size = New System.Drawing.Size(1028, 72)
+        Me.pnlF.Size = New System.Drawing.Size(1494, 72)
         Me.pnlF.Controls.SetChildIndex(Me.btnViewReport, 0)
         Me.pnlF.Controls.SetChildIndex(Me.btnChart, 0)
         Me.pnlF.Controls.SetChildIndex(Me.Label5, 0)
         Me.pnlF.Controls.SetChildIndex(Me.dcbTafsili, 0)
         Me.pnlF.Controls.SetChildIndex(Me.FraSanadDate, 0)
+        Me.pnlF.Controls.SetChildIndex(Me.ShowMandeh, 0)
+        Me.pnlF.Controls.SetChildIndex(Me.ExpandAndCollaps, 0)
         '
         'btnViewReport
         '
@@ -93,7 +101,7 @@ Public Class FrmRptHotSale
         '
         'pnlGrid
         '
-        Me.pnlGrid.Size = New System.Drawing.Size(1028, 426)
+        Me.pnlGrid.Size = New System.Drawing.Size(1494, 426)
         '
         'GridEX1
         '
@@ -111,7 +119,7 @@ Public Class FrmRptHotSale
         Me.GridEX1.GroupTotalRowFormatStyle.ForeColor = System.Drawing.Color.Navy
         Me.GridEX1.HeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
         Me.GridEX1.SelectedFormatStyle.BackColor = System.Drawing.Color.Moccasin
-        Me.GridEX1.Size = New System.Drawing.Size(1028, 426)
+        Me.GridEX1.Size = New System.Drawing.Size(1494, 426)
         Me.GridEX1.TotalRowFormatStyle.BackColor = System.Drawing.Color.LightSteelBlue
         Me.GridEX1.TotalRowFormatStyle.BackColorGradient = System.Drawing.Color.White
         Me.GridEX1.TotalRowFormatStyle.Key = "سرجمع"
@@ -132,7 +140,7 @@ Public Class FrmRptHotSale
         'pnlDownJanus
         '
         Me.pnlDownJanus.Location = New System.Drawing.Point(0, 498)
-        Me.pnlDownJanus.Size = New System.Drawing.Size(1028, 36)
+        Me.pnlDownJanus.Size = New System.Drawing.Size(1494, 36)
         '
         'dcbTafsili
         '
@@ -143,7 +151,7 @@ Public Class FrmRptHotSale
         Me.dcbTafsili.BypassChangeEvent = False
         Me.dcbTafsili.DisplayText = ""
         Me.dcbTafsili.LateBindingTop = "100"
-        Me.dcbTafsili.Location = New System.Drawing.Point(567, 3)
+        Me.dcbTafsili.Location = New System.Drawing.Point(1033, 3)
         Me.dcbTafsili.MemFilter = ""
         Me.dcbTafsili.Name = "dcbTafsili"
         Me.dcbTafsili.SeparatedData = Nothing
@@ -160,7 +168,7 @@ Public Class FrmRptHotSale
         Me.Label5.Cursor = System.Windows.Forms.Cursors.Default
         Me.Label5.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(899, 6)
+        Me.Label5.Location = New System.Drawing.Point(1365, 6)
         Me.Label5.Name = "Label5"
         Me.Label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.Label5.Size = New System.Drawing.Size(77, 14)
@@ -179,7 +187,7 @@ Public Class FrmRptHotSale
         Me.FraSanadDate.Controls.Add(Me.Label10)
         Me.FraSanadDate.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(178, Byte))
         Me.FraSanadDate.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.FraSanadDate.Location = New System.Drawing.Point(758, 30)
+        Me.FraSanadDate.Location = New System.Drawing.Point(1224, 30)
         Me.FraSanadDate.Name = "FraSanadDate"
         Me.FraSanadDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.FraSanadDate.Size = New System.Drawing.Size(221, 39)
@@ -309,10 +317,37 @@ Public Class FrmRptHotSale
         Me.chkSanadStatus_8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.chkSanadStatus_8.UseVisualStyleBackColor = False
         '
+        'ShowMandeh
+        '
+        Me.ShowMandeh.AutoSize = True
+        Me.ShowMandeh.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ShowMandeh.Location = New System.Drawing.Point(1134, 42)
+        Me.ShowMandeh.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShowMandeh.Name = "ShowMandeh"
+        Me.ShowMandeh.Size = New System.Drawing.Size(82, 17)
+        Me.ShowMandeh.TabIndex = 12
+        Me.ShowMandeh.Text = "نمایش مانده"
+        Me.ShowMandeh.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ShowMandeh.UseVisualStyleBackColor = True
+        '
+        'ExpandAndCollaps
+        '
+        Me.ExpandAndCollaps.AutoSize = True
+        Me.ExpandAndCollaps.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ExpandAndCollaps.Location = New System.Drawing.Point(1022, 41)
+        Me.ExpandAndCollaps.Margin = New System.Windows.Forms.Padding(0)
+        Me.ExpandAndCollaps.Name = "ExpandAndCollaps"
+        Me.ExpandAndCollaps.Size = New System.Drawing.Size(98, 17)
+        Me.ExpandAndCollaps.TabIndex = 12
+        Me.ExpandAndCollaps.Text = "باز کردن گروه ها"
+        Me.ExpandAndCollaps.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ExpandAndCollaps.UseVisualStyleBackColor = True
+        ExpandAndCollaps.Visible = False
+        '
         'FrmRptHotSale
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 14)
-        Me.ClientSize = New System.Drawing.Size(1028, 534)
+        Me.ClientSize = New System.Drawing.Size(1494, 534)
         Me.Name = "FrmRptHotSale"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "فروش گرم"
@@ -396,10 +431,6 @@ Public Class FrmRptHotSale
         dcbTafsili.Bind(cn, vSql, "tafsilisn", "tafsiliDs")
 
         setColumnProperties()
-
-        RefreshDataSet()
-
-
     End Sub
 
     Private Sub btnViewReport_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) _
@@ -441,13 +472,7 @@ Public Class FrmRptHotSale
                 vErrMsg = "طرف حساب مشخص نشده است"
             End If
 
-            'If dcbTafsili.BoundText <> "" AndAlso Trim(dcbTafsili.SelectedValue) <> 0 Then
-            '    If Not TafsiliSN Is Nothing AndAlso TafsiliSN.Length > 0 Then
-            '        TafsiliSN = CStr(dcbTafsili.SelectedValue)
-            '    Else
-            '        TafsiliSN = CStr(dcbTafsili.SelectedValue)
-            '    End If
-            'End If
+
             If vErrMsg <> "" Then
                 NetSql.Common.CSystem.MsgBox(vErrMsg,
                           MsgBoxStyle.Critical Or MsgBoxStyle.MsgBoxRtlReading Or MsgBoxStyle.OkOnly Or
@@ -467,24 +492,16 @@ Public Class FrmRptHotSale
                 GridEX1.RootTable.Columns(i).AutoSize()
             Next
 
-            'grouping by 
-            GridEX1.RootTable.Groups.Clear()
-            If GridEX1.RootTable.Columns.Contains("sanadNO") Then
-                Dim group As New GridEXGroup(GridEX1.RootTable.Columns("SanadNO"))
-                GridEX1.RootTable.Groups.Add(group)
-                GridEX1.Refresh()
+
+
+            If ShowMandeh.Checked Then
+                Grouping()
             End If
 
-            'Tartib 
-            If GridEX1.RootTable.Columns.Contains("adad") AndAlso GridEX1.RootTable.Columns.Contains("karton") AndAlso GridEX1.RootTable.Columns.Contains("tedadKol") Then
-                Dim maxPosition As Integer = GridEX1.RootTable.Columns.Count - 1
-                GridEX1.RootTable.Columns("adad").Position = maxPosition
-                GridEX1.RootTable.Columns("karton").Position = maxPosition - 1
-                GridEX1.RootTable.Columns("tedadKol").Position = maxPosition - 2
-
-            End If
-
-
+            For Each item As GridEXColumn In GridEX1.RootTable.Columns
+                item.FormatString = "###.###"
+                item.AutoSize()
+            Next
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "")
@@ -500,9 +517,9 @@ Public Class FrmRptHotSale
         Dim i As Integer
 
         dvTableFooter =
-            cn.ExecuteQuery(
-                             "SELECT ObjectHaDS,ObjectHaFDS FROM PaObject T1 INNER JOIN PaObjectHa T2 ON T1.ObjectSN = 
-                             T2.ObjectSN WHERE T1.ObjectSn=448.935 ORDER BY CAST(ObjectHaNo AS BIGINT)")
+            cn.ExecuteQuery("
+                            SELECT ObjectHaDS,ObjectHaFDS FROM PaObject T1 INNER JOIN PaObjectHa T2 ON T1.ObjectSN = 
+                            T2.ObjectSN WHERE T1.ObjectSn=448.935 ORDER BY CAST(ObjectHaSn AS BIGINT)")
         For i = 0 To dvTableFooter.Count - 1
             With GridEX1.RootTable.Columns()
                 With .Add(dvTableFooter.Item(i).Item("ObjectHaDS"), Janus.Windows.GridEX.ColumnType.Text)
@@ -513,6 +530,48 @@ Public Class FrmRptHotSale
         Next
     End Sub
 
+    Private Sub ShowMandeh_CheckedChanged(sender As Object, e As EventArgs) Handles ShowMandeh.CheckedChanged
+
+        If ShowMandeh.Checked Then
+            Grouping()
+            ExpandAndCollaps.Text = "باز کردن گروه ها"
+            ExpandAndCollaps.Visible = True
+            ExpandAndCollaps.Checked = False
+        Else
+            GridEX1.RootTable.Groups.Clear()
+            ExpandAndCollaps.Visible = False
+        End If
+
+    End Sub
+    Private Sub Grouping()
+        GridEX1.RootTable.Groups.Clear()
+        GridEX1.RootTable.Groups.Add(New GridEXGroup(GridEX1.RootTable.Columns("SanadNo")))
+        GridEX1.RootTable.Groups.Add(New GridEXGroup(GridEX1.RootTable.Columns("KalaDs")))
+        GridEX1.GroupMode = GroupMode.Collapsed
+        GridEX1.Refresh()
 
 
+    End Sub
+    Private Sub GridEX1_FormattingRow(sender As Object, e As RowLoadEventArgs) Handles GridEX1.FormattingRow
+        If e.Row.RowType = RowType.Record Then
+            Dim formatStyle As GridEXFormatStyle = New GridEXFormatStyle()
+            formatStyle.BackColor = Color.LightGray
+            formatStyle.FontBold = TriState.True
+            If e.Row.Cells?.Count > 0 Then
+                If e.Row.Cells("SanadType").Value?.ToString() = "2" Then
+                    e.Row.RowStyle = formatStyle
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub ExpandAndCollaps_CheckedChanged(sender As Object, e As EventArgs) Handles ExpandAndCollaps.CheckedChanged
+        If ExpandAndCollaps.Checked AndAlso GridEX1.DataSource IsNot Nothing Then
+            GridEX1.ExpandGroups()
+            ExpandAndCollaps.Text = "بستن گروه ها"
+        ElseIf GridEX1.DataSource IsNot Nothing Then
+            GridEX1.CollapseGroups()
+            ExpandAndCollaps.Text = "باز کردن گروه ها"
+        End If
+    End Sub
 End Class
