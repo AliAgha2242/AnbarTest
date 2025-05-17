@@ -49,8 +49,7 @@ Public Class FrmRptHotSale
     'Friend WithEvents FraSanadStaus As System.Windows.Forms.GroupBox
     Friend WithEvents chkSanadStatus_1 As System.Windows.Forms.CheckBox
     Friend WithEvents chkSanadStatus_4 As System.Windows.Forms.CheckBox
-    Friend WithEvents ShowMandeh As CheckBox
-    Friend WithEvents ExpandAndCollaps As CheckBox
+    'Friend WithEvents ShowMandeh As CheckBox
     Friend WithEvents chkSanadStatus_8 As System.Windows.Forms.CheckBox
 
     <System.Diagnostics.DebuggerStepThrough()>
@@ -69,8 +68,7 @@ Public Class FrmRptHotSale
         Me.chkSanadStatus_1 = New System.Windows.Forms.CheckBox()
         Me.chkSanadStatus_4 = New System.Windows.Forms.CheckBox()
         Me.chkSanadStatus_8 = New System.Windows.Forms.CheckBox()
-        Me.ShowMandeh = New System.Windows.Forms.CheckBox()
-        Me.ExpandAndCollaps = New System.Windows.Forms.CheckBox()
+        'Me.ShowMandeh = New System.Windows.Forms.CheckBox()
         Me.pnlF.SuspendLayout()
         Me.pnlGrid.SuspendLayout()
         Me.pnlCommand.SuspendLayout()
@@ -81,8 +79,7 @@ Public Class FrmRptHotSale
         '
         'pnlF
         '
-        Me.pnlF.Controls.Add(Me.ExpandAndCollaps)
-        Me.pnlF.Controls.Add(Me.ShowMandeh)
+        'Me.pnlF.Controls.Add(Me.ShowMandeh)
         Me.pnlF.Controls.Add(Me.FraSanadDate)
         Me.pnlF.Controls.Add(Me.dcbTafsili)
         Me.pnlF.Controls.Add(Me.Label5)
@@ -92,8 +89,7 @@ Public Class FrmRptHotSale
         Me.pnlF.Controls.SetChildIndex(Me.Label5, 0)
         Me.pnlF.Controls.SetChildIndex(Me.dcbTafsili, 0)
         Me.pnlF.Controls.SetChildIndex(Me.FraSanadDate, 0)
-        Me.pnlF.Controls.SetChildIndex(Me.ShowMandeh, 0)
-        Me.pnlF.Controls.SetChildIndex(Me.ExpandAndCollaps, 0)
+        'Me.pnlF.Controls.SetChildIndex(Me.ShowMandeh, 0)
         '
         'btnViewReport
         '
@@ -316,33 +312,19 @@ Public Class FrmRptHotSale
         Me.chkSanadStatus_8.Text = "قطعي"
         Me.chkSanadStatus_8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.chkSanadStatus_8.UseVisualStyleBackColor = False
-        '
-        'ShowMandeh
-        '
-        Me.ShowMandeh.AutoSize = True
-        Me.ShowMandeh.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ShowMandeh.Location = New System.Drawing.Point(1134, 42)
-        Me.ShowMandeh.Margin = New System.Windows.Forms.Padding(0)
-        Me.ShowMandeh.Name = "ShowMandeh"
-        Me.ShowMandeh.Size = New System.Drawing.Size(82, 17)
-        Me.ShowMandeh.TabIndex = 12
-        Me.ShowMandeh.Text = "نمایش مانده"
-        Me.ShowMandeh.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ShowMandeh.UseVisualStyleBackColor = True
-        '
-        'ExpandAndCollaps
-        '
-        Me.ExpandAndCollaps.AutoSize = True
-        Me.ExpandAndCollaps.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ExpandAndCollaps.Location = New System.Drawing.Point(1022, 41)
-        Me.ExpandAndCollaps.Margin = New System.Windows.Forms.Padding(0)
-        Me.ExpandAndCollaps.Name = "ExpandAndCollaps"
-        Me.ExpandAndCollaps.Size = New System.Drawing.Size(98, 17)
-        Me.ExpandAndCollaps.TabIndex = 12
-        Me.ExpandAndCollaps.Text = "باز کردن گروه ها"
-        Me.ExpandAndCollaps.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.ExpandAndCollaps.UseVisualStyleBackColor = True
-        ExpandAndCollaps.Visible = False
+        ''
+        ''ShowMandeh
+        ''
+        'Me.ShowMandeh.AutoSize = True
+        'Me.ShowMandeh.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        'Me.ShowMandeh.Location = New System.Drawing.Point(1134, 42)
+        'Me.ShowMandeh.Margin = New System.Windows.Forms.Padding(0)
+        'Me.ShowMandeh.Name = "ShowMandeh"
+        'Me.ShowMandeh.Size = New System.Drawing.Size(82, 17)
+        'Me.ShowMandeh.TabIndex = 12
+        'Me.ShowMandeh.Text = "نمایش مانده"
+        'Me.ShowMandeh.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        'Me.ShowMandeh.UseVisualStyleBackColor = True
         '
         'FrmRptHotSale
         '
@@ -494,9 +476,9 @@ Public Class FrmRptHotSale
 
 
 
-            If ShowMandeh.Checked Then
-                Grouping()
-            End If
+            'If ShowMandeh.Checked Then
+            '    Grouping()
+            'End If
 
             For Each item As GridEXColumn In GridEX1.RootTable.Columns
                 item.FormatString = "###.###"
@@ -519,7 +501,7 @@ Public Class FrmRptHotSale
         dvTableFooter =
             cn.ExecuteQuery("
                             SELECT ObjectHaDS,ObjectHaFDS FROM PaObject T1 INNER JOIN PaObjectHa T2 ON T1.ObjectSN = 
-                            T2.ObjectSN WHERE T1.ObjectSn=448.935 ORDER BY CAST(ObjectHaSn AS BIGINT)")
+                            T2.ObjectSN WHERE T1.ObjectSn=448.935 and objecthaSn <> 47443.935 ORDER BY CAST(ObjectHaSn AS BIGINT)")
         For i = 0 To dvTableFooter.Count - 1
             With GridEX1.RootTable.Columns()
                 With .Add(dvTableFooter.Item(i).Item("ObjectHaDS"), Janus.Windows.GridEX.ColumnType.Text)
@@ -530,28 +512,28 @@ Public Class FrmRptHotSale
         Next
     End Sub
 
-    Private Sub ShowMandeh_CheckedChanged(sender As Object, e As EventArgs) Handles ShowMandeh.CheckedChanged
+    'Private Sub ShowMandeh_CheckedChanged(sender As Object, e As EventArgs) Handles ShowMandeh.CheckedChanged
 
-        If ShowMandeh.Checked Then
-            Grouping()
-            ExpandAndCollaps.Text = "باز کردن گروه ها"
-            ExpandAndCollaps.Visible = True
-            ExpandAndCollaps.Checked = False
-        Else
-            GridEX1.RootTable.Groups.Clear()
-            ExpandAndCollaps.Visible = False
-        End If
+    '    If ShowMandeh.Checked Then
+    '        Grouping()
+    '        ExpandAndCollaps.Text = "باز کردن گروه ها"
+    '        ExpandAndCollaps.Visible = True
+    '        ExpandAndCollaps.Checked = False
+    '    Else
+    '        GridEX1.RootTable.Groups.Clear()
+    '        ExpandAndCollaps.Visible = False
+    '    End If
 
-    End Sub
-    Private Sub Grouping()
-        GridEX1.RootTable.Groups.Clear()
-        GridEX1.RootTable.Groups.Add(New GridEXGroup(GridEX1.RootTable.Columns("SanadNo")))
-        GridEX1.RootTable.Groups.Add(New GridEXGroup(GridEX1.RootTable.Columns("KalaDs")))
-        GridEX1.GroupMode = GroupMode.Collapsed
-        GridEX1.Refresh()
+    'End Sub
+    'Private Sub Grouping()
+    '    GridEX1.RootTable.Groups.Clear()
+    '    GridEX1.RootTable.Groups.Add(New GridEXGroup(GridEX1.RootTable.Columns("SanadNo")))
+    '    GridEX1.RootTable.Groups.Add(New GridEXGroup(GridEX1.RootTable.Columns("KalaDs")))
+    '    GridEX1.GroupMode = GroupMode.Collapsed
+    '    GridEX1.Refresh()
 
 
-    End Sub
+    'End Sub
     Private Sub GridEX1_FormattingRow(sender As Object, e As RowLoadEventArgs) Handles GridEX1.FormattingRow
         If e.Row.RowType = RowType.Record Then
             Dim formatStyle As GridEXFormatStyle = New GridEXFormatStyle()
@@ -565,13 +547,13 @@ Public Class FrmRptHotSale
         End If
     End Sub
 
-    Private Sub ExpandAndCollaps_CheckedChanged(sender As Object, e As EventArgs) Handles ExpandAndCollaps.CheckedChanged
-        If ExpandAndCollaps.Checked AndAlso GridEX1.DataSource IsNot Nothing Then
-            GridEX1.ExpandGroups()
-            ExpandAndCollaps.Text = "بستن گروه ها"
-        ElseIf GridEX1.DataSource IsNot Nothing Then
-            GridEX1.CollapseGroups()
-            ExpandAndCollaps.Text = "باز کردن گروه ها"
-        End If
-    End Sub
+    'Private Sub ExpandAndCollaps_CheckedChanged(sender As Object, e As EventArgs) Handles ExpandAndCollaps.CheckedChanged
+    '    If ExpandAndCollaps.Checked AndAlso GridEX1.DataSource IsNot Nothing Then
+    '        GridEX1.ExpandGroups()
+    '        ExpandAndCollaps.Text = "بستن گروه ها"
+    '    ElseIf GridEX1.DataSource IsNot Nothing Then
+    '        GridEX1.CollapseGroups()
+    '        ExpandAndCollaps.Text = "باز کردن گروه ها"
+    '    End If
+    'End Sub
 End Class
