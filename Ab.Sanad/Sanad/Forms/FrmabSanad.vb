@@ -6459,28 +6459,27 @@ Friend Class FrmSanad
             DVabSanadHaFactor = New CDataView(cn)
             With DVabSanadHaFactor
                 .Init(PnlGSanadHaFactor, , , , EnumButtonOptions.boCmdRefresh + EnumButtonOptions.boCmdFilter)
-                .TableName = "abvw_SanadHaFactor"
                 .AccessRight = EnumAccessRight.arAll
                 .EditInGrid = False
-                .SQLOrderBy = "Tartib"
-                With .Fields
-                    .Add("SanadhaSN", , If(gSM.IsProgrammer, EnumFieldOptions.foDefault, EnumFieldOptions.foHidden))
-                    .Add("FactorHaSN", , If(gSM.IsProgrammer, EnumFieldOptions.foDefault, EnumFieldOptions.foHidden))
-                    '.Add("ErrorMessage", , EnumFieldOptions.foDefault).Caption = "خطا"
-                    .Add("Tartib", , EnumFieldOptions.foDefault).Caption = "ترتیب"
-                    .Add("KalaDS", , EnumFieldOptions.foDefault).Caption = "محصول"
-                    .Add("ShomarehRahgiri", , EnumFieldOptions.foDefault).Caption = "رهگیری"
-                    .Add("TedadAjza", , EnumFieldOptions.foDefault).Caption = "تعداد در کارتن"
-                    '.Add("SanadType", , EnumFieldOptions.foDefault)
-                    .Add("SanadTypeDS", , EnumFieldOptions.foDefault).Caption = "نوع سند"
-                    .Add("MoshtariFullName", , EnumFieldOptions.foDefault).Caption = "مشتری"
-                    .Add("FactorNo", , EnumFieldOptions.foDefault).Caption = "شماره فاکتور"
-                    .Add("SodoorDate", , EnumFieldOptions.foDefault).Caption = "تاریخ فاکتور"
-                    .Add("TedadKol", , EnumFieldOptions.foDefault).Caption = "تعداد کل"
-                    .Add("Karton", , EnumFieldOptions.foDefault).Caption = "کارتن"
-                    .Add("Adad", , EnumFieldOptions.foDefault).Caption = "عدد"
+                '.SQLOrderBy = "Tartib"
+                'With .Fields
+                '    .Add("SanadhaSN", , If(gSM.IsProgrammer, EnumFieldOptions.foDefault, EnumFieldOptions.foHidden))
+                '    .Add("FactorHaSN", , If(gSM.IsProgrammer, EnumFieldOptions.foDefault, EnumFieldOptions.foHidden))
+                '    '.Add("ErrorMessage", , EnumFieldOptions.foDefault).Caption = "خطا"
+                '    .Add("Tartib", , EnumFieldOptions.foDefault).Caption = "ترتیب"
+                '    .Add("KalaDS", , EnumFieldOptions.foDefault).Caption = "محصول"
+                '    .Add("ShomarehRahgiri", , EnumFieldOptions.foDefault).Caption = "رهگیری"
+                '    .Add("TedadAjza", , EnumFieldOptions.foDefault).Caption = "تعداد در کارتن"
+                '    '.Add("SanadType", , EnumFieldOptions.foDefault)
+                '    .Add("SanadTypeDS", , EnumFieldOptions.foDefault).Caption = "نوع سند"
+                '    .Add("MoshtariFullName", , EnumFieldOptions.foDefault).Caption = "مشتری"
+                '    .Add("FactorNo", , EnumFieldOptions.foDefault).Caption = "شماره فاکتور"
+                '    .Add("SodoorDate", , EnumFieldOptions.foDefault).Caption = "تاریخ فاکتور"
+                '    .Add("TedadKol", , EnumFieldOptions.foDefault).Caption = "تعداد کل"
+                '    .Add("Karton", , EnumFieldOptions.foDefault).Caption = "کارتن"
+                '    .Add("Adad", , EnumFieldOptions.foDefault).Caption = "عدد"
 
-                End With
+                'End With
 
 
 
@@ -8177,12 +8176,12 @@ Friend Class FrmSanad
 
         If ShowTabSanadHaFactor AndAlso TarakoneshSN = EnumTarakoneshSN.HAVALEH_79_Ersal_Mahsool_Be_TozieKonandeh Then
             With DVabSanadHaFactor
-                .SQLWhere = "SanadHASN=0"
-                .SQLOrderBy = "CRow"
+                '.SQLWhere = "SanadHASN=0"
                 If IsNumeric(DVabSanadHa.FieldValue("SanadHASN")) Then
-                    .SQLWhere = "SanadHASN=" & DVabSanadHa.FieldValue("SanadHASN").ToString
+                    .DataSource = cn.ExecuteQuery($"abSp_GetSanadHaFactorBySanadhaSN {DVabSanadHa.FieldValue("SanadhaSn")}")
                 End If
                 .Refresh()
+                SetCaptionOnColumn()
             End With
 
             If DVabSanadHaFactor.DataRows > 0 Then
@@ -8219,6 +8218,34 @@ Friend Class FrmSanad
         End If
 
         'BtnSabtUID.Enabled = True
+
+    End Sub
+
+    Private Sub SetCaptionOnColumn()
+        Try
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("KalaDS").Caption = "کالا"
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("TedadAjza").Caption = "تعداد در کارتن"
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("ShomarehRahgiri").Caption = "رهگیری"
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("SanadTypeDS").Caption = "نوع سند"
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("MoshtariFullName").Caption = "مشتری"
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("SanadType").Caption = "شماره نوع سند"
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("FactorNo").Caption = "شماره فاکتور"
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("SodoorDate").Caption = "تاریخ فاکتور"
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("TedadKol").Caption = "تعداد کلی"
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("Karton").Caption = "کارتن"
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("Adad").Caption = "عدد"
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("sanadhaSn").Visible = (gSM.IsAppSSAdmin OrElse gSM.IsProgrammer)
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("sanadSn").Visible = (gSM.IsAppSSAdmin OrElse gSM.IsProgrammer)
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("KalaSn").Visible = (gSM.IsAppSSAdmin OrElse gSM.IsProgrammer)
+            DVabSanadHaFactor.FlexGrid.ColumnCollection("FactorhaSn").Visible = (gSM.IsAppSSAdmin OrElse gSM.IsProgrammer)
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+
+
+
 
     End Sub
 
