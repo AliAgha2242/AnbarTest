@@ -277,6 +277,28 @@ Public Class CSanad
         End With
         System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
     End Sub
+    Public Sub ShowTestAsnad(ByVal aNoeTarakoneshSN As EnumNoeTarakoneshSN, ByVal aNoeAccessRight As String _
+                          , Optional ByVal aSanadSN As Decimal = 0)
+        ' aNoeTarakoneshSN    نوع نمايش فرم برابر انواع تعريف شده
+        ' aNoeAccessRight کليد دسترسي ارسال ميگردد که در اي پي پي اس اس تعريف شده است
+        ' aSanadSN اگر پر باشد فقط سند مورد نظر نمايش داده ميشود
+        ' با توجه به پارامترهاي ارسالي فرم مورد نظر نمايش داده ميشود جهت نمايش اسناد
+        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
+        ' در صورتيکه سيستم ديگري غير از انبار نمايش فرم را خواست دسترسي رويت گردد
+        If gSM.ApplicationID <> 5 Then
+            aNoeAccessRight = ""
+        End If
+        With FrmabTestSanad.DefInstance(aNoeTarakoneshSN)
+            .MdiParent = gMDIParent
+            .NoeAccessRight = aNoeAccessRight
+            .NoeTarakoneshSN = aNoeTarakoneshSN
+            .SanadSN = aSanadSN
+            .StartPosition = FormStartPosition.CenterParent
+            .Show()
+            .Focus()
+        End With
+        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
+    End Sub
     ''ghasemi 14010307
     Public Sub ShowTaghirNerkhAvaldore(ByVal aNoeTarakoneshSN As EnumNoeTarakoneshSN, ByVal aNoeAccessRight As String _
                           , Optional ByVal aSanadSN As Decimal = 0)
@@ -325,7 +347,6 @@ Public Class CSanad
         End With
         System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
     End Sub
-
     Public Sub ShowSanad(ByVal aSanadSN As Decimal, Optional ByVal aNoeAccessRight As String = "")
         ' با توجه به پارامترهاي ارسالي سند مورد نظر نمايش داده ميشود جهت نمايش سند خاص
 

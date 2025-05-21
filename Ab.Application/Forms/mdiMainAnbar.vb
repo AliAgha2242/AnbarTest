@@ -19,8 +19,6 @@ Public Class mdiMainAnbar
     Friend WithEvents mnuSep75 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents mnuSep78 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents mnuSep79 As System.Windows.Forms.ToolStripSeparator
-
-
     Friend WithEvents mnuEzafiMojoodiAnbar As Minoo.Controls.FTMenuItem
     Friend WithEvents mnuKasriMojoodiAnbar As Minoo.Controls.FTMenuItem
     Friend WithEvents mnuEslaheTarafHesab As Minoo.Controls.FTMenuItem
@@ -36,7 +34,6 @@ Public Class mdiMainAnbar
     Friend WithEvents mnuSepDarkhastha As Minoo.Controls.FTMenuItem
     Friend WithEvents mnuSepEslahiha As Minoo.Controls.FTMenuItem
     Friend WithEvents mnuMojoodiha As Minoo.Controls.FTMenuItem
-
     Friend WithEvents mnuSep97 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents mnuabNoeChideman As Minoo.Controls.FTMenuItem
     Friend WithEvents mnuabChideman As Minoo.Controls.FTMenuItem
@@ -231,28 +228,21 @@ Public Class mdiMainAnbar
     Friend WithEvents MnuTakhsisKalaOnIRC As Minoo.Controls.FTMenuItem   'Alipour (no) 14030917
     Friend WithEvents MnuSep112 As System.Windows.Forms.ToolStripSeparator  'Alipour (no) 14030917
 
-
-
+    Public WithEvents MnuTestSanad As Minoo.Controls.FTMenuItem
     'Friend WithEvents mnuReportAnbargardaniEnghezaDate As Minoo.Controls.FTMenuItem
-
-
-
-
     Public Sub New()
         MyBase.New()
         InitializeComponent()
 
         Me.mnuBaseInfo.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuAnbar, Me.mnuabAnbarTarakonesh, Me.mnuabTarakoneshGorooh, Me.mnuabNoeBarnameh, Me.mnuabTarakoneshGoroohTafsili, MnuabTarakoneshConstraint, Me.mnuabAnbarNoeRahgiri, MnuSep109, MnuAccessControl, mnuSep78, MnuZayeatKartablRole, mnuSep35, Me.mnuSep792, Me.MnuAnbarKalaParameter, Me.mnuabAnbarKala, Me.mnuSep73, Me.mnuabAnbarKalaRezerv, Me.mnuSep74, Me.MnuTashimPattern, Me.mnuabAnbarConfig, Me.MnuSanadObjectChideman, Me.mnuSahmeKala})
         Me.mnuAmaliat.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuSepDarkhastha, Me.mnuSep40, Me.MnuSanadBarcodeReader, Me.MnuTakhsisKalaOnIRC, Me.MnuSep112, Me.mnuAsnadAnbar, Me.MnuDoMovaghatSanadGhatee, Me.mnuSep77, MnuZayeatKartabl, mnuSep75, Me.mnuQC, Me.mnuEslaheSanad, Me.mnuSep36, Me.mnuChideman, Me.mnuSep97, Me.MnuAnbarGardaniMain, Me.MnuSep99, Me.mnuGetSanadAnbar, Me.mnuErsalFile, Me.mnuSep62, Me.mnuDarjSanadAsAnbarBeAnbar65_5_2, Me.mnuDarjSanadAsAnbarBeAnbar65_5_5, Me.mnuDarjSanadAsAnbarBeAnbar81_31, Me.mnuSodorSanadAsMojodiBeAnbar10, Me.mnuUpdateSanadDate, Me.mnuSep34, Me.mnu_RialeVaredeh, Me.mnuSep84, Me.mnuSelectAnbar, Me.mnuSelectCurrentSal, Me.mnuSep85, Me.MnuUpdateEnghezaDate, Me.MnuMohlateForoosh, Me.MnuImportFromExcel, Me.mnuErsalMojoodiBeAvalDoreh, Me.mnuSefrKardaneMojoodiAnbar, Me.MnuSep10, Me.mnuEnteghalMojoodiKalaPhiziki, Me.MnuCopySanadAnbar, Me.MnuEnteghlaMojoudiDaftarbeDaftar, Me.MnuSep111, Me.MnuPm})
-        Me.mnuAsnadAnbar.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMojoodiha, Me.mnuResid, Me.mnuResidDarAnbarQC, Me.mnuHavaleh, MnuTaeedeDaryafteHavalehayeArayeshi, Me.mnuBarnameh, Me.mnuSep350, Me.MnuResideMarjooeAzTozie, Me.mnuSep38, Me.mnuSepKasriEzafeShoab, Me.mnuSep39, Me.mnuHavalehKahandehKharid, Me.mnuSepEslahiha, Me.mnuSep35, Me.mnuEzafiMojoodiAnbar, Me.mnuKasriMojoodiAnbar}) 'yekta 940302
+        Me.mnuAsnadAnbar.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMojoodiha, Me.mnuResid, Me.mnuResidDarAnbarQC, Me.mnuHavaleh, MnuTaeedeDaryafteHavalehayeArayeshi, Me.mnuBarnameh, Me.mnuSep350, Me.MnuResideMarjooeAzTozie, Me.mnuSep38, Me.mnuSepKasriEzafeShoab, Me.mnuSep39, Me.mnuHavalehKahandehKharid, Me.mnuSepEslahiha, Me.mnuSep35, Me.mnuEzafiMojoodiAnbar, Me.mnuKasriMojoodiAnbar, Me.MnuTestSanad}) 'yekta 940302
         Me.mnuGozareshha.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuGozareshhaHesabdari, Me.mnuRTarakoneshGorooh, Me.mnuRptHotSale, Me.mnu__abSpr_Mojoodi, Me.mnuRptAsnadBarcodeKhan, Me.mnu__ShomarehBachhayeSabtNashodehHamlMostaghim, Me.mnu__abSpr_MojoodiKalaSahmiye, Me.mnuTafsiliA, MnuMoroorTafsiliNew, Me.mnuVardehSamaneJameAnbar, Me.mnuMasrafeMavad, Me.mnuRptAmalKard, Me.mnuReportAdamRayateOlaviatBandiTarikhEnghezaDarHavaleh, Me.mnuKardexList, Me.mnuRptQCIntervals, Me.mnuChapeSanad, Me.mnuRptRezerv, Me.mnuCheckBarcode, Me.mnuMojoodiB, Me.mnurptDarkhast, Me.mnurptDarkhastKharid, Me.mnuSep69, Me.mnuRptVaredehMojaz, Me.mnuRptMTS, Me.mnuRptRaked, Me.MnuAlarmMojoodi, Me.mnuSep101, Me.mnuRptAnbarGardani, Me.mnuGozareshMoghayerat, Me.mnuRptNegasht, Me.mnuSefareshParam, Me.mnuBeinAnbarControlReport, Me.MnuRptVaznRialiHavalehha, Me.MnuRptMoghayeratShoab, Me.mnuRptChideman, Me.mnuRptHavalehMovaghat, Me.MnuRptRialiAsnadKAsriEzafeh, Me.MnuSep100, Me.MnuZayeatKartablReport, Me.mnuFaseleDarkhastTaHavaleh, Me.mnuRptPriodicService, Me.mnuRptDarkhastRepair, MnuSep108})
         Me.mnuGozareshhaHesabdari.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFrmResideMamoorPakhsh, Me.mnurptAlertNerkhStandardAsnad, Me.mnuRptTadil, Me.mnuRptTashim, Me.mnuRptMoghayeratSanadMaliStandard, Me.MnuMoghayesehSanadRialiMaliVaAnbarReport})
         Me.mnuChideman.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuabNoeChideman, Me.mnuabSharayeteMohiti, Me.mnuSep98, Me.mnuabChideman, Me.mnuSep102, Me.mnuabChidemanSharayet, Me.mnuabSharayeteKala, Me.mnuSep103, Me.mnuabKalaChideman})
         Me.MnuAnbarGardaniMain.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuAnbarGardani, Me.MnuAnbarGardaniMianDoreh, Me.MnuAnbarGardaniEnghezaDate})
         Me.mnuRptAnbarGardani.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuRptSooratjalaseAnbarGardani, Me.mnuRptTagAnbarGardani, Me.mnuRptMoghayratBienShomaresh, Me.mnuRptMoghayratAnbarGardani, Me.mnuRepAnbarGardaniEnghezaDate})
-
         Me.mnuRptAsnadBarcodeKhan.DropDownItems.AddRange(New ToolStripItem() {Me.mnu__ReportAghlamTarikhNazdikeAsnadBarcodKhan, Me.mnuMojudiWithIRC_GTIN, Me.mnu__MoghayerateCatalogueMahsoolatBaSystemMap, Me.mnu__ListMahsulateBarcodkhan, Me.mnuRptUIDtracking, MnuRptBatchNoHistory})
-
         Me.mnuBeinAnbarControlReport.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTahvilBeGoroohReport, Me.mnuKardex, Me.mnuControlKardex})
         Me.mnuSepKasriEzafeShoab.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuHavalehKasriDryaft, Me.mnuResideKasriErsal, Me.mnuHavalehEzafehErsal, Me.mnuResideEzafehDryaft})
         Me.mnuSepDarkhastha.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuDarkhast, Me.mnuDarkhastKharidDakheli, Me.mnuDarkhastKharidKhareji, Me.mnuTafkik_Ghaza, Me.mnuTafkik_Daroo}) '------ yekta 930722
@@ -270,13 +260,6 @@ Public Class mdiMainAnbar
         End If
         MyBase.Dispose(Disposing)
     End Sub
-
-
-
-
-
-
-
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
@@ -339,7 +322,6 @@ Public Class mdiMainAnbar
         Me.MnuZayeatKartablReport = New Minoo.Controls.FTMenuItem()
         Me.MnuSanadBarcodeReader = New Minoo.Controls.FTMenuItem()
         '
-
         Me.mnuQC = New Minoo.Controls.FTMenuItem()
         Me.mnuSep36 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuGetSanadAnbar = New Minoo.Controls.FTMenuItem()
@@ -462,11 +444,10 @@ Public Class mdiMainAnbar
         Me.mnuRptUIDtracking = New Minoo.Controls.FTMenuItem()
         Me.MnuMoghayesehSanadRialiMaliVaAnbarReport = New Minoo.Controls.FTMenuItem()
         Me.MnuRptBatchNoHistory = New Minoo.Controls.FTMenuItem()    ''Bagheri (HB) 14030823
-        Me.MnuTakhsisKalaOnIRC = New Minoo.Controls.FTMenuItem()      'Alipour (no) 14030917
-        Me.MnuSep112 = New System.Windows.Forms.ToolStripSeparator()  'Alipour (no) 14030917
-        mnuRptHotSale = New Minoo.Controls.FTMenuItem()
-
-
+        Me.MnuTakhsisKalaOnIRC = New Minoo.Controls.FTMenuItem()      'Alipour (NO) 14030917
+        Me.MnuSep112 = New System.Windows.Forms.ToolStripSeparator()  'Alipour (NO) 14030917
+        Me.mnuRptHotSale = New Minoo.Controls.FTMenuItem()            'Tavakoli (AL) 14040220
+        Me.MnuTestSanad = New Minoo.Controls.FTMenuItem()             'Alipour (NO) 14040223
         CType(Me.sbpVersion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.sbpUserName, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.sbpComputerName, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1616,7 +1597,7 @@ Public Class mdiMainAnbar
         'mnuAsnadAnbar
         '
         Me.mnuAsnadAnbar.AppName = "mnuAsnadAnbar"
-        Me.mnuAsnadAnbar.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMojoodiha, Me.mnuSep72, Me.mnuResid, Me.mnuHavaleh, Me.mnuBarnameh, Me.mnuSep350, Me.MnuResideMarjooeAzTozie, Me.mnuSep38, Me.mnuSepKasriEzafeShoab, Me.mnuSep39, Me.mnuHavalehKahandehKharid, Me.mnuResidDarAnbarQC, Me.mnuSepEslahiha, Me.mnuSep35, Me.mnuEzafiMojoodiAnbar, Me.mnuKasriMojoodiAnbar, Me.mnuSep77})
+        Me.mnuAsnadAnbar.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMojoodiha, Me.mnuSep72, Me.mnuResid, Me.mnuHavaleh, Me.mnuBarnameh, Me.mnuSep350, Me.MnuResideMarjooeAzTozie, Me.mnuSep38, Me.mnuSepKasriEzafeShoab, Me.mnuSep39, Me.mnuHavalehKahandehKharid, Me.mnuResidDarAnbarQC, Me.mnuSepEslahiha, Me.mnuSep35, Me.mnuEzafiMojoodiAnbar, Me.mnuKasriMojoodiAnbar, Me.mnuSep77, Me.MnuTestSanad})
         Me.mnuAsnadAnbar.Name = "mnuAsnadAnbar"
         Me.mnuAsnadAnbar.Size = New System.Drawing.Size(267, 22)
         Me.mnuAsnadAnbar.Text = "اسناد انبار"
@@ -1716,6 +1697,13 @@ Public Class mdiMainAnbar
         Me.MnuRptBatchNoHistory.Name = "MnuRptBatchNoHistory"
         Me.MnuRptBatchNoHistory.Size = New System.Drawing.Size(267, 22)
         Me.MnuRptBatchNoHistory.Text = "گزارش تاریخچه تغییرات سری ساخت"
+        '
+        'mnuTestSanad
+        '
+        Me.MnuTestSanad.Name = "mnuTestSanad"
+        Me.MnuTestSanad.AppName = "mnuTestSanad"
+        Me.MnuTestSanad.Size = New System.Drawing.Size(198, 22)
+        Me.MnuTestSanad.Text = "تستی"
         '
         'mdiMainAnbar
         '
@@ -1912,7 +1900,6 @@ Public Class mdiMainAnbar
      Handles mnuResid.Click
         CAppAnbar.gSanadAnbar.ShowAsnad(EnumNoeTarakoneshSN.ntRESIDHA, "mnuResid")
         ' , Me)
-
     End Sub
 
     Public Sub mnuTafsiliA_Popup(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) _
@@ -1967,8 +1954,6 @@ Public Class mdiMainAnbar
         Minoo.Applications.Anbar.Report.CReport.ShowVardehSamaneJameAnbar(Me)
         DBLog.WriteLOG("Form", 0, , "mnuVardehSamaneJameAnbar", mnuVardehSamaneJameAnbar.Text)
     End Sub
-
-
     Private Sub MnuRPTVAznRialiHavalehha_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
         Handles MnuRptVaznRialiHavalehha.Click
         'Minoo.Applications.Anbar.MeghdariReport.CMeghdariReport.ShowTafsiliA(Me)
@@ -1981,14 +1966,12 @@ Public Class mdiMainAnbar
         Minoo.Applications.Anbar.Report.CReport.ShowRptMoghayeratShoab(Me)
         DBLog.WriteLOG("REport", 0, , "MnuRptMoghayeratShoab", MnuRptMoghayeratShoab.Text)
     End Sub
-
     Private Sub mnu__abSpr_Mojoodi_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
      Handles mnu__abSpr_Mojoodi.Click
         'Minoo.Applications.Anbar.Report.CReport.ShowMojoodi(Me)
         Minoo.Applications.Anbar.Report.CReport.ShowMojoodi(Me)
         DBLog.WriteLOG("Form", 0, , mnu__abSpr_Mojoodi.AppName, mnu__abSpr_Mojoodi.Text)
     End Sub
-
     Private Sub mnuMojudiWithIRC_GTIN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
      Handles mnuMojudiWithIRC_GTIN.Click
         Minoo.Applications.Anbar.Report.CReport.ShowReportMojudiWithIRC_GTIN(Me)
@@ -1996,7 +1979,6 @@ Public Class mdiMainAnbar
     End Sub
 
     ''abSanadBarcodeReaderReport
-
     Private Sub mnu__MoghayerateKatalogeMahsoolatBaSystemMaprReport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
      Handles mnu__MoghayerateCatalogueMahsoolatBaSystemMap.Click
         'Minoo.Applications.Anbar.Report.CReport.ShowMojoodi(Me)
@@ -2363,10 +2345,6 @@ Public Class mdiMainAnbar
         DBLog.WriteLOG("Form", 0, , MnuAnbarGardaniEnghezaDate.AppName, MnuAnbarGardaniEnghezaDate.Text)
 
     End Sub
-
-
-
-
 
     Private Sub mnurptAlertNerkhStandardAsnad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
      Handles mnurptAlertNerkhStandardAsnad.Click
@@ -2833,6 +2811,9 @@ Handles mnuSefrKardaneMojoodiAnbar.Click
         Minoo.Applications.Anbar.Report.CReport.ShowRptBatchNoHistory(Me)
         DBLog.WriteLOG("Form", 0, , MnuRptBatchNoHistory.AppName, MnuRptBatchNoHistory.Text)
     End Sub
-
-
+    'Alipour (NO) 14041223
+    Private Sub MnuTestSanad_Click(sender As Object, e As EventArgs) Handles MnuTestSanad.Click
+        CAppAnbar.gSanadAnbar.ShowTestAsnad(EnumNoeTarakoneshSN.ntHAVALEHHA, "mnuHavaleh")
+        ' , Me)
+    End Sub
 End Class

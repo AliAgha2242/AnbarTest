@@ -405,6 +405,9 @@
     <Compile Include="Sanad\Forms\FrmabMovaghatSanadGhatee.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Sanad\Forms\FrmabTestSanad.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Sanad\Forms\FrmabSanad.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -512,6 +515,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sanad\Forms\FrmabMovaghatSanadGhatee.resx">
       <DependentUpon>FrmabMovaghatSanadGhatee.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sanad\Forms\FrmabTestSanad.resX">
+      <DependentUpon>FrmabTestSanad.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sanad\Forms\FrmabSanad.resX">
       <DependentUpon>FrmabSanad.vb</DependentUpon>
